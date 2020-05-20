@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>用python画一朵玫瑰花 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">用python画一朵玫瑰花</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/">2019-12-12</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/python/">python</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><p>这是我按照网上的教程写出来的，做了细节上的修改。这是我经手的第一朵花，放上我的博客做个纪念。</p>
+<a id="more"></a>
+
+<pre><code>## 代码如下：
+import turtle
+turtle.speed(15)
+turtle.screensize(400, 300, &quot;pink&quot;)
+turtle.goto(-200, 0)
+turtle.setup(1000, 600)
+turtle.write(&#39;赠：亲爱的           &#39;, move=True, align=&#39;left&#39;, font=(&#39;楷体&#39;, 16, &#39;normal&#39;))
+
+# 设置初始位置
+turtle.pensize(2)
+turtle.penup()
+turtle.left(90)
+turtle.forward(200)
+turtle.pendown()
+turtle.right(90)
+
+# 花蕊
+turtle.fillcolor(&quot;red&quot;)
+turtle.begin_fill()
+turtle.circle(10, 180)
+turtle.circle(25, 110)
+turtle.left(50)
+turtle.circle(60, 45)
+turtle.circle(20, 170)
+turtle.right(24)
+turtle.fd(30)
+turtle.left(10)
+turtle.circle(30, 110)
+turtle.fd(20)
+turtle.left(40)
+turtle.circle(90, 70)
+turtle.circle(30, 150)
+turtle.right(30)
+turtle.fd(15)
+turtle.circle(80, 90)
+turtle.left(15)
+turtle.fd(45)
+turtle.right(165)
+turtle.fd(20)
+turtle.left(155)
+turtle.circle(150, 80)
+turtle.left(50)
+turtle.circle(150, 90)
+turtle.end_fill()
+
+
+# 花瓣1
+turtle.left(150)
+turtle.circle(-90, 70)
+turtle.left(20)
+turtle.circle(75, 105)
+turtle.setheading(60)
+turtle.circle(80, 98)
+turtle.circle(-90, 40)
+
+# 花瓣2
+turtle.left(180)
+turtle.circle(90, 40)
+turtle.circle(-80, 98)
+turtle.setheading(-83)
+
+
+# 叶子1
+turtle.pensize(10)
+turtle.fd(30)
+turtle.pensize(2)
+turtle.left(90)
+turtle.fd(25)
+turtle.left(45)
+turtle.fillcolor(&quot;green&quot;)
+turtle.begin_fill()
+turtle.circle(-80, 90)
+turtle.right(90)
+turtle.circle(-80, 90)
+turtle.end_fill()
+
+turtle.right(135)
+turtle.fd(100)
+turtle.fd(-50)
+turtle.left(35)
+turtle.fd(30)
+turtle.fd(-30)
+turtle.right(35)
+turtle.fd(-10)
+turtle.right(35)
+turtle.fd(30)
+turtle.fd(-30)
+turtle.right(145)
+turtle.fd(65)
+turtle.pensize(10)
+turtle.left(90)
+turtle.fd(80)
+
+# 叶子2
+turtle.pensize(2)
+turtle.right(90)
+turtle.right(45)
+turtle.fillcolor(&quot;green&quot;)
+turtle.begin_fill()
+turtle.circle(80, 90)
+turtle.left(90)
+turtle.circle(80, 90)
+turtle.end_fill()
+
+
+turtle.left(135)
+turtle.fd(100)
+turtle.fd(-40)
+turtle.right(35)
+turtle.fd(30)
+turtle.fd(-30)
+turtle.left(35)
+turtle.fd(-20)
+turtle.left(35)
+turtle.fd(30)
+turtle.fd(-30)
+turtle.left(145)
+turtle.fd(40)
+turtle.right(90)
+turtle.pensize(10)
+turtle.circle(300, 60)
+turtle.hideturtle()
+
+turtle.done()
+exit()</code></pre><h2 id="附上我的效果图"><a href="#附上我的效果图" class="headerlink" title="附上我的效果图"></a>附上我的效果图</h2><p><img src="https://img-blog.csdnimg.cn/20191213002843928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/">https://caijinbo.work/2019/12/12/使用python画玫瑰花/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/python/">python</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#附上我的效果图"><span class="toc-number">1.</span> <span class="toc-text">附上我的效果图</span></a></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2019/12/14/pip%20install%20scrapy%20%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85scrapy%E6%98%BE%E7%A4%BA%E9%94%99%E8%AF%AF/">&lt; pip install scrapy 命令安装scrapy显示错误</a><a class="next" href="/2019/12/12/Linux%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/">Linux系统设置frp开机自动启动 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

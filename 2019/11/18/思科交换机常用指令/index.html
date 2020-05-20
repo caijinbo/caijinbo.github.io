@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>思科交换机常用指令（持续更新） | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">思科交换机常用指令（持续更新）</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2019/11/18/%E6%80%9D%E7%A7%91%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">2019-11-18</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h1 id="思科交换机常用指令"><a href="#思科交换机常用指令" class="headerlink" title="思科交换机常用指令"></a>思科交换机常用指令</h1><h2 id="vlan设置"><a href="#vlan设置" class="headerlink" title="vlan设置"></a>vlan设置</h2><pre><code>console&gt;enable    //进入特权模式
+console#configure      //进入配置视图
+console(config)#vlan database     //进入vlan配置
+console(config-vlan)#vlan 2   //创建vlan2
+console(config-vlan)#no vlan 2      //删除vlan 2
+console(config-vlan)#exit    //退回到特权模式下
+console(config)#interface vlan 2      //进入vlan2的配置视图
+console(config-if-vlan2)#name xxx    //为vlan2修改名字</code></pre><h2 id="端口配置"><a href="#端口配置" class="headerlink" title="端口配置"></a>端口配置</h2><a id="more"></a>
+
+<pre><code> console(config)#interface ethernet 1/g1    //进入网口1，/1/g1指的是第一个插槽上的第一个千兆网口
+console(config-if-1/g1)#     //接口视图模式
+console(config-if-1/g1)# speed 10/100/1000      //定义端口的带宽，只能从这三种模式中做选择。
+console(config-if-1/g1)# duplex full/half     //定义双工模式
+console(config-if-1/g1)# negotiation    //启用自动协商速度和双工参数
+console(config-if-1/g1)# no negotiation  //禁用自动协商速度和双工参数
+console(config-if-1/g1)# switchport mode access/trunk/general       //定义端口类型，总共有三种类型
+console(config-if-1/g1)# switchport access vlan 2     //将端口以access模式加入到vlan 2 中
+console(config-if-1/g1)# shutdown     //关闭当前端口
+console(config-if-1/g1)# no shutdown       //打开当前端口
+console(config)#interface   ethernet 1/g24        //进入汇聚千兆口24，共有四个千兆combo口21-24
+console(config-if-1/g24)#      //接口视图模式
+console(config-if-1/g24)#duplex  auto/full/half      //设置端口工作模式为 自适应/全双通/半双通
+console(config-if-1/g24)#switchport mode trunk      //设置当前端口模式为汇聚口
+console(config-if-1/g24)#switchport mode access    //设置当前端口模式为接入模式
+console(config-if-1/g24)#switchport trunk allowed vlan add/remove 1,2     //将当前汇聚端口加入或移除从vlan 1 ，2通过，vlan修剪，默认为all，全部允许
+console(config-if-1/g24)#switchport access vlan 2    //将当前端口以access模式加入到vlan2 中
+
+若21-24号口用作光口的话，配置接口就对应1/xg1-1/xg4代表使用光纤做10G上联口用：
+console(config)#interface ethernet 1/xg1       //进入汇聚万兆口1，共有4个千兆combo口21-24对应四个1/xg1-1/xg4万兆光口
+console(config-if-1/xg1)#
+console(config-if-1/xg1)#duplex auto/full/half      //设置端口工作模式为  自适应/全双通/半双通
+console(config-if-1/xg1)#switchport mode trunk   //设置当前端口模式为汇聚口
+console(config-if-1/xg1)#switchport mode access  //设置当前端口模式为接入模式
+console(config-if-1/xg1)#switchport trunk allowed vlan add/remove  1,2    //将当前汇聚端口加入或移除从vlan1，2通过，vlan修剪，默认为all，全部允许
+console(config-if-1/xg1)#switchport access vlan 2  //将当前端口以access模式加入vlan2中</code></pre><h2 id="将单个端口加入vlan"><a href="#将单个端口加入vlan" class="headerlink" title="将单个端口加入vlan"></a>将单个端口加入vlan</h2><pre><code>console(config)#interface ethernet 1/g1
+console(config-if-1/g1)#switchport mode access 
+console(config-if-1/g1)#switchport access vlan 2</code></pre><h2 id="将多个端口加入到vlan中"><a href="#将多个端口加入到vlan中" class="headerlink" title="将多个端口加入到vlan中"></a>将多个端口加入到vlan中</h2><pre><code>console(config)#interface range ethernet 1/g1-1/g12     //进入1-12这个接口组里配置
+console(config-if)#switchport mode access
+console(config-if)#switchport access vlan 2
+
+console#show vlan    //用于查看配置后结果</code></pre><p>设置VTP<br>cisco专有的vlan终级协议也成为局域网干道协议，作用是十几台交换机在企业网中，配置vlan工作量大，可以使用VTP协议，把一台交换机配置成VTP server，其余交换机配置成VTP client，这样他们可以自动学习到server上的vlan信息</p>
+<h2 id="交换机配置IP地址"><a href="#交换机配置IP地址" class="headerlink" title="交换机配置IP地址"></a>交换机配置IP地址</h2><pre><code>console(config)#interface vlan 1       //进入vlan1
+console(config-if-vlan1)#ip address 119.167.223.221 255.255.255.128  //设置交换机的管理ip地址
+console(config)#ip default-gateway 119.167.223.254    //设置交换机的默认网关
+console(config)#end     //退出当前模式</code></pre><h2 id="交换机保存设置命令"><a href="#交换机保存设置命令" class="headerlink" title="交换机保存设置命令"></a>交换机保存设置命令</h2><pre><code>console#copy running-config startup-config    //将当前正在使用中的配置保存到交换机开机需要加载的配置文件里去。
+console#copy running-config backup-config      //将当前的配置保存到备份配置文件里</code></pre><h2 id="交换机显示命令"><a href="#交换机显示命令" class="headerlink" title="交换机显示命令"></a>交换机显示命令</h2><p>特权模式下：</p>
+<pre><code>console#show running-config    //显示当前正在使用的配置信息
+console#show startup-config    //显示交换机开机时自动加载的配置文件
+console#show vlan    //显示vlan的配置信息
+console#show interfaces configuration ethernet 1/g1       //显示二层端口状态，可以用来决定此口是否为二层或三层口
+console#show ip interface vlan 100    //查看交换机vlan100的IP配置信息
+console#show version    //查看交换机固件版本信息</code></pre><h2 id="基于端口的mac地址绑定"><a href="#基于端口的mac地址绑定" class="headerlink" title="基于端口的mac地址绑定"></a>基于端口的mac地址绑定</h2><pre><code>console#config  //进入配置视图模式
+console(config)#interface ethernet 1/g1     //进入具体端口视图模式下
+console(config-if-1/g1)#switch port-secruity     //配置端口安全模式
+console(config-if-1/g1)#switchport port-seruity mac-address MAC(主机的mac地址）     //配置该端口要绑定的主机mac地址
+console(config-if-1/g1)# no switchport port-seruity mac-address MAC(主机的mac地址）  //删除绑定主机的mac地址</code></pre><h2 id="配置交换机的snmp功能"><a href="#配置交换机的snmp功能" class="headerlink" title="配置交换机的snmp功能"></a>配置交换机的snmp功能</h2><pre><code>console(config)#snmp-server community xxx ro     //xxx为自定义的共同体名称，并且团体的权限为只读
+console(config)#snmp-server host x.x.x.x(ip地址）xxx（团体名）    //设置管理机x.x.x.x同时允许该管理机以团体名xxx访问。
+console(config)#snmp-server enable traps     //启用snmp服务</code></pre><h2 id="交换机禁ping配置"><a href="#交换机禁ping配置" class="headerlink" title="交换机禁ping配置"></a>交换机禁ping配置</h2><pre><code>console(config)#access-list 110 deny icmp any any      //配置访问控制列表（Access Control List，ACL）110指的是ICMP对应ping。
+console(config)#access-list 110 permit ip any any   //运行所有的ip协议的应用
+console(config)#int vlan 1
+console(config-if-vlan1)#ip access-group 110 in 
+console(config)#int vlan 2
+console(config-if-vlan2)#ip access-group 110 in
+console(config)#int vlan 3
+console(config-if-vlan3)#ip access-group 110 in
+console(config)#interface ethernet 1/g1     //端口禁ping
+console(config-if-1/g1)#ip access-group 110 in</code></pre><h2 id="恢复交换机出厂设置"><a href="#恢复交换机出厂设置" class="headerlink" title="恢复交换机出厂设置"></a>恢复交换机出厂设置</h2><pre><code>console#clear config    //恢复交换机出厂设置
+console#reload     //重新启动交换机</code></pre><pre><code>  交换机工作于OSI参考模型的第二层，即数据链路层。交换机内部的cpu会在每个端口成功连接时，通过将mac地址和端口对应，形成一张mac表。在今后的通讯中，发往该mac地址的数据包将仅送往其对应的端口，而不是所有的端口。因此，交换机可用于划分链路层广播，即冲突域，但它不能划分网络层广播，即广播域。
+ 交换机拥有一条很高带宽的背部总线和内部交换矩阵。交换机的所有的端口都挂接在这条背部总线上，控制电路收到数据包以后，处理端口会查找内存中的地址对照表以确定目的mac（网卡的硬件地址）的NIC（网卡）挂接在哪个端口上，通过内部交换矩阵迅速将数据包传送到目的端口，目的mac若不存在，广播到所有的端口，接收端口回应后，交换机会“学习”新的mac地址，并把它添加到内部mac地址表中。使用交换机也可以把网络“分段”，通过对照IP地址表，交换机只允许必要的网络流量通过交换机。通过交换机的过滤和转发，可以有效的减少冲突域，但它不能划分网络层广播，即广播域。</code></pre></div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2019/11/18/%E6%80%9D%E7%A7%91%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">https://caijinbo.work/2019/11/18/思科交换机常用指令/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/%E6%95%99%E7%A8%8B/">教程</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#思科交换机常用指令"><span class="toc-number">1.</span> <span class="toc-text">思科交换机常用指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#vlan设置"><span class="toc-number">1.1.</span> <span class="toc-text">vlan设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#端口配置"><span class="toc-number">1.2.</span> <span class="toc-text">端口配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将单个端口加入vlan"><span class="toc-number">1.3.</span> <span class="toc-text">将单个端口加入vlan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将多个端口加入到vlan中"><span class="toc-number">1.4.</span> <span class="toc-text">将多个端口加入到vlan中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#交换机配置IP地址"><span class="toc-number">1.5.</span> <span class="toc-text">交换机配置IP地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#交换机保存设置命令"><span class="toc-number">1.6.</span> <span class="toc-text">交换机保存设置命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#交换机显示命令"><span class="toc-number">1.7.</span> <span class="toc-text">交换机显示命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于端口的mac地址绑定"><span class="toc-number">1.8.</span> <span class="toc-text">基于端口的mac地址绑定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置交换机的snmp功能"><span class="toc-number">1.9.</span> <span class="toc-text">配置交换机的snmp功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#交换机禁ping配置"><span class="toc-number">1.10.</span> <span class="toc-text">交换机禁ping配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#恢复交换机出厂设置"><span class="toc-number">1.11.</span> <span class="toc-text">恢复交换机出厂设置</span></a></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2019/12/08/centos7%E5%AE%89%E8%A3%85docker/">&lt; centos7安装docker</a><a class="next" href="/2019/11/18/%E4%BD%BF%E7%94%A8kali%E7%A0%B4%E8%A7%A3%E9%82%BB%E5%B1%85wifi/">使用kali破解邻居wifi &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

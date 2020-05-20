@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>使用FRP做内网穿透 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">使用FRP做内网穿透</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2019/11/10/%E4%BD%BF%E7%94%A8FRP%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/">2019-11-10</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><p><strong>为什么要做内网穿透？</strong><br>普通家庭里使用的都是局域网，比如说你家在A，然后你工作的地方在B，然后你突然间想远程家里A的电脑，这时候是不能在B的网络里直接远程到A的电脑上，因为不是在同个局域网内，虽然我们可以借助第三方软件来实现远程的功能，但还是存在一些不方便，第三方软件对桌面系统很友好，例如Windows系统，ubuntu桌面，或者deepin桌面系统，这些都会有开发好的图形化的远程软件来支持。但是对命令界面的操作系统就很不友好了，我家里放的一台笔记本是装了命令界面的centos7系统。安装那些远程软件是一个问题，配置是一个问题，让很多人操碎了心，这时候制作一个内网穿透的功能就显得有一定的作用了，简而言之，有了内网穿透功能，我们就可以随时随地的远程回家的电脑了。</p>
+<a id="more"></a>
+
+<h3 id="配置流程"><a href="#配置流程" class="headerlink" title="配置流程"></a>配置流程</h3><p>这些教程是我通过在网上学来的，然后通过自己实践并总结做出来的笔记。</p>
+<p>首先要有一个云服务器（VPS服务器）在亚马逊、阿里云、微软云等等都可以。</p>
+<p>在云服务器上安装FRP服务端<br>有两种方法：</p>
+<h5 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h5><pre><code class="bash">export FRP_VERSION=0.29.1
+sudo mkdir -p /etc/frp
+cd /etc/frp
+sudo wget &quot;https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_linux_amd64.tar.gz&quot;
+sudo tar xzvf frp_${FRP_VERSION}_linux_amd64.tar.gz
+sudo mv frp_${FRP_VERSION}_linux_amd64/* /etc/frp</code></pre>
+<h5 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h5><pre><code class="x86asm">sudo wget https://github.com/fatedier/frp/releases/download/v0.29.1/frp_0.29.1_linux_amd64.tar.gz
+tar xzvf frp_0.29.1_linux_amd64.tar.gz
+mv frp_0.29.1_linux_amd64 frp</code></pre>
+<p>如果是windows系统则去平台下载对应的包：<br>更多平台的软件包下载地址：<a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">https://github.com/fatedier/frp/releases</a></p>
+<p>防火土啬和安全组开放指定的端口：<br>请一定要记住，你需要将服务器的系统防火土啬，以及阿里云、腾讯云后台里找到“安全组策略”的相关配置，设置 7000 或你修改过的对应端口的「允许入站和出站」，否则会一直连接不上的哦！！！这个切记！！</p>
+<h5 id="启动-FRP-服务端"><a href="#启动-FRP-服务端" class="headerlink" title="启动 FRP 服务端"></a>启动 FRP 服务端</h5><p><code>./frps -c ./frps.ini</code>   （不推荐这样的启动）这样退出启动控制台程序便中断了。于是我们通常选择后台启动。在linux中使用如下命令进行后台启动。然后运行的日志会输出到当前目录的nohup.log文件中<br><code>nohup ./frps -c frps.ini &amp;</code>     （推荐）<br>可以使用 <em>ps -ef | grep frps</em>   查看程序是否在运行。</p>
+<p>如服务器使用 Win 系统，假设解压到 c:\frp 文件夹，那么只需这样启动：</p>
+<pre><code class="tex">c:\frp\frps.exe -c c:\frp\frps.exe</code></pre>
+<h5 id="配置-Frp-客户端-安装在内网的机器上-："><a href="#配置-Frp-客户端-安装在内网的机器上-：" class="headerlink" title="配置 Frp 客户端 (安装在内网的机器上)："></a>配置 Frp 客户端 (安装在内网的机器上)：</h5><p>Linux系统跟上面的安装一样，Windows系统去平台下载。</p>
+<pre><code class="makefile">vim /etc/frp/frpc.ini
+
+[common]
+server_addr = 52.231.111.111     #公网ip
+server_port = 7000                 #公网端口 需要在云服务器的管理后台开放此端口。
+
+[ssh]
+type = tcp
+local_ip = 192.168.2.138          #内网ip
+local_port = 22
+remote_port = 6000               #内网端口 需要在云服务器的管理后台开放此端口。
+
+[DSM]
+type = tcp
+local_ip = 192.168.1.40 #群晖 NAS 在局域网中的内网 IP
+local_port = 5000
+remote_port = 7001
+
+[RDP]
+type = tcp
+local_ip = 192.168.1.30 #电脑在局域网中的内网 IP (如是本机，也可使用 127.0.0.1)
+local_port = 3389
+remote_port = 7002</code></pre>
+<p>[common]表示以下配置信息是一些公用配置信息<br>server_addr是我们服务端即外网服务器的公网访问ip<br>server_port是我们前面在服务端配置的frps.ini中bind_port中对应的端口。需保持两边一致<br>[ssh]表示以下配置信息是我们使用ssh连接内网服务器时需要的一些配置信息<br>type 是连接类型，ssh方式连接就用tcp<br>local_ip 是本机ip,直接使用127.0.0.1即可<br>local_port 是本地ssh端口，ssh默认端口为22<br>remote_port 是外网服务器请求过来的端口 注：阿里云服务器需要在esc管理中配置安全组规则中添加6000端口</p>
+<h5 id="启动-FRP-客户端："><a href="#启动-FRP-客户端：" class="headerlink" title="启动 FRP 客户端："></a>启动 FRP 客户端：</h5><p>假设你已将 Frp 的客户端解压缩到 c:\frp 目录中，那么启动 Frp 客户端的命令就是：</p>
+<pre><code class="tex">c:\frp\frpc.exe -c c:\frp\frpc.ini</code></pre>
+<p>Linux 启动 Frp 客户端命令：</p>
+<pre><code class="jboss-cli">nohup ./frpc -c ./frpc.ini &amp;</code></pre>
+<p>启动之后看到 “start proxy success”字样就表示启动成功了。</p>
+<p>进行远程访问：</p>
+<p>前面搞了这么多，我们终于可以正式使用 Frp 内网穿透来进行远程访问内网里的设备了！按照上面的配置，我们想要访问群晖 NAS 的界面，只需打开浏览器，在地址栏输入 服务器公网IP:7001 即可访问到群晖后台管理界面。</p>
+<p>而如果需要远程桌面连接到家里的 Windows 电脑，那么打开“微软远程桌面客户端”后，在地址栏里填入 服务器公网IP:7002 即可连接。</p>
+<h5 id="远程linux客户端："><a href="#远程linux客户端：" class="headerlink" title="远程linux客户端："></a>远程linux客户端：</h5><pre><code class="nginx">ssh root@52.231.111.111:6000</code></pre>
+<p>由此，借助 Frp，你就能轻松地为本地局域网内网的设备提供公网直接访问的能力了，你可以用 Frp 来转发包括但不限于 ssh、http、https、转发 Unix 域套接字等服务。</p>
+<p>上面只是最基础的教程，Frp 还有很多很多高级功能，比如给 Web 增加密码保护、点对点内网穿透、设置端口白名单等等，Frp 官网上也提供了很详细的文档，感兴趣的朋友可以去研究一下。</p>
+<h5 id="外网服务器HTTP配置"><a href="#外网服务器HTTP配置" class="headerlink" title="外网服务器HTTP配置"></a>外网服务器HTTP配置</h5><p>通常我们在开发的时候想让别人通过外网可以直接访问到我们的系统，以便于调试和测试，我是在做微信开发的时候需要使用到内网穿透的http服务，于是我们需要在frp中添加http服务的内网穿透配置</p>
+<p>在外网服务器的frps.ini中添加http服务配置如下：</p>
+<pre><code class="ini">[common]
+bind_port = 7000
+vhost_http_port = 6001</code></pre>
+<p>bind_port和之前做ssh时是一个意思。也是为了和客户端建立通信的端口，只需要在之前的配置文件中添加上vhost_http_port = 6001,这个配置意思是让别人在访问我们的服务器6001端口时。frp将http请求转发到内网服务器</p>
+<p>服务端的http请求配置到这里就结束了</p>
+<h5 id="内网服务器HTTP配置"><a href="#内网服务器HTTP配置" class="headerlink" title="内网服务器HTTP配置"></a>内网服务器HTTP配置</h5><p>内网服务器需要在frpc.ini中添加上如下内容：</p>
+<pre><code class="ini">[web]
+type = http
+local_port = 80
+custom_domains = wannabe.fun</code></pre>
+<p>[web]表示我们的配置是一个web服务<br>type表示我们的请求方式是http方式<br>local_port表示我们的本地服务端口号为80<br>custom_domains表示配置为一个已经备案的域名(必填,并且需要域名可用，开始我认为这个不是必须的，于是花了很长时间，)，并且域名解析配置为外网服务器ip</p>
+<p>以上配置完成后，我们就可以使用wannabe.fun:6001访问到我们部署在内网服务器的80端口的服务了。</p>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2019/11/10/%E4%BD%BF%E7%94%A8FRP%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/">https://caijinbo.work/2019/11/10/使用FRP做内网穿透教程/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/%E6%95%99%E7%A8%8B/">教程</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置流程"><span class="toc-number">1.</span> <span class="toc-text">配置流程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#方法一："><span class="toc-number">1.0.1.</span> <span class="toc-text">方法一：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#方法二："><span class="toc-number">1.0.2.</span> <span class="toc-text">方法二：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#启动-FRP-服务端"><span class="toc-number">1.0.3.</span> <span class="toc-text">启动 FRP 服务端</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#配置-Frp-客户端-安装在内网的机器上-："><span class="toc-number">1.0.4.</span> <span class="toc-text">配置 Frp 客户端 (安装在内网的机器上)：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#启动-FRP-客户端："><span class="toc-number">1.0.5.</span> <span class="toc-text">启动 FRP 客户端：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#远程linux客户端："><span class="toc-number">1.0.6.</span> <span class="toc-text">远程linux客户端：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#外网服务器HTTP配置"><span class="toc-number">1.0.7.</span> <span class="toc-text">外网服务器HTTP配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#内网服务器HTTP配置"><span class="toc-number">1.0.8.</span> <span class="toc-text">内网服务器HTTP配置</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2019/11/18/kali%E5%85%A5%E4%BE%B5win7/">&lt; kali入侵win7</a><a class="next" href="/2019/11/07/%E5%AE%B6%E9%87%8C%E6%97%A7%E7%94%B5%E8%84%91%E7%9A%84%E4%BD%BF%E7%94%A8/">家里旧电脑的处理 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>centos7编译安装nginx并设置开机启动 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">centos7编译安装nginx并设置开机启动</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/01/12/centos7%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/">2020-01-12</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h2 id="Nginx的应用场景"><a href="#Nginx的应用场景" class="headerlink" title="Nginx的应用场景"></a>Nginx的应用场景</h2><p>(1).http服务器。Nginx是一个http服务可以独立提供http服务。可以做网页静态服务器。<br>(2).虚拟主机。可以实现在一台服务器虚拟出多个网站。例如个人网站使用的虚拟主机。<br>(3).反向代理，负载均衡。当网站的访问量达到一定程度后，单台服务器不能满足用户的请求时，需要用多台服务器集群可以使用nginx做反向代理。并且多台服务器可以平均分担负载，不会因为某台服务器负载高宕机而某台服务器闲置的情况。</p>
+<a id="more"></a>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="1-检查并安装所需的依赖软件"><a href="#1-检查并安装所需的依赖软件" class="headerlink" title="1.检查并安装所需的依赖软件"></a>1.检查并安装所需的依赖软件</h3><p>(1).gcc:nginx编译依赖gcc环境<br>安装命令：<code>yum install gcc-c++</code></p>
+<p>(2).pcre:(Perl Compatible Regular Expressions)是一个Perl库，包括perl兼容的正则表达式库。nginx的http模块使用pcre来解析正则表达式.<br>安装命令：<code>yum install -y pcre pcre-devel</code></p>
+<p>(3).zlib：该库提供了很多种压缩和解压缩的方式，nginx使用zlib对http包的内容进行gzip。<br>安装命令：<code>yum install -y zlib zlib-devel</code></p>
+<p>(4).openssl:一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。nginx不仅支持http协议，还支持https（即在ssl协议上传输http）.<br>安装命令：<code>yum install -y openssl openssl-devel</code></p>
+<h3 id="2-下载nginx源码包"><a href="#2-下载nginx源码包" class="headerlink" title="2.下载nginx源码包"></a>2.下载nginx源码包</h3><p>下载命令：<code>wget http://nginx.org/download/nginx-1.17.7.tar.gz</code></p>
+<h3 id="3-解压缩源码包并进入"><a href="#3-解压缩源码包并进入" class="headerlink" title="3.解压缩源码包并进入"></a>3.解压缩源码包并进入</h3><p>(1).解压缩：<code>tar -zxvf nginx-1.17.7.tar.gz</code></p>
+<p>(2).进入解压缩后文件夹：<code>cd nginx-1.17.7</code></p>
+<h3 id="4-配置编译参数命令-可以使用-configure-–help查询详细参数"><a href="#4-配置编译参数命令-可以使用-configure-–help查询详细参数" class="headerlink" title="4.配置编译参数命令:(可以使用./configure –help查询详细参数)"></a>4.配置编译参数命令:(可以使用./configure –help查询详细参数)</h3><pre><code class="jboss-cli">./configure</code></pre>
+<p>注：安装之前需要手动创建上面指定的nginx文件夹，即/var/temp、/var/temp/nginx、/var/run/nginx文件夹，否则启动时报错</p>
+<h3 id="5-编译并安装"><a href="#5-编译并安装" class="headerlink" title="5.编译并安装"></a>5.编译并安装</h3><p>命令：<code>make &amp;&amp; make install</code><br>可以进入/usr/local/nginx查看文件是否存在conf、sbin、html文件夹，若存在则安装成功</p>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h3 id="1-启动nginx"><a href="#1-启动nginx" class="headerlink" title="1.启动nginx"></a>1.启动nginx</h3><p>(1).进入安装目录</p>
+<pre><code class="bash">cd /usr/local/nginx/sbin/</code></pre>
+<p>(2).启动</p>
+<pre><code class="jboss-cli">./nginx</code></pre>
+<p>(3).若报错：[emerg] open() “/var/run/nginx/nginx.pid” failed (2: No such file or directory)<br>需要查看下是不是在/var/run文件夹下不存在nginx文件夹，不存在则新建</p>
+<p>(4).查看是否启动：<code>ps -ef  | grep nginx</code><br>如果有master和worker两个进程证明启动成功<br>注意：执行./nginx启动nginx，这里可以-c指定加载的nginx配置文件，如下：</p>
+<pre><code class="stata">./nginx -c /usr/local/nginx/conf/nginx.conf</code></pre>
+<p>如果不指定-c，nginx在启动时默认加载conf/nginx.conf文件，此文件的地址也可以在编译安装nginx时指定./configure的参数(–conf-path= 指向配置文件（nginx.conf）)</p>
+<h3 id="2-停止nginx"><a href="#2-停止nginx" class="headerlink" title="2.停止nginx"></a>2.停止nginx</h3><p>(1).暴力kill(不推荐使用)</p>
+<pre><code class="bash">kill -9 processId</code></pre>
+<p>(2).快速停止</p>
+<pre><code class="bash">cd /usr/local/nginx/sbin &amp;&amp; ./nginx -s stop</code></pre>
+<p>此方式相当于先查出nginx进程id再使用kill命令强制杀掉进程</p>
+<p>(3).完整停止(建议使用)</p>
+<pre><code class="jboss-cli">cd /usr/local/nginx/sbin &amp;&amp; ./nginx -s quit</code></pre>
+<p>此方式停止步骤是待nginx进程处理任务完毕进行停止。</p>
+<h3 id="3-重启及重新加载配置"><a href="#3-重启及重新加载配置" class="headerlink" title="3.重启及重新加载配置"></a>3.重启及重新加载配置</h3><p>(1).先停止再启动（建议使用）</p>
+<pre><code class="jboss-cli">./nginx -s quit &amp;&amp; ./nginx</code></pre>
+<p>(2).重新加载配置文件</p>
+<pre><code class="jboss-cli">./nginx -s reload</code></pre>
+<h3 id="4-测试"><a href="#4-测试" class="headerlink" title="4.测试"></a>4.测试</h3><p>nginx安装成功，启动nginx,即可通过ip地址来访问nginx。（localhost或者127.0.0.1或者主机ip）</p>
+<h2 id="Nginx设置开机启动"><a href="#Nginx设置开机启动" class="headerlink" title="Nginx设置开机启动"></a>Nginx设置开机启动</h2><h3 id="1-创建nginx-service文件"><a href="#1-创建nginx-service文件" class="headerlink" title="1.创建nginx.service文件"></a>1.创建nginx.service文件</h3><pre><code class="crystal">vim /usr/lib/systemd/system/nginx.service</code></pre>
+<p>填入以下内容：</p>
+<pre><code class="ini">[Unit]
+
+Description=nginx - high performance web server
+
+After=nginx.service
+
+[Service]
+
+Type=forking
+
+ExecStart=/usr/local/nginx/sbin/nginx      # nginx的路径
+
+ExecReload=/usr/local/nginx/sbin/nginx -s reload
+
+ExecStop=/usr/local/nginx/sbin/nginx -s stop
+
+Execenable=/usr/local/nginx/sbin/nginx
+
+[Install]
+
+WantedBy=multi-user.target</code></pre>
+<p>重启一下systemctl</p>
+<pre><code class="ebnf">systemctl daemon-reload</code></pre>
+<h3 id="2、修改脚本权限"><a href="#2、修改脚本权限" class="headerlink" title="2、修改脚本权限"></a>2、修改脚本权限</h3><pre><code class="crystal">chmod 754 /usr/lib/systemd/system/nginx.service   </code></pre>
+<h3 id="3、设置为开启及开机自启动"><a href="#3、设置为开启及开机自启动" class="headerlink" title="3、设置为开启及开机自启动"></a>3、设置为开启及开机自启动</h3><pre><code class="stylus">systemctl start nginx.service
+systemctl status nginx.service
+systemctl enable nginx.service</code></pre>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/01/12/centos7%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85nginx%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/">https://caijinbo.work/2020/01/12/centos7编译安装nginx并设置开机启动/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/%E6%95%99%E7%A8%8B/">教程</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx的应用场景"><span class="toc-number">1.</span> <span class="toc-text">Nginx的应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装步骤"><span class="toc-number">2.</span> <span class="toc-text">安装步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-检查并安装所需的依赖软件"><span class="toc-number">2.1.</span> <span class="toc-text">1.检查并安装所需的依赖软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-下载nginx源码包"><span class="toc-number">2.2.</span> <span class="toc-text">2.下载nginx源码包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-解压缩源码包并进入"><span class="toc-number">2.3.</span> <span class="toc-text">3.解压缩源码包并进入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-配置编译参数命令-可以使用-configure-–help查询详细参数"><span class="toc-number">2.4.</span> <span class="toc-text">4.配置编译参数命令:(可以使用.&#x2F;configure –help查询详细参数)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-编译并安装"><span class="toc-number">2.5.</span> <span class="toc-text">5.编译并安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本使用"><span class="toc-number">3.</span> <span class="toc-text">基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-启动nginx"><span class="toc-number">3.1.</span> <span class="toc-text">1.启动nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-停止nginx"><span class="toc-number">3.2.</span> <span class="toc-text">2.停止nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-重启及重新加载配置"><span class="toc-number">3.3.</span> <span class="toc-text">3.重启及重新加载配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-测试"><span class="toc-number">3.4.</span> <span class="toc-text">4.测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx设置开机启动"><span class="toc-number">4.</span> <span class="toc-text">Nginx设置开机启动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建nginx-service文件"><span class="toc-number">4.1.</span> <span class="toc-text">1.创建nginx.service文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、修改脚本权限"><span class="toc-number">4.2.</span> <span class="toc-text">2、修改脚本权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、设置为开启及开机自启动"><span class="toc-number">4.3.</span> <span class="toc-text">3、设置为开启及开机自启动</span></a></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/02/01/%E8%A7%A3%E5%86%B3frp%E6%97%A0%E6%B3%95%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%9A%84%E9%97%AE%E9%A2%98/">&lt; 解决frp无法开机启动的问题</a><a class="next" href="/2019/12/31/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB/">中间人攻击 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>
