@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://caijinbo.work/"/>
-  <updated>2020-05-20T00:11:06.112Z</updated>
+  <updated>2020-05-23T03:38:24.624Z</updated>
   <id>https://caijinbo.work/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>manjaro的优点</title>
+    <link href="https://caijinbo.work/2020/05/22/2020-05-23-manjaro%E7%9A%84%E4%BC%98%E7%82%B9/"/>
+    <id>https://caijinbo.work/2020/05/22/2020-05-23-manjaro%E7%9A%84%E4%BC%98%E7%82%B9/</id>
+    <published>2020-05-22T16:00:00.000Z</published>
+    <updated>2020-05-23T03:38:24.624Z</updated>
+    
+    <content type="html"><![CDATA[<p>前段时间，我在物理机上安装了最新的ubuntu20.04，使用体验挺不好的，linux桌面版还有很长的路要走，后面我心灰意冷的用回了win10，毕竟电脑在使用过程中，稳定才是王道。换回windows系统之后，我不是很甘心，因为我只用了ubuntu20.04就否定了linux桌面版，这明显是很不严谨的定论，于是，我又开始折腾了。</p><a id="more"></a><p>我搜索了一番之后，目标定在了kali、Fedora、manjaro这三大系统上面，kali代表debian阵容、Fedora代表redhat阵容、manjaro代表arch阵容，经过一番筛检之后，我最后选择了manjaro，筛检的原因也很简单，kali在虚拟机上使用了很长时间了，我是挺喜欢它的，但不够稳定，我曾试过更新kali后重启就进不了系统了。现在新版本的kali可能比较稳定了，但选择主力系统时还是力求稳定为主，所以kali只能继续呆在我的虚拟机上了。我在虚拟机上也试用了Fedora、manjaro，我想尽可能的找出他们的优点和缺点，对比了一番，发现两者都很优秀，Fedora有一个点让我放弃了，就是它的gnome dock不能定制，我更喜欢的是像ubuntu那样的dock，看起来有特色，manjaro可以定制。</p><p>物理机使用了manjaro十多天后，我简单的概述一下它的优点和缺点</p><ol><li><p>界面漂亮颜值高</p></li><li><p>定制性更高</p></li><li><p>软件库资源非常多，几乎能涵盖了日常使用所需的软件</p></li><li><p>能够通过自带的软件安装最新版本的显卡驱动，简单方便</p></li><li><p>稳定性更高，至上比ubuntu高了去了</p></li><li><p>系统更加完善，并没有ubuntu那么多bug</p></li><li><p>招牌优点：滚动性更新，我喜欢这点</p></li><li><p>安装使用搜狗输入法，这点也好评，毕竟搜狗输入法linux版本还是挺好用的</p></li><li><p>这是能够作为主力系统的代表性linux系统</p></li></ol><p>虽然我还是采用win10+manjaro双系统的形式，但我已经渐渐地忘记了windows系统了，这段时间都在用manjaro，目前为止还没发现重大的缺点，如果有人想使用linux系统作为主力系统，我会推荐manjaro。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前段时间，我在物理机上安装了最新的ubuntu20.04，使用体验挺不好的，linux桌面版还有很长的路要走，后面我心灰意冷的用回了win10，毕竟电脑在使用过程中，稳定才是王道。换回windows系统之后，我不是很甘心，因为我只用了ubuntu20.04就否定了linux桌面版，这明显是很不严谨的定论，于是，我又开始折腾了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="https://caijinbo.work/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="linux" scheme="https://caijinbo.work/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>体验ubuntu20.04的使用感受</title>
@@ -450,29 +473,6 @@
     <summary type="html">
     
       &lt;h1 id=&quot;Python安装scrapy失败解决方法&quot;&gt;&lt;a href=&quot;#Python安装scrapy失败解决方法&quot; class=&quot;headerlink&quot; title=&quot;Python安装scrapy失败解决方法&quot;&gt;&lt;/a&gt;Python安装scrapy失败解决方法&lt;/h1&gt;&lt;h2 id=&quot;概述：&quot;&gt;&lt;a href=&quot;#概述：&quot; class=&quot;headerlink&quot; title=&quot;概述：&quot;&gt;&lt;/a&gt;概述：&lt;/h2&gt;&lt;p&gt;Scrapy是Python开发的一个快速、高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="python" scheme="https://caijinbo.work/categories/python/"/>
-    
-    
-      <category term="python" scheme="https://caijinbo.work/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用python画一朵玫瑰花</title>
-    <link href="https://caijinbo.work/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/"/>
-    <id>https://caijinbo.work/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/</id>
-    <published>2019-12-12T16:00:00.000Z</published>
-    <updated>2020-05-20T00:11:06.136Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是我按照网上的教程写出来的，做了细节上的修改。这是我经手的第一朵花，放上我的博客做个纪念。</p><a id="more"></a><pre><code>## 代码如下：import turtleturtle.speed(15)turtle.screensize(400, 300, &quot;pink&quot;)turtle.goto(-200, 0)turtle.setup(1000, 600)turtle.write(&#39;赠：亲爱的           &#39;, move=True, align=&#39;left&#39;, font=(&#39;楷体&#39;, 16, &#39;normal&#39;))# 设置初始位置turtle.pensize(2)turtle.penup()turtle.left(90)turtle.forward(200)turtle.pendown()turtle.right(90)# 花蕊turtle.fillcolor(&quot;red&quot;)turtle.begin_fill()turtle.circle(10, 180)turtle.circle(25, 110)turtle.left(50)turtle.circle(60, 45)turtle.circle(20, 170)turtle.right(24)turtle.fd(30)turtle.left(10)turtle.circle(30, 110)turtle.fd(20)turtle.left(40)turtle.circle(90, 70)turtle.circle(30, 150)turtle.right(30)turtle.fd(15)turtle.circle(80, 90)turtle.left(15)turtle.fd(45)turtle.right(165)turtle.fd(20)turtle.left(155)turtle.circle(150, 80)turtle.left(50)turtle.circle(150, 90)turtle.end_fill()# 花瓣1turtle.left(150)turtle.circle(-90, 70)turtle.left(20)turtle.circle(75, 105)turtle.setheading(60)turtle.circle(80, 98)turtle.circle(-90, 40)# 花瓣2turtle.left(180)turtle.circle(90, 40)turtle.circle(-80, 98)turtle.setheading(-83)# 叶子1turtle.pensize(10)turtle.fd(30)turtle.pensize(2)turtle.left(90)turtle.fd(25)turtle.left(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(-80, 90)turtle.right(90)turtle.circle(-80, 90)turtle.end_fill()turtle.right(135)turtle.fd(100)turtle.fd(-50)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.right(35)turtle.fd(-10)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.right(145)turtle.fd(65)turtle.pensize(10)turtle.left(90)turtle.fd(80)# 叶子2turtle.pensize(2)turtle.right(90)turtle.right(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(80, 90)turtle.left(90)turtle.circle(80, 90)turtle.end_fill()turtle.left(135)turtle.fd(100)turtle.fd(-40)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.left(35)turtle.fd(-20)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.left(145)turtle.fd(40)turtle.right(90)turtle.pensize(10)turtle.circle(300, 60)turtle.hideturtle()turtle.done()exit()</code></pre><h2 id="附上我的效果图"><a href="#附上我的效果图" class="headerlink" title="附上我的效果图"></a>附上我的效果图</h2><p><img src="https://img-blog.csdnimg.cn/20191213002843928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这是我按照网上的教程写出来的，做了细节上的修改。这是我经手的第一朵花，放上我的博客做个纪念。&lt;/p&gt;
     
     </summary>
     
