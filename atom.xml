@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://caijinbo.work/"/>
-  <updated>2020-05-26T01:38:02.350Z</updated>
+  <updated>2020-05-26T14:06:29.388Z</updated>
   <id>https://caijinbo.work/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>manjaro安装deb包</title>
+    <link href="https://caijinbo.work/2020/05/25/2020-05-26-manjaro%E5%AE%89%E8%A3%85deb%E5%8C%85/"/>
+    <id>https://caijinbo.work/2020/05/25/2020-05-26-manjaro%E5%AE%89%E8%A3%85deb%E5%8C%85/</id>
+    <published>2020-05-25T16:00:00.000Z</published>
+    <updated>2020-05-26T14:06:29.388Z</updated>
+    
+    <content type="html"><![CDATA[<p>manjaro自带的软件商店已经有很多软件了，基本上能够满足日常使用的需求，如果没有，后面还有个AUR（yay）撑着，pacman和yay两者几乎能解决普通用户需求的所有软件，除个别软件例外……例如simplenote</p><a id="more"></a><p>自从用了linux做了主力系统之后，就喜欢上了一个软件simplenote，它是一个免费开源跨平台的一个笔记软件，以简单著称。我用windows系统时一直都是使用OneNote，但OneNote没有linux系统版本，于是我被迫去寻找一个替代品，在网络上很多人都推荐simplenote，我试用了以后，就将它列为了linux系统必装的软件。从ubuntu系统换成manjaro系统之后发现pacman和yay上都没有这个包，一开始我打算下载simplenote的源码包进行编译安装的，但我在网络上看到了一种安装deb包的方法，所以试了一下。</p><h4 id="安装流程："><a href="#安装流程：" class="headerlink" title="安装流程："></a>安装流程：</h4><p>使用debtap工具进行解包</p><p>首先查看电脑上是否安装过<br>sudo pacman -Q debtap</p><p>安装yay工具<br>sudo pacman -S yay</p><p>安装解包打包工具debtap<br>yay -S debtap</p><p>升级debtap<br>sudo debtap -u</p><p>先去官网下载simplenote的deb包。</p><p>解包<br>sudo debtap Simplenote-linux-1.16.0-amd64.deb</p><p>安装<br>sudo pacman -U simplenote-1.16.0-1-x86_64.pkg.tar.zst</p><p>到此就安装完成了，我亲自测试使用，没有发现什么问题。</p><p>后面我又需要安装xmind，pacman上没有包，用yay -S xmind安装会报错，于是我又用了安装deb包的方法安装了，也能正常使用。对普通用户来说还是挺方便的。喜欢复杂点的就建议使用编译源码包的方法安装。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;manjaro自带的软件商店已经有很多软件了，基本上能够满足日常使用的需求，如果没有，后面还有个AUR（yay）撑着，pacman和yay两者几乎能解决普通用户需求的所有软件，除个别软件例外……例如simplenote&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="教程" scheme="https://caijinbo.work/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="教程" scheme="https://caijinbo.work/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>manjaro显示伪输出</title>
@@ -458,29 +481,6 @@
     
     
       <category term="随笔" scheme="https://caijinbo.work/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>掷骰子决定做什么事情</title>
-    <link href="https://caijinbo.work/2019/12/16/%E6%8E%B7%E9%AA%B0%E5%AD%90%E5%86%B3%E5%AE%9A%E5%81%9A%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85/"/>
-    <id>https://caijinbo.work/2019/12/16/%E6%8E%B7%E9%AA%B0%E5%AD%90%E5%86%B3%E5%AE%9A%E5%81%9A%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85/</id>
-    <published>2019-12-16T16:00:00.000Z</published>
-    <updated>2020-05-20T00:11:06.140Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="掷骰（tou）子决定做什么事情"><a href="#掷骰（tou）子决定做什么事情" class="headerlink" title="掷骰（tou）子决定做什么事情"></a>掷骰（tou）子决定做什么事情</h1><p>最近在学python的时候看见一段有趣的代码，就是掷骰子决定做什么事情，顿时感觉这是个好东西，平时自己有时候学习久了就会发懵，一时间不知道自己该做什么了，有太多的东西想学了，反而会无从下手。有了这个游戏，我就可以掷骰子决定自己做什么事情。另外在生活上也能派上用场，比如和朋友玩时没决定好做什么的时候，就可以拿出来玩一下了。</p><a id="more"></a><pre><code>&quot;&quot;&quot;掷骰子决定做什么事情&quot;&quot;&quot;from random import randint# get random number 1-6face = randint(1, 6)print(face)if face == 1:    res = &#39;linux&#39;elif face == 2:    res = &#39;kali&#39;elif face == 3:    res = &#39;python&#39;elif face == 4:    res = &#39;take a walk&#39;elif face == 5:    res = &#39;exercise&#39;else:    res = &#39;play games&#39;print(&#39;play&#39; + res)</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;掷骰（tou）子决定做什么事情&quot;&gt;&lt;a href=&quot;#掷骰（tou）子决定做什么事情&quot; class=&quot;headerlink&quot; title=&quot;掷骰（tou）子决定做什么事情&quot;&gt;&lt;/a&gt;掷骰（tou）子决定做什么事情&lt;/h1&gt;&lt;p&gt;最近在学python的时候看见一段有趣的代码，就是掷骰子决定做什么事情，顿时感觉这是个好东西，平时自己有时候学习久了就会发懵，一时间不知道自己该做什么了，有太多的东西想学了，反而会无从下手。有了这个游戏，我就可以掷骰子决定自己做什么事情。另外在生活上也能派上用场，比如和朋友玩时没决定好做什么的时候，就可以拿出来玩一下了。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="python" scheme="https://caijinbo.work/categories/python/"/>
-    
-    
-      <category term="python" scheme="https://caijinbo.work/tags/python/"/>
     
   </entry>
   

