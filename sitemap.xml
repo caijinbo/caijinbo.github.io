@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://caijinbo.work/2020/05/25/2020-05-26-manjaro%E6%98%BE%E7%A4%BA%E4%BC%AA%E8%BE%93%E5%87%BA/</loc>
+    
+    <lastmod>2020-05-26T01:38:02.350Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://caijinbo.work/2020/05/22/2020-05-23-manjaro%E7%9A%84%E4%BC%98%E7%82%B9/</loc>
     
     <lastmod>2020-05-23T03:38:24.624Z</lastmod>
@@ -30,6 +37,20 @@
   </url>
   
   <url>
+    <loc>https://caijinbo.work/2019/12/18/%E6%A0%91%E8%8E%93%E6%B4%BEwordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</loc>
+    
+    <lastmod>2020-05-20T00:11:06.140Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caijinbo.work/2019/12/16/%E6%8E%B7%E9%AA%B0%E5%AD%90%E5%86%B3%E5%AE%9A%E5%81%9A%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85/</loc>
+    
+    <lastmod>2020-05-20T00:11:06.140Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://caijinbo.work/2019/11/18/%E6%80%9D%E7%A7%91%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</loc>
     
     <lastmod>2020-05-20T00:11:06.140Z</lastmod>
@@ -44,21 +65,14 @@
   </url>
   
   <url>
-    <loc>https://caijinbo.work/2019/12/16/%E6%8E%B7%E9%AA%B0%E5%AD%90%E5%86%B3%E5%AE%9A%E5%81%9A%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85/</loc>
-    
-    <lastmod>2020-05-20T00:11:06.140Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://caijinbo.work/2019/12/18/%E6%A0%91%E8%8E%93%E6%B4%BEwordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</loc>
-    
-    <lastmod>2020-05-20T00:11:06.140Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://caijinbo.work/2019/12/27/Windows%E6%A1%8C%E9%9D%A2%E8%BF%9C%E7%A8%8BUbuntu%E7%B3%BB%E7%BB%9F/</loc>
+    
+    <lastmod>2020-05-20T00:11:06.136Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caijinbo.work/2019/12/31/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB/</loc>
     
     <lastmod>2020-05-20T00:11:06.136Z</lastmod>
     
@@ -93,20 +107,6 @@
   </url>
   
   <url>
-    <loc>https://caijinbo.work/2019/12/31/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB/</loc>
-    
-    <lastmod>2020-05-20T00:11:06.136Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://caijinbo.work/2019/12/12/Linux%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/</loc>
-    
-    <lastmod>2020-05-20T00:11:06.132Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://caijinbo.work/2020/05/07/ubuntu20.04-%E5%AE%89%E8%A3%85shadowsocks-qt5/</loc>
     
     <lastmod>2020-05-20T00:11:06.132Z</lastmod>
@@ -121,9 +121,9 @@
   </url>
   
   <url>
-    <loc>https://caijinbo.work/2019/12/26/frp%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8D%E8%83%BD%E5%90%8C%E6%97%B6%E5%A4%9A%E5%BC%80/</loc>
+    <loc>https://caijinbo.work/2019/12/12/Linux%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/</loc>
     
-    <lastmod>2020-05-20T00:11:06.128Z</lastmod>
+    <lastmod>2020-05-20T00:11:06.132Z</lastmod>
     
   </url>
   
@@ -143,6 +143,13 @@
   
   <url>
     <loc>https://caijinbo.work/2019/12/16/git%E4%B8%8A%E4%BC%A0%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/</loc>
+    
+    <lastmod>2020-05-20T00:11:06.128Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://caijinbo.work/2019/12/26/frp%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8D%E8%83%BD%E5%90%8C%E6%97%B6%E5%A4%9A%E5%BC%80/</loc>
     
     <lastmod>2020-05-20T00:11:06.128Z</lastmod>
     
