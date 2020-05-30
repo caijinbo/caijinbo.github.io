@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>linux连接交换机console</title>
+      <link href="/2020/05/29/2020-05-30-linux%E8%BF%9E%E6%8E%A5%E4%BA%A4%E6%8D%A2%E6%9C%BAconsole/"/>
+      <url>/2020/05/29/2020-05-30-linux%E8%BF%9E%E6%8E%A5%E4%BA%A4%E6%8D%A2%E6%9C%BAconsole/</url>
+      
+        <content type="html"><![CDATA[<p>自从用了linux做主力系统之后，有很多习惯都要改变了，今天想连接一台交换机，结果方法跟windows一点也不相同，我也是通过网络上的教程才连上的，特意写个自己总结后的文章，方便自己后面查看。</p><a id="more"></a><h3 id="第一步：查看usb端口名称"><a href="#第一步：查看usb端口名称" class="headerlink" title="第一步：查看usb端口名称"></a>第一步：查看usb端口名称</h3><p>sudo dmesg | grep usb</p><h3 id="第二步：安装minicom"><a href="#第二步：安装minicom" class="headerlink" title="第二步：安装minicom"></a>第二步：安装minicom</h3><p> sudo apt install minicom<br>        sudo yum install minicom<br>        sudo  pacman -S minicom</p><p>manjaro 可以通过软件商店安装</p><h3 id="第三步：打开minicom设置"><a href="#第三步：打开minicom设置" class="headerlink" title="第三步：打开minicom设置"></a>第三步：打开minicom设置</h3><p>sudo minicom -s</p><pre><code>        +-----[configuration]------+        | Filenames and paths      |        | File transfer protocols  |        | Serial port setup        |        | Modem and dialing        |        | Screen and keyboard      |        | Save setup as dfl        |        | Save setup as..          |        | Exit                     |        | Exit from Minicom        |        +--------------------------+</code></pre><p>选中 | Serial port setup        |  回车</p><pre><code>+-----------------------------------------------------------------------+| A -    Serial Device      : /dev/ttyUSB0                              || B - Lockfile Location     : /var/run                                  || C -   Callin Program      :                                           || D -  Callout Program      :                                           || E -    Bps/Par/Bits       : 9600 8N1                                  || F - Hardware Flow Control : No                                        || G - Software Flow Control : No                                        ||                                                                       ||    Change which setting?                                              |+-----------------------------------------------------------------------+</code></pre><p>选择A 修改相应的usb名称<br>       选择E  修改波特率9600<br>       选择F 将Yes改为No    </p><p>我的设置如下：<br>A -    Serial Device      : /dev/ttyUSB0                                                    我的机器只有一个串口，所以为0<br>B - Lockfile Location     : /var/run                                                    lockfile路径默认<br>C -   Callin Program      :<br>D -  Callout Program      :<br>E -    Bps/Par/Bits       : 9600 8N1                                                    设置波特率 9600<br>F - Hardware Flow Control : No                                                      关闭硬件流量控制<br>G - Software Flow Control : No                                                       关闭软件流量控制</p><p>设置完后按回车确认。</p><h3 id="第四步：保存设置"><a href="#第四步：保存设置" class="headerlink" title="第四步：保存设置"></a>第四步：保存设置</h3><p>选中   | Save setup as dfl        |    回车<br>       选中   | Exit from Minicom        |   回车退出</p><h3 id="第五步：连接交换机console"><a href="#第五步：连接交换机console" class="headerlink" title="第五步：连接交换机console"></a>第五步：连接交换机console</h3><p>sudo minicom</p><p>注意：连接之后可能没有反应，按几下回车便有显示。</p><p>连接界面如下：</p><pre><code>Welcome to minicom 2.7.1OPTIONS: I18n Compiled on Sep 28 2019, 15:24:37.Port /dev/ttyUSB0, 16:13:18Press CTRL-A Z for help on special keysRuijie&gt;Ruijie&gt;enPassword:*********Ruijie#</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>manjaro安装deb包</title>
       <link href="/2020/05/25/2020-05-26-manjaro%E5%AE%89%E8%A3%85deb%E5%8C%85/"/>
       <url>/2020/05/25/2020-05-26-manjaro%E5%AE%89%E8%A3%85deb%E5%8C%85/</url>
@@ -254,31 +279,6 @@
     
     
     <entry>
-      <title>centos系统设置笔记本盖下不休眠</title>
-      <link href="/2020/02/11/centos%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9B%96%E4%B8%8B%E4%B8%8D%E4%BC%91%E7%9C%A0/"/>
-      <url>/2020/02/11/centos%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9B%96%E4%B8%8B%E4%B8%8D%E4%BC%91%E7%9C%A0/</url>
-      
-        <content type="html"><![CDATA[<p>安装了centos8.1系统之后出现了一个问题，就是无论多久不使用电脑，屏幕一直都是亮着的，并不会自动息屏，以前安装centos7的时候是会自动息屏的。因为centos8笔记本是用来做服务器的，都是远程使用的，屏幕都是用不上的，屏幕一直亮着很是碍眼。所以要设置成盖下盖子而不会休眠。</p><p>通过网络查询，终于找到了设置的方法：</p><a id="more"></a><p>systemd 处理某些电源相关的 ACPI事件，可以通过从 /etc/system/logind.conf以下选项进行配置：</p><p>动作包括：</p><p>HandlePowerKey：按下电源键后的动作</p><p>HandleSleepKey：按下挂起键后的动作</p><p>HandleHibernateKey: 按下休眠键后的动作</p><p>HandleLidSwitch：合上笔记本盖后待机</p><p>这些动作的值可以是 ignore（什么都不做） poweroff（关机） reboot（重新启动） halt（关机，和poweroff有什么区别，需要手动断开电源？） suspend（待机挂起） hibernate（休眠） 默认情况是，当我合上笔记本屏幕的时候，系统会待机。</p><p>如果我不想让系统在我合上笔记本的时候待机，怎么办呢？</p><p>用vim编辑器打开 /etc/systemd/logind.conf 去掉HandleLidSwitch前面的注释符号#，并把它的值从suspend修改为ignore or lock。</p><p>lock 仅锁屏，计算机继续工作</p><p>然后systemctl restart systemd-logind，使更改生效。再合上笔记本盖子，也不会待机了。</p><p>如果再想进入待机状态，可执行systemctl suspend。</p><p>原文链接：<a href="https://blog.csdn.net/nankys/article/details/86617948" target="_blank" rel="noopener">https://blog.csdn.net/nankys/article/details/86617948</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 教程 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 教程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>电脑中病毒</title>
       <link href="/2020/02/11/%E7%94%B5%E8%84%91%E4%B8%AD%E7%97%85%E6%AF%92/"/>
       <url>/2020/02/11/%E7%94%B5%E8%84%91%E4%B8%AD%E7%97%85%E6%AF%92/</url>
@@ -296,6 +296,31 @@
         <tags>
             
             <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos系统设置笔记本盖下不休眠</title>
+      <link href="/2020/02/11/centos%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9B%96%E4%B8%8B%E4%B8%8D%E4%BC%91%E7%9C%A0/"/>
+      <url>/2020/02/11/centos%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9B%96%E4%B8%8B%E4%B8%8D%E4%BC%91%E7%9C%A0/</url>
+      
+        <content type="html"><![CDATA[<p>安装了centos8.1系统之后出现了一个问题，就是无论多久不使用电脑，屏幕一直都是亮着的，并不会自动息屏，以前安装centos7的时候是会自动息屏的。因为centos8笔记本是用来做服务器的，都是远程使用的，屏幕都是用不上的，屏幕一直亮着很是碍眼。所以要设置成盖下盖子而不会休眠。</p><p>通过网络查询，终于找到了设置的方法：</p><a id="more"></a><p>systemd 处理某些电源相关的 ACPI事件，可以通过从 /etc/system/logind.conf以下选项进行配置：</p><p>动作包括：</p><p>HandlePowerKey：按下电源键后的动作</p><p>HandleSleepKey：按下挂起键后的动作</p><p>HandleHibernateKey: 按下休眠键后的动作</p><p>HandleLidSwitch：合上笔记本盖后待机</p><p>这些动作的值可以是 ignore（什么都不做） poweroff（关机） reboot（重新启动） halt（关机，和poweroff有什么区别，需要手动断开电源？） suspend（待机挂起） hibernate（休眠） 默认情况是，当我合上笔记本屏幕的时候，系统会待机。</p><p>如果我不想让系统在我合上笔记本的时候待机，怎么办呢？</p><p>用vim编辑器打开 /etc/systemd/logind.conf 去掉HandleLidSwitch前面的注释符号#，并把它的值从suspend修改为ignore or lock。</p><p>lock 仅锁屏，计算机继续工作</p><p>然后systemctl restart systemd-logind，使更改生效。再合上笔记本盖子，也不会待机了。</p><p>如果再想进入待机状态，可执行systemctl suspend。</p><p>原文链接：<a href="https://blog.csdn.net/nankys/article/details/86617948" target="_blank" rel="noopener">https://blog.csdn.net/nankys/article/details/86617948</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
             
         </tags>
       
@@ -479,31 +504,6 @@
     
     
     <entry>
-      <title>git上传博客不成功的故障排查</title>
-      <link href="/2019/12/16/git%E4%B8%8A%E4%BC%A0%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/"/>
-      <url>/2019/12/16/git%E4%B8%8A%E4%BC%A0%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/</url>
-      
-        <content type="html"><![CDATA[<h1 id="发现故障"><a href="#发现故障" class="headerlink" title="发现故障"></a>发现故障</h1><p>今天写了一篇博客，然后用git上传到github上，git终端上显示没有什么异常，过了一会，我到浏览器打开我的博客网站，发现没有看到刚刚上传的博客，一开始还以为是网络延迟呢，又过了一会我打开还是没有看到，我换了三个浏览器都没有看到，我清楚我要开始排除故障了。</p><a id="more"></a><h1 id="分析故障"><a href="#分析故障" class="headerlink" title="分析故障"></a>分析故障</h1><p><strong>分析故障的第一要素绝对是要看故障现象</strong><br>我重新查看了一遍自己的步骤<br>blog目录路径没错<br>hexo g   显示也没什么问题（一开始没有看仔细）<br>hexo d   显示已经上传成功的界面</p><p><strong>分析故障的第二要素就是看日志</strong><br>git log<br>提示：<br>fatal: not a git repository (or any of the parent directories): .git</p><p>我才发现我还没又创建 .git 文件<br>创建下 .git 文件，下次能用到<br>git init</p><p>看不了日志就从别的地方开始查</p><h1 id="查看故障"><a href="#查看故障" class="headerlink" title="查看故障"></a>查看故障</h1><p><strong>从终端git 到 GitHub 一路找过去</strong><br>在git上排除原因：<br>git config user.name   查看用户名有没有问题，结果正常<br>git config user.email    查看邮箱是否正确，结果正常<br>ssh -T <a href="mailto:git@github.com">git@github.com</a>   连接gGitHub也显示正常</p><p>在GitHub上找原因<br>我登录我github的仓库看看，发现没有今天的数据，只有15号的数据，也就是说git根本没有上传成功</p><h1 id="解决故障"><a href="#解决故障" class="headerlink" title="解决故障"></a>解决故障</h1><p><strong>重启git终端</strong><br>重启git终端之后，再次重新上传博客，这次发现报错了<br><img src="https://img-blog.csdnimg.cn/20191217214524275.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>提示第五行出错了<br>我打开博客文件发现，date:2019-12-17 之间少了一个空格，添加空格之后发现执行 hexo g 正常了</p><p>我继续执行hexo d 之后又报错了<br><img src="https://img-blog.csdnimg.cn/20191217214827112.png" alt="在这里插入图片描述"><br>显示生成失败，这又是第一次遇到的故障，之前从来没有遇到过的，我的直觉告诉我，可能是我所处在的商业网络不稳定或者做了某方面的限制。<br>我尝试多次执行hexo d 指令还是报错。<br>无奈之下我开启了我的VPN，然后再次执行，就成功了。<br>刷新博客，已经正常显示了。<br>到最后我还是没有搞清楚是什么原因导致了上传不成功，网络做了限制了吗? 这个问题留给我以后解决。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 随笔 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 随笔 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>掷骰子决定做什么事情</title>
       <link href="/2019/12/16/%E6%8E%B7%E9%AA%B0%E5%AD%90%E5%86%B3%E5%AE%9A%E5%81%9A%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85/"/>
       <url>/2019/12/16/%E6%8E%B7%E9%AA%B0%E5%AD%90%E5%86%B3%E5%AE%9A%E5%81%9A%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85/</url>
@@ -529,11 +529,61 @@
     
     
     <entry>
+      <title>git上传博客不成功的故障排查</title>
+      <link href="/2019/12/16/git%E4%B8%8A%E4%BC%A0%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/"/>
+      <url>/2019/12/16/git%E4%B8%8A%E4%BC%A0%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="发现故障"><a href="#发现故障" class="headerlink" title="发现故障"></a>发现故障</h1><p>今天写了一篇博客，然后用git上传到github上，git终端上显示没有什么异常，过了一会，我到浏览器打开我的博客网站，发现没有看到刚刚上传的博客，一开始还以为是网络延迟呢，又过了一会我打开还是没有看到，我换了三个浏览器都没有看到，我清楚我要开始排除故障了。</p><a id="more"></a><h1 id="分析故障"><a href="#分析故障" class="headerlink" title="分析故障"></a>分析故障</h1><p><strong>分析故障的第一要素绝对是要看故障现象</strong><br>我重新查看了一遍自己的步骤<br>blog目录路径没错<br>hexo g   显示也没什么问题（一开始没有看仔细）<br>hexo d   显示已经上传成功的界面</p><p><strong>分析故障的第二要素就是看日志</strong><br>git log<br>提示：<br>fatal: not a git repository (or any of the parent directories): .git</p><p>我才发现我还没又创建 .git 文件<br>创建下 .git 文件，下次能用到<br>git init</p><p>看不了日志就从别的地方开始查</p><h1 id="查看故障"><a href="#查看故障" class="headerlink" title="查看故障"></a>查看故障</h1><p><strong>从终端git 到 GitHub 一路找过去</strong><br>在git上排除原因：<br>git config user.name   查看用户名有没有问题，结果正常<br>git config user.email    查看邮箱是否正确，结果正常<br>ssh -T <a href="mailto:git@github.com">git@github.com</a>   连接gGitHub也显示正常</p><p>在GitHub上找原因<br>我登录我github的仓库看看，发现没有今天的数据，只有15号的数据，也就是说git根本没有上传成功</p><h1 id="解决故障"><a href="#解决故障" class="headerlink" title="解决故障"></a>解决故障</h1><p><strong>重启git终端</strong><br>重启git终端之后，再次重新上传博客，这次发现报错了<br><img src="https://img-blog.csdnimg.cn/20191217214524275.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>提示第五行出错了<br>我打开博客文件发现，date:2019-12-17 之间少了一个空格，添加空格之后发现执行 hexo g 正常了</p><p>我继续执行hexo d 之后又报错了<br><img src="https://img-blog.csdnimg.cn/20191217214827112.png" alt="在这里插入图片描述"><br>显示生成失败，这又是第一次遇到的故障，之前从来没有遇到过的，我的直觉告诉我，可能是我所处在的商业网络不稳定或者做了某方面的限制。<br>我尝试多次执行hexo d 指令还是报错。<br>无奈之下我开启了我的VPN，然后再次执行，就成功了。<br>刷新博客，已经正常显示了。<br>到最后我还是没有搞清楚是什么原因导致了上传不成功，网络做了限制了吗? 这个问题留给我以后解决。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>pip install scrapy 命令安装scrapy显示错误</title>
       <link href="/2019/12/14/pip%20install%20scrapy%20%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85scrapy%E6%98%BE%E7%A4%BA%E9%94%99%E8%AF%AF/"/>
       <url>/2019/12/14/pip%20install%20scrapy%20%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85scrapy%E6%98%BE%E7%A4%BA%E9%94%99%E8%AF%AF/</url>
       
         <content type="html"><![CDATA[<h1 id="Python安装scrapy失败解决方法"><a href="#Python安装scrapy失败解决方法" class="headerlink" title="Python安装scrapy失败解决方法"></a>Python安装scrapy失败解决方法</h1><h2 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h2><p>Scrapy是Python开发的一个快速、高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。</p><a id="more"></a><p>安装 Scrapy 与安装其他 Python 包没有区别，同样使用如下命令来安装：<br>pip install scrapy<br>如果在命令行窗口中运行该命令，将会看到程序并不立即下载、安装 Scrapy，而是不断地下载大量第三方包。<br>如果在命令行窗口中提示找不到 pip 命令，则也可以通过 python 命令运行 pip 模块来安装 Scrapy，例如 python -m pip install scrapy</p><p>这是因为 Scrapy 需要依赖、大量第三方包。典型的，Scrapy 需要依赖如下第三方包：</p><p>   pyOpenSSL：Python 用于支持 SSL（Security Socket Layer）的包。<br>   cryptography：Python 用于加密的库。<br>   CFFI：Python 用于调用 C 的接口库。<br>   zope.interface：为 Python 缺少接口而提供扩展的库。<br>   lxml：一个处理 XML、HTML 文档的库，比 Python 内置的 xml 模块更好用。<br>   cssselect：Python 用于处理 CSS 选择器的扩展包。<br>   Twisted：为 Python 提供的基于事件驱动的网络引擎包。<br>    ……</p><p><code>python -m pip install scrapy</code> 命令安装scrapy显示错误<br>或者<code>pip install scrapy</code> 命令安装scrapy显示错误</p><p><a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted" target="_blank" rel="noopener">http://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted</a><br>去这个网址上下载twisted<br>cp后面是python版本，amd64代表64位<br>例如：Twisted-19.10.0-cp38-cp38-win_amd64.whl</p><p>下载到一个目录上后：<br>例如：D:\Software area</p><p>接下来要用管理员身份模式打开终端cmd或者powershell</p><p>powershell切换到D盘<br>cd d:<br>安装Twisted<br>PS D:\Software area&gt; python -m pip install .\Twisted-19.10.0-cp38-cp38-win_amd64.whl</p><p>cmd<br>切换到D盘<br>C:\Users\caiii&gt;d:<br>D:&gt;dir<br>安装Twisted<br>D:\Software area&gt;python -m pip install .\Twisted-19.10.0-cp38-cp38-win_amd64.whl </p><p>安装完Twisted后</p><p>再次安装<br>python -m pip install scrapy 或者 pip install scrapy<br>就会显示成功安装了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>用python画一朵玫瑰花</title>
+      <link href="/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/"/>
+      <url>/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/</url>
+      
+        <content type="html"><![CDATA[<p>这是我按照网上的教程写出来的，做了细节上的修改。这是我经手的第一朵花，放上我的博客做个纪念。</p><a id="more"></a><pre><code>## 代码如下：import turtleturtle.speed(15)turtle.screensize(400, 300, &quot;pink&quot;)turtle.goto(-200, 0)turtle.setup(1000, 600)turtle.write(&#39;赠：亲爱的           &#39;, move=True, align=&#39;left&#39;, font=(&#39;楷体&#39;, 16, &#39;normal&#39;))# 设置初始位置turtle.pensize(2)turtle.penup()turtle.left(90)turtle.forward(200)turtle.pendown()turtle.right(90)# 花蕊turtle.fillcolor(&quot;red&quot;)turtle.begin_fill()turtle.circle(10, 180)turtle.circle(25, 110)turtle.left(50)turtle.circle(60, 45)turtle.circle(20, 170)turtle.right(24)turtle.fd(30)turtle.left(10)turtle.circle(30, 110)turtle.fd(20)turtle.left(40)turtle.circle(90, 70)turtle.circle(30, 150)turtle.right(30)turtle.fd(15)turtle.circle(80, 90)turtle.left(15)turtle.fd(45)turtle.right(165)turtle.fd(20)turtle.left(155)turtle.circle(150, 80)turtle.left(50)turtle.circle(150, 90)turtle.end_fill()# 花瓣1turtle.left(150)turtle.circle(-90, 70)turtle.left(20)turtle.circle(75, 105)turtle.setheading(60)turtle.circle(80, 98)turtle.circle(-90, 40)# 花瓣2turtle.left(180)turtle.circle(90, 40)turtle.circle(-80, 98)turtle.setheading(-83)# 叶子1turtle.pensize(10)turtle.fd(30)turtle.pensize(2)turtle.left(90)turtle.fd(25)turtle.left(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(-80, 90)turtle.right(90)turtle.circle(-80, 90)turtle.end_fill()turtle.right(135)turtle.fd(100)turtle.fd(-50)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.right(35)turtle.fd(-10)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.right(145)turtle.fd(65)turtle.pensize(10)turtle.left(90)turtle.fd(80)# 叶子2turtle.pensize(2)turtle.right(90)turtle.right(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(80, 90)turtle.left(90)turtle.circle(80, 90)turtle.end_fill()turtle.left(135)turtle.fd(100)turtle.fd(-40)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.left(35)turtle.fd(-20)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.left(145)turtle.fd(40)turtle.right(90)turtle.pensize(10)turtle.circle(300, 60)turtle.hideturtle()turtle.done()exit()</code></pre><h2 id="附上我的效果图"><a href="#附上我的效果图" class="headerlink" title="附上我的效果图"></a>附上我的效果图</h2><p><img src="https://img-blog.csdnimg.cn/20191213002843928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
       
       
       <categories>
@@ -571,31 +621,6 @@
         <tags>
             
             <tag> 教程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>用python画一朵玫瑰花</title>
-      <link href="/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/"/>
-      <url>/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/</url>
-      
-        <content type="html"><![CDATA[<p>这是我按照网上的教程写出来的，做了细节上的修改。这是我经手的第一朵花，放上我的博客做个纪念。</p><a id="more"></a><pre><code>## 代码如下：import turtleturtle.speed(15)turtle.screensize(400, 300, &quot;pink&quot;)turtle.goto(-200, 0)turtle.setup(1000, 600)turtle.write(&#39;赠：亲爱的           &#39;, move=True, align=&#39;left&#39;, font=(&#39;楷体&#39;, 16, &#39;normal&#39;))# 设置初始位置turtle.pensize(2)turtle.penup()turtle.left(90)turtle.forward(200)turtle.pendown()turtle.right(90)# 花蕊turtle.fillcolor(&quot;red&quot;)turtle.begin_fill()turtle.circle(10, 180)turtle.circle(25, 110)turtle.left(50)turtle.circle(60, 45)turtle.circle(20, 170)turtle.right(24)turtle.fd(30)turtle.left(10)turtle.circle(30, 110)turtle.fd(20)turtle.left(40)turtle.circle(90, 70)turtle.circle(30, 150)turtle.right(30)turtle.fd(15)turtle.circle(80, 90)turtle.left(15)turtle.fd(45)turtle.right(165)turtle.fd(20)turtle.left(155)turtle.circle(150, 80)turtle.left(50)turtle.circle(150, 90)turtle.end_fill()# 花瓣1turtle.left(150)turtle.circle(-90, 70)turtle.left(20)turtle.circle(75, 105)turtle.setheading(60)turtle.circle(80, 98)turtle.circle(-90, 40)# 花瓣2turtle.left(180)turtle.circle(90, 40)turtle.circle(-80, 98)turtle.setheading(-83)# 叶子1turtle.pensize(10)turtle.fd(30)turtle.pensize(2)turtle.left(90)turtle.fd(25)turtle.left(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(-80, 90)turtle.right(90)turtle.circle(-80, 90)turtle.end_fill()turtle.right(135)turtle.fd(100)turtle.fd(-50)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.right(35)turtle.fd(-10)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.right(145)turtle.fd(65)turtle.pensize(10)turtle.left(90)turtle.fd(80)# 叶子2turtle.pensize(2)turtle.right(90)turtle.right(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(80, 90)turtle.left(90)turtle.circle(80, 90)turtle.end_fill()turtle.left(135)turtle.fd(100)turtle.fd(-40)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.left(35)turtle.fd(-20)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.left(145)turtle.fd(40)turtle.right(90)turtle.pensize(10)turtle.circle(300, 60)turtle.hideturtle()turtle.done()exit()</code></pre><h2 id="附上我的效果图"><a href="#附上我的效果图" class="headerlink" title="附上我的效果图"></a>附上我的效果图</h2><p><img src="https://img-blog.csdnimg.cn/20191213002843928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> python </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> python </tag>
             
         </tags>
       

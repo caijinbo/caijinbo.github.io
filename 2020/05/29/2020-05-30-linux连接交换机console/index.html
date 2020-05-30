@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>linux连接交换机console | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">linux连接交换机console</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/05/29/2020-05-30-linux%E8%BF%9E%E6%8E%A5%E4%BA%A4%E6%8D%A2%E6%9C%BAconsole/">2020-05-29</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><p>自从用了linux做主力系统之后，有很多习惯都要改变了，今天想连接一台交换机，结果方法跟windows一点也不相同，我也是通过网络上的教程才连上的，特意写个自己总结后的文章，方便自己后面查看。</p>
+<a id="more"></a>
+
+<h3 id="第一步：查看usb端口名称"><a href="#第一步：查看usb端口名称" class="headerlink" title="第一步：查看usb端口名称"></a>第一步：查看usb端口名称</h3><p>sudo dmesg | grep usb</p>
+<h3 id="第二步：安装minicom"><a href="#第二步：安装minicom" class="headerlink" title="第二步：安装minicom"></a>第二步：安装minicom</h3><p> sudo apt install minicom<br>        sudo yum install minicom<br>        sudo  pacman -S minicom</p>
+<p>manjaro 可以通过软件商店安装</p>
+<h3 id="第三步：打开minicom设置"><a href="#第三步：打开minicom设置" class="headerlink" title="第三步：打开minicom设置"></a>第三步：打开minicom设置</h3><p>sudo minicom -s</p>
+<pre><code>        +-----[configuration]------+
+        | Filenames and paths      |
+        | File transfer protocols  |
+        | Serial port setup        |
+        | Modem and dialing        |
+        | Screen and keyboard      |
+        | Save setup as dfl        |
+        | Save setup as..          |
+        | Exit                     |
+        | Exit from Minicom        |
+        +--------------------------+</code></pre><p>选中 | Serial port setup        |  回车</p>
+<pre><code>+-----------------------------------------------------------------------+
+| A -    Serial Device      : /dev/ttyUSB0                              |
+| B - Lockfile Location     : /var/run                                  |
+| C -   Callin Program      :                                           |
+| D -  Callout Program      :                                           |
+| E -    Bps/Par/Bits       : 9600 8N1                                  |
+| F - Hardware Flow Control : No                                        |
+| G - Software Flow Control : No                                        |
+|                                                                       |
+|    Change which setting?                                              |
++-----------------------------------------------------------------------+</code></pre><p>选择A 修改相应的usb名称<br>       选择E  修改波特率9600<br>       选择F 将Yes改为No    </p>
+<p>我的设置如下：<br>A -    Serial Device      : /dev/ttyUSB0                                                    我的机器只有一个串口，所以为0<br>B - Lockfile Location     : /var/run                                                    lockfile路径默认<br>C -   Callin Program      :<br>D -  Callout Program      :<br>E -    Bps/Par/Bits       : 9600 8N1                                                    设置波特率 9600<br>F - Hardware Flow Control : No                                                      关闭硬件流量控制<br>G - Software Flow Control : No                                                       关闭软件流量控制</p>
+<p>设置完后按回车确认。</p>
+<h3 id="第四步：保存设置"><a href="#第四步：保存设置" class="headerlink" title="第四步：保存设置"></a>第四步：保存设置</h3><p>选中   | Save setup as dfl        |    回车<br>       选中   | Exit from Minicom        |   回车退出</p>
+<h3 id="第五步：连接交换机console"><a href="#第五步：连接交换机console" class="headerlink" title="第五步：连接交换机console"></a>第五步：连接交换机console</h3><p>sudo minicom</p>
+<p>注意：连接之后可能没有反应，按几下回车便有显示。</p>
+<p>连接界面如下：</p>
+<pre><code>Welcome to minicom 2.7.1
+
+OPTIONS: I18n 
+Compiled on Sep 28 2019, 15:24:37.
+Port /dev/ttyUSB0, 16:13:18
+
+Press CTRL-A Z for help on special keys
+
+Ruijie&gt;
+Ruijie&gt;en
+Password:*********
+Ruijie#</code></pre></div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/05/29/2020-05-30-linux%E8%BF%9E%E6%8E%A5%E4%BA%A4%E6%8D%A2%E6%9C%BAconsole/">https://caijinbo.work/2020/05/29/2020-05-30-linux连接交换机console/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/%E6%95%99%E7%A8%8B/">教程</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一步：查看usb端口名称"><span class="toc-number">1.</span> <span class="toc-text">第一步：查看usb端口名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二步：安装minicom"><span class="toc-number">2.</span> <span class="toc-text">第二步：安装minicom</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三步：打开minicom设置"><span class="toc-number">3.</span> <span class="toc-text">第三步：打开minicom设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第四步：保存设置"><span class="toc-number">4.</span> <span class="toc-text">第四步：保存设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第五步：连接交换机console"><span class="toc-number">5.</span> <span class="toc-text">第五步：连接交换机console</span></a></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="next" href="/2020/05/25/2020-05-26-manjaro%E5%AE%89%E8%A3%85deb%E5%8C%85/">manjaro安装deb包 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

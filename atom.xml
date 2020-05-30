@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://caijinbo.work/"/>
-  <updated>2020-05-26T14:06:29.388Z</updated>
+  <updated>2020-05-30T09:30:01.084Z</updated>
   <id>https://caijinbo.work/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux连接交换机console</title>
+    <link href="https://caijinbo.work/2020/05/29/2020-05-30-linux%E8%BF%9E%E6%8E%A5%E4%BA%A4%E6%8D%A2%E6%9C%BAconsole/"/>
+    <id>https://caijinbo.work/2020/05/29/2020-05-30-linux%E8%BF%9E%E6%8E%A5%E4%BA%A4%E6%8D%A2%E6%9C%BAconsole/</id>
+    <published>2020-05-29T16:00:00.000Z</published>
+    <updated>2020-05-30T09:30:01.084Z</updated>
+    
+    <content type="html"><![CDATA[<p>自从用了linux做主力系统之后，有很多习惯都要改变了，今天想连接一台交换机，结果方法跟windows一点也不相同，我也是通过网络上的教程才连上的，特意写个自己总结后的文章，方便自己后面查看。</p><a id="more"></a><h3 id="第一步：查看usb端口名称"><a href="#第一步：查看usb端口名称" class="headerlink" title="第一步：查看usb端口名称"></a>第一步：查看usb端口名称</h3><p>sudo dmesg | grep usb</p><h3 id="第二步：安装minicom"><a href="#第二步：安装minicom" class="headerlink" title="第二步：安装minicom"></a>第二步：安装minicom</h3><p> sudo apt install minicom<br>        sudo yum install minicom<br>        sudo  pacman -S minicom</p><p>manjaro 可以通过软件商店安装</p><h3 id="第三步：打开minicom设置"><a href="#第三步：打开minicom设置" class="headerlink" title="第三步：打开minicom设置"></a>第三步：打开minicom设置</h3><p>sudo minicom -s</p><pre><code>        +-----[configuration]------+        | Filenames and paths      |        | File transfer protocols  |        | Serial port setup        |        | Modem and dialing        |        | Screen and keyboard      |        | Save setup as dfl        |        | Save setup as..          |        | Exit                     |        | Exit from Minicom        |        +--------------------------+</code></pre><p>选中 | Serial port setup        |  回车</p><pre><code>+-----------------------------------------------------------------------+| A -    Serial Device      : /dev/ttyUSB0                              || B - Lockfile Location     : /var/run                                  || C -   Callin Program      :                                           || D -  Callout Program      :                                           || E -    Bps/Par/Bits       : 9600 8N1                                  || F - Hardware Flow Control : No                                        || G - Software Flow Control : No                                        ||                                                                       ||    Change which setting?                                              |+-----------------------------------------------------------------------+</code></pre><p>选择A 修改相应的usb名称<br>       选择E  修改波特率9600<br>       选择F 将Yes改为No    </p><p>我的设置如下：<br>A -    Serial Device      : /dev/ttyUSB0                                                    我的机器只有一个串口，所以为0<br>B - Lockfile Location     : /var/run                                                    lockfile路径默认<br>C -   Callin Program      :<br>D -  Callout Program      :<br>E -    Bps/Par/Bits       : 9600 8N1                                                    设置波特率 9600<br>F - Hardware Flow Control : No                                                      关闭硬件流量控制<br>G - Software Flow Control : No                                                       关闭软件流量控制</p><p>设置完后按回车确认。</p><h3 id="第四步：保存设置"><a href="#第四步：保存设置" class="headerlink" title="第四步：保存设置"></a>第四步：保存设置</h3><p>选中   | Save setup as dfl        |    回车<br>       选中   | Exit from Minicom        |   回车退出</p><h3 id="第五步：连接交换机console"><a href="#第五步：连接交换机console" class="headerlink" title="第五步：连接交换机console"></a>第五步：连接交换机console</h3><p>sudo minicom</p><p>注意：连接之后可能没有反应，按几下回车便有显示。</p><p>连接界面如下：</p><pre><code>Welcome to minicom 2.7.1OPTIONS: I18n Compiled on Sep 28 2019, 15:24:37.Port /dev/ttyUSB0, 16:13:18Press CTRL-A Z for help on special keysRuijie&gt;Ruijie&gt;enPassword:*********Ruijie#</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自从用了linux做主力系统之后，有很多习惯都要改变了，今天想连接一台交换机，结果方法跟windows一点也不相同，我也是通过网络上的教程才连上的，特意写个自己总结后的文章，方便自己后面查看。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="教程" scheme="https://caijinbo.work/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="教程" scheme="https://caijinbo.work/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>manjaro安装deb包</title>
@@ -253,6 +276,29 @@
   </entry>
   
   <entry>
+    <title>电脑中病毒</title>
+    <link href="https://caijinbo.work/2020/02/11/%E7%94%B5%E8%84%91%E4%B8%AD%E7%97%85%E6%AF%92/"/>
+    <id>https://caijinbo.work/2020/02/11/%E7%94%B5%E8%84%91%E4%B8%AD%E7%97%85%E6%AF%92/</id>
+    <published>2020-02-11T16:00:00.000Z</published>
+    <updated>2020-05-20T00:11:06.144Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天遇到了一件有意思的事情，上班时我发现有一台工作电脑屏幕上弹出一个很大界面的广告，本来因为有很多电脑乱安装软件或者安装不规范，导致会安装了一些流氓软件或者捆绑了很多不必要的垃圾软件，从而产生弹广告这些见怪不怪的事情了。由于屏幕上运行着监控软件，这个界面很大的广告几乎完全挡住监控界面了。这时候我必须要去关闭它了，不然看不到监控界面了。关闭的时候我还在感慨：现在的流氓软件真是太猖狂了，搞个广告都喜欢弄个这么大的。平时看到的弹广告都是电脑桌面右下角那里弹个小小的广告界面。我当时还觉得有点新鲜，还想随手拍个照片留底一下，后面想了想貌似之前双十一的时候也看过不少这么大的广告界面了，就懒得的拍照了，随手就点击关闭按钮。</p><a id="more"></a><p>然而事情没有那么简单，过了不久又弹出了一样的广告出来，我心里有点不乐意了，心里暗暗骂道，太流氓了。我看到广告界面右上角有个倒三角符号，我就点击一下，弹出选择：一天内不弹出、一周内不弹出，永久不弹出。<br>我选择了永久不弹出，然后随手关闭了，之前遇到过一种广告，选择永久不弹出的话需要注册用户才行，现在这个广告不用注册就可以关闭了，对比一下还是挺良心的嘛，既然能够永久不弹出的话我就不去深究了，我本人是最痛恨流氓软件的，所以我的个人电脑上是看不到广告这个玩意的，我电脑上的软件都是精心挑选的。上班时我都是使用自己的个人电脑。</p><p>可事情还是没有那么的简单，过了不久广告又弹出来了，这下可激怒我了，虽然是工作上的电脑，但我也不能容忍流氓软件这么猖狂，我明明选择了永久不弹出，它还在不停的弹出，这就是挑衅，这就是真正意义上的耍流氓的软件，必须干掉它。</p><p>接下来好戏便开始了，我看了一下广告界面，看不出是哪个软件产生的广告，我关闭广告后，进入电脑桌面，发现桌面壁纸被删除了，只留下黑乎乎的电脑桌面背景和桌面上的图标，我心想这不正常，这电脑平时没什么人会用，不应该会有人设置这样的桌面背景。此时这个广告还在不停的弹出。我想看看最近是不是安装了什么新的流氓软件，我点击开始按钮，结果按了之后没有反应，这就更奇怪了，打开任务管理器，我一看，内存使用率达到99%，我仔细看看，没有看到占用内存高的进程，此时我就知道是中病毒了，病毒把进程隐藏了，有意思，这时候就需要安全软件登场了，电脑桌面按什么都没有反应，然后我看下任务栏有不显示程序的三角符号，如果这台电脑上有安全软件的话一定会自动开机运行的，我看了一下有个火绒的安全软件，这下可以扫描一下病毒了，结果点击了火绒之后没反应，反而火绒退出了，就这样消失在我的眼前，我心想，这火绒也太弱了吧，居然被病毒干掉了。</p><p>这时候只能重启系统了，按住ctrl+alt+del键，选择电源那里，选择重启，结果有个未知的程序跳出来阻止关机，没关系，这里选择仍然关机。系统开机之后，系统能正常运行了，虽然病毒会开机自动运行，但没那么快。我打开开始按钮搜索火绒，结果没有找到，原来火绒已经被这个病毒删掉了，这个病毒还是有两把刷子的。我就打开浏览器重新下载个火绒安装，我之所以还要下载火绒，是想看看火绒能不能解决这个病毒，毕竟我的个人电脑上也安装了火绒。在这里我要说一下，国内的安全软件我只用火绒，因为火绒真的干净，没有广告，体积小，我本来电脑是没有安装安全软件的，就用微软自带的安全软件。后面看到火绒这个软件，感觉挺良心的，就支持一下它，就安装了。不过我电脑到目前为止都没有中过任何病毒。言归正传，安装了火绒之后就开始进行安全扫描了，果不其然，很快就扫描出了两个木马病毒，我一看原来是金山的程序搞的，处理病毒之后，我立刻将电脑上跟金山有关的软件全部卸载了，并且对电脑进行深度安全检查，后面又扫描出16个危险文件，包括后门病毒。处理之后，我又对电脑进行安装补丁。</p><p>这是我第一次遇到电脑中病毒的事件，挺有意思的，以前我刚玩电脑时，我几乎把全世界的有名安全软件都装了一遍，但我电脑从来都没有中过毒，我后面就很少再安装安全软件了，本来只用微软自带的安全软件也足够了，可是发现，平时要玩一些破解软件时，破解程序都被微软自带的干掉了，有点不方便，就用火绒来替代自带的了。</p><p>说真的，一个企业做这种事情，感觉有点恶心。不过能写出病毒的人都是挺牛逼的。不说那么多了，我还有大把东西需要学习。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天遇到了一件有意思的事情，上班时我发现有一台工作电脑屏幕上弹出一个很大界面的广告，本来因为有很多电脑乱安装软件或者安装不规范，导致会安装了一些流氓软件或者捆绑了很多不必要的垃圾软件，从而产生弹广告这些见怪不怪的事情了。由于屏幕上运行着监控软件，这个界面很大的广告几乎完全挡住监控界面了。这时候我必须要去关闭它了，不然看不到监控界面了。关闭的时候我还在感慨：现在的流氓软件真是太猖狂了，搞个广告都喜欢弄个这么大的。平时看到的弹广告都是电脑桌面右下角那里弹个小小的广告界面。我当时还觉得有点新鲜，还想随手拍个照片留底一下，后面想了想貌似之前双十一的时候也看过不少这么大的广告界面了，就懒得的拍照了，随手就点击关闭按钮。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="https://caijinbo.work/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="https://caijinbo.work/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title>centos系统设置笔记本盖下不休眠</title>
     <link href="https://caijinbo.work/2020/02/11/centos%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9B%96%E4%B8%8B%E4%B8%8D%E4%BC%91%E7%9C%A0/"/>
     <id>https://caijinbo.work/2020/02/11/centos%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9B%96%E4%B8%8B%E4%B8%8D%E4%BC%91%E7%9C%A0/</id>
@@ -273,29 +319,6 @@
     
     
       <category term="教程" scheme="https://caijinbo.work/tags/%E6%95%99%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>电脑中病毒</title>
-    <link href="https://caijinbo.work/2020/02/11/%E7%94%B5%E8%84%91%E4%B8%AD%E7%97%85%E6%AF%92/"/>
-    <id>https://caijinbo.work/2020/02/11/%E7%94%B5%E8%84%91%E4%B8%AD%E7%97%85%E6%AF%92/</id>
-    <published>2020-02-11T16:00:00.000Z</published>
-    <updated>2020-05-20T00:11:06.144Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天遇到了一件有意思的事情，上班时我发现有一台工作电脑屏幕上弹出一个很大界面的广告，本来因为有很多电脑乱安装软件或者安装不规范，导致会安装了一些流氓软件或者捆绑了很多不必要的垃圾软件，从而产生弹广告这些见怪不怪的事情了。由于屏幕上运行着监控软件，这个界面很大的广告几乎完全挡住监控界面了。这时候我必须要去关闭它了，不然看不到监控界面了。关闭的时候我还在感慨：现在的流氓软件真是太猖狂了，搞个广告都喜欢弄个这么大的。平时看到的弹广告都是电脑桌面右下角那里弹个小小的广告界面。我当时还觉得有点新鲜，还想随手拍个照片留底一下，后面想了想貌似之前双十一的时候也看过不少这么大的广告界面了，就懒得的拍照了，随手就点击关闭按钮。</p><a id="more"></a><p>然而事情没有那么简单，过了不久又弹出了一样的广告出来，我心里有点不乐意了，心里暗暗骂道，太流氓了。我看到广告界面右上角有个倒三角符号，我就点击一下，弹出选择：一天内不弹出、一周内不弹出，永久不弹出。<br>我选择了永久不弹出，然后随手关闭了，之前遇到过一种广告，选择永久不弹出的话需要注册用户才行，现在这个广告不用注册就可以关闭了，对比一下还是挺良心的嘛，既然能够永久不弹出的话我就不去深究了，我本人是最痛恨流氓软件的，所以我的个人电脑上是看不到广告这个玩意的，我电脑上的软件都是精心挑选的。上班时我都是使用自己的个人电脑。</p><p>可事情还是没有那么的简单，过了不久广告又弹出来了，这下可激怒我了，虽然是工作上的电脑，但我也不能容忍流氓软件这么猖狂，我明明选择了永久不弹出，它还在不停的弹出，这就是挑衅，这就是真正意义上的耍流氓的软件，必须干掉它。</p><p>接下来好戏便开始了，我看了一下广告界面，看不出是哪个软件产生的广告，我关闭广告后，进入电脑桌面，发现桌面壁纸被删除了，只留下黑乎乎的电脑桌面背景和桌面上的图标，我心想这不正常，这电脑平时没什么人会用，不应该会有人设置这样的桌面背景。此时这个广告还在不停的弹出。我想看看最近是不是安装了什么新的流氓软件，我点击开始按钮，结果按了之后没有反应，这就更奇怪了，打开任务管理器，我一看，内存使用率达到99%，我仔细看看，没有看到占用内存高的进程，此时我就知道是中病毒了，病毒把进程隐藏了，有意思，这时候就需要安全软件登场了，电脑桌面按什么都没有反应，然后我看下任务栏有不显示程序的三角符号，如果这台电脑上有安全软件的话一定会自动开机运行的，我看了一下有个火绒的安全软件，这下可以扫描一下病毒了，结果点击了火绒之后没反应，反而火绒退出了，就这样消失在我的眼前，我心想，这火绒也太弱了吧，居然被病毒干掉了。</p><p>这时候只能重启系统了，按住ctrl+alt+del键，选择电源那里，选择重启，结果有个未知的程序跳出来阻止关机，没关系，这里选择仍然关机。系统开机之后，系统能正常运行了，虽然病毒会开机自动运行，但没那么快。我打开开始按钮搜索火绒，结果没有找到，原来火绒已经被这个病毒删掉了，这个病毒还是有两把刷子的。我就打开浏览器重新下载个火绒安装，我之所以还要下载火绒，是想看看火绒能不能解决这个病毒，毕竟我的个人电脑上也安装了火绒。在这里我要说一下，国内的安全软件我只用火绒，因为火绒真的干净，没有广告，体积小，我本来电脑是没有安装安全软件的，就用微软自带的安全软件。后面看到火绒这个软件，感觉挺良心的，就支持一下它，就安装了。不过我电脑到目前为止都没有中过任何病毒。言归正传，安装了火绒之后就开始进行安全扫描了，果不其然，很快就扫描出了两个木马病毒，我一看原来是金山的程序搞的，处理病毒之后，我立刻将电脑上跟金山有关的软件全部卸载了，并且对电脑进行深度安全检查，后面又扫描出16个危险文件，包括后门病毒。处理之后，我又对电脑进行安装补丁。</p><p>这是我第一次遇到电脑中病毒的事件，挺有意思的，以前我刚玩电脑时，我几乎把全世界的有名安全软件都装了一遍，但我电脑从来都没有中过毒，我后面就很少再安装安全软件了，本来只用微软自带的安全软件也足够了，可是发现，平时要玩一些破解软件时，破解程序都被微软自带的干掉了，有点不方便，就用火绒来替代自带的了。</p><p>说真的，一个企业做这种事情，感觉有点恶心。不过能写出病毒的人都是挺牛逼的。不说那么多了，我还有大把东西需要学习。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天遇到了一件有意思的事情，上班时我发现有一台工作电脑屏幕上弹出一个很大界面的广告，本来因为有很多电脑乱安装软件或者安装不规范，导致会安装了一些流氓软件或者捆绑了很多不必要的垃圾软件，从而产生弹广告这些见怪不怪的事情了。由于屏幕上运行着监控软件，这个界面很大的广告几乎完全挡住监控界面了。这时候我必须要去关闭它了，不然看不到监控界面了。关闭的时候我还在感慨：现在的流氓软件真是太猖狂了，搞个广告都喜欢弄个这么大的。平时看到的弹广告都是电脑桌面右下角那里弹个小小的广告界面。我当时还觉得有点新鲜，还想随手拍个照片留底一下，后面想了想貌似之前双十一的时候也看过不少这么大的广告界面了，就懒得的拍照了，随手就点击关闭按钮。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="随笔" scheme="https://caijinbo.work/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="随笔" scheme="https://caijinbo.work/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -458,29 +481,6 @@
     
     
       <category term="教程" scheme="https://caijinbo.work/tags/%E6%95%99%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git上传博客不成功的故障排查</title>
-    <link href="https://caijinbo.work/2019/12/16/git%E4%B8%8A%E4%BC%A0%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/"/>
-    <id>https://caijinbo.work/2019/12/16/git%E4%B8%8A%E4%BC%A0%E5%8D%9A%E5%AE%A2%E4%B8%8D%E6%88%90%E5%8A%9F%E7%9A%84%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/</id>
-    <published>2019-12-16T16:00:00.000Z</published>
-    <updated>2020-05-20T00:11:06.128Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="发现故障"><a href="#发现故障" class="headerlink" title="发现故障"></a>发现故障</h1><p>今天写了一篇博客，然后用git上传到github上，git终端上显示没有什么异常，过了一会，我到浏览器打开我的博客网站，发现没有看到刚刚上传的博客，一开始还以为是网络延迟呢，又过了一会我打开还是没有看到，我换了三个浏览器都没有看到，我清楚我要开始排除故障了。</p><a id="more"></a><h1 id="分析故障"><a href="#分析故障" class="headerlink" title="分析故障"></a>分析故障</h1><p><strong>分析故障的第一要素绝对是要看故障现象</strong><br>我重新查看了一遍自己的步骤<br>blog目录路径没错<br>hexo g   显示也没什么问题（一开始没有看仔细）<br>hexo d   显示已经上传成功的界面</p><p><strong>分析故障的第二要素就是看日志</strong><br>git log<br>提示：<br>fatal: not a git repository (or any of the parent directories): .git</p><p>我才发现我还没又创建 .git 文件<br>创建下 .git 文件，下次能用到<br>git init</p><p>看不了日志就从别的地方开始查</p><h1 id="查看故障"><a href="#查看故障" class="headerlink" title="查看故障"></a>查看故障</h1><p><strong>从终端git 到 GitHub 一路找过去</strong><br>在git上排除原因：<br>git config user.name   查看用户名有没有问题，结果正常<br>git config user.email    查看邮箱是否正确，结果正常<br>ssh -T <a href="mailto:git@github.com">git@github.com</a>   连接gGitHub也显示正常</p><p>在GitHub上找原因<br>我登录我github的仓库看看，发现没有今天的数据，只有15号的数据，也就是说git根本没有上传成功</p><h1 id="解决故障"><a href="#解决故障" class="headerlink" title="解决故障"></a>解决故障</h1><p><strong>重启git终端</strong><br>重启git终端之后，再次重新上传博客，这次发现报错了<br><img src="https://img-blog.csdnimg.cn/20191217214524275.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>提示第五行出错了<br>我打开博客文件发现，date:2019-12-17 之间少了一个空格，添加空格之后发现执行 hexo g 正常了</p><p>我继续执行hexo d 之后又报错了<br><img src="https://img-blog.csdnimg.cn/20191217214827112.png" alt="在这里插入图片描述"><br>显示生成失败，这又是第一次遇到的故障，之前从来没有遇到过的，我的直觉告诉我，可能是我所处在的商业网络不稳定或者做了某方面的限制。<br>我尝试多次执行hexo d 指令还是报错。<br>无奈之下我开启了我的VPN，然后再次执行，就成功了。<br>刷新博客，已经正常显示了。<br>到最后我还是没有搞清楚是什么原因导致了上传不成功，网络做了限制了吗? 这个问题留给我以后解决。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;发现故障&quot;&gt;&lt;a href=&quot;#发现故障&quot; class=&quot;headerlink&quot; title=&quot;发现故障&quot;&gt;&lt;/a&gt;发现故障&lt;/h1&gt;&lt;p&gt;今天写了一篇博客，然后用git上传到github上，git终端上显示没有什么异常，过了一会，我到浏览器打开我的博客网站，发现没有看到刚刚上传的博客，一开始还以为是网络延迟呢，又过了一会我打开还是没有看到，我换了三个浏览器都没有看到，我清楚我要开始排除故障了。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="随笔" scheme="https://caijinbo.work/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="随笔" scheme="https://caijinbo.work/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
