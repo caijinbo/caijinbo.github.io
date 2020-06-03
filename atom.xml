@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://caijinbo.work/"/>
-  <updated>2020-05-30T09:30:01.084Z</updated>
+  <updated>2020-06-03T06:38:24.327Z</updated>
   <id>https://caijinbo.work/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python编写石头剪刀布游戏</title>
+    <link href="https://caijinbo.work/2020/06/02/2020-06-03-python%E7%BC%96%E5%86%99%E7%9F%B3%E5%A4%B4%E5%89%AA%E5%88%80%E5%B8%83%E6%B8%B8%E6%88%8F/"/>
+    <id>https://caijinbo.work/2020/06/02/2020-06-03-python%E7%BC%96%E5%86%99%E7%9F%B3%E5%A4%B4%E5%89%AA%E5%88%80%E5%B8%83%E6%B8%B8%E6%88%8F/</id>
+    <published>2020-06-02T16:00:00.000Z</published>
+    <updated>2020-06-03T06:38:24.327Z</updated>
+    
+    <content type="html"><![CDATA[<p>平时在生活中难免会遇到两个人要面临不同选择的时候，石头剪刀布就是常用的伎俩，简单又粗暴，但真人玩石头剪刀布的时候难免会出现一些错误，例如，双方出拳速度不一样又或者出错拳，还有就是出拳规律被对方掌握了等，这些情况就导致了不公平的现象发生。为了解决这个问题，使用Python编写一个石头剪刀布小游戏，就可以保证游戏的公平性了。</p><a id="more"></a><p>网络上有很多现成的Python案例了，我看了别人写的案例，虽然能用，但不能满足我的需求，所以我借鉴了网上的案例而改写了满足自己需求的石头剪刀布小游戏。</p><pre><code class="Python">&quot;&quot;&quot;石头剪刀布游戏三次机会只需要输入1,2,3数字&quot;&quot;&quot;import randomcount = 3while count:    a = input(&quot;请出拳（石头1/剪刀2/布3)：&quot;)    if a in [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]:        if a == &#39;1&#39;:            c = &#39;石头&#39;        elif a == &#39;2&#39;:            c = &#39;剪刀&#39;        elif a == &#39;3&#39;:            c = &#39;布&#39;    else:        print(&#39;只能选择1~3之间的数字&#39;)        continue    b = [&#39;剪刀&#39;, &#39;石头&#39;, &#39;布&#39;]    # 定义赢的列表    win_list = [[&#39;石头&#39;, &#39;剪刀&#39;], {&#39;剪刀&#39;, &#39;布&#39;}, [&#39;布&#39;, &#39;石头&#39;]]    # 电脑随机选择出拳    computer = random.choice(b)    print(&#39;你出拳：&#39;, c)    print(&quot;电脑出拳：&quot;, computer)    if c in b:        count -= 1        if c == computer:            print(&quot;平局&quot;)        elif [c, computer] in win_list:            # 如果在赢的列表中，代表你赢了            print(&quot;恭喜，你赢了&quot;)        else:            print(&quot;很遗憾，你输了&quot;)    print(&quot;你还剩余机会&quot;, count)</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;平时在生活中难免会遇到两个人要面临不同选择的时候，石头剪刀布就是常用的伎俩，简单又粗暴，但真人玩石头剪刀布的时候难免会出现一些错误，例如，双方出拳速度不一样又或者出错拳，还有就是出拳规律被对方掌握了等，这些情况就导致了不公平的现象发生。为了解决这个问题，使用Python编写一个石头剪刀布小游戏，就可以保证游戏的公平性了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://caijinbo.work/categories/python/"/>
+    
+    
+      <category term="教程" scheme="https://caijinbo.work/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>linux连接交换机console</title>
@@ -276,29 +299,6 @@
   </entry>
   
   <entry>
-    <title>电脑中病毒</title>
-    <link href="https://caijinbo.work/2020/02/11/%E7%94%B5%E8%84%91%E4%B8%AD%E7%97%85%E6%AF%92/"/>
-    <id>https://caijinbo.work/2020/02/11/%E7%94%B5%E8%84%91%E4%B8%AD%E7%97%85%E6%AF%92/</id>
-    <published>2020-02-11T16:00:00.000Z</published>
-    <updated>2020-05-20T00:11:06.144Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天遇到了一件有意思的事情，上班时我发现有一台工作电脑屏幕上弹出一个很大界面的广告，本来因为有很多电脑乱安装软件或者安装不规范，导致会安装了一些流氓软件或者捆绑了很多不必要的垃圾软件，从而产生弹广告这些见怪不怪的事情了。由于屏幕上运行着监控软件，这个界面很大的广告几乎完全挡住监控界面了。这时候我必须要去关闭它了，不然看不到监控界面了。关闭的时候我还在感慨：现在的流氓软件真是太猖狂了，搞个广告都喜欢弄个这么大的。平时看到的弹广告都是电脑桌面右下角那里弹个小小的广告界面。我当时还觉得有点新鲜，还想随手拍个照片留底一下，后面想了想貌似之前双十一的时候也看过不少这么大的广告界面了，就懒得的拍照了，随手就点击关闭按钮。</p><a id="more"></a><p>然而事情没有那么简单，过了不久又弹出了一样的广告出来，我心里有点不乐意了，心里暗暗骂道，太流氓了。我看到广告界面右上角有个倒三角符号，我就点击一下，弹出选择：一天内不弹出、一周内不弹出，永久不弹出。<br>我选择了永久不弹出，然后随手关闭了，之前遇到过一种广告，选择永久不弹出的话需要注册用户才行，现在这个广告不用注册就可以关闭了，对比一下还是挺良心的嘛，既然能够永久不弹出的话我就不去深究了，我本人是最痛恨流氓软件的，所以我的个人电脑上是看不到广告这个玩意的，我电脑上的软件都是精心挑选的。上班时我都是使用自己的个人电脑。</p><p>可事情还是没有那么的简单，过了不久广告又弹出来了，这下可激怒我了，虽然是工作上的电脑，但我也不能容忍流氓软件这么猖狂，我明明选择了永久不弹出，它还在不停的弹出，这就是挑衅，这就是真正意义上的耍流氓的软件，必须干掉它。</p><p>接下来好戏便开始了，我看了一下广告界面，看不出是哪个软件产生的广告，我关闭广告后，进入电脑桌面，发现桌面壁纸被删除了，只留下黑乎乎的电脑桌面背景和桌面上的图标，我心想这不正常，这电脑平时没什么人会用，不应该会有人设置这样的桌面背景。此时这个广告还在不停的弹出。我想看看最近是不是安装了什么新的流氓软件，我点击开始按钮，结果按了之后没有反应，这就更奇怪了，打开任务管理器，我一看，内存使用率达到99%，我仔细看看，没有看到占用内存高的进程，此时我就知道是中病毒了，病毒把进程隐藏了，有意思，这时候就需要安全软件登场了，电脑桌面按什么都没有反应，然后我看下任务栏有不显示程序的三角符号，如果这台电脑上有安全软件的话一定会自动开机运行的，我看了一下有个火绒的安全软件，这下可以扫描一下病毒了，结果点击了火绒之后没反应，反而火绒退出了，就这样消失在我的眼前，我心想，这火绒也太弱了吧，居然被病毒干掉了。</p><p>这时候只能重启系统了，按住ctrl+alt+del键，选择电源那里，选择重启，结果有个未知的程序跳出来阻止关机，没关系，这里选择仍然关机。系统开机之后，系统能正常运行了，虽然病毒会开机自动运行，但没那么快。我打开开始按钮搜索火绒，结果没有找到，原来火绒已经被这个病毒删掉了，这个病毒还是有两把刷子的。我就打开浏览器重新下载个火绒安装，我之所以还要下载火绒，是想看看火绒能不能解决这个病毒，毕竟我的个人电脑上也安装了火绒。在这里我要说一下，国内的安全软件我只用火绒，因为火绒真的干净，没有广告，体积小，我本来电脑是没有安装安全软件的，就用微软自带的安全软件。后面看到火绒这个软件，感觉挺良心的，就支持一下它，就安装了。不过我电脑到目前为止都没有中过任何病毒。言归正传，安装了火绒之后就开始进行安全扫描了，果不其然，很快就扫描出了两个木马病毒，我一看原来是金山的程序搞的，处理病毒之后，我立刻将电脑上跟金山有关的软件全部卸载了，并且对电脑进行深度安全检查，后面又扫描出16个危险文件，包括后门病毒。处理之后，我又对电脑进行安装补丁。</p><p>这是我第一次遇到电脑中病毒的事件，挺有意思的，以前我刚玩电脑时，我几乎把全世界的有名安全软件都装了一遍，但我电脑从来都没有中过毒，我后面就很少再安装安全软件了，本来只用微软自带的安全软件也足够了，可是发现，平时要玩一些破解软件时，破解程序都被微软自带的干掉了，有点不方便，就用火绒来替代自带的了。</p><p>说真的，一个企业做这种事情，感觉有点恶心。不过能写出病毒的人都是挺牛逼的。不说那么多了，我还有大把东西需要学习。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天遇到了一件有意思的事情，上班时我发现有一台工作电脑屏幕上弹出一个很大界面的广告，本来因为有很多电脑乱安装软件或者安装不规范，导致会安装了一些流氓软件或者捆绑了很多不必要的垃圾软件，从而产生弹广告这些见怪不怪的事情了。由于屏幕上运行着监控软件，这个界面很大的广告几乎完全挡住监控界面了。这时候我必须要去关闭它了，不然看不到监控界面了。关闭的时候我还在感慨：现在的流氓软件真是太猖狂了，搞个广告都喜欢弄个这么大的。平时看到的弹广告都是电脑桌面右下角那里弹个小小的广告界面。我当时还觉得有点新鲜，还想随手拍个照片留底一下，后面想了想貌似之前双十一的时候也看过不少这么大的广告界面了，就懒得的拍照了，随手就点击关闭按钮。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="随笔" scheme="https://caijinbo.work/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="随笔" scheme="https://caijinbo.work/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
     <title>centos系统设置笔记本盖下不休眠</title>
     <link href="https://caijinbo.work/2020/02/11/centos%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9B%96%E4%B8%8B%E4%B8%8D%E4%BC%91%E7%9C%A0/"/>
     <id>https://caijinbo.work/2020/02/11/centos%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9B%96%E4%B8%8B%E4%B8%8D%E4%BC%91%E7%9C%A0/</id>
@@ -319,6 +319,29 @@
     
     
       <category term="教程" scheme="https://caijinbo.work/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>电脑中病毒</title>
+    <link href="https://caijinbo.work/2020/02/11/%E7%94%B5%E8%84%91%E4%B8%AD%E7%97%85%E6%AF%92/"/>
+    <id>https://caijinbo.work/2020/02/11/%E7%94%B5%E8%84%91%E4%B8%AD%E7%97%85%E6%AF%92/</id>
+    <published>2020-02-11T16:00:00.000Z</published>
+    <updated>2020-05-20T00:11:06.144Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天遇到了一件有意思的事情，上班时我发现有一台工作电脑屏幕上弹出一个很大界面的广告，本来因为有很多电脑乱安装软件或者安装不规范，导致会安装了一些流氓软件或者捆绑了很多不必要的垃圾软件，从而产生弹广告这些见怪不怪的事情了。由于屏幕上运行着监控软件，这个界面很大的广告几乎完全挡住监控界面了。这时候我必须要去关闭它了，不然看不到监控界面了。关闭的时候我还在感慨：现在的流氓软件真是太猖狂了，搞个广告都喜欢弄个这么大的。平时看到的弹广告都是电脑桌面右下角那里弹个小小的广告界面。我当时还觉得有点新鲜，还想随手拍个照片留底一下，后面想了想貌似之前双十一的时候也看过不少这么大的广告界面了，就懒得的拍照了，随手就点击关闭按钮。</p><a id="more"></a><p>然而事情没有那么简单，过了不久又弹出了一样的广告出来，我心里有点不乐意了，心里暗暗骂道，太流氓了。我看到广告界面右上角有个倒三角符号，我就点击一下，弹出选择：一天内不弹出、一周内不弹出，永久不弹出。<br>我选择了永久不弹出，然后随手关闭了，之前遇到过一种广告，选择永久不弹出的话需要注册用户才行，现在这个广告不用注册就可以关闭了，对比一下还是挺良心的嘛，既然能够永久不弹出的话我就不去深究了，我本人是最痛恨流氓软件的，所以我的个人电脑上是看不到广告这个玩意的，我电脑上的软件都是精心挑选的。上班时我都是使用自己的个人电脑。</p><p>可事情还是没有那么的简单，过了不久广告又弹出来了，这下可激怒我了，虽然是工作上的电脑，但我也不能容忍流氓软件这么猖狂，我明明选择了永久不弹出，它还在不停的弹出，这就是挑衅，这就是真正意义上的耍流氓的软件，必须干掉它。</p><p>接下来好戏便开始了，我看了一下广告界面，看不出是哪个软件产生的广告，我关闭广告后，进入电脑桌面，发现桌面壁纸被删除了，只留下黑乎乎的电脑桌面背景和桌面上的图标，我心想这不正常，这电脑平时没什么人会用，不应该会有人设置这样的桌面背景。此时这个广告还在不停的弹出。我想看看最近是不是安装了什么新的流氓软件，我点击开始按钮，结果按了之后没有反应，这就更奇怪了，打开任务管理器，我一看，内存使用率达到99%，我仔细看看，没有看到占用内存高的进程，此时我就知道是中病毒了，病毒把进程隐藏了，有意思，这时候就需要安全软件登场了，电脑桌面按什么都没有反应，然后我看下任务栏有不显示程序的三角符号，如果这台电脑上有安全软件的话一定会自动开机运行的，我看了一下有个火绒的安全软件，这下可以扫描一下病毒了，结果点击了火绒之后没反应，反而火绒退出了，就这样消失在我的眼前，我心想，这火绒也太弱了吧，居然被病毒干掉了。</p><p>这时候只能重启系统了，按住ctrl+alt+del键，选择电源那里，选择重启，结果有个未知的程序跳出来阻止关机，没关系，这里选择仍然关机。系统开机之后，系统能正常运行了，虽然病毒会开机自动运行，但没那么快。我打开开始按钮搜索火绒，结果没有找到，原来火绒已经被这个病毒删掉了，这个病毒还是有两把刷子的。我就打开浏览器重新下载个火绒安装，我之所以还要下载火绒，是想看看火绒能不能解决这个病毒，毕竟我的个人电脑上也安装了火绒。在这里我要说一下，国内的安全软件我只用火绒，因为火绒真的干净，没有广告，体积小，我本来电脑是没有安装安全软件的，就用微软自带的安全软件。后面看到火绒这个软件，感觉挺良心的，就支持一下它，就安装了。不过我电脑到目前为止都没有中过任何病毒。言归正传，安装了火绒之后就开始进行安全扫描了，果不其然，很快就扫描出了两个木马病毒，我一看原来是金山的程序搞的，处理病毒之后，我立刻将电脑上跟金山有关的软件全部卸载了，并且对电脑进行深度安全检查，后面又扫描出16个危险文件，包括后门病毒。处理之后，我又对电脑进行安装补丁。</p><p>这是我第一次遇到电脑中病毒的事件，挺有意思的，以前我刚玩电脑时，我几乎把全世界的有名安全软件都装了一遍，但我电脑从来都没有中过毒，我后面就很少再安装安全软件了，本来只用微软自带的安全软件也足够了，可是发现，平时要玩一些破解软件时，破解程序都被微软自带的干掉了，有点不方便，就用火绒来替代自带的了。</p><p>说真的，一个企业做这种事情，感觉有点恶心。不过能写出病毒的人都是挺牛逼的。不说那么多了，我还有大把东西需要学习。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天遇到了一件有意思的事情，上班时我发现有一台工作电脑屏幕上弹出一个很大界面的广告，本来因为有很多电脑乱安装软件或者安装不规范，导致会安装了一些流氓软件或者捆绑了很多不必要的垃圾软件，从而产生弹广告这些见怪不怪的事情了。由于屏幕上运行着监控软件，这个界面很大的广告几乎完全挡住监控界面了。这时候我必须要去关闭它了，不然看不到监控界面了。关闭的时候我还在感慨：现在的流氓软件真是太猖狂了，搞个广告都喜欢弄个这么大的。平时看到的弹广告都是电脑桌面右下角那里弹个小小的广告界面。我当时还觉得有点新鲜，还想随手拍个照片留底一下，后面想了想貌似之前双十一的时候也看过不少这么大的广告界面了，就懒得的拍照了，随手就点击关闭按钮。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="https://caijinbo.work/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="https://caijinbo.work/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -450,29 +473,6 @@
     <summary type="html">
     
       &lt;h1 id=&quot;kali-Linux将python修改为默认python3&quot;&gt;&lt;a href=&quot;#kali-Linux将python修改为默认python3&quot; class=&quot;headerlink&quot; title=&quot;kali Linux将python修改为默认python3&quot;&gt;&lt;/a&gt;kali Linux将python修改为默认python3&lt;/h1&gt;&lt;p&gt;现在python2接近2020年的停止维护时间了，可以说python2已经被淘汰掉了，而不少Linux系统上还默认是python2，而我们使用时每次都要刻意输入python3，感觉有点繁琐，作为一个懒癌患者，自然是无法容忍的。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="教程" scheme="https://caijinbo.work/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    
-      <category term="教程" scheme="https://caijinbo.work/tags/%E6%95%99%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>树莓派使用wordpress搭建博客网站</title>
-    <link href="https://caijinbo.work/2019/12/18/%E6%A0%91%E8%8E%93%E6%B4%BEwordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/"/>
-    <id>https://caijinbo.work/2019/12/18/%E6%A0%91%E8%8E%93%E6%B4%BEwordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</id>
-    <published>2019-12-18T16:00:00.000Z</published>
-    <updated>2020-05-20T00:11:06.140Z</updated>
-    
-    <content type="html"><![CDATA[<p>手上的树莓派压箱底很久了，拿出来清清灰尘，通电还是能正常跑起来，这个树莓派是几年前就买了，好像是2代来的，内存只有512MB，现在树莓派都出到4B了，好想再剁手买一个新的树莓派4B来压下箱底，但仔细想想，如果树莓派没有派上用场的地方，再买一个新的也只是拿来观赏玩玩就扔一边放灰了，所以现在还是想想怎么把手上的老树莓派利用起来先，最近看到一篇教程就是用树莓派搭建博客网站，就想着拿来试试。正是如此，才让树莓派有了重见天日的机会。</p><a id="more"></a><h4 id="事情准备"><a href="#事情准备" class="headerlink" title="事情准备"></a>事情准备</h4><p><strong>安装树莓派系统</strong><br>下载镜像的地方<br>官网：<a href="https://www.raspberrypi.org/downloads/" target="_blank" rel="noopener">https://www.raspberrypi.org/downloads/</a><br>树莓派实验室：<a href="http://shumeipai.nxez.com/download#os" target="_blank" rel="noopener">http://shumeipai.nxez.com/download#os</a><br>工具：Win32DiskImager<br>具体安装步骤就不详细写了，网上一搜一大把。<br>接下来准备显示器，网线，键盘，连接上去修改密码，配置网络，更新系统<br>有一点要重点讲的，那就是配置ssh，树莓派默认是没有安装ssh服务的</p><h4 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h4><p>安装ssh<br>sudo apt install openssh-server<br>查看ssh有没有运行<br>systemctl status ssh.service     查看状态<br>systemctl start ssh.service        启动ssh<br>sytemctl enable ssh.service      设置开机启动<br>sudo /etc/init.d/ssh start            设置开机启动的第二种方法</p><h4 id="配置静态ip地址"><a href="#配置静态ip地址" class="headerlink" title="配置静态ip地址"></a>配置静态ip地址</h4><p>因为要搭建博客网站，就难免要内网穿透，就要设置静态ip了。</p><pre><code>sudo vim /etc/dhcpcd.conf</code></pre><p>填入：</p><pre><code>interface eth0static ip_address=192.168.1.179/24static routers=192.168.1.1static domain_name_servers=114.114.114.114 8.8.8.8</code></pre><p>reboot 重启系统</p><h3 id="开始搭建网站了"><a href="#开始搭建网站了" class="headerlink" title="开始搭建网站了"></a>开始搭建网站了</h3><h4 id="1-更换镜像源"><a href="#1-更换镜像源" class="headerlink" title="1.更换镜像源"></a>1.更换镜像源</h4><p><code>sudo vim /etc/apt/sources.list</code> 或者   <code>sudo nano /etc/apt/sources.list</code></p><p>把里面的源都注释掉，添加下面的进去。</p><pre><code>deb https://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi</code></pre><p>保存退出</p><pre><code>sudo apt-get update</code></pre><h4 id="2-安装Apache"><a href="#2-安装Apache" class="headerlink" title="2.安装Apache"></a>2.安装Apache</h4><p>Apache是世界使用排名第一的Web服务器软件（开放源码的网页服务器）。它可以运行在几乎所有广泛使用的计算机平台上，由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一</p><pre><code>sudo apt-get install apache2</code></pre><h4 id="3-安装MySQL"><a href="#3-安装MySQL" class="headerlink" title="3.安装MySQL"></a>3.安装MySQL</h4><p>MySQL是最好的关系数据库管理系统应用软件，其体积小、速度快、总体拥有成本低，尤其是开放源码这一特点，一般中小型网站的开发都选择 MySQL 作为网站数据库。</p><pre><code>sudo apt-get install mysql-server</code></pre><p><strong>到了这里就要注意了，我用这个指令安装的时候是报错的。如下图：</strong><br><img src="https://img-blog.csdnimg.cn/20191220073926523.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>E：软件包“ mysql-server”没有安装候选</strong></p><p>解决方法参考这个网友的做法：<a href="https://blog.csdn.net/wangmy1988/article/details/100550810" target="_blank" rel="noopener">https://blog.csdn.net/wangmy1988/article/details/100550810</a></p><p>安装mariadb-server</p><pre><code>sudo apt-get install mariadb-server</code></pre><h4 id="4-安装phpMyAdmin"><a href="#4-安装phpMyAdmin" class="headerlink" title="4.安装phpMyAdmin"></a>4.安装phpMyAdmin</h4><p>phpMyAdmin 是一个以PHP为基础的MySQL的数据库管理工具，让管理者可用Web接口管理MySQL数据库。</p><pre><code>sudo apt-get install phpmyadmin</code></pre><p><img src="https://img-blog.csdnimg.cn/2019122007503025.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>默认选择apache2，回车</p><p><img src="https://img-blog.csdnimg.cn/20191220075905499.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>回车<br><img src="https://img-blog.csdnimg.cn/20191220080031735.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>输入密码，tab健，选择ok<br><img src="https://img-blog.csdnimg.cn/20191220080149719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>再次输入确认密码，选择ok，就安装完成了。</p><h4 id="5-配置MySQL"><a href="#5-配置MySQL" class="headerlink" title="5.配置MySQL"></a>5.配置MySQL</h4><pre><code>vim /etc/apache2/apache2.conf&lt;Directory /var/www/&gt;        Options Indexes FollowSymLinks        AllowOverride None           # 将 None 改成 All        Require all granted&lt;/Directory&gt;</code></pre><p>sudo mysql -u root -p<br><strong>提示输入密码，这里直接回车就行，或者输入什么密码都可以进去。</strong></p><p>重置mysql的加密方式：</p><pre><code>MariaDB [(none)]&gt; update mysql.user set plugin = &#39;mysql_native_password&#39;;</code></pre><p>返回以下则代表成功了。</p><pre><code>Query OK, 2 rows affected (0.009 sec)Rows matched: 2  Changed: 2  Warnings: 0</code></pre><p>更改数据库用户名和密码：</p><pre><code>MariaDB [(none)]&gt; update mysql.user set password=PASSWORD(&quot;~~mysqlpassword~~ &quot;) where User=&#39;root&#39;;Query OK, 1 row affected (0.012 sec)Rows matched: 1  Changed: 1  Warnings: 0</code></pre><p>刷新权限信息：</p><pre><code>MariaDB [(none)]&gt; flush privileges;Query OK, 0 rows affected (0.003 sec)</code></pre><p>CTRL C退出</p><h4 id="6-配置phpmyadmin"><a href="#6-配置phpmyadmin" class="headerlink" title="6.配置phpmyadmin"></a>6.配置phpmyadmin</h4><p>把phpayadmin链接到/var/www/html目录下</p><pre><code>sudo ln -s /usr/share/phpmyadmin /var/www/html</code></pre><h4 id="7-创建数据库"><a href="#7-创建数据库" class="headerlink" title="7.创建数据库"></a>7.创建数据库</h4><p>在浏览器上输入<a href="http://192.168.1.179/phpmyadmin/" target="_blank" rel="noopener">http://192.168.1.179/phpmyadmin/</a><br>（账号密码就是刚才mysql设置的账号密码）<br><img src="https://img-blog.csdnimg.cn/20191220211112713.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>填写数据库信息：<br>数据库名称为wordpress，数据库的数据编码为utf8_unicode_ci<br><img src="https://img-blog.csdnimg.cn/20191220211745805.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h4 id="8-安装wordpress"><a href="#8-安装wordpress" class="headerlink" title="8.安装wordpress"></a>8.安装wordpress</h4><p>修改权限<br><code>sudo chmod 777 /var/www/html</code>    #我用的是root用户，所以不用这一步。<br><code>rm /var/www/html/index.html</code>         #删除默认自带的index.html文件</p><p>下载wordpress<br>到官网下载：<a href="https://wordpress.org/" target="_blank" rel="noopener">https://wordpress.org/</a>    最近官网总是访问不了，报错429。<br>这是一网上找的一个备用地址：<a href="http://cn.wp101.net/download/" target="_blank" rel="noopener">http://cn.wp101.net/download/</a>    我下载过没有发现问题。</p><p>下载好之后，解压：<code>tar zxf wordpress-5.3.2-zh_CN.tar.gz</code><br>将解压的wordpress文件移动到/var/www/html下</p><h4 id="9-配置wordpress"><a href="#9-配置wordpress" class="headerlink" title="9.配置wordpress"></a>9.配置wordpress</h4><p>电脑浏览器输入树莓派ip，会出现一些目录，点击选wordpress，自动跳出安装页面。<br><img src="https://img-blog.csdnimg.cn/20191220213744441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2019122021384086.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>点击现在就开始。<br>数据库名就是刚才建立的wordpress<br>用户名和密码就是上面mysql设置的账号密码<br><img src="https://img-blog.csdnimg.cn/20191220214209959.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><p>输入用户名密码后，点击提交<br><img src="https://img-blog.csdnimg.cn/20191220215203460.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>到了这里先别急着点击现在安装,将上面的这些内容复制。</strong></p><p>回到树莓派终端上面<br>在/var/www/html/wordpress文件下创建一个wp-config.php<br>nano wp-config.php<br>将上面复制的内容复制进来，然后保存。</p><p><strong>保存后在回到刚刚那个网页上面点击现在安装。</strong></p><h4 id="10-填写基本信息"><a href="#10-填写基本信息" class="headerlink" title="10.填写基本信息"></a>10.填写基本信息</h4><p><img src="https://img-blog.csdnimg.cn/20191220220212535.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>填写完之后，选择安装wordpress<br><img src="https://img-blog.csdnimg.cn/20191220220327189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>在浏览器输入ip 地址/wordpress可以进入到博客<br>例如：<a href="http://192.168.1.179/wordpress/" target="_blank" rel="noopener">http://192.168.1.179/wordpress/</a><br><img src="https://img-blog.csdnimg.cn/20191220220758889.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>输入192.168.1.179/wordpress/wp-admin/可以进入博客的后台进行管理<br><img src="https://img-blog.csdnimg.cn/20191220220936249.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>好了，到这里我们就搭建完成了。接下来就是就是处理内网穿透的问题了，我前面写了centos7和ubuntu的内网穿透，由于树莓派的系统raspberrypi 跟这两个系统不一样，方法不适用，我先做一番测试再写个教程吧，上面这些步骤是我一步一步试过的，是可行的，如果有人按照上面的步骤出错的话，请仔细排除一下有没有哪步搞错了。</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;手上的树莓派压箱底很久了，拿出来清清灰尘，通电还是能正常跑起来，这个树莓派是几年前就买了，好像是2代来的，内存只有512MB，现在树莓派都出到4B了，好想再剁手买一个新的树莓派4B来压下箱底，但仔细想想，如果树莓派没有派上用场的地方，再买一个新的也只是拿来观赏玩玩就扔一边放灰了，所以现在还是想想怎么把手上的老树莓派利用起来先，最近看到一篇教程就是用树莓派搭建博客网站，就想着拿来试试。正是如此，才让树莓派有了重见天日的机会。&lt;/p&gt;
     
     </summary>
     
