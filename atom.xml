@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://caijinbo.work/"/>
-  <updated>2020-06-03T06:38:24.327Z</updated>
+  <updated>2020-06-13T00:47:15.689Z</updated>
   <id>https://caijinbo.work/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>manjaro百度网盘打不开解决方法</title>
+    <link href="https://caijinbo.work/2020/06/11/2020-06-12-manjaro%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E6%89%93%E4%B8%8D%E5%BC%80%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>https://caijinbo.work/2020/06/11/2020-06-12-manjaro%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E6%89%93%E4%B8%8D%E5%BC%80%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
+    <published>2020-06-11T16:00:00.000Z</published>
+    <updated>2020-06-13T00:47:15.689Z</updated>
+    
+    <content type="html"><![CDATA[<p> 最近更新了一下百度网盘之后，发现打不开了，就是在百度网盘启动界面一直在加载状态，一开始我以为是软件不兼容的问题，就重装软件了，但发现还是一样，重启系统还是一样，就上网找答案，找到了一个有效答案，在网络上找答案太混杂，容易鱼目混珠，杂七杂八的答案都有，所以写篇博客记录一下。</p><a id="more"></a><p>故障现象：</p><p>百度网盘linux版本更新之后就打不开了，一直处在加载状态</p><p>解决方法:</p><p>删除百度网盘的配置文件</p><p>sudo rm -rf /home/username/.local/share/baidu/</p><p>username是用户的名字</p><p>到此搞定。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; 最近更新了一下百度网盘之后，发现打不开了，就是在百度网盘启动界面一直在加载状态，一开始我以为是软件不兼容的问题，就重装软件了，但发现还是一样，重启系统还是一样，就上网找答案，找到了一个有效答案，在网络上找答案太混杂，容易鱼目混珠，杂七杂八的答案都有，所以写篇博客记录一下。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="教程" scheme="https://caijinbo.work/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="教程" scheme="https://caijinbo.work/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>python编写石头剪刀布游戏</title>
@@ -450,29 +473,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;前段时间我配置了frp内网穿透，最近我发现了一个问题，就是我配置了多台frp客户端，只有一台能正常连接，其他的客户端都连接不了，一开始我以为是我配置问题，反反复复的核对配置步骤，配置都是没有问题的。现在的情况是：例如说，服务端端口是7000，客户端端口是7001，6000，现在只能7000，7001端口开启 或者 7000，6000端口开启，却不能7000，7001，6000端口同时开启。这种情况带来了很大的不便，必须要找到解决方法才行。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="教程" scheme="https://caijinbo.work/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    
-      <category term="教程" scheme="https://caijinbo.work/tags/%E6%95%99%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux将python默认python2修改为python3</title>
-    <link href="https://caijinbo.work/2019/12/24/Linux%E5%B0%86python%E9%BB%98%E8%AE%A4python2%E4%BF%AE%E6%94%B9%E4%B8%BApython3/"/>
-    <id>https://caijinbo.work/2019/12/24/Linux%E5%B0%86python%E9%BB%98%E8%AE%A4python2%E4%BF%AE%E6%94%B9%E4%B8%BApython3/</id>
-    <published>2019-12-24T16:00:00.000Z</published>
-    <updated>2020-05-20T00:13:32.694Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="kali-Linux将python修改为默认python3"><a href="#kali-Linux将python修改为默认python3" class="headerlink" title="kali Linux将python修改为默认python3"></a>kali Linux将python修改为默认python3</h1><p>现在python2接近2020年的停止维护时间了，可以说python2已经被淘汰掉了，而不少Linux系统上还默认是python2，而我们使用时每次都要刻意输入python3，感觉有点繁琐，作为一个懒癌患者，自然是无法容忍的。</p><a id="more"></a><h2 id="查看默认python是什么版本："><a href="#查看默认python是什么版本：" class="headerlink" title="查看默认python是什么版本："></a>查看默认python是什么版本：</h2><p>输入：python -V </p><h2 id="查看python路劲："><a href="#查看python路劲：" class="headerlink" title="查看python路劲："></a>查看python路劲：</h2><p>which python<br>显示是在    /usr/bin/python</p><h2 id="查看所有的python文件"><a href="#查看所有的python文件" class="headerlink" title="查看所有的python文件"></a>查看所有的python文件</h2><p>ls -al /usr/bin/python*</p><h2 id="删除当前python文件"><a href="#删除当前python文件" class="headerlink" title="删除当前python文件"></a>删除当前python文件</h2><p>sudo rm -rf /usr/bin/python</p><h2 id="替换为python3"><a href="#替换为python3" class="headerlink" title="替换为python3"></a>替换为python3</h2><p>ln -s /usr/bin/python3 /usr/bin/python</p><h2 id="再次查看默认python是什么版本："><a href="#再次查看默认python是什么版本：" class="headerlink" title="再次查看默认python是什么版本："></a>再次查看默认python是什么版本：</h2><p>输入：python -V </p><p>到此已完成了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;kali-Linux将python修改为默认python3&quot;&gt;&lt;a href=&quot;#kali-Linux将python修改为默认python3&quot; class=&quot;headerlink&quot; title=&quot;kali Linux将python修改为默认python3&quot;&gt;&lt;/a&gt;kali Linux将python修改为默认python3&lt;/h1&gt;&lt;p&gt;现在python2接近2020年的停止维护时间了，可以说python2已经被淘汰掉了，而不少Linux系统上还默认是python2，而我们使用时每次都要刻意输入python3，感觉有点繁琐，作为一个懒癌患者，自然是无法容忍的。&lt;/p&gt;
     
     </summary>
     
