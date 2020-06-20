@@ -2,37 +2,33 @@
 </head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">vim使用命令总结</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/06/19/2020-06-20-vim%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">2020-06-19</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><p>vim在linux中是必须使用的一个的神器，编辑文件的利器，掌握一些vim指令还是挺有必要的，vim的使用教程在网上一搜就一大把，但那都是别人写的，即使把它们下载下来放进电脑里还是会记不住，所以自己实践过一遍指令再作出一个属于自己的笔记才会更加深刻。我目前记录的就只有这些指令，后期继续更新……</p>
 <a id="more"></a>
 
-<p>定位到故障行:15行<br>vim test.py +15</p>
-<p>打开文件直接定位到最底端：<br>vim test.py +</p>
+<h4 id="定位到故障行-15行"><a href="#定位到故障行-15行" class="headerlink" title="定位到故障行:15行"></a>定位到故障行:15行</h4><p>vim test.py +15</p>
+<h4 id="打开文件直接定位到最底端："><a href="#打开文件直接定位到最底端：" class="headerlink" title="打开文件直接定位到最底端："></a>打开文件直接定位到最底端：</h4><p>vim test.py +</p>
 <p>文件顶部：gg<br>文件末尾：G<br>移动到15行：    15gg、15G         （：15 回车  也可以快速到达15行）</p>
-<p>向上翻页<br>ctrl b           back<br>向下翻页<br>ctrl f           forword</p>
+<h4 id="向上翻页"><a href="#向上翻页" class="headerlink" title="向上翻页"></a>向上翻页</h4><p>ctrl b           back</p>
+<h4 id="向下翻页"><a href="#向下翻页" class="headerlink" title="向下翻页"></a>向下翻页</h4><p>ctrl f           forword</p>
 <p>移动到当前屏幕的顶部：H     （ head）<br>移动到当前屏幕的中间：M     （middle)<br>移动到当前屏幕的底部：L       （low）</p>
 <p>段首：{<br>段尾：}</p>
 <p>行首：shift+6   ^<br>行尾：shift+4   $</p>
 <p>括号匹配： %</p>
-<p>标记<br>m+（a～z） 例如ma<br>回到标记<br>‘a</p>
+<h4 id="标记"><a href="#标记" class="headerlink" title="标记"></a>标记</h4><p>m+（a～z） 例如ma<br>回到标记<br>‘a</p>
 <p>可视模式：v<br>可视行模式：V<br>可视块模式：ctrl v</p>
-<p>删除全部内容<br>gg      文件顶部<br>V     可视行模式<br>G     文件末尾<br>d      删除</p>
-<p>撤销<br>u</p>
+<h4 id="删除全部内容"><a href="#删除全部内容" class="headerlink" title="删除全部内容"></a>删除全部内容</h4><p>gg      文件顶部<br>V     可视行模式<br>G     文件末尾<br>d      删除</p>
+<h4 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h4><p>u</p>
 <p>ctrl + r  恢复撤销</p>
-<p>删除命令<br>dw    从光标位置删除到单词末尾<br>d0     从光标位置删除到一行的起始位置<br>d}       从光标位置删除到段落结尾<br>ndd    从光标位置向下连续删除n行<br>d代码行G   从光标所在行删除到指定代码行之间的所有代码<br>d’a      从光标所在行删除到标记a之间的所有代码</p>
-<p>复制、粘帖<br>y 复制<br>yy  复制行    Y也是复制行<br>nyy 复制n行<br>p 粘帖     （ 小p是在行后粘帖，大P是在行前粘帖）<br>10p 粘帖10次</p>
-<p>替换<br>r 从光标当前开始替换<br>R 替换模式</p>
-<p>缩进</p>
-<blockquote>
-<blockquote>
-<p>向右增加缩进<br>&lt;&lt; 向左减少缩进<br>.  重复上次命令</p>
-</blockquote>
-</blockquote>
-<p>查找<br>/str<br>n 向下查找<br>N 向上查找</p>
-<ul>
-<li>向下查找<h1 id="向上查找"><a href="#向上查找" class="headerlink" title="向上查找"></a>向上查找</h1></li>
-</ul>
-<p>取消查找高亮<br>命令模式下，输入:nohlsearch  也可以:set nohlsearch； 当然，可以简写，noh或者set noh。</p>
-<p>全局替换<br>:%s///g<br>:%s/hello/world/g    将全部的hello替换成world<br>可视区域替换<br>:s///g<br>确认替换<br>:%s///gc</p>
-<p>利用可视块注释多行代码<br>ctrl v    进入可视块模式<br>j             向下选择要注释的行<br>I             输入大写I进入编辑模式,不能使用小写i</p>
-<h1 id="输入-号"><a href="#输入-号" class="headerlink" title="输入#号"></a>输入#号</h1><p>esc        退出可视块模式</p>
-<p>vim删除空行和注释<br>来源：  <a href="http://jpuyy.com/2015/06/vim-delete-lines-using-regexp.html" target="_blank" rel="noopener">http://jpuyy.com/2015/06/vim-delete-lines-using-regexp.html</a></p>
+<h4 id="删除命令"><a href="#删除命令" class="headerlink" title="删除命令"></a>删除命令</h4><p>dw    从光标位置删除到单词末尾<br>d0     从光标位置删除到一行的起始位置<br>d}       从光标位置删除到段落结尾<br>ndd    从光标位置向下连续删除n行<br>d代码行G   从光标所在行删除到指定代码行之间的所有代码<br>d’a      从光标所在行删除到标记a之间的所有代码</p>
+<h4 id="复制、粘帖"><a href="#复制、粘帖" class="headerlink" title="复制、粘帖"></a>复制、粘帖</h4><p>y 复制<br>yy  复制行    Y也是复制行<br>nyy 复制n行<br>p 粘帖     （ 小p是在行后粘帖，大P是在行前粘帖）<br>10p 粘帖10次</p>
+<h4 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h4><p>r 从光标当前开始替换<br>R 替换模式</p>
+<h4 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h4><p>向右增加缩进&gt;&gt;<br>&lt;&lt; 向左减少缩进<br>.  重复上次命令</p>
+<h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><p>/str<br>n 向下查找<br>N 向上查找</p>
+<p>*向下查找</p>
+<p>#向上查找</p>
+<h4 id="取消查找高亮"><a href="#取消查找高亮" class="headerlink" title="取消查找高亮"></a>取消查找高亮</h4><p>命令模式下，输入:nohlsearch  也可以:set nohlsearch； 当然，可以简写，noh或者set noh。</p>
+<h4 id="全局替换"><a href="#全局替换" class="headerlink" title="全局替换"></a>全局替换</h4><p>:%s///g<br>:%s/hello/world/g    将全部的hello替换成world<br>可视区域替换<br>:s///g<br>确认替换<br>:%s///gc</p>
+<h4 id="利用可视块注释多行代码"><a href="#利用可视块注释多行代码" class="headerlink" title="利用可视块注释多行代码"></a>利用可视块注释多行代码</h4><p>ctrl v    进入可视块模式<br>j             向下选择要注释的行<br>I             输入大写I进入编辑模式,不能使用小写i</p>
+<p> 输入#号</p>
+<p>esc        退出可视块模式</p>
+<h4 id="vim删除空行和注释"><a href="#vim删除空行和注释" class="headerlink" title="vim删除空行和注释"></a>vim删除空行和注释</h4><p>来源：  <a href="http://jpuyy.com/2015/06/vim-delete-lines-using-regexp.html" target="_blank" rel="noopener">http://jpuyy.com/2015/06/vim-delete-lines-using-regexp.html</a></p>
 <p>删除空行</p>
 <p>:g/^$/d</p>
 <p>删除空行以及只有空格的行</p>
@@ -60,17 +56,14 @@
 <p>:%s/;.+//g</p>
 <p>删除 # 之后所有字符</p>
 <p>%s/#.*//g</p>
-<p>vim设置编码格式<br>先利用vim打开指定文件 </p>
-<pre><code>:set ff  查看当前文本的模式类型，一般为dos,unix
-:set ff=dos  设置为dos模式， 也可以用 sed -i &#39;s/$/\r/&#39; 
-:set ff=unix  设置为unix模式，也可以用一下方式转换为unix模式:sed -i &#39;s/.$//g&#39;</code></pre><p>​<br>​    :set fileencoding查看现在文本的编码<br>​    :set fenc=编码  转换当前文本的编码为指定的编码<br>​    :set enc=编码  以指定的编码显示文本，但不保存到文件中。</p>
-<p>vim配置优化</p>
-<p>sudo vim /etc/vimrc</p>
+<h4 id="vim设置编码格式"><a href="#vim设置编码格式" class="headerlink" title="vim设置编码格式"></a>vim设置编码格式</h4><p>先利用vim打开指定文件 </p>
+<p>:set ff  查看当前文本的模式类型，一般为dos,unix<br>:set ff=dos  设置为dos模式， 也可以用 sed -i ‘s/$/\r/‘<br>:set ff=unix  设置为unix模式，也可以用一下方式转换为unix模式:sed -i ‘s/.$//g’<br>:set fileencoding查看现在文本的编码<br>:set fenc=编码  转换当前文本的编码为指定的编码<br>:set enc=编码  以指定的编码显示文本，但不保存到文件中。</p>
+<h4 id="vim配置优化"><a href="#vim配置优化" class="headerlink" title="vim配置优化"></a>vim配置优化</h4><p>sudo vim /etc/vimrc</p>
 <p>set autoread<br>filetype plugin on<br>filetype on<br>set clipboard+=unnamed<br>set nobackup<br>set noswapfile<br>set syntax=on<br>set autoindent<br>set cindent<br>set tabstop=4<br>set softtabstop=4<br>set shiftwidth=4<br>set smarttab<br>set number<br>set ignorecase<br>set hlsearch<br>set incsearch<br>set selection=exclusive<br>set selectmode=mouse,key<br>set mouse=a</p>
 <p>:inoremap ( ()<ESC>i<br>:inoremap ) <c-r>=ClosePair(‘)’)<CR><br>:inoremap { {<CR>}<ESC>O<br>:inoremap } <c-r>=ClosePair(‘}’)<CR><br>:inoremap “ “”<ESC>i<br>:inoremap ‘ ‘’<ESC>i</p>
-<p>vim设置鼠标复制粘贴<br>启动鼠标定位功能：<br>set mouse=a</p>
+<h4 id="vim设置鼠标复制粘贴"><a href="#vim设置鼠标复制粘贴" class="headerlink" title="vim设置鼠标复制粘贴"></a>vim设置鼠标复制粘贴</h4><p>启动鼠标定位功能：<br>set mouse=a</p>
 <p>启用鼠标复制粘贴功能：<br>vim打开一个文件后，如需要复制文本，则在末行模式下输入<br>：set mouse-=a<br>即可使用鼠标右键复制粘贴功能</p>
-</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/06/19/2020-06-20-vim%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">https://caijinbo.work/2020/06/19/2020-06-20-vim使用命令总结/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/linux/">linux</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#向上查找"><span class="toc-number">1.</span> <span class="toc-text">向上查找</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#输入-号"><span class="toc-number">2.</span> <span class="toc-text">输入#号</span></a></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="next" href="/2020/06/11/2020-06-12-manjaro%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E6%89%93%E4%B8%8D%E5%BC%80%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">manjaro百度网盘打不开解决方法 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/06/19/2020-06-20-vim%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">https://caijinbo.work/2020/06/19/2020-06-20-vim使用命令总结/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/linux/">linux</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#定位到故障行-15行"><span class="toc-number">1.</span> <span class="toc-text">定位到故障行:15行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#打开文件直接定位到最底端："><span class="toc-number">2.</span> <span class="toc-text">打开文件直接定位到最底端：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#向上翻页"><span class="toc-number">3.</span> <span class="toc-text">向上翻页</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#向下翻页"><span class="toc-number">4.</span> <span class="toc-text">向下翻页</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#标记"><span class="toc-number">5.</span> <span class="toc-text">标记</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除全部内容"><span class="toc-number">6.</span> <span class="toc-text">删除全部内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#撤销"><span class="toc-number">7.</span> <span class="toc-text">撤销</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除命令"><span class="toc-number">8.</span> <span class="toc-text">删除命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复制、粘帖"><span class="toc-number">9.</span> <span class="toc-text">复制、粘帖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#替换"><span class="toc-number">10.</span> <span class="toc-text">替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缩进"><span class="toc-number">11.</span> <span class="toc-text">缩进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查找"><span class="toc-number">12.</span> <span class="toc-text">查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#取消查找高亮"><span class="toc-number">13.</span> <span class="toc-text">取消查找高亮</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全局替换"><span class="toc-number">14.</span> <span class="toc-text">全局替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#利用可视块注释多行代码"><span class="toc-number">15.</span> <span class="toc-text">利用可视块注释多行代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vim删除空行和注释"><span class="toc-number">16.</span> <span class="toc-text">vim删除空行和注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vim设置编码格式"><span class="toc-number">17.</span> <span class="toc-text">vim设置编码格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vim配置优化"><span class="toc-number">18.</span> <span class="toc-text">vim配置优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vim设置鼠标复制粘贴"><span class="toc-number">19.</span> <span class="toc-text">vim设置鼠标复制粘贴</span></a></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="next" href="/2020/06/11/2020-06-12-manjaro%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E6%89%93%E4%B8%8D%E5%BC%80%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">manjaro百度网盘打不开解决方法 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
 if (search_path.length == 0) {
     search_path = 'search.xml';
 }
