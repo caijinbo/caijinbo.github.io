@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://caijinbo.work/"/>
-  <updated>2020-06-20T06:34:26.307Z</updated>
+  <updated>2020-06-21T05:33:20.060Z</updated>
   <id>https://caijinbo.work/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Python读取照片的GPS信息</title>
+    <link href="https://caijinbo.work/2020/06/20/2020-06-21-%E4%BD%BF%E7%94%A8Python%E8%AF%BB%E5%8F%96%E7%85%A7%E7%89%87%E7%9A%84GPS%E4%BF%A1%E6%81%AF/"/>
+    <id>https://caijinbo.work/2020/06/20/2020-06-21-%E4%BD%BF%E7%94%A8Python%E8%AF%BB%E5%8F%96%E7%85%A7%E7%89%87%E7%9A%84GPS%E4%BF%A1%E6%81%AF/</id>
+    <published>2020-06-20T16:00:00.000Z</published>
+    <updated>2020-06-21T05:33:20.060Z</updated>
+    
+    <content type="html"><![CDATA[<p>现在很多手机都支持相机定位功能，即拍出来的照片携带GPS信息，那么问题来了，如何把ＧPS信息提取出来呢，这就需要用到工具了，网络上有不少工具，其中一种便是使用python来实现这个功能。</p><a id="more"></a><pre><code class="python">import exifreadphoto = input(&#39;请输入要查找的图片(＊＊＊.jpg):&#39;)# /run/media/manjaro/DATA/Download/ 是存放图片的路径info = open(&#39;/run/media/manjaro/DATA/Download/%s&#39; % photo, &#39;rb&#39;)contents = exifread.process_file(info)print(&#39;=&#39; * 50)for key in contents:    if key == &quot;GPS GPSLongitude&quot;:        print(&quot;经度=&quot;, contents[key], contents[&#39;GPS GPSLongitudeRef&#39;])    elif key == &quot;GPS GPSLatitude&quot;:        print(&quot;纬度=&quot;, contents[key], contents[&#39;GPS GPSLatitudeRef&#39;])    elif key == &#39;Image DateTime&#39;:        print(&quot;拍摄时间=&quot;, contents[key])    elif key == &#39;Image Make&#39;:        print(&#39;手机品牌=&#39;, contents[key])    elif key == &#39;Image Model&#39;:        print(&#39;手机型号=&#39;, contents[key])print(&#39;=&#39; * 50)</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;现在很多手机都支持相机定位功能，即拍出来的照片携带GPS信息，那么问题来了，如何把ＧPS信息提取出来呢，这就需要用到工具了，网络上有不少工具，其中一种便是使用python来实现这个功能。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://caijinbo.work/categories/python/"/>
+    
+    
+      <category term="pyhon" scheme="https://caijinbo.work/tags/pyhon/"/>
+    
+  </entry>
   
   <entry>
     <title>vim使用命令总结</title>
@@ -449,30 +472,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;中间人攻击（Man-in-the-MiddleAttack，简称“MITM攻击”）是一种“间接”的入侵攻击，这种攻击模式是通过各种技术手段将受入侵者控制的一台计算机虚拟放置在网络连接中的两台通信计算机之间，这台计算机就称为“中间人”。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="教程" scheme="https://caijinbo.work/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    
-      <category term="教程" scheme="https://caijinbo.work/tags/%E6%95%99%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Windows桌面远程Ubuntu系统</title>
-    <link href="https://caijinbo.work/2019/12/27/Windows%E6%A1%8C%E9%9D%A2%E8%BF%9C%E7%A8%8BUbuntu%E7%B3%BB%E7%BB%9F/"/>
-    <id>https://caijinbo.work/2019/12/27/Windows%E6%A1%8C%E9%9D%A2%E8%BF%9C%E7%A8%8BUbuntu%E7%B3%BB%E7%BB%9F/</id>
-    <published>2019-12-27T16:00:00.000Z</published>
-    <updated>2020-05-20T00:11:06.136Z</updated>
-    
-    <content type="html"><![CDATA[<p>来自：互联网上的小蜘蛛</p><p>我们平时远程Linux系统都是用xshell、SecureCRT等工具来远程，远程进去的都是终端界面，现在要玩的是用Windows系统自带的“远程桌面连接”软件来远程Linux系统，以Ubuntu为例。</p><a id="more"></a><h2 id="安装xrdp"><a href="#安装xrdp" class="headerlink" title="安装xrdp"></a>安装xrdp</h2><p>Windows的远程桌面使用的协议为RDP，接下来需要在Ubuntu的操作系统中安装xrdp。</p><p>打开Ubuntu的终端命令窗口。输入下面的指令进行安装。<br>安装xrdp需要安装tightvncserver组件，下面的命令将其相关的组件安装完成。</p><p><code>#sudo apt-get install tightvncserver xrdp</code></p><h2 id="连接Ubuntu"><a href="#连接Ubuntu" class="headerlink" title="连接Ubuntu"></a>连接Ubuntu</h2><p>完成安装后，进入Windows的操作系统，这里为Windows 10操作系统，打开Windows的远程桌面工具，输入Ubuntu系统的IP地址，就可以进行远程桌面的链接。<br>链接成功后，选择xorg，输入链接Ubuntu桌面的账号和密码，这里为root帐号链接</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;来自：互联网上的小蜘蛛&lt;/p&gt;
-&lt;p&gt;我们平时远程Linux系统都是用xshell、SecureCRT等工具来远程，远程进去的都是终端界面，现在要玩的是用Windows系统自带的“远程桌面连接”软件来远程Linux系统，以Ubuntu为例。&lt;/p&gt;
     
     </summary>
     
