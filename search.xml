@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>谷歌浏览器中密码消失了</title>
+      <link href="/2020/07/02/2020-07-03-%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E5%AF%86%E7%A0%81%E6%B6%88%E5%A4%B1%E4%BA%86/"/>
+      <url>/2020/07/02/2020-07-03-%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E5%AF%86%E7%A0%81%E6%B6%88%E5%A4%B1%E4%BA%86/</url>
+      
+        <content type="html"><![CDATA[<p>最近用谷歌浏览器的时候发现了一个问题，就是登录一些以往常用的网站时提示我要输入账号密码，以前都是有记录过账号密码的，我平时没多想就随手填入账号密码登录了，谷歌还提示我是否要保存密码，我感觉有点奇怪，但不去多想就点击保存了。我最近连续遇到几个常用的网站都要我输入账号密码，这就不能忍了，我查看谷歌设置的密码那里，显示为空…有点郁闷，我从来都不会清理谷歌中保存的密码的。</p><a id="more"></a><p>一开始我以为是密码没有同步成功，所以我开了FQ,然后重新打开谷歌浏览器，发现并没有用。</p><p>按照网上的做法：</p><p>退出用户重新登录也不行</p><p>重装谷歌浏览器也不行</p><p>我在第二个系统查看我的谷歌浏览器是正常的，说明我的账号是没问题的。</p><p>后面终于在网络上找到了一个有效的处理方法：</p><p>亲测使用移除用户的方式有效<br>打开谷歌浏览器<br>点击用户图标<br>点击管理用户<br>把鼠标移动用户图标上面会显示三个点的图标<br>点击三个点的图标<br>选择移除用户<br>重新登录用户<br>即可恢复正常</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用Python读取照片的GPS信息</title>
       <link href="/2020/06/20/2020-06-21-%E4%BD%BF%E7%94%A8Python%E8%AF%BB%E5%8F%96%E7%85%A7%E7%89%87%E7%9A%84GPS%E4%BF%A1%E6%81%AF/"/>
       <url>/2020/06/20/2020-06-21-%E4%BD%BF%E7%94%A8Python%E8%AF%BB%E5%8F%96%E7%85%A7%E7%89%87%E7%9A%84GPS%E4%BF%A1%E6%81%AF/</url>
@@ -379,31 +404,6 @@
     
     
     <entry>
-      <title>centos系统设置笔记本盖下不休眠</title>
-      <link href="/2020/02/11/centos%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9B%96%E4%B8%8B%E4%B8%8D%E4%BC%91%E7%9C%A0/"/>
-      <url>/2020/02/11/centos%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9B%96%E4%B8%8B%E4%B8%8D%E4%BC%91%E7%9C%A0/</url>
-      
-        <content type="html"><![CDATA[<p>安装了centos8.1系统之后出现了一个问题，就是无论多久不使用电脑，屏幕一直都是亮着的，并不会自动息屏，以前安装centos7的时候是会自动息屏的。因为centos8笔记本是用来做服务器的，都是远程使用的，屏幕都是用不上的，屏幕一直亮着很是碍眼。所以要设置成盖下盖子而不会休眠。</p><p>通过网络查询，终于找到了设置的方法：</p><a id="more"></a><p>systemd 处理某些电源相关的 ACPI事件，可以通过从 /etc/system/logind.conf以下选项进行配置：</p><p>动作包括：</p><p>HandlePowerKey：按下电源键后的动作</p><p>HandleSleepKey：按下挂起键后的动作</p><p>HandleHibernateKey: 按下休眠键后的动作</p><p>HandleLidSwitch：合上笔记本盖后待机</p><p>这些动作的值可以是 ignore（什么都不做） poweroff（关机） reboot（重新启动） halt（关机，和poweroff有什么区别，需要手动断开电源？） suspend（待机挂起） hibernate（休眠） 默认情况是，当我合上笔记本屏幕的时候，系统会待机。</p><p>如果我不想让系统在我合上笔记本的时候待机，怎么办呢？</p><p>用vim编辑器打开 /etc/systemd/logind.conf 去掉HandleLidSwitch前面的注释符号#，并把它的值从suspend修改为ignore or lock。</p><p>lock 仅锁屏，计算机继续工作</p><p>然后systemctl restart systemd-logind，使更改生效。再合上笔记本盖子，也不会待机了。</p><p>如果再想进入待机状态，可执行systemctl suspend。</p><p>原文链接：<a href="https://blog.csdn.net/nankys/article/details/86617948" target="_blank" rel="noopener">https://blog.csdn.net/nankys/article/details/86617948</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 教程 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 教程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>电脑中病毒</title>
       <link href="/2020/02/11/%E7%94%B5%E8%84%91%E4%B8%AD%E7%97%85%E6%AF%92/"/>
       <url>/2020/02/11/%E7%94%B5%E8%84%91%E4%B8%AD%E7%97%85%E6%AF%92/</url>
@@ -421,6 +421,31 @@
         <tags>
             
             <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos系统设置笔记本盖下不休眠</title>
+      <link href="/2020/02/11/centos%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9B%96%E4%B8%8B%E4%B8%8D%E4%BC%91%E7%9C%A0/"/>
+      <url>/2020/02/11/centos%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%9B%96%E4%B8%8B%E4%B8%8D%E4%BC%91%E7%9C%A0/</url>
+      
+        <content type="html"><![CDATA[<p>安装了centos8.1系统之后出现了一个问题，就是无论多久不使用电脑，屏幕一直都是亮着的，并不会自动息屏，以前安装centos7的时候是会自动息屏的。因为centos8笔记本是用来做服务器的，都是远程使用的，屏幕都是用不上的，屏幕一直亮着很是碍眼。所以要设置成盖下盖子而不会休眠。</p><p>通过网络查询，终于找到了设置的方法：</p><a id="more"></a><p>systemd 处理某些电源相关的 ACPI事件，可以通过从 /etc/system/logind.conf以下选项进行配置：</p><p>动作包括：</p><p>HandlePowerKey：按下电源键后的动作</p><p>HandleSleepKey：按下挂起键后的动作</p><p>HandleHibernateKey: 按下休眠键后的动作</p><p>HandleLidSwitch：合上笔记本盖后待机</p><p>这些动作的值可以是 ignore（什么都不做） poweroff（关机） reboot（重新启动） halt（关机，和poweroff有什么区别，需要手动断开电源？） suspend（待机挂起） hibernate（休眠） 默认情况是，当我合上笔记本屏幕的时候，系统会待机。</p><p>如果我不想让系统在我合上笔记本的时候待机，怎么办呢？</p><p>用vim编辑器打开 /etc/systemd/logind.conf 去掉HandleLidSwitch前面的注释符号#，并把它的值从suspend修改为ignore or lock。</p><p>lock 仅锁屏，计算机继续工作</p><p>然后systemctl restart systemd-logind，使更改生效。再合上笔记本盖子，也不会待机了。</p><p>如果再想进入待机状态，可执行systemctl suspend。</p><p>原文链接：<a href="https://blog.csdn.net/nankys/article/details/86617948" target="_blank" rel="noopener">https://blog.csdn.net/nankys/article/details/86617948</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
             
         </tags>
       
@@ -679,31 +704,6 @@
     
     
     <entry>
-      <title>用python画一朵玫瑰花</title>
-      <link href="/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/"/>
-      <url>/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/</url>
-      
-        <content type="html"><![CDATA[<p>这是我按照网上的教程写出来的，做了细节上的修改。这是我经手的第一朵花，放上我的博客做个纪念。</p><a id="more"></a><pre><code>## 代码如下：import turtleturtle.speed(15)turtle.screensize(400, 300, &quot;pink&quot;)turtle.goto(-200, 0)turtle.setup(1000, 600)turtle.write(&#39;赠：亲爱的           &#39;, move=True, align=&#39;left&#39;, font=(&#39;楷体&#39;, 16, &#39;normal&#39;))# 设置初始位置turtle.pensize(2)turtle.penup()turtle.left(90)turtle.forward(200)turtle.pendown()turtle.right(90)# 花蕊turtle.fillcolor(&quot;red&quot;)turtle.begin_fill()turtle.circle(10, 180)turtle.circle(25, 110)turtle.left(50)turtle.circle(60, 45)turtle.circle(20, 170)turtle.right(24)turtle.fd(30)turtle.left(10)turtle.circle(30, 110)turtle.fd(20)turtle.left(40)turtle.circle(90, 70)turtle.circle(30, 150)turtle.right(30)turtle.fd(15)turtle.circle(80, 90)turtle.left(15)turtle.fd(45)turtle.right(165)turtle.fd(20)turtle.left(155)turtle.circle(150, 80)turtle.left(50)turtle.circle(150, 90)turtle.end_fill()# 花瓣1turtle.left(150)turtle.circle(-90, 70)turtle.left(20)turtle.circle(75, 105)turtle.setheading(60)turtle.circle(80, 98)turtle.circle(-90, 40)# 花瓣2turtle.left(180)turtle.circle(90, 40)turtle.circle(-80, 98)turtle.setheading(-83)# 叶子1turtle.pensize(10)turtle.fd(30)turtle.pensize(2)turtle.left(90)turtle.fd(25)turtle.left(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(-80, 90)turtle.right(90)turtle.circle(-80, 90)turtle.end_fill()turtle.right(135)turtle.fd(100)turtle.fd(-50)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.right(35)turtle.fd(-10)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.right(145)turtle.fd(65)turtle.pensize(10)turtle.left(90)turtle.fd(80)# 叶子2turtle.pensize(2)turtle.right(90)turtle.right(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(80, 90)turtle.left(90)turtle.circle(80, 90)turtle.end_fill()turtle.left(135)turtle.fd(100)turtle.fd(-40)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.left(35)turtle.fd(-20)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.left(145)turtle.fd(40)turtle.right(90)turtle.pensize(10)turtle.circle(300, 60)turtle.hideturtle()turtle.done()exit()</code></pre><h2 id="附上我的效果图"><a href="#附上我的效果图" class="headerlink" title="附上我的效果图"></a>附上我的效果图</h2><p><img src="https://img-blog.csdnimg.cn/20191213002843928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> python </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> python </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Linux系统设置frp开机自动启动</title>
       <link href="/2019/12/12/Linux%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/"/>
       <url>/2019/12/12/Linux%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/</url>
@@ -721,6 +721,31 @@
         <tags>
             
             <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>用python画一朵玫瑰花</title>
+      <link href="/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/"/>
+      <url>/2019/12/12/%E4%BD%BF%E7%94%A8python%E7%94%BB%E7%8E%AB%E7%91%B0%E8%8A%B1/</url>
+      
+        <content type="html"><![CDATA[<p>这是我按照网上的教程写出来的，做了细节上的修改。这是我经手的第一朵花，放上我的博客做个纪念。</p><a id="more"></a><pre><code>## 代码如下：import turtleturtle.speed(15)turtle.screensize(400, 300, &quot;pink&quot;)turtle.goto(-200, 0)turtle.setup(1000, 600)turtle.write(&#39;赠：亲爱的           &#39;, move=True, align=&#39;left&#39;, font=(&#39;楷体&#39;, 16, &#39;normal&#39;))# 设置初始位置turtle.pensize(2)turtle.penup()turtle.left(90)turtle.forward(200)turtle.pendown()turtle.right(90)# 花蕊turtle.fillcolor(&quot;red&quot;)turtle.begin_fill()turtle.circle(10, 180)turtle.circle(25, 110)turtle.left(50)turtle.circle(60, 45)turtle.circle(20, 170)turtle.right(24)turtle.fd(30)turtle.left(10)turtle.circle(30, 110)turtle.fd(20)turtle.left(40)turtle.circle(90, 70)turtle.circle(30, 150)turtle.right(30)turtle.fd(15)turtle.circle(80, 90)turtle.left(15)turtle.fd(45)turtle.right(165)turtle.fd(20)turtle.left(155)turtle.circle(150, 80)turtle.left(50)turtle.circle(150, 90)turtle.end_fill()# 花瓣1turtle.left(150)turtle.circle(-90, 70)turtle.left(20)turtle.circle(75, 105)turtle.setheading(60)turtle.circle(80, 98)turtle.circle(-90, 40)# 花瓣2turtle.left(180)turtle.circle(90, 40)turtle.circle(-80, 98)turtle.setheading(-83)# 叶子1turtle.pensize(10)turtle.fd(30)turtle.pensize(2)turtle.left(90)turtle.fd(25)turtle.left(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(-80, 90)turtle.right(90)turtle.circle(-80, 90)turtle.end_fill()turtle.right(135)turtle.fd(100)turtle.fd(-50)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.right(35)turtle.fd(-10)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.right(145)turtle.fd(65)turtle.pensize(10)turtle.left(90)turtle.fd(80)# 叶子2turtle.pensize(2)turtle.right(90)turtle.right(45)turtle.fillcolor(&quot;green&quot;)turtle.begin_fill()turtle.circle(80, 90)turtle.left(90)turtle.circle(80, 90)turtle.end_fill()turtle.left(135)turtle.fd(100)turtle.fd(-40)turtle.right(35)turtle.fd(30)turtle.fd(-30)turtle.left(35)turtle.fd(-20)turtle.left(35)turtle.fd(30)turtle.fd(-30)turtle.left(145)turtle.fd(40)turtle.right(90)turtle.pensize(10)turtle.circle(300, 60)turtle.hideturtle()turtle.done()exit()</code></pre><h2 id="附上我的效果图"><a href="#附上我的效果图" class="headerlink" title="附上我的效果图"></a>附上我的效果图</h2><p><img src="https://img-blog.csdnimg.cn/20191213002843928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxODEyNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
             
         </tags>
       
