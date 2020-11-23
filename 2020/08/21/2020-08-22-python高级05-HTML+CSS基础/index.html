@@ -1,0 +1,488 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>python高级05-HTML+CSS基础 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">python高级05-HTML+CSS基础</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/08/21/2020-08-22-python%E9%AB%98%E7%BA%A705-HTML+CSS%E5%9F%BA%E7%A1%80/">2020-08-21</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/python/">python</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h1 id="HTML-CSS基础"><a href="#HTML-CSS基础" class="headerlink" title="HTML+CSS基础"></a>HTML+CSS基础</h1><h2 id="一、html-的介绍"><a href="#一、html-的介绍" class="headerlink" title="一、html 的介绍"></a>一、html 的介绍</h2><h3 id="1-html的定义"><a href="#1-html的定义" class="headerlink" title="1. html的定义"></a>1. html的定义</h3><a id="more"></a>
+
+<p>HTML 的全称为：HyperText Mark-up Language, 指的是超文本标记语言。 标记：就是标签, <code>&lt;标签名称&gt; &lt;/标签名称&gt;</code>, 比如: <code>&lt;html&gt;&lt;/html&gt;、&lt;h1&gt;&lt;/h1&gt;</code> 等，标签大多数都是成对出现的。</p>
+<p>所谓超文本，有两层含义:</p>
+<ol>
+<li>因为网页中还可以图片、视频、音频等内容(超越文本限制)</li>
+<li>它还可以在网页中跳转到另一个网页，与世界各地主机的网页链接(超链接文本)</li>
+</ol>
+<h3 id="2-html的作用"><a href="#2-html的作用" class="headerlink" title="2. html的作用"></a>2. html的作用</h3><p>html是用来开发网页的，它是开发网页的语言。</p>
+<h2 id="二、html-的基本结构"><a href="#二、html-的基本结构" class="headerlink" title="二、html 的基本结构"></a>二、html 的基本结构</h2><h3 id="1-结构代码"><a href="#1-结构代码" class="headerlink" title="1. 结构代码"></a>1. 结构代码</h3><pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;            
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;网页标题&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+          网页显示内容
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<ol>
+<li>第一行<code>&lt;!DOCTYPE html&gt;</code>是文档声明, 用来指定页面所使用的html的版本, 这里声明的是一个html5的文档。</li>
+<li><code>&lt;html&gt;...&lt;/html&gt;</code>标签是开发人员在告诉浏览器，整个网页是从<code>&lt;html&gt;</code>这里开始的，到<code>&lt;/html&gt;</code>结束,也就是html文档的开始和结束标签。</li>
+<li><code>&lt;head&gt;...&lt;/head&gt;</code>标签用于定义文档的头部,是负责对网页进行设置标题、编码格式以及引入css和js文件的。</li>
+<li><code>&lt;body&gt;...&lt;/body&gt;</code>标签是编写网页上显示的内容。</li>
+</ol>
+<h3 id="2-浏览网页文件"><a href="#2-浏览网页文件" class="headerlink" title="2. 浏览网页文件"></a>2. 浏览网页文件</h3><p>网页文件的后缀是<strong>.html</strong>或者<strong>.htm</strong>, <strong>一个html文件就是一个网页</strong>，html文件用编辑器打开显示的是文本，可以用文本的方式编辑它，如果用浏览器打开，浏览器会按照标签描述内容将文件渲染成网页。</p>
+<p>目前常用的编辑网页工具有vscode+chrome。</p>
+<h2 id="三、初始常用的-html-标签"><a href="#三、初始常用的-html-标签" class="headerlink" title="三、初始常用的 html 标签"></a>三、初始常用的 html 标签</h2><h3 id="1-常用的-html-标签"><a href="#1-常用的-html-标签" class="headerlink" title="1. 常用的 html 标签"></a>1. 常用的 html 标签</h3><pre><code class="html">&lt;!-- 1、成对出现的标签：--&gt;
+
+&lt;h1&gt;h1标题&lt;/h1&gt;
+&lt;div&gt;这是一个div标签&lt;/div&gt;
+&lt;p&gt;这个一个段落标签&lt;/p&gt;
+
+
+&lt;!-- 2、单个出现的标签： --&gt;
+&lt;br&gt;
+&lt;img src=&quot;images/pic.jpg&quot; alt=&quot;图片&quot;&gt;
+&lt;hr&gt;
+
+&lt;!-- 3、带属性的标签，如src、alt 和 href等都是属性 --&gt;
+&lt;img src=&quot;images/pic.jpg&quot; alt=&quot;图片&quot;&gt;
+&lt;a href=&quot;http://www.baidu.com&quot;&gt;百度网&lt;/a&gt;
+
+&lt;!-- 4、标签的嵌套 --&gt;
+&lt;div&gt;
+    &lt;img src=&quot;images/pic.jpg&quot; alt=&quot;图片&quot;&gt;
+    &lt;a href=&quot;http://www.baidu.com&quot;&gt;百度网&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+<p><strong>提示:</strong></p>
+<ol>
+<li>标签不区分大小写，但是推荐使用小写。</li>
+<li>根据标签的书写形式，标签分为双标签(闭合标签)和单标签(空标签)<br>2.1 双标签是指由开始标签和结束标签组成的一对标签，这种标签允许嵌套和承载内容，比如: div标签<br>2.2 单标签是一个标签组成，没有标签内容， 比如: img标签</li>
+</ol>
+<h2 id="四、资源路径"><a href="#四、资源路径" class="headerlink" title="四、资源路径"></a>四、资源路径</h2><h3 id="1-相对路径"><a href="#1-相对路径" class="headerlink" title="1. 相对路径"></a>1. 相对路径</h3><blockquote>
+<p>从当前操作 html 的文档所在目录算起的路径叫做相对路径</p>
+</blockquote>
+<p><strong>示例代码:</strong></p>
+<pre><code class="html">&lt;!-- 相对路径方式1 --&gt;
+&lt;img src=&quot;./images/logo.png&quot;&gt;
+&lt;!-- 相对路径方式2 --&gt;
+&lt;img src=&quot;images/logo.png&quot;&gt;</code></pre>
+<h3 id="2-绝对路径"><a href="#2-绝对路径" class="headerlink" title="2. 绝对路径"></a>2. 绝对路径</h3><blockquote>
+<p>从根目录算起的路径叫做绝对路径，Windows 的根目录是指定的盘符，mac OS 和Linux 是/</p>
+</blockquote>
+<p><strong>示例代码:</strong></p>
+<pre><code class="html">&lt;!-- 绝对路径 --&gt;
+&lt;img src=&quot;/Users/apple/Desktop/demo/hello/images/logo.png&quot;&gt;
+&lt;img src=&quot;C:\demo\images\001.jpg&quot;&gt;</code></pre>
+<p><strong>提示:</strong></p>
+<p>一般都会使用相对路径，绝对路径的操作在其它电脑上打开会有可能出现资源文件找不到的问题</p>
+<h2 id="五、列表标签"><a href="#五、列表标签" class="headerlink" title="五、列表标签"></a>五、列表标签</h2><h3 id="1-列表标签的种类"><a href="#1-列表标签的种类" class="headerlink" title="1. 列表标签的种类"></a>1. 列表标签的种类</h3><ul>
+<li>无序列表标签(ul标签)</li>
+<li>有序列表标签(ol标签)</li>
+</ul>
+<h3 id="2-无序列表"><a href="#2-无序列表" class="headerlink" title="2. 无序列表"></a>2. 无序列表</h3><pre><code class="html">&lt;!-- ul标签定义无序列表 --&gt;
+&lt;ul&gt;
+    &lt;!-- li标签定义列表项目 --&gt;
+    &lt;li&gt;列表标题一&lt;/li&gt;
+    &lt;li&gt;列表标题二&lt;/li&gt;
+    &lt;li&gt;列表标题三&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<h3 id="3-有序列表"><a href="#3-有序列表" class="headerlink" title="3. 有序列表"></a>3. 有序列表</h3><pre><code class="html">&lt;!-- ol标签定义有序列表 --&gt;
+&lt;ol&gt;
+    &lt;!-- li标签定义列表项目 --&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;列表标题一&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;列表标题二&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;列表标题三&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<h2 id="六、表格标签"><a href="#六、表格标签" class="headerlink" title="六、表格标签"></a>六、表格标签</h2><h3 id="1-表格的结构"><a href="#1-表格的结构" class="headerlink" title="1. 表格的结构"></a>1. 表格的结构</h3><blockquote>
+<p>表格是由行和列组成，好比一个excel文件</p>
+</blockquote>
+<h3 id="2-表格标签"><a href="#2-表格标签" class="headerlink" title="2. 表格标签"></a>2. 表格标签</h3><ul>
+<li><table>标签：表示一个表格
+
+</li>
+</ul>
+<p><strong>示例代码:</strong></p>
+<pre><code class="html">&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;姓名&lt;/th&gt;
+        &lt;th&gt;年龄&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;张三&lt;/td&gt;
+        &lt;td&gt;18&lt;/td&gt; 
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+<p><strong>表格边线合并:</strong></p>
+<p>border-collapse 设置表格的边线合并，如：border-collapse:collapse;</p>
+<h2 id="七、表单标签"><a href="#七、表单标签" class="headerlink" title="七、表单标签"></a>七、表单标签</h2><h3 id="1-表单的介绍"><a href="#1-表单的介绍" class="headerlink" title="1. 表单的介绍"></a>1. 表单的介绍</h3><blockquote>
+<p>表单用于搜集不同类型的用户输入(用户输入的数据)，然后可以把用户数据提交到web服务器 。</p>
+<ul>
+<li>表单标签是<code>&lt;form&gt;</code>标签</li>
+<li>常用的表单元素标签有: <code>&lt;label&gt;</code>、<code>&lt;input&gt;</code>、 <code>&lt;textarea&gt;</code>、<code>&lt;select&gt;</code> 等标签</li>
+</ul>
+</blockquote>
+<h3 id="2-表单相关标签的使用"><a href="#2-表单相关标签的使用" class="headerlink" title="2. 表单相关标签的使用"></a>2. 表单相关标签的使用</h3><ol>
+<li><code>&lt;form&gt;</code>标签 表示表单标签，定义整体的表单区域</li>
+<li><code>&lt;label&gt;</code>标签 表示表单元素的文字标注标签，定义文字标注</li>
+<li><code>&lt;input&gt;</code>标签 表示表单元素的用户输入标签，定义不同类型的用户输入数据方式<ul>
+<li>type属性<ul>
+<li>type=”text” 定义单行文本输入框</li>
+<li>type=”password” 定义密码输入框</li>
+<li>type=”radio” 定义单选框</li>
+<li>type=”checkbox” 定义复选框</li>
+<li>type=”file” 定义上传文件</li>
+<li>type=”submit” 定义提交按钮</li>
+<li>type=”reset” 定义重置按钮</li>
+<li>type=”button” 定义一个普通按钮</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>&lt;textarea&gt;</code>标签 表示表单元素的多行文本输入框标签 定义多行文本输入框</li>
+<li><code>&lt;select&gt;</code>标签 表示表单元素的下拉列表标签 定义下拉列表<ul>
+<li><code>&lt;option&gt;</code>标签 与<code>&lt;select&gt;</code>标签配合，定义下拉列表中的选项</li>
+</ul>
+</li>
+</ol>
+<p><strong>示例代码:</strong></p>
+<pre><code class="html">&lt;form&gt;
+    &lt;p&gt;
+        &lt;label&gt;姓名：&lt;/label&gt;&lt;input type=&quot;text&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label&gt;密码：&lt;/label&gt;&lt;input type=&quot;password&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label&gt;性别：&lt;/label&gt;
+        &lt;input type=&quot;radio&quot;&gt; 男
+        &lt;input type=&quot;radio&quot;&gt; 女
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label&gt;爱好：&lt;/label&gt;
+        &lt;input type=&quot;checkbox&quot;&gt; 唱歌
+        &lt;input type=&quot;checkbox&quot;&gt; 跑步
+        &lt;input type=&quot;checkbox&quot;&gt; 游泳
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label&gt;照片：&lt;/label&gt;
+        &lt;input type=&quot;file&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label&gt;个人描述：&lt;/label&gt;
+        &lt;textarea&gt;&lt;/textarea&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label&gt;籍贯：&lt;/label&gt;
+        &lt;select&gt;
+            &lt;option&gt;北京&lt;/option&gt;
+            &lt;option&gt;上海&lt;/option&gt;
+            &lt;option&gt;广州&lt;/option&gt;
+            &lt;option&gt;深圳&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+        &lt;input type=&quot;reset&quot; value=&quot;重置&quot;&gt;
+    &lt;/p&gt;
+&lt;/form&gt;</code></pre>
+<h2 id="八、表单提交"><a href="#八、表单提交" class="headerlink" title="八、表单提交"></a>八、表单提交</h2><h3 id="1-表单属性设置"><a href="#1-表单属性设置" class="headerlink" title="1. 表单属性设置"></a>1. 表单属性设置</h3><p><code>&lt;form&gt;</code>标签 表示表单标签，定义整体的表单区域</p>
+<ul>
+<li>action属性 设置表单数据提交地址</li>
+<li>method属性 设置表单提交的方式，一般有“GET”方式和“POST”方式, 不区分大小写</li>
+</ul>
+<h3 id="2-表单元素属性设置"><a href="#2-表单元素属性设置" class="headerlink" title="2. 表单元素属性设置"></a>2. 表单元素属性设置</h3><ul>
+<li>name属性 设置表单元素的名称，该名称是提交数据时的参数名</li>
+<li>value属性 设置表单元素的值，该值是提交数据时参数名所对应的值</li>
+</ul>
+<h3 id="3-示例代码"><a href="#3-示例代码" class="headerlink" title="3. 示例代码"></a>3. 示例代码</h3><pre><code class="html"> &lt;form action=&quot;https://www.baidu.com&quot; method=&quot;GET&quot;&gt;
+    &lt;p&gt;
+        &lt;label&gt;姓名：&lt;/label&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;11&quot; /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label&gt;密码：&lt;/label&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label&gt;性别：&lt;/label&gt;
+        &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;0&quot; /&gt; 男
+        &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;1&quot; /&gt; 女
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label&gt;爱好：&lt;/label&gt;
+        &lt;input type=&quot;checkbox&quot; name=&quot;like&quot; value=&quot;sing&quot; /&gt; 唱歌
+        &lt;input type=&quot;checkbox&quot; name=&quot;like&quot; value=&quot;run&quot; /&gt; 跑步
+        &lt;input type=&quot;checkbox&quot; name=&quot;like&quot; value=&quot;swiming&quot; /&gt; 游泳
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label&gt;照片：&lt;/label&gt;
+        &lt;input type=&quot;file&quot; name=&quot;person_pic&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label&gt;个人描述：&lt;/label&gt;
+        &lt;textarea name=&quot;about&quot;&gt;&lt;/textarea&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label&gt;籍贯：&lt;/label&gt;
+        &lt;select name=&quot;site&quot;&gt;
+            &lt;option value=&quot;0&quot;&gt;北京&lt;/option&gt;
+            &lt;option value=&quot;1&quot;&gt;上海&lt;/option&gt;
+            &lt;option value=&quot;2&quot;&gt;广州&lt;/option&gt;
+            &lt;option value=&quot;3&quot;&gt;深圳&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;input type=&quot;submit&quot; name=&quot;&quot; value=&quot;提交&quot;&gt;
+        &lt;input type=&quot;reset&quot; name=&quot;&quot; value=&quot;重置&quot;&gt;
+    &lt;/p&gt;
+&lt;/form&gt;</code></pre>
+<h2 id="九、css-的介绍"><a href="#九、css-的介绍" class="headerlink" title="九、css 的介绍"></a>九、css 的介绍</h2><h3 id="1-css-的定义"><a href="#1-css-的定义" class="headerlink" title="1. css 的定义"></a>1. css 的定义</h3><blockquote>
+<p>css(Cascading Style Sheet)层叠样式表，它是用来美化页面的一种语言。</p>
+</blockquote>
+<h3 id="2-css-的作用"><a href="#2-css-的作用" class="headerlink" title="2. css 的作用"></a>2. css 的作用</h3><ol>
+<li>美化界面, 比如: 设置标签文字大小、颜色、字体加粗等样式。</li>
+<li>控制页面布局, 比如: 设置浮动、定位等样式。</li>
+</ol>
+<h3 id="3-css-的基本语法"><a href="#3-css-的基本语法" class="headerlink" title="3. css 的基本语法"></a>3. css 的基本语法</h3><p>选择器{</p>
+<p>样式规则</p>
+<p>}</p>
+<p>样式规则：</p>
+<p>属性名1：属性值1;</p>
+<p>属性名2：属性值2;</p>
+<p>属性名3：属性值3;</p>
+<p>…</p>
+<p>选择器:<strong>是用来选择标签的，选出来以后给标签加样式。</strong></p>
+<p><strong>代码示例:</strong></p>
+<pre><code class="html">div{ 
+    width:100px; 
+    height:100px; 
+    background:gold; 
+}</code></pre>
+<p><strong>说明</strong></p>
+<p>css 是由两个主要的部分构成：<strong>选择器和一条或多条样式规则</strong>，注意:<strong>样式规则需要放到大括号里面。</strong></p>
+<h2 id="十、css-的引入方式"><a href="#十、css-的引入方式" class="headerlink" title="十、css 的引入方式"></a>十、css 的引入方式</h2><p><strong>css的三种引入方式</strong></p>
+<ol>
+<li><p>行内式</p>
+</li>
+<li><p>内嵌式（内部样式）</p>
+</li>
+<li><p>外链式</p>
+<p>说明：</p>
+<p>外链式是在公司开发的时候会使用，最能体现 div+css 的标签内容与显示样式分离的思想， 也最易改版维护，代码看起来也是最美观的一种。</p>
+</li>
+</ol>
+<h3 id="1-行内式"><a href="#1-行内式" class="headerlink" title="1. 行内式"></a>1. 行内式</h3><blockquote>
+<p>直接在标签的 style 属性中添加 css 样式</p>
+</blockquote>
+<p><strong>示例代码:</strong></p>
+<pre><code class="html">&lt;div style=&quot;width:100px; height:100px; background:red &quot;&gt;hello&lt;/div&gt;</code></pre>
+<p>优点：方便、直观。 缺点：缺乏可重用性。</p>
+<h3 id="2-内嵌式（内部样式）"><a href="#2-内嵌式（内部样式）" class="headerlink" title="2. 内嵌式（内部样式）"></a>2. 内嵌式（内部样式）</h3><blockquote>
+<p>在<code>&lt;head&gt;</code>标签内加入<code>&lt;style&gt;</code>标签，在<code>&lt;style&gt;</code>标签中编写css代码。</p>
+</blockquote>
+<p><strong>示例代码:</strong></p>
+<pre><code class="html">&lt;head&gt;
+   &lt;style type=&quot;text/css&quot;&gt;
+      h3{
+         color:red;
+      }
+   &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+<p>优点：在同一个页面内部便于复用和维护。 缺点：在多个页面之间的可重用性不够高。</p>
+<h3 id="3-外链式"><a href="#3-外链式" class="headerlink" title="3. 外链式"></a>3. 外链式</h3><blockquote>
+<p>将css代码写在一个单独的.css文件中，在<code>&lt;head&gt;</code>标签中使用<code>&lt;link&gt;</code>标签直接引入该文件到页面中。</p>
+</blockquote>
+<p><strong>示例代码:</strong></p>
+<pre><code class="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/main.css&quot;&gt;</code></pre>
+<p>优点：使得css样式与html页面分离，便于整个页面系统的规划和维护，可重用性高。 缺点：css代码由于分离到单独的css文件，容易出现css代码过于集中，若维护不当则极容易造成混乱。</p>
+<h3 id="4-css引入方式选择"><a href="#4-css引入方式选择" class="headerlink" title="4. css引入方式选择"></a>4. css引入方式选择</h3><ol>
+<li>行内式几乎不用</li>
+<li>内嵌式在学习css样式的阶段使用</li>
+<li>外链式在公司开发的阶段使用，可以对 css 样式和 html 页面分别进行开发。</li>
+</ol>
+<h2 id="十一、css-选择器"><a href="#十一、css-选择器" class="headerlink" title="十一、css 选择器"></a>十一、css 选择器</h2><h3 id="1-css-选择器的定义"><a href="#1-css-选择器的定义" class="headerlink" title="1. css 选择器的定义"></a>1. css 选择器的定义</h3><p>css 选择器是用来选择标签的，选出来以后给标签加样式。</p>
+<h3 id="2-css-选择器的种类"><a href="#2-css-选择器的种类" class="headerlink" title="2. css 选择器的种类"></a>2. css 选择器的种类</h3><ol>
+<li>标签选择器</li>
+<li>类选择器</li>
+<li>层级选择器(后代选择器)</li>
+<li>id选择器</li>
+<li>组选择器</li>
+<li>伪类选择器</li>
+</ol>
+<h3 id="3-标签选择器"><a href="#3-标签选择器" class="headerlink" title="3. 标签选择器"></a>3. 标签选择器</h3><p>根据标签来选择标签，<strong>以标签开头</strong>，此种选择器影响范围大，一般用来做一些通用设置。</p>
+<p><strong>示例代码</strong></p>
+<pre><code class="html">&lt;style type=&quot;text/css&quot;&gt;
+    p{
+        color: red;
+    }
+&lt;/style&gt;
+
+&lt;div&gt;hello&lt;/div&gt;
+&lt;p&gt;hello&lt;/p&gt;</code></pre>
+<h3 id="4-类选择器"><a href="#4-类选择器" class="headerlink" title="4. 类选择器"></a>4. 类选择器</h3><p>根据类名来选择标签，<strong>以 . 开头</strong>, 一个类选择器可应用于多个标签上，一个标签上也可以使用多个类选择器，多个类选择器需要使用空格分割，应用灵活，可复用，是css中应用最多的一种选择器。</p>
+<p><strong>示例代码</strong></p>
+<pre><code class="html">&lt;style type=&quot;text/css&quot;&gt;
+    .blue{color:blue}
+    .big{font-size:20px}
+    .box{width:100px;height:100px;background:gold} 
+&lt;/style&gt;
+
+&lt;div class=&quot;blue&quot;&gt;这是一个div&lt;/div&gt;
+&lt;h3 class=&quot;blue big box&quot;&gt;这是一个标题&lt;/h3&gt;
+&lt;p class=&quot;blue box&quot;&gt;这是一个段落&lt;/p&gt;</code></pre>
+<h3 id="5-层级选择器-后代选择器"><a href="#5-层级选择器-后代选择器" class="headerlink" title="5. 层级选择器(后代选择器)"></a>5. 层级选择器(后代选择器)</h3><p>根据层级关系选择后代标签，<strong>以选择器1 选择器2开头</strong>，主要应用在标签嵌套的结构中，减少命名。</p>
+<p><strong>示例代码</strong></p>
+<pre><code class="html">&lt;style type=&quot;text/css&quot;&gt;
+    div p{
+        color: red;
+    }
+    .con{width:300px;height:80px;background:green}
+    .con span{color:red}
+    .con .pink{color:pink}
+    .con .gold{color:gold}    
+&lt;/style&gt;
+
+&lt;div&gt;
+    &lt;p&gt;hello&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;con&quot;&gt;
+    &lt;span&gt;哈哈&lt;/span&gt;
+    &lt;a href=&quot;#&quot; class=&quot;pink&quot;&gt;百度&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;gold&quot;&gt;谷歌&lt;/a&gt;
+&lt;/div&gt;
+&lt;span&gt;你好&lt;/span&gt;
+&lt;a href=&quot;#&quot; class=&quot;pink&quot;&gt;新浪&lt;/a&gt;</code></pre>
+<p><strong>注意点: 这个层级关系不一定是父子关系，也有可能是祖孙关系，只要有后代关系都适用于这个层级选择器</strong></p>
+<h3 id="6-id选择器"><a href="#6-id选择器" class="headerlink" title="6. id选择器"></a>6. id选择器</h3><p>根据id选择标签，以#开头, 元素的id名称不能重复，所以id选择器只能对应于页面上一个元素，不能复用，id名一般给程序使用，所以不推荐使用id作为选择器。</p>
+<p><strong>示例代码</strong></p>
+<pre><code class="html">&lt;style type=&quot;text/css&quot;&gt;
+    #box{color:red} 
+&lt;/style&gt;
+
+&lt;p id=&quot;box&quot;&gt;这是一个段落标签&lt;/p&gt;   &lt;!-- 对应以上一条样式，其它元素不允许应用此样式 --&gt;
+&lt;p&gt;这是第二个段落标签&lt;/p&gt; &lt;!-- 无法应用以上样式，每个标签只能有唯一的id名 --&gt;
+&lt;p&gt;这是第三个段落标签&lt;/p&gt; &lt;!-- 无法应用以上样式，每个标签只能有唯一的id名  --&gt;</code></pre>
+<p><strong>注意点: 虽然给其它标签设置id=“box”也可以设置样式，但是不推荐这样做，因为id是唯一的，以后js通过id只能获取一个唯一的标签对象。</strong></p>
+<h3 id="7-组选择器"><a href="#7-组选择器" class="headerlink" title="7. 组选择器"></a>7. 组选择器</h3><p>根据组合的选择器选择不同的标签，<strong>以 , 分割开</strong>, 如果有公共的样式设置，可以使用组选择器。</p>
+<p><strong>示例代码</strong></p>
+<pre><code class="html">&lt;style type=&quot;text/css&quot;&gt;
+    .box1,.box2,.box3{width:100px;height:100px}
+    .box1{background:red}
+    .box2{background:pink}
+    .box2{background:gold}
+&lt;/style&gt;
+
+&lt;div class=&quot;box1&quot;&gt;这是第一个div&lt;/div&gt;
+&lt;div class=&quot;box2&quot;&gt;这是第二个div&lt;/div&gt;
+&lt;div class=&quot;box3&quot;&gt;这是第三个div&lt;/div&gt;</code></pre>
+<h3 id="8-伪类选择器"><a href="#8-伪类选择器" class="headerlink" title="8. 伪类选择器"></a>8. 伪类选择器</h3><p>用于向选择器添加特殊的效果, <strong>以 : 分割开</strong>, 当用户和网站交互的时候改变显示效果可以使用伪类选择器</p>
+<p><strong>示例代码</strong></p>
+<pre><code class="html">&lt;style type=&quot;text/css&quot;&gt;
+    .box1{width:100px;height:100px;background:gold;}
+    .box1:hover{width:300px;}
+&lt;/style&gt;
+
+&lt;div class=&quot;box1&quot;&gt;这是第一个div&lt;/div&gt;</code></pre>
+<h2 id="十二、css-属性"><a href="#十二、css-属性" class="headerlink" title="十二、css 属性"></a>十二、css 属性</h2><h3 id="1-布局常用样式属性"><a href="#1-布局常用样式属性" class="headerlink" title="1. 布局常用样式属性"></a>1. 布局常用样式属性</h3><ul>
+<li>width 设置元素(标签)的宽度，如：width:100px;</li>
+<li>height 设置元素(标签)的高度，如：height:200px;</li>
+<li>background 设置元素背景色或者背景图片，如：background:gold; 设置元素的背景色, background: url(images/logo.png); 设置元素的背景图片。</li>
+<li>border 设置元素四周的边框，如：border:1px solid black; 设置元素四周边框是1像素宽的黑色实线</li>
+<li>以上也可以拆分成四个边的写法，分别设置四个边的：</li>
+<li>border-top 设置顶边边框，如：border-top:10px solid red;</li>
+<li>border-left 设置左边边框，如：border-left:10px solid blue;</li>
+<li>border-right 设置右边边框，如：border-right:10px solid green;</li>
+<li>border-bottom 设置底边边框，如：border-bottom:10px solid pink;</li>
+</ul>
+<h3 id="2-文本常用样式属性"><a href="#2-文本常用样式属性" class="headerlink" title="2. 文本常用样式属性"></a>2. 文本常用样式属性</h3><ul>
+<li>color 设置文字的颜色，如： color:red;</li>
+<li>font-size 设置文字的大小，如：font-size:12px;</li>
+<li>font-family 设置文字的字体，如：font-family:’微软雅黑’;为了避免中文字不兼容，一般写成：font-family:’Microsoft Yahei’;</li>
+<li>font-weight 设置文字是否加粗，如：font-weight:bold; 设置加粗 font-weight:normal 设置不加粗</li>
+<li>line-height 设置文字的行高，如：line-height:24px; 表示文字高度加上文字上下的间距是24px，也就是每一行占有的高度是24px</li>
+<li>text-decoration 设置文字的下划线，如：text-decoration:none; 将文字下划线去掉</li>
+<li>text-align 设置文字水平对齐方式，如text-align:center 设置文字水平居中</li>
+<li>text-indent 设置文字首行缩进，如：text-indent:24px; 设置文字首行缩进24px</li>
+</ul>
+<h3 id="3-布局常用样式属性示例代码"><a href="#3-布局常用样式属性示例代码" class="headerlink" title="3. 布局常用样式属性示例代码"></a>3. 布局常用样式属性示例代码</h3><pre><code class="html">&lt;style&gt;
+
+    .box1{
+        width: 200px; 
+        height: 200px; 
+        background:yellow; 
+        border: 1px solid black;
+    }
+
+    .box2{
+        /* 这里是注释内容 */
+        /* 设置宽度 */
+        width: 100px;
+        /* 设置高度 */
+        height: 100px;
+        /* 设置背景色 */
+        background: red;
+        /* 设置四边边框 */
+        /* border: 10px solid black; */
+        border-top: 10px solid black;
+        border-left: 10px solid black;
+        border-right: 10px solid black;
+        border-bottom: 10px solid black;
+        /* 设置内边距， 内容到边框的距离，如果设置四边是上右下左 */
+        /* padding: 10px;   */
+        padding-left: 10px;
+        padding-top: 10px;
+        /* 设置外边距，设置元素边框到外界元素边框的距离 */
+        margin: 10px;
+        /* margin-top: 10px;
+        margin-left: 10px; */
+        float: left;
+    }
+
+    .box3{
+        width: 48px; 
+        height: 48px; 
+        background:pink; 
+        border: 1px solid black;
+        float: left;
+    }
+
+&lt;/style&gt;
+
+&lt;div class=&quot;box1&quot;&gt;
+    &lt;div class=&quot;box2&quot;&gt;
+        padding 设置元素包含的内容和元素边框的距离
+    &lt;/div&gt;
+    &lt;div class=&quot;box3&quot;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<h3 id="4-文本常用样式属性示例"><a href="#4-文本常用样式属性示例" class="headerlink" title="4. 文本常用样式属性示例"></a>4. 文本常用样式属性示例</h3><pre><code class="html">&lt;style&gt;
+    p{
+       /* 设置字体大小  浏览器默认是 16px */
+       font-size:20px;
+       /* 设置字体 */
+       font-family: &quot;Microsoft YaHei&quot;; 
+       /* 设置字体加粗 */
+       font-weight: bold;
+       /* 设置字体颜色 */
+       color: red;
+       /* 增加掉下划线 */
+       text-decoration: underline;
+       /* 设置行高  */
+       line-height: 100px;
+       /* 设置背景色 */
+       background: green;
+       /* 设置文字居中 */
+       /* text-align: center; */
+       text-indent: 40px;
+    }
+
+    a{
+        /* 去掉下划线 */
+        text-decoration: none;
+    }
+&lt;/style&gt;
+
+&lt;a href=&quot;#&quot;&gt;连接标签&lt;/a&gt;
+&lt;p&gt;
+    你好，世界!
+&lt;/p&gt;</code></pre>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/08/21/2020-08-22-python%E9%AB%98%E7%BA%A705-HTML+CSS%E5%9F%BA%E7%A1%80/">https://caijinbo.work/2020/08/21/2020-08-22-python高级05-HTML+CSS基础/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/python/">python</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-CSS基础"><span class="toc-number">1.</span> <span class="toc-text">HTML+CSS基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、html-的介绍"><span class="toc-number">1.1.</span> <span class="toc-text">一、html 的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-html的定义"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. html的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-html的作用"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. html的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、html-的基本结构"><span class="toc-number">1.2.</span> <span class="toc-text">二、html 的基本结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-结构代码"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 结构代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-浏览网页文件"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 浏览网页文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、初始常用的-html-标签"><span class="toc-number">1.3.</span> <span class="toc-text">三、初始常用的 html 标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-常用的-html-标签"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 常用的 html 标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、资源路径"><span class="toc-number">1.4.</span> <span class="toc-text">四、资源路径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-相对路径"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 相对路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-绝对路径"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 绝对路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、列表标签"><span class="toc-number">1.5.</span> <span class="toc-text">五、列表标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-列表标签的种类"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 列表标签的种类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-无序列表"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. 无序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-有序列表"><span class="toc-number">1.5.3.</span> <span class="toc-text">3. 有序列表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、表格标签"><span class="toc-number">1.6.</span> <span class="toc-text">六、表格标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-表格的结构"><span class="toc-number">1.6.1.</span> <span class="toc-text">1. 表格的结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-表格标签"><span class="toc-number">1.6.2.</span> <span class="toc-text">2. 表格标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、表单标签"><span class="toc-number">1.7.</span> <span class="toc-text">七、表单标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-表单的介绍"><span class="toc-number">1.7.1.</span> <span class="toc-text">1. 表单的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-表单相关标签的使用"><span class="toc-number">1.7.2.</span> <span class="toc-text">2. 表单相关标签的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、表单提交"><span class="toc-number">1.8.</span> <span class="toc-text">八、表单提交</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-表单属性设置"><span class="toc-number">1.8.1.</span> <span class="toc-text">1. 表单属性设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-表单元素属性设置"><span class="toc-number">1.8.2.</span> <span class="toc-text">2. 表单元素属性设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-示例代码"><span class="toc-number">1.8.3.</span> <span class="toc-text">3. 示例代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、css-的介绍"><span class="toc-number">1.9.</span> <span class="toc-text">九、css 的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-css-的定义"><span class="toc-number">1.9.1.</span> <span class="toc-text">1. css 的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-css-的作用"><span class="toc-number">1.9.2.</span> <span class="toc-text">2. css 的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-css-的基本语法"><span class="toc-number">1.9.3.</span> <span class="toc-text">3. css 的基本语法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、css-的引入方式"><span class="toc-number">1.10.</span> <span class="toc-text">十、css 的引入方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-行内式"><span class="toc-number">1.10.1.</span> <span class="toc-text">1. 行内式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-内嵌式（内部样式）"><span class="toc-number">1.10.2.</span> <span class="toc-text">2. 内嵌式（内部样式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-外链式"><span class="toc-number">1.10.3.</span> <span class="toc-text">3. 外链式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-css引入方式选择"><span class="toc-number">1.10.4.</span> <span class="toc-text">4. css引入方式选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十一、css-选择器"><span class="toc-number">1.11.</span> <span class="toc-text">十一、css 选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-css-选择器的定义"><span class="toc-number">1.11.1.</span> <span class="toc-text">1. css 选择器的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-css-选择器的种类"><span class="toc-number">1.11.2.</span> <span class="toc-text">2. css 选择器的种类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-标签选择器"><span class="toc-number">1.11.3.</span> <span class="toc-text">3. 标签选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-类选择器"><span class="toc-number">1.11.4.</span> <span class="toc-text">4. 类选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-层级选择器-后代选择器"><span class="toc-number">1.11.5.</span> <span class="toc-text">5. 层级选择器(后代选择器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-id选择器"><span class="toc-number">1.11.6.</span> <span class="toc-text">6. id选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-组选择器"><span class="toc-number">1.11.7.</span> <span class="toc-text">7. 组选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-伪类选择器"><span class="toc-number">1.11.8.</span> <span class="toc-text">8. 伪类选择器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十二、css-属性"><span class="toc-number">1.12.</span> <span class="toc-text">十二、css 属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-布局常用样式属性"><span class="toc-number">1.12.1.</span> <span class="toc-text">1. 布局常用样式属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-文本常用样式属性"><span class="toc-number">1.12.2.</span> <span class="toc-text">2. 文本常用样式属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-布局常用样式属性示例代码"><span class="toc-number">1.12.3.</span> <span class="toc-text">3. 布局常用样式属性示例代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-文本常用样式属性示例"><span class="toc-number">1.12.4.</span> <span class="toc-text">4. 文本常用样式属性示例</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/08/21/2020-08-22-python%E9%AB%98%E7%BA%A706-JavaScript/">&lt; python高级06-JavaScript</a><a class="next" href="/2020/08/21/2020-08-10-python%E9%AB%98%E7%BA%A703-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">python高级03-网络编程 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

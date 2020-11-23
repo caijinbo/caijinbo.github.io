@@ -1,0 +1,689 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>python基础07-面向对象1：类和对象、魔方方法 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">python基础07-面向对象1：类和对象、魔方方法</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8007-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A11%EF%BC%9A%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E3%80%81%E9%AD%94%E6%96%B9%E6%96%B9%E6%B3%95/">2020-07-26</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/python/">python</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h1 id="面向对象1：类和对象、魔方方法"><a href="#面向对象1：类和对象、魔方方法" class="headerlink" title="面向对象1：类和对象、魔方方法"></a>面向对象1：类和对象、魔方方法</h1><h2 id="一、面向对象编程"><a href="#一、面向对象编程" class="headerlink" title="一、面向对象编程"></a>一、面向对象编程</h2><a id="more"></a>
+
+<h3 id="1-面向过程"><a href="#1-面向过程" class="headerlink" title="1. 面向过程"></a>1. 面向过程</h3><ul>
+<li>把编程任务划分成一个一个的步骤，然后按照步骤分别去执行。<ul>
+<li>以 <strong>小明起床上学</strong> 为例，面向过程则做了如下 4 件事：起床、穿衣、洗漱、上学，这 4 个过程的顺序很重要，须一个一个地实现。</li>
+</ul>
+</li>
+<li>对于<strong>面向过程</strong>的思想： 需要实现一个功能的时候，看重的是开发的步骤和过程，每一个步骤都需要自己亲力亲为。<ul>
+<li>以 吃饭 举例：买菜、洗菜、煮饭、切菜……</li>
+</ul>
+</li>
+<li>面向过程编程适合开发<strong>中小型项目</strong></li>
+</ul>
+<h3 id="2-面向对象"><a href="#2-面向对象" class="headerlink" title="2. 面向对象"></a>2. 面向对象</h3><ul>
+<li><p>把构成问题事务分解成各个</p>
+<p>对象</p>
+<p>，建立对象的目的不是为了完成一个步骤，而是为了描述某个事物在整个解决问题步骤中的行为。</p>
+<ul>
+<li>以 <strong>小明起床上学</strong> 为例，我们关心的是<strong>小明</strong>这个<strong>对象</strong>，而不是 起床、穿衣、洗漱、上学 这 4 个过程，这 4 个过程是<strong>小明</strong>这个对象的一部分，只是其中的一种行为，而且对于行为的顺序没有强制要求。</li>
+</ul>
+</li>
+<li><p>对于<strong>面向对象</strong>的思想：当需要实现一个功能的时候，看重的并不是过程和步骤，而是关心的是对象，对象能做啥</p>
+<ul>
+<li>以 吃饭 举例：找 饭馆 对象，饭馆提供菜和饭，不关心做菜和煮饭的内部过程</li>
+</ul>
+</li>
+<li><p>面向对象编程适合<strong>开发大型项目</strong></p>
+</li>
+</ul>
+<h2 id="二、类和对象"><a href="#二、类和对象" class="headerlink" title="二、类和对象"></a>二、类和对象</h2><h3 id="1-类"><a href="#1-类" class="headerlink" title="1. 类"></a>1. 类</h3><ul>
+<li>很多事物存在 <strong>相同的属性和行为(也叫方法)</strong>，比如人有姓名年龄，能吃饭睡觉等等。</li>
+<li>描述 <strong>具有共同特征的事物的 抽象</strong>，称为 <strong>类</strong> (class)。</li>
+<li>类包含两个组成部分：<ul>
+<li><strong>属性</strong>：比如姓名，年龄，身高，肤色等</li>
+<li><strong>方法</strong>：比如吃饭，睡觉，飞行，歌唱等</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-对象"><a href="#2-对象" class="headerlink" title="2. 对象"></a>2. 对象</h3><ul>
+<li><strong>对象</strong> 是 <strong>类</strong> 的实例，是具体的实体</li>
+</ul>
+<h3 id="3-类和对象的关系"><a href="#3-类和对象的关系" class="headerlink" title="3. 类和对象的关系"></a>3. 类和对象的关系</h3><ul>
+<li>类是对象的模板(不占内存空间)，对象是类的实例(占内存空间)。<ul>
+<li>类相当于图纸，对象相当于根据图纸制造的实物。</li>
+</ul>
+</li>
+<li>每个对象必须有一个对应的类。</li>
+</ul>
+<h2 id="三、定义类"><a href="#三、定义类" class="headerlink" title="三、定义类"></a>三、定义类</h2><h3 id="1-定义类"><a href="#1-定义类" class="headerlink" title="1. 定义类"></a>1. 定义类</h3><p>定义一个类，格式如下：</p>
+<pre><code class="python">#class 类名:
+#class 类名(): # 前2个旧式写法(经典类)，不推荐
+class 类名(object):
+    方法列表（不是真的是列表，只是多个函数的定义）</code></pre>
+<p><strong>说明：</strong></p>
+<ul>
+<li>定义类时有 2 种形式：经典类和新式类，前两行注释部分则为经典类，推荐写新式类</li>
+<li>object 是Python 里所有类的最顶级父类</li>
+<li>类名 的命名规则按照 <strong>驼峰命名法</strong></li>
+</ul>
+<h3 id="2-定义方法"><a href="#2-定义方法" class="headerlink" title="2. 定义方法"></a>2. 定义方法</h3><p>定义方法(方法也叫实例方法)格式为：</p>
+<pre><code class="python">class 类名(object):
+    def 方法名(self): 
+        ...</code></pre>
+<ul>
+<li>方法的格式和函数类似，也可以设置参数和返回值，但是 <strong>需要设置第一个参数为</strong> <code>self</code></li>
+<li>编辑器一般会自动生成<code>self</code> ，后面会讲解 <code>self</code> 的作用</li>
+</ul>
+<p>示例代码：</p>
+<pre><code class="python">class Dog(object):
+    # self自动添加的，后面有讲解
+    # 定义在类里面的函数，叫方法
+    def eat(self):
+        print(&#39;吃骨头&#39;)
+
+    def drink(self):
+        print(&#39;喝水&#39;)</code></pre>
+<h2 id="四、创建对象和调用方法"><a href="#四、创建对象和调用方法" class="headerlink" title="四、创建对象和调用方法"></a>四、创建对象和调用方法</h2><h3 id="1-创建对象"><a href="#1-创建对象" class="headerlink" title="1. 创建对象"></a>1. 创建对象</h3><ul>
+<li><p>Python中，可以根据已经定义的类去创建示例对象。</p>
+</li>
+<li><p>创建对象的格式为:</p>
+<pre><code class="python">对象变量名 = 类名()</code></pre>
+</li>
+</ul>
+<p>示例代码：</p>
+<pre><code class="python"># 定义类型
+class Dog(object):
+    # 定义在类里面的函数，叫方法
+    def eat(self):
+        print(&#39;吃骨头&#39;)
+
+    def drink(self):
+        print(&#39;喝水&#39;)
+
+# 创建对象格式：实例对象变量名 = 类名()
+dog1 = Dog()</code></pre>
+<h3 id="2-调用方法"><a href="#2-调用方法" class="headerlink" title="2. 调用方法"></a>2. 调用方法</h3><p>调用方法的格式为:</p>
+<pre><code class="python">对象变量名.方法名()</code></pre>
+<ul>
+<li>注意：虽然定义方法时设置第一个参数 <code>self</code>，但是 <strong>调用方法时不要传递对应<code>self</code>的参数</strong>，解释器自动处理</li>
+</ul>
+<p>示例代码：</p>
+<pre><code class="python">class Dog(object):
+    # 定义在类里面的函数，叫方法
+    def eat(self):
+        print(&#39;吃骨头&#39;)
+
+    def drink(self):
+        print(&#39;喝水&#39;)
+
+
+# 创建对象格式：实例对象变量名 = 类名()
+dog1 = Dog()
+
+# 对象变量.方法名字(), self不用处理
+dog1.eat()
+dog1.drink()</code></pre>
+<h3 id="3-创建多个对象"><a href="#3-创建多个对象" class="headerlink" title="3. 创建多个对象"></a>3. 创建多个对象</h3><ul>
+<li>类作为对象的模具，根据类可以创建多个对象</li>
+</ul>
+<pre><code class="python">class Dog(object):
+    # 定义在类里面的函数，叫方法
+    def eat(self):
+        print(&#39;吃骨头&#39;)
+
+    def drink(self):
+        print(&#39;喝水&#39;)
+
+# 对象1 = 类名()
+# 对象2 = 类名()
+
+# 对象1
+dog1 = Dog()
+dog1.eat()
+dog1.drink()
+
+# 对象2
+dog2 = Dog()
+dog2.eat()
+dog2.drink()</code></pre>
+<h2 id="五、添加和使用属性"><a href="#五、添加和使用属性" class="headerlink" title="五、添加和使用属性"></a>五、添加和使用属性</h2><h3 id="1-添加和使用属性"><a href="#1-添加和使用属性" class="headerlink" title="1. 添加和使用属性"></a>1. 添加和使用属性</h3><ul>
+<li>对象既然有实例方法，也有自己的属性。</li>
+<li>定义/添加属性格式：</li>
+</ul>
+<pre><code class="python">对象变量名.属性名 = 数据</code></pre>
+<ul>
+<li>属性和变量类似，<strong>首次赋值时会定义属性</strong>，再次赋值改变属性</li>
+</ul>
+<p>示例代码：</p>
+<pre><code class="python">class Dog(object):
+    # 定义在类里面的函数，叫方法
+    def eat(self):
+        print(&#39;吃骨头&#39;)
+
+    def drink(self):
+        print(&#39;喝水&#39;)
+
+
+# 1. 创建对象变量
+dog1 = Dog()
+
+# 2. 对象变量.属性 = 数值
+dog1.age = 3
+
+# 打印属性
+print(dog1.age)
+
+# 修改属性
+dog1.age = 2
+print(dog1.age)</code></pre>
+<h2 id="六、self的作用"><a href="#六、self的作用" class="headerlink" title="六、self的作用"></a>六、self的作用</h2><h3 id="1-self是什么"><a href="#1-self是什么" class="headerlink" title="1. self是什么"></a>1. self是什么</h3><ul>
+<li><p>在Python类中规定，实现方法的第一个参数是实例对象本身，并且约定俗成，把其名字写为self。</p>
+</li>
+<li><p>某个对象调用其方法时，Python解释器会</p>
+<p>自动把这个对象</p>
+<p>作为第一个参数传递给方法</p>
+<ul>
+<li>通俗理解：哪个对象调用方法，方法中self就是这个对象</li>
+</ul>
+</li>
+</ul>
+<p>示例代码：</p>
+<pre><code class="python"># 定义类
+class Dog(object):
+    def print_info(self):
+        print(&#39;测试self&#39;, id(self))
+
+
+# 创建对象1
+dog1 = Dog()
+
+# 打印dog1的id
+print(&quot;调用方法前&quot;, id(dog1))
+
+# dog1调用print_info, print_info的self就是dog1
+# 底层调用：print_info(dog1)， 解释器自动把dog1传给方法中的self
+dog1.print_info()
+
+print(&quot;调用方法后&quot;, id(dog1))
+
+print(&#39;=&#39;*30)
+# 创建对象2
+dog2 = Dog()
+
+print(&quot;调用方法前&quot;, id(dog2))
+dog2.print_info()
+print(&quot;调用方法后&quot;, id(dog2))</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">调用方法前 4400762352
+测试self 4400762352
+调用方法后 4400762352
+==============================
+调用方法前 4400762544
+测试self 4400762544
+调用方法后 4400762544</code></pre>
+<h3 id="2-self的作用"><a href="#2-self的作用" class="headerlink" title="2. self的作用"></a>2. self的作用</h3><ul>
+<li>在方法中使用 <code>self</code>，可以获取到调用当前方法的对象，进而获取到该对象的属性和方法</li>
+<li>self作用：为了<strong>区分</strong>不同对象的属性和方法</li>
+</ul>
+<pre><code class="python"># 定义类
+class Dog(object):
+    def print_info(self):
+        print(self.type)
+
+
+# 创建对象，实例化对象
+dog1 = Dog()
+# 添加属性
+dog1.type = &#39;大黄狗&#39;
+# 直接调用方法
+dog1.print_info()
+
+print(&#39;=&#39;*30)
+dog2 = Dog()
+dog2.type = &#39;旺财&#39;
+dog2.print_info()</code></pre>
+<h2 id="七、魔法方法：init"><a href="#七、魔法方法：init" class="headerlink" title="七、魔法方法：init()"></a>七、魔法方法：<strong>init</strong>()</h2><h3 id="1-魔法方法"><a href="#1-魔法方法" class="headerlink" title="1. 魔法方法"></a>1. 魔法方法</h3><ul>
+<li>在Python中，所有以 <code>__</code> <strong>双下划线</strong>包起来的方法，都统称为 <strong>Magic Method</strong> ，中文称 <strong>魔法方法</strong></li>
+<li>魔法方法是系统提供好的方法名字，用户需重新实现它</li>
+<li>魔法方法一般情况下无需手动调用，在合适时候自动会调用</li>
+</ul>
+<h3 id="2-init-基本使用"><a href="#2-init-基本使用" class="headerlink" title="2. __init__()基本使用"></a>2. <code>__init__()</code>基本使用</h3><ul>
+<li><code>__init__()</code>方法叫做 <strong>对象的初始化方法</strong>，在 <strong>创建一个对象后会被自动调用</strong>，不需要手动调用</li>
+<li><code>__init__()</code>方法的作用：添加属性</li>
+</ul>
+<p>示例代码：</p>
+<pre><code class="python">&quot;&quot;&quot;
+__init__方法：
+    1. 作用：添加属性
+    2. 特点：创建对象的时候，实例化对象，自动调用__init__方法
+&quot;&quot;&quot;
+
+
+class Dog(object):
+    def __init__(self):
+        &quot;&quot;&quot;初始化函数，添加属性&quot;&quot;&quot;
+        self.type = &#39;大黄狗&#39;
+        print(&#39;init方法调用了&#39;)
+
+    def print_info(self):
+        &quot;&quot;&quot;打印实例属性&quot;&quot;&quot;
+        print(self.type)
+
+
+# 1. 创建对象，实例化对象，自动调用__init__方法
+# 2. 尽管是自动调用方法，也是dog1自动调用方法，所以，self就是dog1
+dog1 = Dog()
+
+# 手动调用实例方法
+dog1.print_info()</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">init方法调用了
+大黄狗</code></pre>
+<h3 id="3-init-自定义参数"><a href="#3-init-自定义参数" class="headerlink" title="3. __init__()自定义参数"></a>3. <code>__init__()</code>自定义参数</h3><ul>
+<li><code>__init__(self)</code>除了默认参数<code>self</code>，还可以设置任意个数的自定义参数，例如：<code>__init__(self,x,y,z)</code></li>
+<li>init方法 <strong>设置的自定义参数必须和创建对象时传递的参数保持一致</strong>，例如：<code>对象变量名 = 类名(x,y,z)</code></li>
+<li>开发者可以 <strong>设置自定义参数</strong>，为对象的默认属性提供 <strong>不同的初始值</strong></li>
+</ul>
+<p>示例代码：</p>
+<pre><code class="python">class Dog(object):
+    def __init__(self, _type):
+        &quot;&quot;&quot;初始化函数，添加属性&quot;&quot;&quot;
+        self.type = _type
+        print(&#39;init方法调用了&#39;)
+
+    def print_info(self):
+        &quot;&quot;&quot;打印实例属性&quot;&quot;&quot;
+        print(self.type)
+
+
+# 创建对象，实例化对象，自动调用__init__方法
+# &#39;旺财&#39;传递给 _type 形参
+dog1 = Dog(&#39;旺财&#39;)
+# 直接调用方法
+dog1.print_info()
+
+print(&#39;=&#39;*30)
+dog2 = Dog(&#39;来福&#39;)
+dog2.print_info()</code></pre>
+<p>运行结果：</p>
+<pre><code class="shell">init方法调用了
+旺财
+==============================
+init方法调用了
+来福</code></pre>
+<h2 id="八、魔法方法：str"><a href="#八、魔法方法：str" class="headerlink" title="八、魔法方法：str()"></a>八、魔法方法：<strong>str</strong>()</h2><h3 id="1-str-方法的使用"><a href="#1-str-方法的使用" class="headerlink" title="1. str()方法的使用"></a>1. <strong>str</strong>()方法的使用</h3><ul>
+<li>如果直接 print 打印对象，会看到创建出来的对象在内存中的地址</li>
+<li>当使用<code>print(对象变量名)</code>输出对象的时候，只要类中定义了<code>__str__()</code>方法，就会打印<code>__str__()</code>方法返回值</li>
+<li><code>__str__()</code>方法作用主要返回对象属性信息，<code>print(对象变量名)</code>输出对象时直接输出<code>__str__()</code>方法返回的描述信息</li>
+<li><code>__str__()</code>方法的返回值必须是 <strong>字符串类型</strong></li>
+</ul>
+<p>示例代码：</p>
+<pre><code class="python">&quot;&quot;&quot;
+__str__方法:
+    1. 返回值必须是字符串类型
+    2. print(对象变量名)  对象变量名的位置替换为__str__()方法返回值的内容
+&quot;&quot;&quot;
+
+
+class Dog(object):
+    # 添加属性，type, age
+    def __init__(self, _type, _age):
+        self.type = _type
+        self.age = _age
+
+    # 测试有定义 __str__ 方法，和没有定义，print(对象)的区别
+    def __str__(self):
+        return f&#39;类型{self.type},年龄{self.age}&#39;
+        # return &quot;类型：%s， 年龄：%d&quot; % (self.type, self.age)
+
+
+# 创建对象
+dog1 = Dog(&#39;大白狗&#39;, 3)
+
+# 如果有__str__ 方法，dog1的位置替换为__str__()方法返回值的内容
+print(dog1)
+print(&#39;对象描述信息为：&#39;, dog1)</code></pre>
+<p>运行结果：</p>
+<pre><code class="shell">类型：大白狗， 年龄：3
+对象描述信息为： 类型：大白狗， 年龄：3</code></pre>
+<h2 id="九、魔法方法：-del"><a href="#九、魔法方法：-del" class="headerlink" title="九、魔法方法：__del__()"></a>九、魔法方法：<code>__del__()</code></h2><h3 id="1-del-方法的使用"><a href="#1-del-方法的使用" class="headerlink" title="1. del()方法的使用"></a>1. <strong>del</strong>()方法的使用</h3><ul>
+<li>在对象的生命周期结束(对象销毁)时, <code>__del__()</code>方法会自动被调用，做一些清理工作</li>
+</ul>
+<pre><code class="python">class Dog(object):
+    def __del__(self):
+        print(&#39;我悄悄地离开了&#39;)
+
+
+# 设计一个函数，在函数内容创建对象
+# 函数调用完毕，里面创建的对象，生命周期结束，自动调用__del__方法
+def func():
+    dog1 = Dog()
+
+
+print(&#39;函数调用前&#39;)
+# 调用函数
+func()
+print(&#39;函数调用后&#39;)</code></pre>
+<p>运行结果：</p>
+<pre><code class="shell">函数调用前
+我悄悄地离开了
+函数调用后</code></pre>
+<h2 id="应用：烤地瓜"><a href="#应用：烤地瓜" class="headerlink" title="应用：烤地瓜"></a>应用：烤地瓜</h2><h3 id="1-需求说明"><a href="#1-需求说明" class="headerlink" title="1. 需求说明"></a>1. 需求说明</h3><p>烤地瓜规则：</p>
+<ol>
+<li>地瓜有自己的状态，默认是生的，地瓜可以进行烧烤</li>
+<li>地瓜有自己烧烤的总时间，由每次烧烤的时间累加得出</li>
+<li>地瓜烧烤时，需要提供本次烧烤的时间</li>
+<li>地瓜烧烤时，地瓜状态随着烧烤总时间的变化而改变：[0, 3) 生的、[3, 6) 半生不熟、[6, 8) 熟了、&gt;=8 烤糊了</li>
+<li>输出地瓜信息时，可以显示地瓜的状态和烧烤的总时间</li>
+</ol>
+<h3 id="2-面向对象设计"><a href="#2-面向对象设计" class="headerlink" title="2. 面向对象设计"></a>2. 面向对象设计</h3><h4 id="2-1-地瓜类"><a href="#2-1-地瓜类" class="headerlink" title="2.1 地瓜类"></a>2.1 地瓜类</h4><ol>
+<li>使用 <code>SweetPotato</code> 类可以创建 <strong>地瓜对象</strong></li>
+<li>地瓜有两个属性：<ul>
+<li><strong>状态 state</strong>：字符串</li>
+<li><strong>烧烤总时间 cooked_time</strong>：整数</li>
+</ul>
+</li>
+<li>定义cook方法, 提供参数time设置本次烧烤的时间<ul>
+<li>使用 <strong>本次烧烤时间</strong> 对 <strong>烧烤总时间</strong> 进行 <strong>累加</strong></li>
+<li>根据烧烤总时间, 设置地瓜的状态：<ul>
+<li>[0, 3) -&gt; 生的</li>
+<li>[3, 6) -&gt; 半生不熟</li>
+<li>[6, 8) -&gt; 熟了</li>
+<li>大于等于8 -&gt; 烤糊了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-2-主程序逻辑"><a href="#2-2-主程序逻辑" class="headerlink" title="2.2 主程序逻辑"></a>2.2 主程序逻辑</h4><ol>
+<li>创建 <strong>地瓜对象</strong></li>
+<li><strong>分多次</strong> <strong>烧烤地瓜</strong></li>
+<li>每烧烤一次，<strong>输出地瓜信息</strong></li>
+</ol>
+<h4 id="2-3-示例代码"><a href="#2-3-示例代码" class="headerlink" title="2.3 示例代码"></a>2.3 示例代码</h4><h5 id="2-3-1-步骤流程"><a href="#2-3-1-步骤流程" class="headerlink" title="2.3.1 步骤流程"></a>2.3.1 步骤流程</h5><pre><code class="Python">&quot;&quot;&quot;
+# SweetPotato 类的设计
+    地瓜有两个属性：
+        状态 state：字符串
+        烧烤总时间 cooked_time：整数
+
+# 1. 定义__init__方法，添加2个属性
+    # 1.1 默认状态state是生的
+    # 1.2 默认时间cooked_time是0
+
+# 2. 定义__str__方法
+    # 2.1 返回地瓜状态，烧烤总时间
+
+# 3. 定义 cook 方法, 提供参数 time 设置 本次烧烤的时间
+    # 3.1 使用 本次烧烤时间 对 烧烤总时间 进行 累加
+    # 3.2 根据 烧烤总时间, 设置地瓜的状态：
+        [0, 3) -&gt; 生的
+        [3, 6) -&gt; 半生不熟
+        [6, 8) -&gt; 熟了
+        大于等于8 -&gt; 烤糊了
+
+# 4. 主逻辑程序
+# 4.1 创建 地瓜对象
+# 4.2 分多次烧烤地瓜
+# 4.3 每烧烤一次，输出地瓜信息
+&quot;&quot;&quot;</code></pre>
+<h5 id="2-3-2-定义地瓜类、通过-init-（）方法添加属性"><a href="#2-3-2-定义地瓜类、通过-init-（）方法添加属性" class="headerlink" title="2.3.2 定义地瓜类、通过__init__（）方法添加属性"></a>2.3.2 定义地瓜类、通过<code>__init__（）方法</code>添加属性</h5><pre><code class="python">class SweetPotato(object):
+    &quot;&quot;&quot;地瓜类&quot;&quot;&quot;
+    # 1. 定义__init__方法，添加2个属性
+    def __init__(self):
+        # 1.1 默认状态state是生的
+        self.state = &#39;生的&#39;
+        # 1.2 默认时间cooked_time是0
+        self.cooked_time = 0</code></pre>
+<h5 id="2-3-3-定义-str-方法"><a href="#2-3-3-定义-str-方法" class="headerlink" title="2.3.3 定义__str__()方法"></a>2.3.3 定义<code>__str__()</code>方法</h5><pre><code class="python">    # 2. 定义__str__方法
+    def __str__(self):
+        # 2.1 返回地瓜状态，烧烤总时间
+        return f&#39;地瓜状态为：{self.state}, 烧烤总时间为：{self.cooked_time} 分钟&#39;</code></pre>
+<h5 id="2-3-4-定义”烤地瓜”方法"><a href="#2-3-4-定义”烤地瓜”方法" class="headerlink" title="2.3.4 定义”烤地瓜”方法"></a>2.3.4 定义”烤地瓜”方法</h5><pre><code class="python">    # 3. 定义 cook 方法, 提供参数 time 设置 本次烧烤的时间
+    def cook(self, time):
+        # 3.1 使用 本次烧烤时间 对 烧烤总时间 进行 累加
+        self.cooked_time += time
+
+        # 3.2 根据 烧烤总时间, 设置地瓜的状态：
+        if 0 &lt;= self.cooked_time &lt; 3:
+            self.state = &#39;生的&#39;
+        elif 3 &lt;= self.cooked_time &lt; 6:
+            self.state = &#39;半生不熟&#39;
+        elif 6 &lt;= self.cooked_time &lt; 8:
+            self.state = &#39;熟了&#39;
+        else:
+            self.state = &#39;烤糊了&#39;</code></pre>
+<h5 id="2-3-5-测试代码"><a href="#2-3-5-测试代码" class="headerlink" title="2.3.5 测试代码"></a>2.3.5 测试代码</h5><p>把上面 3 块代码合并为一个程序后，在代码的下面添加以下代码进行测试：</p>
+<pre><code class="python"># 4.1 创建 地瓜对象
+sp = SweetPotato()
+print(sp)  # 输出地瓜信息
+
+# 4.2 分多次烧烤地瓜
+sp.cook(2)
+print(sp)  # 4.3 每烧烤一次，输出地瓜信息
+
+sp.cook(5)
+print(sp)
+
+sp.cook(2)
+print(sp)</code></pre>
+<p>运行结果：</p>
+<pre><code class="shell">地瓜状态为：生的, 烧烤总时间为：0 分钟
+地瓜状态为：生的, 烧烤总时间为：2 分钟
+地瓜状态为：熟了, 烧烤总时间为：7 分钟
+地瓜状态为：烤糊了, 烧烤总时间为：9 分钟</code></pre>
+<h3 id="3-拓展功能"><a href="#3-拓展功能" class="headerlink" title="3. 拓展功能"></a>3. 拓展功能</h3><h4 id="3-1-烤地瓜需求拓展"><a href="#3-1-烤地瓜需求拓展" class="headerlink" title="3.1 烤地瓜需求拓展"></a>3.1 烤地瓜需求拓展</h4><ol>
+<li>地瓜可以添加佐料,如 盐、孜然、辣酱等</li>
+<li>输出地瓜信息时，可以显示地瓜的状态、烧烤总时间、以及添加过的所有佐料</li>
+</ol>
+<h4 id="3-2-需求分析"><a href="#3-2-需求分析" class="headerlink" title="3.2 需求分析"></a>3.2 需求分析</h4><ul>
+<li><strong>每个地瓜记录自己的佐料，定义属性来记录</strong></li>
+<li>地瓜可以添加多个佐料，应该定义 <strong>容器类型属性</strong> 来记录添加的佐料</li>
+<li>地瓜类 应该 <strong>定义方法来实现添加佐料的功能</strong></li>
+</ul>
+<h4 id="3-3-示例代码"><a href="#3-3-示例代码" class="headerlink" title="3.3 示例代码"></a>3.3 示例代码</h4><h5 id="3-3-1-步骤流程"><a href="#3-3-1-步骤流程" class="headerlink" title="3.3.1 步骤流程"></a>3.3.1 步骤流程</h5><pre><code class="python"># 5. 拓展功能
+# 5.1 添加属性 condiments， 列表类型，默认为空列表
+
+# 5.2 修改 __str__ 返回信息，返回增加已添加的佐料信息
+
+# 5.3 定义 add_condiments(self, temp), temp为添加什么佐料的参数
+    # 5.3.1 佐料列表追加元素
+
+# 5.4 再次测试代码，添加佐料，重新打印信息</code></pre>
+<h5 id="3-3-2-添加-condiments-属性"><a href="#3-3-2-添加-condiments-属性" class="headerlink" title="3.3.2 添加 condiments 属性"></a>3.3.2 添加 <code>condiments</code> 属性</h5><pre><code class="python">    # 1. 定义__init__方法，添加3个属性
+    def __init__(self):
+        # 1.1 默认状态state是生的
+        self.state = &#39;生的&#39;
+        # 1.2 默认时间cooked_time是0
+        self.cooked_time = 0
+        # 5.1 添加属性 condiments， 列表类型，默认为空列表
+        self.condiments = []</code></pre>
+<h5 id="3-3-3-修改-str-方法，在方法中使用condiments属性显示已添加的佐料"><a href="#3-3-3-修改-str-方法，在方法中使用condiments属性显示已添加的佐料" class="headerlink" title="3.3.3 修改__str__()方法，在方法中使用condiments属性显示已添加的佐料"></a>3.3.3 修改<code>__str__()</code>方法，在方法中使用<code>condiments</code>属性显示已添加的佐料</h5><pre><code class="python">    # 2. 定义__str__方法
+    def __str__(self):
+        # 2.1 返回地瓜状态，烧烤总时间
+        # 5.2 修改 __str__ 返回信息，返回增加已添加的佐料信息
+        return f&#39;地瓜状态为：{self.state}, 烧烤总时间为：{self.cooked_time} 分钟，包括的佐料为：{self.condiments}&#39;</code></pre>
+<h5 id="3-3-4-定义add-condiments-方法"><a href="#3-3-4-定义add-condiments-方法" class="headerlink" title="3.3.4 定义add_condiments()方法"></a>3.3.4 定义<code>add_condiments()</code>方法</h5><pre><code class="python">    # 5.3 定义 add_condiments(self, temp), temp为添加什么佐料的参数
+    def add_condiment(self, temp):
+        # 5.3.1 佐料列表追加元素
+        self.condiments.append(temp)</code></pre>
+<h5 id="3-3-5-再次测试"><a href="#3-3-5-再次测试" class="headerlink" title="3.3.5 再次测试"></a>3.3.5 再次测试</h5><pre><code class="python"># 4.1 创建 地瓜对象
+sp = SweetPotato()
+print(sp)  # 输出地瓜信息
+
+# 4.2 分多次烧烤地瓜
+sp.cook(2)
+# 添加佐料
+sp.add_condiment(&#39;番茄酱&#39;)
+print(sp)  # 4.3 每烧烤一次，输出地瓜信息
+
+sp.cook(5)
+sp.add_condiment(&#39;孜然&#39;)
+print(sp)
+
+sp.cook(2)
+sp.add_condiment(&#39;烤肉&#39;)
+print(sp)</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">地瓜状态为：生的, 烧烤总时间为：0 分钟，包括的佐料为：[]
+地瓜状态为：生的, 烧烤总时间为：2 分钟，包括的佐料为：[&#39;番茄酱&#39;]
+地瓜状态为：熟了, 烧烤总时间为：7 分钟，包括的佐料为：[&#39;番茄酱&#39;, &#39;孜然&#39;]
+地瓜状态为：烤糊了, 烧烤总时间为：9 分钟，包括的佐料为：[&#39;番茄酱&#39;, &#39;孜然&#39;, &#39;烤肉&#39;]</code></pre>
+<h2 id="应用-搬家具"><a href="#应用-搬家具" class="headerlink" title="应用: 搬家具"></a>应用: 搬家具</h2><h3 id="1-需求说明-1"><a href="#1-需求说明-1" class="headerlink" title="1. 需求说明"></a>1. 需求说明</h3><p>搬家具规则：</p>
+<ol>
+<li>家具分不同的类型，并占用不同的面积</li>
+<li>输出家具信息时，显示家具的类型和家具占用的面积</li>
+<li>房子有自己的地址和占用的面积</li>
+<li>房子可以添加家具，如果房子的剩余面积可以容纳家具，则提示家具添加成功；否则提示添加失败</li>
+<li>输出房子信息时，可以显示房子的地址、占地面积、剩余面积</li>
+</ol>
+<h3 id="2-面向对象设计-1"><a href="#2-面向对象设计-1" class="headerlink" title="2. 面向对象设计"></a>2. 面向对象设计</h3><h3 id="2-1-家具类"><a href="#2-1-家具类" class="headerlink" title="2.1 家具类"></a>2.1 家具类</h3><ol>
+<li><p>使用 <code>Item</code> 类可以创建 <strong>家具对象</strong></p>
+</li>
+<li><p>家具有两个属性：</p>
+<ul>
+<li><strong>家具类型 type</strong>：字符串</li>
+<li><strong>家具面积 area</strong>：整数</li>
+</ul>
+</li>
+<li><p>实现</p>
+<pre><code>__str__</code></pre><p>方法</p>
+<ul>
+<li>显示家具的 type 和 area 属性</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-2-房子类"><a href="#2-2-房子类" class="headerlink" title="2.2 房子类"></a>2.2 房子类</h3><ol>
+<li><p>使用 <code>Home</code> 类可以创建 <strong>房子对象</strong></p>
+</li>
+<li><p>房子有三个属性：</p>
+<ul>
+<li><strong>地址 address</strong>：字符串</li>
+<li><strong>房子面积 area</strong>：整数</li>
+<li><strong>房子剩余面积 free_area</strong>：整数，默认为房子的面积</li>
+</ul>
+</li>
+<li><p>实现</p>
+<pre><code>__str__</code></pre><p>方法</p>
+<ul>
+<li>显示房子的 address 、area、free_area 属性</li>
+</ul>
+</li>
+<li><p>实现</p>
+<pre><code>add_item</code></pre><p>方法，提供</p>
+<pre><code>item</code></pre><p>参数来添加家具</p>
+<ul>
+<li>如果</li>
+</ul>
+</li>
+</ol>
+<pre><code> 可以容纳家具：
+
+ - 打印添加家具的类型和面积
+ - **剩余面积** 减少</code></pre><ul>
+<li>如果 <strong>不能容纳家具：</strong> 提示家具添加失败</li>
+</ul>
+<h3 id="2-3-主程序逻辑"><a href="#2-3-主程序逻辑" class="headerlink" title="2.3 主程序逻辑"></a>2.3 主程序逻辑</h3><ol>
+<li>创建 <strong>家具对象</strong>, 输出 家具信息</li>
+<li>创建 <strong>房子对象</strong>, 输出 房子信息</li>
+<li><strong>房子添加家具</strong>, 输出 房子信息</li>
+</ol>
+<h3 id="2-4-示例代码"><a href="#2-4-示例代码" class="headerlink" title="2.4. 示例代码"></a>2.4. 示例代码</h3><pre><code class="python">&quot;&quot;&quot;
+家具类 Item
+# 1. 定义__init__方法，添加2个属性，需要2个形参 _type, _area
+    # 1.1 家具类型 type
+    # 1.2 家具面积 area
+
+# 2. 实现__str__方法
+    # 2.1 返回家具类型和家具面积
+
+房子类 Home
+# 1. 定义__init__方法，添加3个属性，需要3个形参
+    # 1.1 地址 address
+    # 1.2 房子面积 area
+    # 1.3 房子剩余面积 free_area，默认为房子的面积
+
+# 2. 实现__str__方法
+    # 2.1 返回房子地址、面积、剩余面积信息
+
+# 3. 实现add_item方法，提供item参数来添加家具，item是对象
+    # 3.1 如果 房间的剩余面积 &gt;= 家具的面积，可以容纳家具：
+        # 3.1.1 打印添加家具的类型和面积
+        # 3.1.2 剩余面积 减少
+    # 3.2 否则 不能容纳家具：提示家具添加失败
+
+主程序逻辑：
+# 1. 创建 家具对象, 输出 家具信息
+# 2. 创建 房子对象, 输出 房子信息
+# 3. 房子添加家具, 输出 房子信息
+&quot;&quot;&quot;
+
+
+class Item(object):
+    &quot;&quot;&quot;家具类&quot;&quot;&quot;
+
+    # 1. 定义__init__方法，添加2个属性，需要2个形参 _type, _area
+    def __init__(self, _type, _area):
+        # 1.1 地址 address
+        self.type = _type
+        # 1.2 家具面积 area
+        self.area = _area
+
+    # 2. 实现__str__方法
+    def __str__(self):
+        # 2.1 返回房子地址、面积、剩余面积信息
+        return f&#39;家具类型为：{self.type}, 家具面积为：{self.area}&#39;
+
+
+class House(object):
+    &quot;&quot;&quot;房子类&quot;&quot;&quot;
+
+    # 1. 定义__init__方法，添加3个属性，需要3个形参
+    def __init__(self, _addr, _area, _free_area):
+        # 1.1 地址 address
+        self.address = _addr
+        # 1.2 房子面积 area
+        self.area = _area
+        # 1.3 房子剩余面积 free_area，默认为房子的面积
+        self.free_area = _free_area
+
+    # 2. 实现__str__方法
+    def __str__(self):
+        # 2.1 返回房子地址、面积、剩余面积信息
+        return f&#39;房子地址：{self.address}, 房子面积：{self.area}, 房子剩余面积：{self.free_area}&#39;
+
+    # 3. 实现add_item方法，提供item参数来添加家具，item是家具对象
+    def add_item(self, item):
+        # 3.1 如果 房间的剩余面积 &gt;= 家具的面积，可以容纳家具：
+        if self.free_area &gt; item.area:
+            # 3.1.1 打印添加家具的类型和面积
+            print(f&#39;添加{item.type}成功了，家具占用面积为：{item.area}&#39;)
+            # 3.1.2 剩余面积 减少
+            self.free_area -= item.area
+
+        # 3.2 否则 不能容纳家具： 提示家具添加失败
+        else:
+            print(&#39;家具添加失败&#39;)
+
+
+# 1. 创建 家具对象, 输出 家具信息
+# 2. 创建 房子对象, 输出 房子信息
+# 3. 房子添加家具, 输出 房子信息
+h = House(&#39;北京&#39;, 70, 70)  # 创建房间对象h
+print(h)  # 打印房子对象，获取House中__str__返回的信息
+
+tv = Item(&#39;超大电视&#39;, 10)  # 创建家具1
+print(tv)  # 打印家具对象，输出Item中__str__返回的信息
+h.add_item(tv)  # 房子添加家具
+print(h)  # 打印房子对象，获取House中__str__返回的信息
+
+bed = Item(&#39;超大床&#39;, 20)  # 创建家具2
+print(bed)  # 打印家具对象，输出Item中__str__返回的信息
+h.add_item(bed)  # 房子添加家具
+print(h)</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">房子地址：北京, 房子面积：70, 房子剩余面积：70
+家具类型为：超大电视, 家具面积为：10
+添加超大电视成功了，家具占用面积为：10
+房子地址：北京, 房子面积：70, 房子剩余面积：60
+家具类型为：超大床, 家具面积为：20
+添加超大床成功了，家具占用面积为：20
+房子地址：北京, 房子面积：70, 房子剩余面积：40</code></pre>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8007-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A11%EF%BC%9A%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E3%80%81%E9%AD%94%E6%96%B9%E6%96%B9%E6%B3%95/">https://caijinbo.work/2020/07/26/2020-07-27-python基础07-面向对象1：类和对象、魔方方法/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/python/">python</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#面向对象1：类和对象、魔方方法"><span class="toc-number">1.</span> <span class="toc-text">面向对象1：类和对象、魔方方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、面向对象编程"><span class="toc-number">1.1.</span> <span class="toc-text">一、面向对象编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-面向过程"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 面向过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-面向对象"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 面向对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、类和对象"><span class="toc-number">1.2.</span> <span class="toc-text">二、类和对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-类"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-对象"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-类和对象的关系"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 类和对象的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、定义类"><span class="toc-number">1.3.</span> <span class="toc-text">三、定义类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-定义类"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 定义类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-定义方法"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 定义方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、创建对象和调用方法"><span class="toc-number">1.4.</span> <span class="toc-text">四、创建对象和调用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建对象"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 创建对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-调用方法"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 调用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-创建多个对象"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. 创建多个对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、添加和使用属性"><span class="toc-number">1.5.</span> <span class="toc-text">五、添加和使用属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-添加和使用属性"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 添加和使用属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、self的作用"><span class="toc-number">1.6.</span> <span class="toc-text">六、self的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-self是什么"><span class="toc-number">1.6.1.</span> <span class="toc-text">1. self是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-self的作用"><span class="toc-number">1.6.2.</span> <span class="toc-text">2. self的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、魔法方法：init"><span class="toc-number">1.7.</span> <span class="toc-text">七、魔法方法：init()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-魔法方法"><span class="toc-number">1.7.1.</span> <span class="toc-text">1. 魔法方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-init-基本使用"><span class="toc-number">1.7.2.</span> <span class="toc-text">2. __init__()基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-init-自定义参数"><span class="toc-number">1.7.3.</span> <span class="toc-text">3. __init__()自定义参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、魔法方法：str"><span class="toc-number">1.8.</span> <span class="toc-text">八、魔法方法：str()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-str-方法的使用"><span class="toc-number">1.8.1.</span> <span class="toc-text">1. str()方法的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、魔法方法：-del"><span class="toc-number">1.9.</span> <span class="toc-text">九、魔法方法：__del__()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-del-方法的使用"><span class="toc-number">1.9.1.</span> <span class="toc-text">1. del()方法的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用：烤地瓜"><span class="toc-number">1.10.</span> <span class="toc-text">应用：烤地瓜</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-需求说明"><span class="toc-number">1.10.1.</span> <span class="toc-text">1. 需求说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-面向对象设计"><span class="toc-number">1.10.2.</span> <span class="toc-text">2. 面向对象设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-地瓜类"><span class="toc-number">1.10.2.1.</span> <span class="toc-text">2.1 地瓜类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-主程序逻辑"><span class="toc-number">1.10.2.2.</span> <span class="toc-text">2.2 主程序逻辑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-示例代码"><span class="toc-number">1.10.2.3.</span> <span class="toc-text">2.3 示例代码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-1-步骤流程"><span class="toc-number">1.10.2.3.1.</span> <span class="toc-text">2.3.1 步骤流程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2-定义地瓜类、通过-init-（）方法添加属性"><span class="toc-number">1.10.2.3.2.</span> <span class="toc-text">2.3.2 定义地瓜类、通过__init__（）方法添加属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-3-定义-str-方法"><span class="toc-number">1.10.2.3.3.</span> <span class="toc-text">2.3.3 定义__str__()方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-4-定义”烤地瓜”方法"><span class="toc-number">1.10.2.3.4.</span> <span class="toc-text">2.3.4 定义”烤地瓜”方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-5-测试代码"><span class="toc-number">1.10.2.3.5.</span> <span class="toc-text">2.3.5 测试代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-拓展功能"><span class="toc-number">1.10.3.</span> <span class="toc-text">3. 拓展功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-烤地瓜需求拓展"><span class="toc-number">1.10.3.1.</span> <span class="toc-text">3.1 烤地瓜需求拓展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-需求分析"><span class="toc-number">1.10.3.2.</span> <span class="toc-text">3.2 需求分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-示例代码"><span class="toc-number">1.10.3.3.</span> <span class="toc-text">3.3 示例代码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-1-步骤流程"><span class="toc-number">1.10.3.3.1.</span> <span class="toc-text">3.3.1 步骤流程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-2-添加-condiments-属性"><span class="toc-number">1.10.3.3.2.</span> <span class="toc-text">3.3.2 添加 condiments 属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-3-修改-str-方法，在方法中使用condiments属性显示已添加的佐料"><span class="toc-number">1.10.3.3.3.</span> <span class="toc-text">3.3.3 修改__str__()方法，在方法中使用condiments属性显示已添加的佐料</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-4-定义add-condiments-方法"><span class="toc-number">1.10.3.3.4.</span> <span class="toc-text">3.3.4 定义add_condiments()方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-5-再次测试"><span class="toc-number">1.10.3.3.5.</span> <span class="toc-text">3.3.5 再次测试</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用-搬家具"><span class="toc-number">1.11.</span> <span class="toc-text">应用: 搬家具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-需求说明-1"><span class="toc-number">1.11.1.</span> <span class="toc-text">1. 需求说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-面向对象设计-1"><span class="toc-number">1.11.2.</span> <span class="toc-text">2. 面向对象设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-家具类"><span class="toc-number">1.11.3.</span> <span class="toc-text">2.1 家具类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-房子类"><span class="toc-number">1.11.4.</span> <span class="toc-text">2.2 房子类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-主程序逻辑"><span class="toc-number">1.11.5.</span> <span class="toc-text">2.3 主程序逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-示例代码"><span class="toc-number">1.11.6.</span> <span class="toc-text">2.4. 示例代码</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8004-%E5%87%BD%E6%95%B0/">&lt; python基础04-函数</a><a class="next" href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8006-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">python基础06-文件操作 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

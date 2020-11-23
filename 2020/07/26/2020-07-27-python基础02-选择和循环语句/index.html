@@ -1,0 +1,910 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>python基础02-选择和循环语句 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">python基础02-选择和循环语句</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8002-%E9%80%89%E6%8B%A9%E5%92%8C%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5/">2020-07-26</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/python/">python</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h1 id="选择和循环语句"><a href="#选择和循环语句" class="headerlink" title="选择和循环语句"></a>选择和循环语句</h1><h2 id="一、比较和逻辑运算符"><a href="#一、比较和逻辑运算符" class="headerlink" title="一、比较和逻辑运算符"></a>一、比较和逻辑运算符</h2><h3 id="1-比较-即关系，条件-运算符"><a href="#1-比较-即关系，条件-运算符" class="headerlink" title="1. 比较(即关系，条件)运算符"></a>1. 比较(即关系，条件)运算符</h3><a id="more"></a>
+
+<table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">描述</th>
+<th align="left">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">==</td>
+<td align="left">检查两个操作数的值是否相等，如果是则条件变为真。</td>
+<td align="left">如a=3,b=3，则（a == b) 为 True</td>
+</tr>
+<tr>
+<td align="left">!=</td>
+<td align="left">检查两个操作数的值是否相等，如果值不相等，则条件变为真。</td>
+<td align="left">如a=1,b=3，则(a != b) 为 True</td>
+</tr>
+<tr>
+<td align="left">&gt;</td>
+<td align="left">检查左操作数的值是否大于右操作数的值，如果是，则条件成立。</td>
+<td align="left">如a=7,b=3，则(a &gt; b) 为 True</td>
+</tr>
+<tr>
+<td align="left">&lt;</td>
+<td align="left">检查左操作数的值是否小于右操作数的值，如果是，则条件成立。</td>
+<td align="left">如a=7,b=3，则(a &lt; b) 为 False</td>
+</tr>
+<tr>
+<td align="left">&gt;=</td>
+<td align="left">检查左操作数的值是否大于或等于右操作数的值，如果是，则条件成立。</td>
+<td align="left">如a=3,b=3，则(a &gt;= b) 为 True</td>
+</tr>
+<tr>
+<td align="left">&lt;=</td>
+<td align="left">检查左操作数的值是否小于或等于右操作数的值，如果是，则条件成立。</td>
+<td align="left">如a=3,b=3，则(a &lt;= b) 为 True</td>
+</tr>
+</tbody></table>
+<p>示例代码：</p>
+<pre><code class="python">num1 = 15
+num2 = 20
+
+# == 等于：表示左右两个操作数是否相等
+print(num1 == num2)  # 打印结果为：False
+
+# != 不等于
+print(num1 != num2)  # 打印结果为：True
+
+# &lt; 小于
+print(num1 &lt; num2)  # 打印结果为：True
+
+# &gt;= 大于等于: num1 大于 或者 等于 num2 ，条件都成立
+print(num1 &gt;= num2)  # 打印结果为：False
+
+# &lt;= 小于等于： num1 小于 或者 等于 num2 ，条件都成立
+print(num1 &lt;= num2)  # 打印结果为：True</code></pre>
+<h3 id="2-逻辑运算符"><a href="#2-逻辑运算符" class="headerlink" title="2. 逻辑运算符"></a>2. 逻辑运算符</h3><table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th>逻辑表达式</th>
+<th align="left">描述</th>
+<th align="left">实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">and</td>
+<td>x and y</td>
+<td align="left">布尔”与”：如果 x 为 False，x and y 返回 False，否则它返回 y 的值。</td>
+<td align="left">True and False， 返回 False。</td>
+</tr>
+<tr>
+<td align="left">or</td>
+<td>x or y</td>
+<td align="left">布尔”或”：如果 x 是 True，它返回 True，否则它返回 y 的值。</td>
+<td align="left">False or True， 返回 True。</td>
+</tr>
+<tr>
+<td align="left">not</td>
+<td>not x</td>
+<td align="left">布尔”非”：如果 x 为 True，返回 False 。如果 x 为 False，它返回 True。</td>
+<td align="left">not True 返回 False, not False 返回 True</td>
+</tr>
+</tbody></table>
+<p>示例代码：</p>
+<pre><code class="python">&quot;&quot;&quot;
+and: 并且， 左右2边都为True，结果才为True
+or:  或者， 只有有1个为True，结果为True
+not: 非，取反，原来是True就变成False
+&quot;&quot;&quot;
+
+# 左右2边都为True，结果才为True
+print(True and True)
+
+# 5&gt;3 为True,  4 &lt; 3为False， 整体为False
+print(5 &gt; 3 and 4 &lt; 3)
+
+print(True or False)
+# 1 == 1 为True, 结果就为True
+print(1 == 1 or 1 &gt; 3)
+
+print(not True)
+# 1 == 1为True, 加上not，变成False
+print( not (1 == 1) )</code></pre>
+<h2 id="二、if-语句的基本格式"><a href="#二、if-语句的基本格式" class="headerlink" title="二、if 语句的基本格式"></a>二、if 语句的基本格式</h2><h3 id="1-if-选择语句基本格式"><a href="#1-if-选择语句基本格式" class="headerlink" title="1. if 选择语句基本格式"></a>1. if 选择语句基本格式</h3><ul>
+<li>if 语句是用来进行选择判断的，其使用格式如下：</li>
+</ul>
+<pre><code class="python">if 要判断的条件:
+    条件满足时，要做的事情
+    ……</code></pre>
+<ul>
+<li>注意：<ul>
+<li>判断的条件结果为 True 时，才会执行 if 里面的代码块</li>
+<li>代码的<strong>缩进</strong>为一个 <code>tab</code> 键，或者 <strong>4</strong> 个空格</li>
+<li>只要缩进一个 <code>tab</code> 键里面的代码，都属于 if 语句里面的代码块</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-案例演练：选择年龄"><a href="#2-案例演练：选择年龄" class="headerlink" title="2. 案例演练：选择年龄"></a>2. 案例演练：选择年龄</h3><p><strong>需求</strong></p>
+<ol>
+<li>定义一个变量 age，保存年龄</li>
+<li>if 判断条件(判断是否满 18 岁)</li>
+<li>满足条件，打印一句话：允许进网吧嗨皮</li>
+</ol>
+<p>示例代码：</p>
+<pre><code class="python">print(&#39;if的前面&#39;)
+
+# 1. 定义一个变量age，保存年龄
+age = 19
+
+# 2. if 判断条件(判断是否满 18 岁)
+if age &gt;= 18:
+    # 3. 满足条件，打印一句话：允许进网吧嗨皮
+    print(&#39;允许进网吧嗨皮&#39;)
+
+# 不属于if的，可以无条件执行
+print(&#39;if执行完毕&#39;)</code></pre>
+<p>运行结果:</p>
+<pre><code class="shell">if的前面
+允许进网吧嗨皮
+if执行完毕</code></pre>
+<h2 id="三、if-else-语句格式"><a href="#三、if-else-语句格式" class="headerlink" title="三、if-else 语句格式"></a>三、if-else 语句格式</h2><h3 id="1-else-处理条件不满足的情况"><a href="#1-else-处理条件不满足的情况" class="headerlink" title="1. else 处理条件不满足的情况"></a>1. else 处理条件不满足的情况</h3><ul>
+<li>思考：在使用 if 的时候，它只能做到满足条件时要做的事情。那万一需要在不满足条件的时候，做某些事，该怎么办呢？</li>
+<li>答：使用 if-else</li>
+</ul>
+<h3 id="2-if-else的语法格式"><a href="#2-if-else的语法格式" class="headerlink" title="2. if-else的语法格式"></a>2. if-else的语法格式</h3><pre><code class="python">if 要判断的条件:
+    条件满足时，要做的事情
+    ……
+else:
+    条件不满足时，要做的事情
+    ……</code></pre>
+<h3 id="3-案例演练：判断年龄改进"><a href="#3-案例演练：判断年龄改进" class="headerlink" title="3. 案例演练：判断年龄改进"></a>3. 案例演练：判断年龄改进</h3><p><strong>需求</strong></p>
+<pre><code class="python">1. 输入用户年龄，input返回值是字符串，类型转换为int
+2. if 判断是否满 18 岁：
+    2.1 如果满 18 岁，打印一句话：允许进网吧嗨皮
+3. 否则，未满 18 岁：
+    3.1 打印一句话：提示回家写作业</code></pre>
+<p>示例代码：</p>
+<pre><code class="python"># 1. 输入用户年龄，input返回值是字符串，类型转换为int
+age = int(input(&#39;输入用户年龄: &#39;))
+
+# 2. if 判断是否满 18 岁:
+if age &gt;= 18:
+    # 2.1 如果满 18 岁，打印一句话：允许进网吧嗨皮
+    print(&#39;允许进网吧嗨皮&#39;)
+# 3. 否则，未满 18 岁
+else:
+    # 3.1 打印一句话：提示回家写作业
+    print(&#39;回家写作业&#39;)</code></pre>
+<p>运行结果：</p>
+<pre><code class="shell">输入用户年龄: 12
+回家写作业</code></pre>
+<h3 id="4-if-实现三目运算操作"><a href="#4-if-实现三目运算操作" class="headerlink" title="4. if 实现三目运算操作"></a>4. if 实现三目运算操作</h3><ul>
+<li><p>三目运算符：简洁版if-else语句</p>
+</li>
+<li><pre><code>a if a &gt; b else b</code></pre><ul>
+<li>如果 a &gt; b的条件成立，三目运算的结果是a，否则就是b</li>
+</ul>
+</li>
+</ul>
+<pre><code class="python"># 需求：通过if-else求2个数的最大值
+# 1. 定义2个变量，赋值
+a = 10
+b = 20
+
+# 2. if 用大于比较2个变量大小：
+if a &gt; b:
+    #  2.1 如果满足条件，把大的那个数保存
+    _max = a
+# 3. 否则，不满足条件：
+else:
+    #  3.1 把小的那个数保存
+    _max = b
+# 4. if 语句的外面，打印最大值
+print(_max)
+
+# 重新给a, b赋值
+a = 10
+b = 20
+
+# 通过 三目运算符实现 同样效果
+# 如果 a &gt; b的条件成立，三目运算的结果是a，否则就是b
+_max2 = a if a &gt; b else b
+print(_max2)</code></pre>
+<h2 id="四、if-elif-else-语句格式"><a href="#四、if-elif-else-语句格式" class="headerlink" title="四、if-elif-else 语句格式"></a>四、if-elif-else 语句格式</h2><h3 id="1-if-elif-else-语句格式"><a href="#1-if-elif-else-语句格式" class="headerlink" title="1. if-elif-else 语句格式"></a>1. if-elif-else 语句格式</h3><ul>
+<li>一对 if 和 else 可以让代码执行出 <strong>两种不同的结果</strong></li>
+<li>但开发中，可能希望 <strong>并列的执行出多种结果</strong>，这时就可以使用 <code>elif</code></li>
+</ul>
+<p>语法格式如下:</p>
+<pre><code class="python">if 条件1：
+    满足条件1，执行的事情1
+elif 条件2：
+    满足条件2，执行的事情2
+elif 条件3：
+    满足条件3，执行的事情3
+else:
+    不满足上述条件，执行其它事情</code></pre>
+<p>说明:</p>
+<ul>
+<li>条件<strong>从上往下</strong>判断</li>
+<li><strong>只要满足一个条件</strong>，执行满足条件的代码块，<strong>其它条件不再</strong>判断执行</li>
+</ul>
+<h3 id="2-案例演练：女友的节日"><a href="#2-案例演练：女友的节日" class="headerlink" title="2. 案例演练：女友的节日"></a>2. 案例演练：女友的节日</h3><p><strong>需求</strong></p>
+<ol>
+<li>定义 <code>holiday_name</code> 字符串变量记录节日名称</li>
+<li>如果是 <strong>情人节</strong> 应该 <strong>买玫瑰</strong>／<strong>看电影</strong></li>
+<li>如果是 <strong>平安夜</strong> 应该 <strong>买苹果</strong>／<strong>吃大餐</strong></li>
+<li>如果是 <strong>生日</strong> 应该 <strong>买蛋糕</strong></li>
+<li>其他的日子每天都是节日啊……</li>
+</ol>
+<p>示例代码</p>
+<pre><code class="Python">&quot;&quot;&quot;
+1. 定义 holiday_name 字符串变量记录节日名称
+2. if 判断是否为情人节：
+    2.1 如果是 情人节，打印： 买玫瑰／看电影
+3. elif 判断是否为平安夜:
+    3.1 如果是 平安夜，打印： 买苹果／吃大餐
+4. elif 判断是否为生日 :
+    4.1 如果是 生日，打印： 买蛋糕
+5. else 其它情况：
+    5.1 打印：每天都是节日啊……
+&quot;&quot;&quot;
+
+# 1. 定义 holiday_name 字符串变量记录节日名称
+holiday_name = &#39;情人节&#39;
+
+# 2. if 判断是否为情人节：
+#   是两个=，==，判断是否相等
+if holiday_name == &#39;情人节&#39;:
+    # 2.1 如果是 情人节，打印： 买玫瑰／看电影
+    print(&#39;买玫瑰／看电影&#39;)
+# 3. elif 判断是否为平安夜:
+elif holiday_name == &#39;平安夜&#39;:
+    # 3.1 如果是 平安夜，打印： 买苹果／吃大餐
+    print(&#39;买苹果／吃大餐&#39;)
+# 4. elif 判断是否为生日 :
+elif holiday_name == &#39;生日&#39;:
+    # 4.1 如果是 生日，打印： 买蛋糕
+    print(&#39;买蛋糕&#39;)
+# 5. else 其它情况：
+else:
+    # 5.1 打印：每天都是节日啊……
+    print(&#39;每天都是节日啊……&#39;)</code></pre>
+<h2 id="五、if-嵌套"><a href="#五、if-嵌套" class="headerlink" title="五、if 嵌套"></a>五、if 嵌套</h2><h3 id="1-if-嵌套应用场景"><a href="#1-if-嵌套应用场景" class="headerlink" title="1. if 嵌套应用场景"></a>1. if 嵌套应用场景</h3><ul>
+<li>坐火车或者地铁的实际情况是：<ul>
+<li>先进行安检如果安检通过才会判断是否有车票，</li>
+<li>或者是先检查是否有车票之后才会进行安检</li>
+</ul>
+</li>
+<li>即实际的情况某个判断是再另外一个判断成立的基础上进行的，这样的情况该怎样解决呢？<ul>
+<li>if 嵌套</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-if-嵌套的格式"><a href="#2-if-嵌套的格式" class="headerlink" title="2. if 嵌套的格式"></a>2. if 嵌套的格式</h3><pre><code class="python">if 条件 1:
+    条件 1 满足执行的代码
+    ……
+
+    if 条件 1 基础上的条件 2:
+        条件 2 满足时，执行的代码
+        ……    
+
+    # 条件 2 不满足的处理
+    else:
+        条件 2 不满足时，执行的代码
+
+# 条件 1 不满足的处理
+else:
+    条件1 不满足时，执行的代码
+    ……</code></pre>
+<ul>
+<li>if 嵌套：if 里面包含 if</li>
+<li>满足外层if的条件，才执行判断内层的if</li>
+</ul>
+<h3 id="3-案例演练：车票刀具安检"><a href="#3-案例演练：车票刀具安检" class="headerlink" title="3. 案例演练：车票刀具安检"></a>3. 案例演练：车票刀具安检</h3><p><strong>需求</strong></p>
+<ol>
+<li>定义布尔型变量 <code>has_ticket</code> 表示是否有车票</li>
+<li>定义整型变量 <code>knife_length</code> 表示刀的长度，单位：厘米</li>
+<li>首先检查是否有车票，如果有，提示：有车票，即将进行下一步的刀具安检</li>
+<li>安检时，需要检查刀的长度，判断是否超过 20 厘米<ul>
+<li>如果超过 20 厘米，提示：刀的长度超过20厘米，不允许上车</li>
+<li>如果不超过 20 厘米，安检通过</li>
+</ul>
+</li>
+<li>如果没有车票，提示：大哥，您要先买票啊</li>
+</ol>
+<p>示例代码：</p>
+<pre><code class="python">&quot;&quot;&quot;
+步骤流程：先写外层的if，再写内层的if
+
+外层 if 步骤流程：
+1. 定义布尔型变量 has_ticket，赋值为True表示有票
+2. if 判断是否有票：
+    2.1 如果有票，打印：有车票，即将进行下一步的刀具安检
+    2.2 内层if的处理(先空着，不处理)
+3. 否则，没有票
+    3.1 打印：大哥，您要先买票啊
+
+内层 if 步骤流程：
+a. 定义整型变量 knife_length 表示刀的长度，单位：厘米
+b. if 判断刀具长度是否超过20：
+    b.1 如果超过 20 厘米，打印：刀的长度超过20厘米，不允许上车
+c. 否则，不超过20厘米：
+    c.1 打印：安检通过，请上车
+&quot;&quot;&quot;
+
+# 外层 if
+# 1. 定义布尔型变量 has_ticket，赋值为True表示有票
+has_ticket = True
+
+# 2. if 判断是否有票：
+if has_ticket:
+    # 2.1 如果有票，打印：有车票，即将进行下一步的刀具安检
+    print(&#39;有车票，即将进行下一步的刀具安检&#39;)
+
+    # 2.2 内层 if 的处理
+    # a. 定义整型变量 knife_length 表示刀的长度，单位：厘米
+    knife_length = 22
+    # b. if 判断刀具长度是否超过20：
+    if knife_length &gt; 20:
+        # b.1 如果超过 20 厘米，打印：刀的长度超过20厘米，不允许上车
+        print(&#39;刀的长度超过20厘米，不允许上车&#39;)
+    # c. 否则，不超过20厘米：
+    else:
+        # c.1 打印：安检通过，请上车
+        print(&#39;安检通过，请上车&#39;)
+
+# 3. 否则，没有票
+else:
+    # 3.1 打印：大哥，您要先买票啊
+    print(&#39;大哥，您要先买票啊&#39;)</code></pre>
+<h2 id="应用：猜拳游戏"><a href="#应用：猜拳游戏" class="headerlink" title="应用：猜拳游戏"></a>应用：猜拳游戏</h2><p>学习目标:</p>
+<ul>
+<li>强化 多个条件 的 逻辑运算</li>
+<li>体会 import 导⼊模块（“⼯具包”）的使⽤</li>
+</ul>
+<hr>
+<h3 id="1-案例需求"><a href="#1-案例需求" class="headerlink" title="1. 案例需求"></a>1. 案例需求</h3><ol>
+<li>从控制台输⼊要出的拳 —— ⽯头（1）／剪⼑（2）／布（3）</li>
+<li>电脑 随机 出拳 —— 先假定电脑只会出⽯头，完成整体代码功能</li>
+<li>⽐较胜负</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="center">规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">石头 胜 剪刀</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">剪刀 胜 布</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">布 胜 石头</td>
+</tr>
+</tbody></table>
+<h3 id="2-基础代码实现"><a href="#2-基础代码实现" class="headerlink" title="2. 基础代码实现"></a>2. 基础代码实现</h3><pre><code class="python">&quot;&quot;&quot;
+规则：石头 1， 剪刀 2， 布 3
+角色：用户user，电脑computer
+用户赢的情况：
+    user == 1 and computer == 2
+    user == 2 and computer == 3
+    user == 3 and computer == 1
+
+步骤流程：
+1. 用户输入数字：请输入（石头 1， 剪刀 2， 布 3）
+2. 电脑固定一个数字，假定只会出石头
+3. if 用户赢电脑的判断：
+    3.1 如果用户赢，打印：电脑弱爆了
+4. elif 平局：
+    4.1 打印：心有灵犀，再来一盘！
+5. 否则，电脑赢
+    5.1 打印：不行，我要和你决战到天亮！
+&quot;&quot;&quot;
+
+# 1. 用户输入数字
+user = int(input(&#39;请输入（石头 1， 剪刀 2， 布 3）：&#39;))
+
+# 2. 电脑固定一个数字，假定只会出石头
+computer = 3
+
+# 3. if 用户赢电脑的判断：
+if (user == 1 and computer == 2) or (user == 2 and computer == 3) or (user == 3 and computer == 1):
+    # 3.1 如果用户赢，打印：电脑弱爆了
+    print(&#39;电脑弱爆了&#39;)
+# 4. elif 平局：
+elif user == computer:
+    print(&#39;心有灵犀，再来一盘！&#39;)
+# 5. 否则，电脑赢
+else:
+    # 5.1 打印：不行，我要和你决战到天亮！
+    print(&#39;不行，我要和你决战到天亮！&#39;)</code></pre>
+<h3 id="3-随机数的产生"><a href="#3-随机数的产生" class="headerlink" title="3. 随机数的产生"></a>3. 随机数的产生</h3><ul>
+<li>在 <code>Python</code> 中，要使用随机数，首先需要导入 <strong>随机数</strong> 的 <strong>模块</strong> —— “工具包”</li>
+</ul>
+<pre><code class="python">import random</code></pre>
+<ul>
+<li>导入模块后，可以直接在 <strong>模块名称</strong> 后面敲一个 <code>.</code> 然后按 <code>Tab</code> 键，会提示该模块中包含的所有函数</li>
+<li><code>random.randint(a, b)</code> ，返回 <code>[a, b]</code> 之间的整数，包含 <code>a</code> 和 <code>b</code></li>
+<li>例如：</li>
+</ul>
+<pre><code class="python">&quot;&quot;&quot;
+功能：产生某个范围的随机数
+
+步骤流程：
+# 1. 导入模块，工具包，后面会学习
+# 2. 调用工具里面的函数，返回一个随机值
+&quot;&quot;&quot;
+# 1. 导入模块，工具包
+import random
+
+# 2. 调用工具里面的函数，返回一个随机值
+num = random.randint(1, 3)  # [1, 3]在1, 2, 3随机产出一个数
+print(num)</code></pre>
+<h3 id="4-猜拳游戏完整代码"><a href="#4-猜拳游戏完整代码" class="headerlink" title="4. 猜拳游戏完整代码"></a>4. 猜拳游戏完整代码</h3><pre><code class="python">&quot;&quot;&quot;
+规则：石头 1， 剪刀 2， 布 3
+角色：用户user，电脑computer
+用户赢的情况：
+    user == 1 and computer == 2
+    user == 2 and computer == 3
+    user == 3 and computer == 1
+
+步骤流程：
+0. 导入模块
+1. 用户输入数字：请输入（石头 1， 剪刀 2， 布 3）
+2. 电脑 随机 出拳，即随机产生一个[1,3]范围的数
+3. if 用户赢电脑的判断：
+    3.1 如果用户赢，打印：电脑弱爆了
+4. elif 平局：
+    4.1 打印：心有灵犀，再来一盘！
+5. 否则，电脑赢
+    5.1 打印：不行，我要和你决战到天亮！
+&quot;&quot;&quot;
+
+# 0. 导入模块
+import random
+
+# 1. 用户输入数字
+user = int(input(&#39;请输入（石头 1， 剪刀 2， 布 3）：&#39;))
+
+# 2. 电脑 随机 出拳，即随机产生一个[1,3]范围的数
+computer = random.randint(1, 3)
+
+# 3. if 用户赢电脑的判断：
+if (user == 1 and computer == 2) or (user == 2 and computer == 3) or (user == 3 and computer == 1):
+    # 3.1 如果用户赢，打印：电脑弱爆了
+    print(&#39;电脑弱爆了&#39;)
+# 4. elif 平局：
+elif user == computer:
+    print(&#39;心有灵犀，再来一盘！&#39;)
+# 5. 否则，电脑赢
+else:
+    # 5.1 打印：不行，我要和你决战到天亮！
+    print(&#39;不行，我要和你决战到天亮！&#39;)</code></pre>
+<h2 id="六、while循环"><a href="#六、while循环" class="headerlink" title="六、while循环"></a>六、while循环</h2><h3 id="1-while循环"><a href="#1-while循环" class="headerlink" title="1. while循环"></a>1. while循环</h3><h4 id="1-1-while循环的格式"><a href="#1-1-while循环的格式" class="headerlink" title="1.1 while循环的格式"></a>1.1 while循环的格式</h4><pre><code class="python">变量设置初始值
+
+while 条件(判断 变量是否满足条件):
+    条件满足时，做的事情1
+    ...(省略)...
+
+    修改变量</code></pre>
+<ul>
+<li>注意：<code>while</code> 语句中的缩进部分是一个 <strong>独立的代码块</strong></li>
+</ul>
+<h4 id="1-2-案例演练：循环跑步10圈"><a href="#1-2-案例演练：循环跑步10圈" class="headerlink" title="1.2 案例演练：循环跑步10圈"></a>1.2 案例演练：循环跑步10圈</h4><pre><code class="python">&quot;&quot;&quot;
+1. 定义一个条件变量，一般赋值为0
+2. while 判断条件：
+    2.1 满足条件的代码块
+    2.2 条件变量的改变【非常重要】
+&quot;&quot;&quot;
+
+# 1. 定义一个条件变量，一般赋值为0
+i = 0
+
+# 2. while 判断条件：
+while i &lt; 10:
+    # 2.1 满足条件的代码块
+    print(&#39;跑步第%d圈&#39; % (i+1))
+
+    # 2.2 条件变量的改变【非常重要】
+    i += 1</code></pre>
+<p>运行结果：</p>
+<pre><code class="shell">跑步第1圈
+跑步第2圈
+跑步第3圈
+跑步第4圈
+跑步第5圈
+跑步第6圈
+跑步第7圈
+跑步第8圈
+跑步第9圈
+跑步第10圈</code></pre>
+<h4 id="1-3-死循环"><a href="#1-3-死循环" class="headerlink" title="1.3 死循环"></a>1.3 死循环</h4><ul>
+<li>条件永远为真的(<strong><code>True</code></strong>)循环即为死循环，也叫无限循环</li>
+</ul>
+<pre><code class="python">while True:
+    print(&#39;我会永远循环执行下去&#39;)</code></pre>
+<h3 id="2-while循环的应用"><a href="#2-while循环的应用" class="headerlink" title="2. while循环的应用"></a>2. while循环的应用</h3><h4 id="2-1-计算1-100的累加和（包含1和100）"><a href="#2-1-计算1-100的累加和（包含1和100）" class="headerlink" title="2.1 计算1~100的累加和（包含1和100）"></a>2.1 计算1~100的累加和（包含1和100）</h4><pre><code class="python">&quot;&quot;&quot;
+核心代码分析：
+_sum = 0
+
+i = 1
+# 等价于 _sum += i
+_sum = sum+i  # _sum = 0+1
+
+i = 2
+_sum = _sum+i # _sum = 上一步_sum的内容 + 2 ==》 _sum = 0+1+2
+
+i = 3
+_sum = _sum+i # _sum = 上一步_sum的内容 + 3 ==》 _sum = 0+1+2+3
+
+
+步骤流程：
+1. 定义条件变量 i, 赋值为1
+2. 定义一个辅助变量，用于保存累计的结果
+3. while 条件(i &lt;= 100)：
+    3.1 完成累加
+    3.2 条件变量改变
+4. 在循环的外面，打印最终的累加结果
+&quot;&quot;&quot;
+
+
+# 1. 定义条件变量 i, 赋值为1
+i = 1
+# 2. 定义一个辅助变量，用于保存累计的结果
+_sum = 0
+
+# 3. while 条件(i &lt;= 100)：
+while i &lt;= 100:
+    # 3.1 完成累加
+    _sum = _sum + i
+
+    # 3.2 条件变量改变
+    i += 1
+
+# 4. 在循环的外面，打印最终的累加结果
+print(&#39;_sum = %d&#39; % _sum)</code></pre>
+<h4 id="2-2-计算1-100之间偶数的累加和"><a href="#2-2-计算1-100之间偶数的累加和" class="headerlink" title="2.2 计算1~100之间偶数的累加和"></a>2.2 计算1~100之间偶数的累加和</h4><pre><code class="python">&quot;&quot;&quot;
+判断一个变量是否为偶数：对2求余，余数为0即为偶数
+i = 4
+if i % 2 == 0：
+    print(&#39;偶数&#39;)
+
+步骤流程：
+1. 定义条件变量
+2. 设置辅助变量
+3. while 条件：
+    3.1 if 判断i是否为偶数
+        3.1.1 累加
+    3.2 条件变量的改变
+4. 循环外面，打印累加结果
+&quot;&quot;&quot;
+
+# 1. 定义条件变量
+i = 1
+# 2. 设置辅助变量
+_sum = 0
+
+# 3. while 条件：
+while i &lt;= 100:
+    # 3.1 if 判断i是否为偶数
+    if i % 2 == 0:
+        # 3.1.1 累加
+        _sum += i
+
+    # 3.2 条件变量的改变
+    i += 1
+
+# 4. 循环外面，打印累加结果
+print(&quot;sum = %d&quot; % _sum)</code></pre>
+<h3 id="3-debug调试"><a href="#3-debug调试" class="headerlink" title="3. debug调试"></a>3. debug调试</h3><h4 id="3-1-操作流程"><a href="#3-1-操作流程" class="headerlink" title="3.1 操作流程"></a>3.1 操作流程</h4><ol>
+<li>设置断点</li>
+<li>调试运行</li>
+<li>单步执行代码</li>
+<li>观察变量变化<ul>
+<li>重复步骤3、4，观察变量和程序执行流程</li>
+<li>重复步骤3、4，观察变量和程序执行流程</li>
+<li>重复步骤3、4，观察变量和程序执行流程</li>
+</ul>
+</li>
+</ol>
+<h2 id="七、while循环嵌套"><a href="#七、while循环嵌套" class="headerlink" title="七、while循环嵌套"></a>七、while循环嵌套</h2><h3 id="1-while嵌套的格式"><a href="#1-while嵌套的格式" class="headerlink" title="1. while嵌套的格式"></a>1. while嵌套的格式</h3><ul>
+<li><code>while</code> 嵌套就是：<code>while</code> 里面还有 <code>while</code></li>
+</ul>
+<pre><code class="python">while 条件 1:
+    条件满足时，做的事情1
+    ...(省略)...
+
+    while 条件 2:
+        条件满足时，做的事情1
+        ...(省略)...
+
+        处理条件 2
+
+    处理条件 1</code></pre>
+<ul>
+<li>步骤流程：先写外层的while，再写内层的while</li>
+</ul>
+<h3 id="2-案例演练"><a href="#2-案例演练" class="headerlink" title="2. 案例演练"></a>2. 案例演练</h3><p>需求：跑步 5 圈，每跑步1圈，做10个俯卧撑</p>
+<pre><code class="python">&quot;&quot;&quot;
+外层 while 步骤流程：
+1. 设置外层循环的条件变量 i， 赋值为0
+2. 外层while 条件(i &lt; 5)：
+    3. 打印跑了第几圈
+    4. 做10个俯卧撑内循环处理(先空着，不处理)
+    5. 外层循环的条件变量改变
+
+内层 while 步骤流程：
+4.1 定义内层循环条件变量 j = 0
+4.2 内层循环 while j &lt; 10:
+    4.3 打印第几个俯卧撑
+    4.4 内层循环的条件变量改变
+&quot;&quot;&quot;
+
+# 1. 设置外层循环的条件变量 i， 赋值为0
+i = 0
+
+# 2. 外层while 条件(i &lt; 5)：
+while i &lt; 5:
+    # 3. 打印跑了第几圈
+    print(&#39;跑步第 %d 圈&#39; % (i + 1))
+
+    # 4. 做10个俯卧撑
+    # 4.1 定义内层循环条件变量j = 0
+    j = 0
+
+    # 4.2 内层循环 while j &lt; 10:
+    while j &lt; 10:
+        # 4.3 打印第几个俯卧撑
+        print(&#39;第%d俯卧撑&#39; % (j + 1))
+        # 4.4 内层循环的条件变量改变
+        j += 1
+
+    # 5. 外层循环的条件变量改变
+    i += 1</code></pre>
+<h3 id="3-while嵌套应用"><a href="#3-while嵌套应用" class="headerlink" title="3. while嵌套应用"></a>3. while嵌套应用</h3><h3 id="3-1-打印正方形"><a href="#3-1-打印正方形" class="headerlink" title="3.1 打印正方形"></a>3.1 打印正方形</h3><h4 id="3-1-1-通过循环打印1行星星"><a href="#3-1-1-通过循环打印1行星星" class="headerlink" title="3.1.1 通过循环打印1行星星"></a>3.1.1 通过循环打印1行星星</h4><p>要求：打印如下图形</p>
+<pre><code class="shell">* * * * *</code></pre>
+<p>示例代码：</p>
+<pre><code class="python">&quot;&quot;&quot;
+步骤流程：
+1 定义循环条件变量 j = 0
+2 循环 while j &lt; 5:
+    3 打印一个星星，end=&#39;&#39;作用指定不换行打印
+    4 循环的条件变量改变
+&quot;&quot;&quot;
+
+# 1 定义循环条件变量 j = 0
+j = 0
+# 2 循环 while j &lt; 5:
+while j &lt; 5:
+    # 3 打印一个星星，end=&#39;&#39;作用指定不换行打印
+    print(&#39;* &#39;, end=&#39;&#39;)
+
+    # 4 循环的条件变量改变
+    j += 1</code></pre>
+<h4 id="3-1-2-通过循环嵌套打印正方形"><a href="#3-1-2-通过循环嵌套打印正方形" class="headerlink" title="3.1.2 通过循环嵌套打印正方形"></a>3.1.2 通过循环嵌套打印正方形</h4><p>要求：打印如下图形</p>
+<pre><code>* * * * * 
+* * * * * 
+* * * * * 
+* * * * * 
+* * * * *</code></pre><p>示例代码：</p>
+<pre><code class="python">&quot;&quot;&quot;
+外层 while 步骤流程：
+1. 定义外层循环的条件变量 i = 0
+2. 外层while 条件(i &lt; 5)：
+    3. 内循环处理(先空着，不处理)
+    4. 单独打印空行
+    5. 外层循环的条件变量改变
+
+内层 while 步骤流程：
+3.1 定义内层循环条件变量 j = 0
+3.2 内层循环 while j &lt; 5:
+    3.3 打印一个星星，end=&#39;&#39;作用指定不换行打印
+    3.4 内层循环的条件变量改变
+&quot;&quot;&quot;
+
+# 1. 定义外层循环的条件变量 i = 0
+i = 0
+
+# 2. 外层while 条件(i &lt; 5)：
+while i &lt; 5:
+    # 3. 内循环处理：打印一行星星
+    # 3.1 定义内层循环条件变量 j = 0
+    j = 0
+    # 3.2 内层循环 while j &lt; 5:
+    while j &lt; 5:
+        # 3.3 打印一个星星，end=&#39;&#39;作用指定不换行打印
+        print(&#39;* &#39;, end=&#39;&#39;)
+
+        # 3.4 内层循环的条件变量改变
+        j += 1
+
+    # 4. 单独打印空行
+    print()
+    # 5. 外层循环的条件变量改变
+    i += 1</code></pre>
+<h4 id="3-2-打印三角形"><a href="#3-2-打印三角形" class="headerlink" title="3.2 打印三角形"></a>3.2 打印三角形</h4><p>要求：打印如下图形：</p>
+<pre><code>* 
+* * 
+* * * 
+* * * *  
+* * * * *</code></pre><p>示例代码：</p>
+<pre><code class="python">&quot;&quot;&quot;
+外层 while 步骤流程：
+1. 定义外层循环的条件变量 i = 0
+2. 外层while 条件(i &lt; 5)：
+    3. 内循环处理(先空着，不处理)
+    4. 单独打印空行
+    5. 外层循环的条件变量改变
+
+内层 while 步骤流程：第1次打印1个星，第2次打印2个星，如此内推
+3.1 定义内层循环条件变量 j = 0
+3.2 内层循环 while j &lt; i+1:
+    3.3 打印一个星星，end=&#39;&#39;作用指定不换号打印
+    3.4 内层循环的条件变量改变
+&quot;&quot;&quot;
+
+# 1. 定义外层循环的条件变量 i = 0
+i = 0
+
+# 2. 外层 while 条件(i &lt; 5)：
+while i &lt; 5:
+    # 3. 内循环处理：第1次打印1个星，第2次打印2个星，如此内推
+    # 3.1 设置条件变量j = 0
+    j = 0
+    # 3.2 内层循环 while j &lt; i+1:
+    while j &lt; i + 1:
+        # 3.3 打印一个星星，end=&#39;&#39;作用指定不换行打印
+        print(&#39;* &#39;, end=&#39;&#39;)
+
+        # 3.4 内层循环的条件变量改变
+        j += 1
+
+    # 4. 单独打印空行
+    print()
+    # 5. 外层循环的条件变量改变
+    i += 1</code></pre>
+<h2 id="八、break-、-continue和循环的else"><a href="#八、break-、-continue和循环的else" class="headerlink" title="八、break 、 continue和循环的else"></a>八、break 、 continue和循环的else</h2><h3 id="1-break-和-continue的作用"><a href="#1-break-和-continue的作用" class="headerlink" title="1. break 和 continue的作用"></a>1. break 和 continue的作用</h3><p><strong><code>break</code></strong> 和 <strong><code>continue</code></strong> 是专门在循环中使用的关键字</p>
+<ul>
+<li><code>break</code> <strong>跳出循环</strong>，不再执行循环体中后续重复的代码</li>
+<li><code>continue</code> <strong>跳过循环</strong>，不再执行<strong>本次循环体</strong>中后续重复的代码，但进入下一次循环判断</li>
+<li><code>break</code>/<code>continue</code>只能用在循环中，除此以外不能单独使用</li>
+<li><code>break</code>/<code>continue</code>在嵌套循环中，只对<strong>最近的一层循环</strong>起作用(就近原则)</li>
+</ul>
+<h4 id="1-1-break"><a href="#1-1-break" class="headerlink" title="1.1 break"></a>1.1 break</h4><ul>
+<li><strong>在循环过程中</strong>，如果 <strong>某一个条件满足后</strong>，<strong>不</strong> 希望 <strong>循环继续执行</strong>，可以使用 <code>break</code> 跳出循环</li>
+</ul>
+<p>需求：跑步10圈，跑5圈后，不再跑了</p>
+<pre><code class="python">&quot;&quot;&quot;
+步骤流程：
+1. 定义一个条件变量，一般赋值为0
+2. while 判断条件：
+    3. 满足条件的循环代码块
+    4. if 满足条件：
+        4.1 打印提示信息：累了，结束战斗
+        4.2 break跳出循环
+    5. 条件变量的改变【非常重要】
+&quot;&quot;&quot;
+
+# 1. 定义一个条件变量，一般赋值为0
+i = 0
+
+# 2. while 判断条件：
+while i &lt; 10:
+    # 3. 满足条件的循环代码块
+    print(&#39;跑步第%d圈&#39; % (i+1))
+
+    # 4. if 满足条件：
+    if i == 4:
+        # 4.1 打印提示信息
+        print(&#39;累了，结束战斗&#39;)
+        # 4.2 break跳出循环
+        break
+
+    # 5. 条件变量的改变【非常重要】
+    i += 1
+
+print(&#39;循环的外面&#39;)</code></pre>
+<p>运行结果</p>
+<pre><code class="python">跑步第1圈
+跑步第2圈
+跑步第3圈
+跑步第4圈
+跑步第5圈
+累了，结束战斗
+循环的外面</code></pre>
+<h4 id="1-2-continue"><a href="#1-2-continue" class="headerlink" title="1.2 continue"></a>1.2 continue</h4><ul>
+<li><strong>在循环过程中</strong>，如果 <strong>某一个条件满足后</strong>，<strong>不</strong> 希望执行本次循环代码（跳过本次循环），但可进入下一次循环判断，可以使用 <code>continue</code></li>
+</ul>
+<p>需求：跑步10圈，到第5圈休息一下，第6圈继续</p>
+<pre><code class="python">&quot;&quot;&quot;
+步骤流程：
+1. 定义一个条件变量，一般赋值为0
+2. while 判断条件：
+    3. if 满足条件：
+        3.1 打印：累了，休息1圈
+        3.2 条件变量的改变【非常重要】，如果没有，导致死循环
+        3.3 continue跳过本次循环
+
+    4. 打印跑步第几圈
+    5. 条件变量的改变【非常重要】
+&quot;&quot;&quot;
+
+# 1. 定义一个条件变量，一般赋值为0
+i = 0
+
+# 2. while 判断条件：
+while i &lt; 10:
+    # 3. if 满足条件：
+    if i == 4:
+        # 3.1 打印：累了，休息1圈
+        print(&#39;累了，休息1圈&#39;)
+        # 3.2 条件变量的改变【非常重要】，如果没有，导致死循环
+        i += 1
+        # 3.3 continue跳过本次循环
+        continue
+
+    # 4. 打印跑步第几圈
+    print(&#39;跑步第%d圈&#39; % (i+1))
+
+    # 5. 条件变量的改变【非常重要】
+    i += 1
+
+print(&#39;循环的外面&#39;)</code></pre>
+<ul>
+<li>需要注意：使用 <code>continue</code> 时，<strong>条件处理部分的代码，需要特别注意</strong>，不小心会出现 <strong>死循环</strong></li>
+</ul>
+<p>运行结果：</p>
+<pre><code class="python">跑步第1圈
+跑步第2圈
+跑步第3圈
+跑步第4圈
+累了，休息1圈
+跑步第6圈
+跑步第7圈
+跑步第8圈
+跑步第9圈
+跑步第10圈
+循环的外面</code></pre>
+<h3 id="2-循环的else"><a href="#2-循环的else" class="headerlink" title="2. 循环的else"></a>2. 循环的else</h3><h4 id="2-1-循环的else"><a href="#2-1-循环的else" class="headerlink" title="2.1 循环的else"></a>2.1 循环的else</h4><ul>
+<li>循环也可以支持else使用</li>
+<li>循环里面没有遇到break语句，while执行完后，则会执行else的分支</li>
+</ul>
+<p>示例代码：</p>
+<pre><code class="python">i = 0
+while i &lt; 5:
+    print(&#39;跑步第%d圈&#39; % (i+1))
+    # 测试有break，和没有break的else执行情况
+    # if i == 3:
+    #     break
+
+    i += 1
+else:
+    print(&#39;循环里面没有遇到break语句，while执行完后，则会执行else的分支&#39;)</code></pre>
+<p>运行结果：</p>
+<pre><code class="shell">跑步第1圈
+跑步第2圈
+跑步第3圈
+跑步第4圈
+跑步第5圈
+循环里面没有遇到break语句，while执行完后，则会执行else的分支</code></pre>
+<h4 id="2-2-if…else-和-循环-else-的区别"><a href="#2-2-if…else-和-循环-else-的区别" class="headerlink" title="2.2 if…else 和 循环 else 的区别"></a>2.2 if…else 和 循环 else 的区别</h4><ul>
+<li>if…else：<ul>
+<li>不满足if条件的前提下，执行else操作</li>
+<li>两者只会执行一个分支</li>
+</ul>
+</li>
+<li>循环 else：<ul>
+<li>循环里面没有遇到break语句，while执行完后，则会执行else的分支</li>
+<li>也就是说，没有遇到break，不仅会执行while的语句，也会执行else的语句</li>
+</ul>
+</li>
+</ul>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8002-%E9%80%89%E6%8B%A9%E5%92%8C%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5/">https://caijinbo.work/2020/07/26/2020-07-27-python基础02-选择和循环语句/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/pyhon/">pyhon</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#选择和循环语句"><span class="toc-number">1.</span> <span class="toc-text">选择和循环语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、比较和逻辑运算符"><span class="toc-number">1.1.</span> <span class="toc-text">一、比较和逻辑运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-比较-即关系，条件-运算符"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 比较(即关系，条件)运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-逻辑运算符"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 逻辑运算符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、if-语句的基本格式"><span class="toc-number">1.2.</span> <span class="toc-text">二、if 语句的基本格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-if-选择语句基本格式"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. if 选择语句基本格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-案例演练：选择年龄"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 案例演练：选择年龄</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、if-else-语句格式"><span class="toc-number">1.3.</span> <span class="toc-text">三、if-else 语句格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-else-处理条件不满足的情况"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. else 处理条件不满足的情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-if-else的语法格式"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. if-else的语法格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-案例演练：判断年龄改进"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 案例演练：判断年龄改进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-if-实现三目运算操作"><span class="toc-number">1.3.4.</span> <span class="toc-text">4. if 实现三目运算操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、if-elif-else-语句格式"><span class="toc-number">1.4.</span> <span class="toc-text">四、if-elif-else 语句格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-if-elif-else-语句格式"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. if-elif-else 语句格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-案例演练：女友的节日"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 案例演练：女友的节日</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、if-嵌套"><span class="toc-number">1.5.</span> <span class="toc-text">五、if 嵌套</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-if-嵌套应用场景"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. if 嵌套应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-if-嵌套的格式"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. if 嵌套的格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-案例演练：车票刀具安检"><span class="toc-number">1.5.3.</span> <span class="toc-text">3. 案例演练：车票刀具安检</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用：猜拳游戏"><span class="toc-number">1.6.</span> <span class="toc-text">应用：猜拳游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-案例需求"><span class="toc-number">1.6.1.</span> <span class="toc-text">1. 案例需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-基础代码实现"><span class="toc-number">1.6.2.</span> <span class="toc-text">2. 基础代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-随机数的产生"><span class="toc-number">1.6.3.</span> <span class="toc-text">3. 随机数的产生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-猜拳游戏完整代码"><span class="toc-number">1.6.4.</span> <span class="toc-text">4. 猜拳游戏完整代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、while循环"><span class="toc-number">1.7.</span> <span class="toc-text">六、while循环</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-while循环"><span class="toc-number">1.7.1.</span> <span class="toc-text">1. while循环</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-while循环的格式"><span class="toc-number">1.7.1.1.</span> <span class="toc-text">1.1 while循环的格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-案例演练：循环跑步10圈"><span class="toc-number">1.7.1.2.</span> <span class="toc-text">1.2 案例演练：循环跑步10圈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-死循环"><span class="toc-number">1.7.1.3.</span> <span class="toc-text">1.3 死循环</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-while循环的应用"><span class="toc-number">1.7.2.</span> <span class="toc-text">2. while循环的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-计算1-100的累加和（包含1和100）"><span class="toc-number">1.7.2.1.</span> <span class="toc-text">2.1 计算1~100的累加和（包含1和100）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-计算1-100之间偶数的累加和"><span class="toc-number">1.7.2.2.</span> <span class="toc-text">2.2 计算1~100之间偶数的累加和</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-debug调试"><span class="toc-number">1.7.3.</span> <span class="toc-text">3. debug调试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-操作流程"><span class="toc-number">1.7.3.1.</span> <span class="toc-text">3.1 操作流程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、while循环嵌套"><span class="toc-number">1.8.</span> <span class="toc-text">七、while循环嵌套</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-while嵌套的格式"><span class="toc-number">1.8.1.</span> <span class="toc-text">1. while嵌套的格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-案例演练"><span class="toc-number">1.8.2.</span> <span class="toc-text">2. 案例演练</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-while嵌套应用"><span class="toc-number">1.8.3.</span> <span class="toc-text">3. while嵌套应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-打印正方形"><span class="toc-number">1.8.4.</span> <span class="toc-text">3.1 打印正方形</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-通过循环打印1行星星"><span class="toc-number">1.8.4.1.</span> <span class="toc-text">3.1.1 通过循环打印1行星星</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-通过循环嵌套打印正方形"><span class="toc-number">1.8.4.2.</span> <span class="toc-text">3.1.2 通过循环嵌套打印正方形</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-打印三角形"><span class="toc-number">1.8.4.3.</span> <span class="toc-text">3.2 打印三角形</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、break-、-continue和循环的else"><span class="toc-number">1.9.</span> <span class="toc-text">八、break 、 continue和循环的else</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-break-和-continue的作用"><span class="toc-number">1.9.1.</span> <span class="toc-text">1. break 和 continue的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-break"><span class="toc-number">1.9.1.1.</span> <span class="toc-text">1.1 break</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-continue"><span class="toc-number">1.9.1.2.</span> <span class="toc-text">1.2 continue</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-循环的else"><span class="toc-number">1.9.2.</span> <span class="toc-text">2. 循环的else</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-循环的else"><span class="toc-number">1.9.2.1.</span> <span class="toc-text">2.1 循环的else</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-if…else-和-循环-else-的区别"><span class="toc-number">1.9.2.2.</span> <span class="toc-text">2.2 if…else 和 循环 else 的区别</span></a></li></ol></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8008-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12%EF%BC%9A%E7%BB%A7%E6%89%BF%E3%80%81%E5%B1%9E%E6%80%A7%E3%80%81%E6%96%B9%E6%B3%95/">&lt; python基础08-面向对象2：继承、属性、方法</a><a class="next" href="/2020/07/25/2020-07-26python%E5%9F%BA%E7%A1%8001-python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">python基础01-python基础知识 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

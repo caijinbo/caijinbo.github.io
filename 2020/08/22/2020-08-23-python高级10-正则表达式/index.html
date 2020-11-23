@@ -1,0 +1,1008 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>python高级10-正则表达式 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">python高级10-正则表达式</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/08/22/2020-08-23-python%E9%AB%98%E7%BA%A710-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">2020-08-22</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/python/">python</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><h2 id="一、property属性"><a href="#一、property属性" class="headerlink" title="一、property属性"></a>一、property属性</h2><h3 id="1-property属性的介绍"><a href="#1-property属性的介绍" class="headerlink" title="1. property属性的介绍"></a>1. property属性的介绍</h3><p>property属性就是负责把一个方法当做属性进行使用，这样做可以简化代码使用。</p>
+<a id="more"></a>
+
+<p><strong>定义property属性有两种方式</strong></p>
+<ol>
+<li>装饰器方式</li>
+<li>类属性方式</li>
+</ol>
+<h3 id="2-装饰器方式"><a href="#2-装饰器方式" class="headerlink" title="2. 装饰器方式"></a>2. 装饰器方式</h3><pre><code class="python">class Person(object):
+
+    def __init__(self):
+        self.__age = 0
+
+    # 装饰器方式的property, 把age方法当做属性使用, 表示当获取属性时会执行下面修饰的方法
+    @property
+    def age(self):
+        return self.__age
+
+    # 把age方法当做属性使用, 表示当设置属性时会执行下面修饰的方法
+    @age.setter
+    def age(self, new_age):
+        if new_age &gt;= 150:
+            print(&quot;成精了&quot;)
+        else:
+            self.__age = new_age
+
+# 创建person
+p = Person()
+print(p.age)
+p.age = 100
+print(p.age)
+p.age = 1000</code></pre>
+<p><strong>运行结果:</strong></p>
+<pre><code class="python">0
+100
+成精了</code></pre>
+<p><strong>代码说明:</strong></p>
+<ul>
+<li>@property 表示把方法当做属性使用, 表示当获取属性时会执行下面修饰的方法</li>
+<li>@方法名.setter 表示把方法当做属性使用,表示当设置属性时会执行下面修饰的方法</li>
+<li>装饰器方式的property属性修饰的方法名一定要一样。</li>
+</ul>
+<h3 id="3-类属性方式"><a href="#3-类属性方式" class="headerlink" title="3. 类属性方式"></a>3. 类属性方式</h3><pre><code class="python">class Person(object):
+
+    def __init__(self):
+        self.__age = 0
+
+    def get_age(self):
+        &quot;&quot;&quot;当获取age属性的时候会执行该方法&quot;&quot;&quot;
+        return self.__age
+
+    def set_age(self, new_age):
+        &quot;&quot;&quot;当设置age属性的时候会执行该方法&quot;&quot;&quot;
+        if new_age &gt;= 150:
+            print(&quot;成精了&quot;)
+        else:
+            self.__age = new_age
+
+    # 类属性方式的property属性
+    age = property(get_age, set_age)
+
+# 创建person
+p = Person()
+print(p.age)
+p.age = 100
+print(p.age)
+p.age = 1000</code></pre>
+<p><strong>运行结果:</strong></p>
+<pre><code class="python">0
+100
+成精了</code></pre>
+<p><strong>代码说明:</strong></p>
+<ul>
+<li>property的参数说明:<ul>
+<li>第一个参数是获取属性时要执行的方法</li>
+<li>第二个参数是设置属性时要执行的方法</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、with语句和上下文管理器"><a href="#二、with语句和上下文管理器" class="headerlink" title="二、with语句和上下文管理器"></a>二、with语句和上下文管理器</h2><h3 id="1-with语句的使用"><a href="#1-with语句的使用" class="headerlink" title="1. with语句的使用"></a>1. with语句的使用</h3><p><strong>基础班向文件中写入数据的示例代码:</strong></p>
+<pre><code class="python"> # 1、以写的方式打开文件
+ f = open(&quot;1.txt&quot;, &quot;w&quot;)
+ # 2、写入文件内容
+ f.write(&quot;hello world&quot;)
+ # 3、关闭文件
+ f.close()</code></pre>
+<p><strong>代码说明:</strong></p>
+<ul>
+<li>文件使用完后必须关闭，因为文件对象会占用操作系统的资源，并且操作系统同一时间能打开的文件数量也是有限的</li>
+</ul>
+<p><strong>这种写法可能出现一定的安全隐患，错误代码如下:</strong></p>
+<pre><code class="python"> # 1、以读的方式打开文件
+ f = open(&quot;1.txt&quot;, &quot;r&quot;)
+ # 2、读取文件内容
+ f.write(&quot;hello world&quot;)
+ # 3、关闭文件
+ f.close()</code></pre>
+<p><strong>运行结果:</strong></p>
+<pre><code class="python">Traceback (most recent call last):
+  File &quot;/home/python/Desktop/test/xxf.py&quot;, line 4, in &lt;module&gt;
+    f.write(&quot;hello world&quot;)
+io.UnsupportedOperation: not writable</code></pre>
+<p><strong>代码说明:</strong></p>
+<ul>
+<li>由于文件读写时都有可能产生IOError，一旦出错，后面的f.close()就不会调用。</li>
+<li>为了保证无论是否出错都能正确地关闭文件，我们可以使用try … finally来解决</li>
+</ul>
+<p><strong>安全写法, 代码如下:</strong></p>
+<pre><code class="python">try:
+    # 1、以读的方式打开文件
+    f = open(&quot;1.txt&quot;, &quot;r&quot;)
+    # 2、读取文件内容
+    f.write(&quot;xxxxx&quot;)
+
+except IOError as e:
+    print(&quot;文件操作出错&quot;, e)
+
+finally:
+    # 3、关闭文件
+    f.close()</code></pre>
+<p><strong>运行结果:</strong></p>
+<pre><code class="python">文件操作出错 not writable</code></pre>
+<p>这种方法虽然代码运行良好,但是缺点就是代码过于冗长,并且需要添加try-except-finally语句,不是很方便,也容易忘记.</p>
+<p>在这种情况下,<strong>Python提供了 with 语句的这种写法，既简单又安全，并且 with 语句执行完成以后自动调用关闭文件操作，即使出现异常也会自动调用关闭文件操作</strong>。</p>
+<p><strong>with 语句的示例代码:</strong></p>
+<pre><code class="python"># 1、以写的方式打开文件
+with open(&quot;1.txt&quot;, &quot;w&quot;) as f:
+    # 2、读取文件内容
+    f.write(&quot;hello world&quot;)</code></pre>
+<h3 id="2-上下文管理器"><a href="#2-上下文管理器" class="headerlink" title="2. 上下文管理器"></a>2. 上下文管理器</h3><p>一个类只要实现了<code>__enter__()和__exit__()</code>这个两个方法，通过该类创建的对象我们就称之为上下文管理器。</p>
+<p>上下文管理器可以使用 with 语句，<strong>with语句之所以这么强大，背后是由上下文管理器做支撑的</strong>，也就是说刚才使用 open 函数创建的文件对象就是就是一个上下文管理器对象。</p>
+<p><strong>自定义上下文管理器类,模拟文件操作:</strong></p>
+<p>定义一个File类，实现 <code>__enter__() 和 __exit__()</code>方法，然后使用 with 语句来完成操作文件， 示例代码:</p>
+<pre><code class="python">class File(object):
+
+    # 初始化方法
+    def __init__(self, file_name, file_model):
+        # 定义变量保存文件名和打开模式
+        self.file_name = file_name
+        self.file_model = file_model
+
+    # 上文方法
+    def __enter__(self):
+        print(&quot;进入上文方法&quot;)
+        # 返回文件资源
+        self.file = open(self.file_name,self.file_model)
+        return self.file
+
+    # 下文方法
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(&quot;进入下文方法&quot;)
+        self.file.close()
+
+
+if __name__ == &#39;__main__&#39;:
+
+    # 使用with管理文件
+    with File(&quot;1.txt&quot;, &quot;r&quot;) as file:
+        file_data = file.read()
+        print(file_data)</code></pre>
+<p><strong>运行结果:</strong></p>
+<pre><code class="python">进入上文方法
+hello world
+进入下文方法</code></pre>
+<p><strong>代码说明:</strong></p>
+<ul>
+<li><code>__enter__</code>表示上文方法，需要返回一个操作文件对象</li>
+<li><code>__exit__</code>表示下文方法，with语句执行完成会自动执行，即使出现异常也会执行该方法。</li>
+</ul>
+<h2 id="三、生成器的创建方式"><a href="#三、生成器的创建方式" class="headerlink" title="三、生成器的创建方式"></a>三、生成器的创建方式</h2><h3 id="1-生成器的介绍"><a href="#1-生成器的介绍" class="headerlink" title="1. 生成器的介绍"></a>1. 生成器的介绍</h3><p>根据程序员制定的规则循环生成数据，当条件不成立时则生成数据结束。数据不是一次性全部生成出来，而是使用一个，再生成一个，可以<strong>节约大量的内存</strong>。</p>
+<h3 id="2-创建生成器的方式"><a href="#2-创建生成器的方式" class="headerlink" title="2. 创建生成器的方式"></a>2. 创建生成器的方式</h3><ol>
+<li>生成器推导式</li>
+<li>yield 关键字</li>
+</ol>
+<p><strong>生成器推导式:</strong></p>
+<ul>
+<li>与列表推导式类似，只不过生成器推导式使用小括号</li>
+</ul>
+<pre><code class="python"># 创建生成器
+my_generator = (i * 2 for i in range(5))
+print(my_generator)
+
+# next获取生成器下一个值
+# value = next(my_generator)
+# print(value)
+
+# 遍历生成器
+for value in my_generator:
+    print(value)</code></pre>
+<p><strong>代码说明:</strong></p>
+<ul>
+<li>next 函数获取生成器中的下一个值</li>
+<li>for 循环遍历生成器中的每一个值</li>
+</ul>
+<p><strong>运行结果:</strong></p>
+<pre><code class="python">&lt;generator object &lt;genexpr&gt; at 0x101367048&gt;
+0
+2
+4
+6
+8</code></pre>
+<p><strong>yield 关键字:</strong></p>
+<ul>
+<li>只要在def函数里面看到有 yield 关键字那么就是生成器</li>
+</ul>
+<pre><code class="python">def mygenerater(n):
+    for i in range(n):
+        print(&#39;开始生成...&#39;)
+        yield i
+        print(&#39;完成一次...&#39;)
+
+
+if __name__ == &#39;__main__&#39;:
+
+    g = mygenerater(2)
+    # 获取生成器中下一个值
+    # result = next(g)
+    # print(result)
+
+    # while True:
+    #     try:
+    #         result = next(g)
+    #         print(result)
+    #     except StopIteration as e:
+    #         break
+
+    # # for遍历生成器, for 循环内部自动处理了停止迭代异常，使用起来更加方便
+    for i in g:
+        print(i)</code></pre>
+<p><strong>代码说明:</strong></p>
+<ul>
+<li>代码执行到 yield 会暂停，然后把结果返回出去，下次启动生成器会在暂停的位置继续往下执行</li>
+<li>生成器如果把数据生成完成，再次获取生成器中的下一个数据会抛出一个StopIteration 异常，表示停止迭代异常</li>
+<li>while 循环内部没有处理异常操作，需要手动添加处理异常操作</li>
+<li>for 循环内部自动处理了停止迭代异常，使用起来更加方便，推荐大家使用。</li>
+</ul>
+<p><strong>运行结果:</strong></p>
+<pre><code class="python">开始生成...
+0
+完成一次...
+开始生成...
+1
+完成一次...</code></pre>
+<h3 id="3-生成器的使用场景"><a href="#3-生成器的使用场景" class="headerlink" title="3. 生成器的使用场景"></a>3. 生成器的使用场景</h3><p>数学中有个著名的斐波拉契数列（Fibonacci），数列中第一个数为0，第二个数为1，其后的每一个数都可由前两个数相加得到：</p>
+<p>0, 1, 1, 2, 3, 5, 8, 13, 21, 34, …</p>
+<p>现在我们使用生成器来实现这个斐波那契数列，每次取值都通过算法来生成下一个数据, <strong>生成器每次调用只生成一个数据，可以节省大量的内存。</strong></p>
+<pre><code class="python">def fibonacci(num):
+    a = 0
+    b = 1
+
+    # 记录生成fibonacci数字的下标
+    current_index = 0
+
+    while current_index &lt; num:
+        result = a
+        a, b = b, a + b
+        current_index += 1
+        # 代码执行到yield会暂停，然后把结果返回出去，下次启动生成器会在暂停的位置继续往下执行
+        yield result
+
+
+fib = fibonacci(5)
+# 遍历生成的数据
+for value in fib:
+    print(value)</code></pre>
+<p><strong>运行结果:</strong></p>
+<pre><code class="python">0
+1
+1
+2
+3</code></pre>
+<h2 id="四、深拷贝和浅拷贝"><a href="#四、深拷贝和浅拷贝" class="headerlink" title="四、深拷贝和浅拷贝"></a>四、深拷贝和浅拷贝</h2><h3 id="1-浅拷贝"><a href="#1-浅拷贝" class="headerlink" title="1. 浅拷贝"></a>1. 浅拷贝</h3><p>copy函数是浅拷贝，只对可变类型的第一层对象进行拷贝，对拷贝的对象开辟新的内存空间进行存储，不会拷贝对象内部的子对象。</p>
+<p><strong>不可变类型的浅拷贝示例代码:</strong></p>
+<pre><code class="python">import copy  # 使用浅拷贝需要导入copy模块
+
+# 不可变类型有: 数字、字符串、元组
+
+a1 = 123123
+b1 = copy.copy(a1)  # 使用copy模块里的copy()函数就是浅拷贝了
+# 查看内存地址
+print(id(a1))
+print(id(b1))
+
+print(&quot;-&quot; * 10)
+a2 = &quot;abc&quot;
+b2 = copy.copy(a2)
+# 查看内存地址
+print(id(a2))
+print(id(b2))
+
+print(&quot;-&quot; * 10)
+a3 = (1, 2, [&quot;hello&quot;, &quot;world&quot;])
+b3 = copy.copy(a3)
+# 查看内存地址
+print(id(a3))
+print(id(b3))</code></pre>
+<p><strong>运行结果:</strong></p>
+<pre><code class="python">140459558944048
+140459558944048
+----------
+140459558648776
+140459558648776
+----------
+140459558073328
+140459558073328</code></pre>
+<p><strong>不可变类型的浅拷贝说明:</strong></p>
+<ul>
+<li><strong>通过上面的执行结果可以得知，不可变类型进行浅拷贝不会给拷贝的对象开辟新的内存空间，而只是拷贝了这个对象的引用。</strong></li>
+</ul>
+<p><strong>可变类型的浅拷贝示例代码:</strong></p>
+<pre><code class="python">import copy # 使用浅拷贝需要导入copy模块
+
+# 可变类型有: 列表、字典、集合
+
+a1 = [1, 2]
+b1 = copy.copy(a1) # 使用copy模块里的copy()函数就是浅拷贝了
+# 查看内存地址
+print(id(a1))
+print(id(b1))
+print(&quot;-&quot; * 10)
+a2 = {&quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 20}
+b2 = copy.copy(a2)
+# 查看内存地址
+print(id(a2))
+print(id(b2))
+print(&quot;-&quot; * 10)
+a3 = {1, 2, &quot;王五&quot;}
+b3 = copy.copy(a3)
+# 查看内存地址
+print(id(a3))
+print(id(b3))
+
+print(&quot;-&quot; * 10)
+a4 = [1, 2, [4, 5]]
+# 注意：浅拷贝只会拷贝父对象，不会对子对象进行拷贝
+b4 = copy.copy(a4) # 使用copy模块里的copy()函数就是浅拷贝了
+# 查看内存地址
+print(id(a4))
+print(id(b4))
+print(&quot;-&quot; * 10)
+# 查看内存地址
+print(id(a4[2]))
+print(id(b4[2]))
+
+# 修改数据
+a4[2][0] = 6
+
+# 子对象的数据会受影响
+print(a4)
+print(b4)</code></pre>
+<p><strong>运行结果:</strong></p>
+<pre><code class="py">139882899585608
+139882899585800
+----------
+139882919626432
+139882919626504
+----------
+139882919321672
+139882899616264
+----------
+139882899587016
+139882899586952
+----------
+139882899693640
+139882899693640
+[1, 2, [6, 5]]
+[1, 2, [6, 5]]</code></pre>
+<p><strong>可变类型的浅拷贝说明:</strong></p>
+<ul>
+<li><strong>通过上面的执行结果可以得知，可变类型进行浅拷贝只对可变类型的第一层对象进行拷贝，对拷贝的对象会开辟新的内存空间进行存储，子对象不进行拷贝。</strong></li>
+</ul>
+<h3 id="2-深拷贝"><a href="#2-深拷贝" class="headerlink" title="2. 深拷贝"></a>2. 深拷贝</h3><p>deepcopy函数是深拷贝, 只要发现对象有可变类型就会对该对象到最后一个可变类型的每一层对象就行拷贝, 对每一层拷贝的对象都会开辟新的内存空间进行存储。</p>
+<p><strong>不可变类型的深拷贝示例代码:</strong></p>
+<pre><code class="python">import copy  # 使用深拷贝需要导入copy模块
+
+# 不可变类型有: 数字、字符串、元组
+
+a1 = 1
+b1 = copy.deepcopy(a1)  # 使用copy模块里的deepcopy()函数就是深拷贝了
+# 查看内存地址
+print(id(a1))
+print(id(b1))
+print(&quot;-&quot; * 10)
+a2 = &quot;张三&quot;
+b2 = copy.deepcopy(a2)
+# 查看内存地址
+print(id(a2))
+print(id(b2))
+print(&quot;-&quot; * 10)
+a3 = (1, 2)
+b3 = copy.deepcopy(a3)
+# 查看内存地址
+print(id(a3))
+print(id(b3))
+print(&quot;-&quot; * 10)
+
+# 注意: 元组里面要是有可变类型对象，发现对象有可变类型就会该对象到最后一个可变类型的每一层对象进行拷贝
+a4 = (1, [&quot;李四&quot;])
+b4 = copy.deepcopy(a4)
+# 查看内存地址
+print(id(a4))
+print(id(b4))
+# 元组里面的可变类型子对象也会进行拷贝
+print(id(a4[1]))
+print(id(b4[1]))</code></pre>
+<p><strong>运行结果:</strong></p>
+<pre><code class="python">9289120
+9289120
+----------
+140115621848320
+140115621848320
+----------
+140115621859592
+140115621859592
+----------
+140115602480584
+140115621834568
+140115602328136
+140115602436168</code></pre>
+<p><strong>不可变类型的深拷贝说明:</strong></p>
+<ul>
+<li>通过上面的执行结果可以得知：<ul>
+<li><strong>不可变类型进行深拷贝如果子对象没有可变类型则不会进行拷贝，而只是拷贝了这个对象的引用，否则会对该对象到最后一个可变类型的每一层对象就行拷贝, 对每一层拷贝的对象都会开辟新的内存空间进行存储</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>可变类型的深拷贝示例代码:</strong></p>
+<pre><code class="python">import copy  # 使用深拷贝需要导入copy模块
+
+# 可变类型有: 列表、字典、集合
+
+a1 = [1, 2]
+b1 = copy.deepcopy(a1)  # 使用copy模块里的deepcopy()函数就是深拷贝了
+# 查看内存地址
+print(id(a1))
+print(id(b1))
+print(&quot;-&quot; * 10)
+a2 = {&quot;name&quot;: &quot;张三&quot;}
+b2 = copy.deepcopy(a2)
+# 查看内存地址
+print(id(a2))
+print(id(b2))
+print(&quot;-&quot; * 10)
+a3 = {1, 2}
+b3 = copy.deepcopy(a3)
+# 查看内存地址
+print(id(a3))
+print(id(b3))
+print(&quot;-&quot; * 10)
+
+a4 = [1, 2, [&quot;李四&quot;, &quot;王五&quot;]]
+b4 = copy.deepcopy(a4)  # 使用copy模块里的deepcopy()函数就是深拷贝了
+# 查看内存地址
+print(id(a4))
+print(id(b4))
+
+# 查看内存地址
+print(id(a4[2]))
+print(id(b4[2]))
+a4[2][0] = &quot;王五&quot;
+# 因为列表的内存地址不同，所以数据不会收到影响
+print(a4)
+print(b4)</code></pre>
+<p><strong>运行结果:</strong></p>
+<pre><code class="python">140348291721736
+140348291721928
+----------
+140348311762624
+140348311221592
+----------
+140348311457864
+140348291752456
+----------
+140348291723080
+140348291723144
+140348291723208
+140348291723016
+[1, 2, [&#39;王五&#39;, &#39;王五&#39;]]
+[1, 2, [&#39;李四&#39;, &#39;王五&#39;]]</code></pre>
+<p><strong>可变类型的深拷贝说明:</strong></p>
+<ul>
+<li>通过上面的执行结果可以得知, 可变类型进行深拷贝会对该对象到最后一个可变类型的每一层对象就行拷贝, 对每一层拷贝的对象都会开辟新的内存空间进行存储。</li>
+</ul>
+<h3 id="3-浅拷贝和深拷贝的区别"><a href="#3-浅拷贝和深拷贝的区别" class="headerlink" title="3. 浅拷贝和深拷贝的区别"></a>3. 浅拷贝和深拷贝的区别</h3><ul>
+<li>浅拷贝最多拷贝对象的一层</li>
+<li>深拷贝可能拷贝对象的多层</li>
+</ul>
+<h2 id="五、正则表达式的概述"><a href="#五、正则表达式的概述" class="headerlink" title="五、正则表达式的概述"></a>五、正则表达式的概述</h2><h3 id="1-正则表达式的介绍"><a href="#1-正则表达式的介绍" class="headerlink" title="1. 正则表达式的介绍"></a>1. 正则表达式的介绍</h3><p>在实际开发过程中经常会有查找符合某些复杂规则的字符串的需要，比如:邮箱、图片地址、手机号码等，这时候想匹配或者查找符合某些规则的字符串就可以使用正则表达式了。</p>
+<h3 id="2-正则表达式概念"><a href="#2-正则表达式概念" class="headerlink" title="2. 正则表达式概念"></a>2. 正则表达式概念</h3><p><strong>正则表达式就是记录文本规则的代码</strong></p>
+<h3 id="3-正则表达式的样子"><a href="#3-正则表达式的样子" class="headerlink" title="3. 正则表达式的样子"></a>3. 正则表达式的样子</h3><p>0\d{2}-\d{8} 这个就是一个正则表达式，表达的意思是匹配的是座机号码</p>
+<h3 id="4-正则表达式的特点"><a href="#4-正则表达式的特点" class="headerlink" title="4. 正则表达式的特点"></a>4. 正则表达式的特点</h3><ul>
+<li>正则表达式的语法很令人头疼，可读性差</li>
+<li>正则表达式通用行很强，能够适用于很多编程语言</li>
+</ul>
+<h3 id="5-小结"><a href="#5-小结" class="headerlink" title="5. 小结"></a>5. 小结</h3><ul>
+<li>正则表达式是匹配符合某些规则的字符串数据</li>
+<li></li>
+</ul>
+<h2 id="六、re模块介绍"><a href="#六、re模块介绍" class="headerlink" title="六、re模块介绍"></a>六、re模块介绍</h2><h1 id="re模块介绍"><a href="#re模块介绍" class="headerlink" title="re模块介绍"></a>re模块介绍</h1><p><strong>学习目标</strong></p>
+<ul>
+<li>能够知道在python中使用正则表达式需要导入的模块</li>
+</ul>
+<hr>
+<h3 id="1-re模块的介绍"><a href="#1-re模块的介绍" class="headerlink" title="1. re模块的介绍"></a>1. re模块的介绍</h3><p>在Python中需要通过正则表达式对字符串进行匹配的时候，可以使用一个 re 模块</p>
+<pre><code class="python"># 导入re模块
+import re
+
+# 使用match方法进行匹配操作
+result = re.match(正则表达式,要匹配的字符串)
+
+# 如果上一步匹配到数据的话，可以使用group方法来提取数据
+result.group()</code></pre>
+<h3 id="2-re模块的使用"><a href="#2-re模块的使用" class="headerlink" title="2. re模块的使用"></a>2. re模块的使用</h3><pre><code class="python">import re
+
+
+# 使用match方法进行匹配操作
+result = re.match(&quot;itcast&quot;,&quot;itcast.cn&quot;)
+# 获取匹配结果
+info = result.group()
+print(info)</code></pre>
+<p><strong>运行结果:</strong></p>
+<pre><code class="python">itcast</code></pre>
+<h3 id="3-小结"><a href="#3-小结" class="headerlink" title="3. 小结"></a>3. 小结</h3><ul>
+<li>re.match() 根据正则表达式从头开始匹配字符串数据</li>
+</ul>
+<h2 id="七、匹配单个字符"><a href="#七、匹配单个字符" class="headerlink" title="七、匹配单个字符"></a>七、匹配单个字符</h2><h1 id="匹配单个字符"><a href="#匹配单个字符" class="headerlink" title="匹配单个字符"></a>匹配单个字符</h1><p><strong>学习目标</strong></p>
+<ul>
+<li>能够使用re模块匹配单个字符</li>
+</ul>
+<hr>
+<h3 id="1-匹配单个字符"><a href="#1-匹配单个字符" class="headerlink" title="1. 匹配单个字符"></a>1. 匹配单个字符</h3><p>在上一小节中，了解到通过re模块能够完成使用正则表达式来匹配字符串</p>
+<p>本小节，将要讲解正则表达式的单字符匹配</p>
+<table>
+<thead>
+<tr>
+<th align="center">代码</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.</td>
+<td align="left">匹配任意1个字符（除了\n）</td>
+</tr>
+<tr>
+<td align="center">[ ]</td>
+<td align="left">匹配[ ]中列举的字符</td>
+</tr>
+<tr>
+<td align="center">\d</td>
+<td align="left">匹配数字，即0-9</td>
+</tr>
+<tr>
+<td align="center">\D</td>
+<td align="left">匹配非数字，即不是数字</td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td align="left">匹配空白，即 空格，tab键</td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td align="left">匹配非空白</td>
+</tr>
+<tr>
+<td align="center">\w</td>
+<td align="left">匹配非特殊字符，即a-z、A-Z、0-9、_、汉字</td>
+</tr>
+<tr>
+<td align="center">\W</td>
+<td align="left">匹配特殊字符，即非字母、非数字、非汉字</td>
+</tr>
+</tbody></table>
+<h3 id="示例1："><a href="#示例1：" class="headerlink" title="示例1： ."></a>示例1： .</h3><pre><code class="python">import re
+
+ret = re.match(&quot;.&quot;,&quot;M&quot;)
+print(ret.group())
+
+ret = re.match(&quot;t.o&quot;,&quot;too&quot;)
+print(ret.group())
+
+ret = re.match(&quot;t.o&quot;,&quot;two&quot;)
+print(ret.group())</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">M
+too
+two</code></pre>
+<h3 id="示例2："><a href="#示例2：" class="headerlink" title="示例2：[ ]"></a>示例2：[ ]</h3><pre><code class="python">import re
+
+# 如果hello的首字符小写，那么正则表达式需要小写的h
+ret = re.match(&quot;h&quot;,&quot;hello Python&quot;) 
+print(ret.group())
+
+
+# 如果hello的首字符大写，那么正则表达式需要大写的H
+ret = re.match(&quot;H&quot;,&quot;Hello Python&quot;) 
+print(ret.group())
+
+# 大小写h都可以的情况
+ret = re.match(&quot;[hH]&quot;,&quot;hello Python&quot;)
+print(ret.group())
+ret = re.match(&quot;[hH]&quot;,&quot;Hello Python&quot;)
+print(ret.group())
+ret = re.match(&quot;[hH]ello Python&quot;,&quot;Hello Python&quot;)
+print(ret.group())
+
+# 匹配0到9第一种写法
+ret = re.match(&quot;[0123456789]Hello Python&quot;,&quot;7Hello Python&quot;)
+print(ret.group())
+
+# 匹配0到9第二种写法
+ret = re.match(&quot;[0-9]Hello Python&quot;,&quot;7Hello Python&quot;)
+print(ret.group())
+
+ret = re.match(&quot;[0-35-9]Hello Python&quot;,&quot;7Hello Python&quot;)
+print(ret.group())
+
+# 下面这个正则不能够匹配到数字4，因此ret为None
+ret = re.match(&quot;[0-35-9]Hello Python&quot;,&quot;4Hello Python&quot;)
+# print(ret.group())</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">h
+H
+h
+H
+Hello Python
+7Hello Python
+7Hello Python
+7Hello Python</code></pre>
+<h3 id="示例3：-d"><a href="#示例3：-d" class="headerlink" title="示例3：\d"></a>示例3：\d</h3><pre><code class="python">import re
+
+# 普通的匹配方式
+ret = re.match(&quot;嫦娥1号&quot;,&quot;嫦娥1号发射成功&quot;) 
+print(ret.group())
+
+ret = re.match(&quot;嫦娥2号&quot;,&quot;嫦娥2号发射成功&quot;) 
+print(ret.group())
+
+ret = re.match(&quot;嫦娥3号&quot;,&quot;嫦娥3号发射成功&quot;) 
+print(ret.group())
+
+# 使用\d进行匹配
+ret = re.match(&quot;嫦娥\d号&quot;,&quot;嫦娥1号发射成功&quot;) 
+print(ret.group())
+
+ret = re.match(&quot;嫦娥\d号&quot;,&quot;嫦娥2号发射成功&quot;) 
+print(ret.group())
+
+ret = re.match(&quot;嫦娥\d号&quot;,&quot;嫦娥3号发射成功&quot;) 
+print(ret.group())</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">嫦娥1号
+嫦娥2号
+嫦娥3号
+嫦娥1号
+嫦娥2号
+嫦娥3号</code></pre>
+<h3 id="示例4：-D"><a href="#示例4：-D" class="headerlink" title="示例4：\D"></a>示例4：\D</h3><pre><code class="python">import re
+
+match_obj = re.match(&quot;\D&quot;, &quot;f&quot;)
+if match_obj:
+    # 获取匹配结果
+    print(match_obj.group())
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>运行结果:</p>
+<pre><code class="python">f</code></pre>
+<h3 id="示例5：-s"><a href="#示例5：-s" class="headerlink" title="示例5：\s"></a>示例5：\s</h3><pre><code class="python">import re
+
+# 空格属于空白字符
+match_obj = re.match(&quot;hello\sworld&quot;, &quot;hello world&quot;)
+if match_obj:
+    result = match_obj.group()
+    print(result)
+else:
+    print(&quot;匹配失败&quot;)
+
+
+
+# \t 属于空白字符
+match_obj = re.match(&quot;hello\sworld&quot;, &quot;hello\tworld&quot;)
+if match_obj:
+    result = match_obj.group()
+    print(result)
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>运行结果:</p>
+<pre><code class="python">hello world
+hello world</code></pre>
+<h3 id="示例6：-S"><a href="#示例6：-S" class="headerlink" title="示例6：\S"></a>示例6：\S</h3><pre><code class="python">import re
+
+match_obj = re.match(&quot;hello\Sworld&quot;, &quot;hello&amp;world&quot;)
+if match_obj:
+result = match_obj.group()
+print(result)
+else:
+print(&quot;匹配失败&quot;)
+
+
+
+match_obj = re.match(&quot;hello\Sworld&quot;, &quot;hello$world&quot;)
+if match_obj:
+result = match_obj.group()
+print(result)
+else:
+print(&quot;匹配失败&quot;)</code></pre>
+<p>运行结果:</p>
+<pre><code class="python">hello&amp;world  
+hello$world</code></pre>
+<h3 id="示例7：-w"><a href="#示例7：-w" class="headerlink" title="示例7：\w"></a>示例7：\w</h3><pre><code class="python">import re
+
+# 匹配非特殊字符中的一位
+match_obj = re.match(&quot;\w&quot;, &quot;A&quot;)
+if match_obj:
+    # 获取匹配结果
+    print(match_obj.group())
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>执行结果:</p>
+<pre><code>A</code></pre><h3 id="示例8：-W"><a href="#示例8：-W" class="headerlink" title="示例8：\W"></a>示例8：\W</h3><pre><code class="python"># 匹配特殊字符中的一位
+match_obj = re.match(&quot;\W&quot;, &quot;&amp;&quot;)
+if match_obj:
+    # 获取匹配结果
+    print(match_obj.group())
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>执行结果:</p>
+<pre><code>&amp;</code></pre><h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
+<li>. 表示匹配任意1个字符（除了\n）</li>
+<li><input disabled="" type="checkbox"> 表示匹配[ ]中列举的1个字符</li>
+<li>\d 表示匹配一个数字，即0-9</li>
+<li>\D 表示匹配一个非数字，即不是数字</li>
+<li>\s 表示匹配一个空白字符，即 空格，tab键</li>
+<li>\S | 匹配一个非空白字符</li>
+<li>\w | 匹配一个非特殊字符，即a-z、A-Z、0-9、_、汉字</li>
+<li>\W | 匹配一个特殊字符，即非字母、非数字、非汉字</li>
+</ul>
+<h2 id="八、匹配多个字符"><a href="#八、匹配多个字符" class="headerlink" title="八、匹配多个字符"></a>八、匹配多个字符</h2><h3 id="1-匹配多个字符"><a href="#1-匹配多个字符" class="headerlink" title="1. 匹配多个字符"></a>1. 匹配多个字符</h3><table>
+<thead>
+<tr>
+<th align="center">代码</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">*</td>
+<td align="left">匹配前一个字符出现0次或者无限次，即可有可无</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="left">匹配前一个字符出现1次或者无限次，即至少有1次</td>
+</tr>
+<tr>
+<td align="center">?</td>
+<td align="left">匹配前一个字符出现1次或者0次，即要么有1次，要么没有</td>
+</tr>
+<tr>
+<td align="center">{m}</td>
+<td align="left">匹配前一个字符出现m次</td>
+</tr>
+<tr>
+<td align="center">{m,n}</td>
+<td align="left">匹配前一个字符出现从m到n次</td>
+</tr>
+</tbody></table>
+<h3 id="示例1：-1"><a href="#示例1：-1" class="headerlink" title="示例1：*"></a>示例1：*</h3><p>需求：匹配出一个字符串第一个字母为大小字符，后面都是小写字母并且这些小写字母可 有可无</p>
+<pre><code class="python">import re
+
+ret = re.match(&quot;[A-Z][a-z]*&quot;,&quot;M&quot;)
+print(ret.group())
+
+ret = re.match(&quot;[A-Z][a-z]*&quot;,&quot;MnnM&quot;)
+print(ret.group())
+
+ret = re.match(&quot;[A-Z][a-z]*&quot;,&quot;Aabcdef&quot;)
+print(ret.group())</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">M
+Mnn
+Aabcdef</code></pre>
+<h3 id="示例2：-1"><a href="#示例2：-1" class="headerlink" title="示例2：+"></a>示例2：+</h3><p>需求：匹配一个字符串，第一个字符是t,最后一个字符串是o,中间至少有一个字符</p>
+<pre><code class="python">import re
+
+
+match_obj = re.match(&quot;t.+o&quot;, &quot;two&quot;)
+if match_obj:
+    print(match_obj.group())
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">two</code></pre>
+<h3 id="示例3："><a href="#示例3：" class="headerlink" title="示例3：?"></a>示例3：?</h3><p>需求：匹配出这样的数据，但是https 这个s可能有，也可能是http 这个s没有</p>
+<pre><code class="python">import re
+
+match_obj = re.match(&quot;https?&quot;, &quot;http&quot;)
+if match_obj:
+    print(match_obj.group())
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">https</code></pre>
+<h3 id="示例4：-m-、-m-n"><a href="#示例4：-m-、-m-n" class="headerlink" title="示例4：{m}、{m,n}"></a>示例4：{m}、{m,n}</h3><p>需求：匹配出，8到20位的密码，可以是大小写英文字母、数字、下划线</p>
+<pre><code class="python">import re
+
+
+ret = re.match(&quot;[a-zA-Z0-9_]{6}&quot;,&quot;12a3g45678&quot;)
+print(ret.group())
+
+ret = re.match(&quot;[a-zA-Z0-9_]{8,20}&quot;,&quot;1ad12f23s34455ff66&quot;)
+print(ret.group())</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">12a3g4
+1ad12f23s34455ff66</code></pre>
+<h3 id="2-小结"><a href="#2-小结" class="headerlink" title="2. 小结"></a>2. 小结</h3><ul>
+<li>*表示匹配前一个字符出现0次或者无限次，即可有可无</li>
+<li>+表示匹配前一个字符出现1次或者无限次，即至少有1次</li>
+<li>?表示匹配前一个字符出现1次或者0次，即要么有1次，要么没有</li>
+<li>{m}表示匹配前一个字符出现m次</li>
+<li>{m,n}表示匹配前一个字符出现从m到n次</li>
+<li></li>
+</ul>
+<h2 id="九、匹配开头和结尾"><a href="#九、匹配开头和结尾" class="headerlink" title="九、匹配开头和结尾"></a>九、匹配开头和结尾</h2><h3 id="1-匹配开头和结尾"><a href="#1-匹配开头和结尾" class="headerlink" title="1. 匹配开头和结尾"></a>1. 匹配开头和结尾</h3><table>
+<thead>
+<tr>
+<th align="center">代码</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">^</td>
+<td align="left">匹配字符串开头</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="left">匹配字符串结尾</td>
+</tr>
+</tbody></table>
+<h3 id="示例1：-2"><a href="#示例1：-2" class="headerlink" title="示例1：^"></a>示例1：^</h3><p>需求：匹配以数字开头的数据</p>
+<pre><code class="python">import re
+
+# 匹配以数字开头的数据
+match_obj = re.match(&quot;^\d.*&quot;, &quot;3hello&quot;)
+if match_obj:
+    # 获取匹配结果
+    print(match_obj.group())
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>运行结果:</p>
+<pre><code class="python">3hello</code></pre>
+<h3 id="示例2：-2"><a href="#示例2：-2" class="headerlink" title="示例2：$"></a>示例2：$</h3><p>需求: 匹配以数字结尾的数据</p>
+<pre><code class="python">import re
+# 匹配以数字结尾的数据
+match_obj = re.match(&quot;.*\d$&quot;, &quot;hello5&quot;)
+if match_obj:
+    # 获取匹配结果
+    print(match_obj.group())
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">hello5</code></pre>
+<h3 id="示例3：-和"><a href="#示例3：-和" class="headerlink" title="示例3：^ 和 $"></a>示例3：^ 和 $</h3><p>需求: 匹配以数字开头中间内容不管以数字结尾</p>
+<pre><code class="python">match_obj = re.match(&quot;^\d.*\d$&quot;, &quot;4hello4&quot;)
+if match_obj:
+    # 获取匹配结果
+    print(match_obj.group())
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>运行结果:</p>
+<pre><code class="python">4hello4</code></pre>
+<h3 id="2-除了指定字符以外都匹配"><a href="#2-除了指定字符以外都匹配" class="headerlink" title="2.除了指定字符以外都匹配"></a>2.除了指定字符以外都匹配</h3><p>需求: 第一个字符除了aeiou的字符都匹配</p>
+<pre><code class="python">import re
+
+
+match_obj = re.match(&quot;[^aeiou]&quot;, &quot;h&quot;)
+if match_obj:
+    # 获取匹配结果
+    print(match_obj.group())
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>执行结果</p>
+<pre><code>h</code></pre><h3 id="3-小结-1"><a href="#3-小结-1" class="headerlink" title="3. 小结"></a>3. 小结</h3><ul>
+<li>^ 表示匹配字符串开头</li>
+<li>$ 表示匹配字符串结尾</li>
+</ul>
+<h2 id="十、匹配分组"><a href="#十、匹配分组" class="headerlink" title="十、匹配分组"></a>十、匹配分组</h2><h3 id="1-匹配分组相关正则表达式"><a href="#1-匹配分组相关正则表达式" class="headerlink" title="1. 匹配分组相关正则表达式"></a>1. 匹配分组相关正则表达式</h3><table>
+<thead>
+<tr>
+<th align="center">代码</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">|</td>
+<td align="left">匹配左右任意一个表达式</td>
+</tr>
+<tr>
+<td align="center">(ab)</td>
+<td align="left">将括号中字符作为一个分组</td>
+</tr>
+<tr>
+<td align="center"><code>\num</code></td>
+<td align="left">引用分组num匹配到的字符串</td>
+</tr>
+<tr>
+<td align="center"><code>(?P&lt;name&gt;)</code></td>
+<td align="left">分组起别名</td>
+</tr>
+<tr>
+<td align="center">(?P=name)</td>
+<td align="left">引用别名为name分组匹配到的字符串</td>
+</tr>
+</tbody></table>
+<h3 id="示例1：-3"><a href="#示例1：-3" class="headerlink" title="示例1：|"></a>示例1：|</h3><p>需求：在列表中[“apple”, “banana”, “orange”, “pear”]，匹配apple和pear</p>
+<pre><code class="python">import re
+
+# 水果列表
+fruit_list = [&quot;apple&quot;, &quot;banana&quot;, &quot;orange&quot;, &quot;pear&quot;]
+
+# 遍历数据
+for value in fruit_list:
+    # |    匹配左右任意一个表达式
+    match_obj = re.match(&quot;apple|pear&quot;, value)
+    if match_obj:
+        print(&quot;%s是我想要的&quot; % match_obj.group())
+    else:
+        print(&quot;%s不是我要的&quot; % value)</code></pre>
+<p>执行结果:</p>
+<pre><code class="python">apple是我想要的
+banana不是我要的
+orange不是我要的
+pear是我想要的</code></pre>
+<h3 id="示例2：-3"><a href="#示例2：-3" class="headerlink" title="示例2：( )"></a>示例2：( )</h3><p>需求：匹配出163、126、qq等邮箱</p>
+<pre><code class="python">import re
+
+match_obj = re.match(&quot;[a-zA-Z0-9_]{4,20}@(163|126|qq|sina|yahoo)\.com&quot;, &quot;hello@163.com&quot;)
+if match_obj:
+    print(match_obj.group())
+    # 获取分组数据
+    print(match_obj.group(1))
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>执行结果:</p>
+<pre><code>hello@163.com
+163</code></pre><p>需求: 匹配qq:10567这样的数据，提取出来qq文字和qq号码</p>
+<pre><code class="python">import re
+
+match_obj = re.match(&quot;(qq):([1-9]\d{4,10})&quot;, &quot;qq:10567&quot;)
+
+if match_obj:
+    print(match_obj.group())
+    # 分组:默认是1一个分组，多个分组从左到右依次加1
+    print(match_obj.group(1))
+    # 提取第二个分组数据
+    print(match_obj.group(2))
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>执行结果:</p>
+<pre><code>qq
+10567</code></pre><h3 id="示例3：-num"><a href="#示例3：-num" class="headerlink" title="示例3：\num"></a>示例3：\num</h3><p>需求：匹配出<code>&lt;html&gt;hh&lt;/html&gt;</code></p>
+<pre><code class="python">match_obj = re.match(&quot;&lt;[a-zA-Z1-6]+&gt;.*&lt;/[a-zA-Z1-6]+&gt;&quot;, &quot;&lt;html&gt;hh&lt;/div&gt;&quot;)
+
+if match_obj:
+    print(match_obj.group())
+else:
+    print(&quot;匹配失败&quot;)
+
+match_obj = re.match(&quot;&lt;([a-zA-Z1-6]+)&gt;.*&lt;/\\1&gt;&quot;, &quot;&lt;html&gt;hh&lt;/html&gt;&quot;)
+
+if match_obj:
+    print(match_obj.group())
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>运行结果：</p>
+<pre><code class="html">&lt;html&gt;hh&lt;/div&gt;
+&lt;html&gt;hh&lt;/html&gt;</code></pre>
+<p>需求：匹配出<code>&lt;html&gt;&lt;h1&gt;www.itcast.cn&lt;/h1&gt;&lt;/html&gt;</code></p>
+<pre><code class="python">match_obj = re.match(&quot;&lt;([a-zA-Z1-6]+)&gt;&lt;([a-zA-Z1-6]+)&gt;.*&lt;/\\2&gt;&lt;/\\1&gt;&quot;, &quot;&lt;html&gt;&lt;h1&gt;www.itcast.cn&lt;/h1&gt;&lt;/html&gt;&quot;)
+
+if match_obj:
+    print(match_obj.group())
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>运行结果：</p>
+<pre><code class="html">&lt;html&gt;&lt;h1&gt;www.itcast.cn&lt;/h1&gt;&lt;/html&gt;</code></pre>
+<h3 id="示例4：-P-lt-name-gt-P-name"><a href="#示例4：-P-lt-name-gt-P-name" class="headerlink" title="示例4：(?P&lt;name&gt;) (?P=name)"></a>示例4：<code>(?P&lt;name&gt;)</code> <code>(?P=name)</code></h3><p>需求：匹配出<code>&lt;html&gt;&lt;h1&gt;www.itcast.cn&lt;/h1&gt;&lt;/html&gt;</code></p>
+<pre><code class="python">match_obj = re.match(&quot;&lt;(?P&lt;name1&gt;[a-zA-Z1-6]+)&gt;&lt;(?P&lt;name2&gt;[a-zA-Z1-6]+)&gt;.*&lt;/(?P=name2)&gt;&lt;/(?P=name1)&gt;&quot;, &quot;&lt;html&gt;&lt;h1&gt;www.itcast.cn&lt;/h1&gt;&lt;/html&gt;&quot;)
+
+if match_obj:
+    print(match_obj.group())
+else:
+    print(&quot;匹配失败&quot;)</code></pre>
+<p>运行结果：</p>
+<pre><code class="html">&lt;html&gt;&lt;h1&gt;www.itcast.cn&lt;/h1&gt;&lt;/html&gt;</code></pre>
+<h3 id="2-小结-1"><a href="#2-小结-1" class="headerlink" title="2. 小结"></a>2. 小结</h3><ul>
+<li>| 表示匹配左右任意一个表达式</li>
+<li>(ab) 表示将括号中字符作为一个分组</li>
+<li><code>\num</code> 表示引用分组num匹配到的字符串</li>
+<li><code>(?P&lt;name&gt;)</code> 表示分组起别名</li>
+<li>(?P=name) 表示引用别名为name分组匹配到的字符串</li>
+<li>(分组数据)：分组数是从左到右的方式进行分配的，最左边的是第一个分组，依次类推</li>
+</ul>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/08/22/2020-08-23-python%E9%AB%98%E7%BA%A710-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">https://caijinbo.work/2020/08/22/2020-08-23-python高级10-正则表达式/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/python/">python</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正则表达式"><span class="toc-number">1.</span> <span class="toc-text">正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、property属性"><span class="toc-number">1.1.</span> <span class="toc-text">一、property属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-property属性的介绍"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. property属性的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-装饰器方式"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 装饰器方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-类属性方式"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. 类属性方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、with语句和上下文管理器"><span class="toc-number">1.2.</span> <span class="toc-text">二、with语句和上下文管理器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-with语句的使用"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. with语句的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-上下文管理器"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 上下文管理器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、生成器的创建方式"><span class="toc-number">1.3.</span> <span class="toc-text">三、生成器的创建方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-生成器的介绍"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 生成器的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-创建生成器的方式"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 创建生成器的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-生成器的使用场景"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 生成器的使用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、深拷贝和浅拷贝"><span class="toc-number">1.4.</span> <span class="toc-text">四、深拷贝和浅拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-浅拷贝"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 浅拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-深拷贝"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 深拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-浅拷贝和深拷贝的区别"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. 浅拷贝和深拷贝的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、正则表达式的概述"><span class="toc-number">1.5.</span> <span class="toc-text">五、正则表达式的概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-正则表达式的介绍"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 正则表达式的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-正则表达式概念"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. 正则表达式概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-正则表达式的样子"><span class="toc-number">1.5.3.</span> <span class="toc-text">3. 正则表达式的样子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-正则表达式的特点"><span class="toc-number">1.5.4.</span> <span class="toc-text">4. 正则表达式的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-小结"><span class="toc-number">1.5.5.</span> <span class="toc-text">5. 小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、re模块介绍"><span class="toc-number">1.6.</span> <span class="toc-text">六、re模块介绍</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#re模块介绍"><span class="toc-number">2.</span> <span class="toc-text">re模块介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-re模块的介绍"><span class="toc-number">2.0.1.</span> <span class="toc-text">1. re模块的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-re模块的使用"><span class="toc-number">2.0.2.</span> <span class="toc-text">2. re模块的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-小结"><span class="toc-number">2.0.3.</span> <span class="toc-text">3. 小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、匹配单个字符"><span class="toc-number">2.1.</span> <span class="toc-text">七、匹配单个字符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#匹配单个字符"><span class="toc-number">3.</span> <span class="toc-text">匹配单个字符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-匹配单个字符"><span class="toc-number">3.0.1.</span> <span class="toc-text">1. 匹配单个字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例1："><span class="toc-number">3.0.2.</span> <span class="toc-text">示例1： .</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例2："><span class="toc-number">3.0.3.</span> <span class="toc-text">示例2：[ ]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例3：-d"><span class="toc-number">3.0.4.</span> <span class="toc-text">示例3：\d</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例4：-D"><span class="toc-number">3.0.5.</span> <span class="toc-text">示例4：\D</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例5：-s"><span class="toc-number">3.0.6.</span> <span class="toc-text">示例5：\s</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例6：-S"><span class="toc-number">3.0.7.</span> <span class="toc-text">示例6：\S</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例7：-w"><span class="toc-number">3.0.8.</span> <span class="toc-text">示例7：\w</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例8：-W"><span class="toc-number">3.0.9.</span> <span class="toc-text">示例8：\W</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">3.0.10.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、匹配多个字符"><span class="toc-number">3.1.</span> <span class="toc-text">八、匹配多个字符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-匹配多个字符"><span class="toc-number">3.1.1.</span> <span class="toc-text">1. 匹配多个字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例1：-1"><span class="toc-number">3.1.2.</span> <span class="toc-text">示例1：*</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例2：-1"><span class="toc-number">3.1.3.</span> <span class="toc-text">示例2：+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例3："><span class="toc-number">3.1.4.</span> <span class="toc-text">示例3：?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例4：-m-、-m-n"><span class="toc-number">3.1.5.</span> <span class="toc-text">示例4：{m}、{m,n}</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-小结"><span class="toc-number">3.1.6.</span> <span class="toc-text">2. 小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、匹配开头和结尾"><span class="toc-number">3.2.</span> <span class="toc-text">九、匹配开头和结尾</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-匹配开头和结尾"><span class="toc-number">3.2.1.</span> <span class="toc-text">1. 匹配开头和结尾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例1：-2"><span class="toc-number">3.2.2.</span> <span class="toc-text">示例1：^</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例2：-2"><span class="toc-number">3.2.3.</span> <span class="toc-text">示例2：$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例3：-和"><span class="toc-number">3.2.4.</span> <span class="toc-text">示例3：^ 和 $</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-除了指定字符以外都匹配"><span class="toc-number">3.2.5.</span> <span class="toc-text">2.除了指定字符以外都匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-小结-1"><span class="toc-number">3.2.6.</span> <span class="toc-text">3. 小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、匹配分组"><span class="toc-number">3.3.</span> <span class="toc-text">十、匹配分组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-匹配分组相关正则表达式"><span class="toc-number">3.3.1.</span> <span class="toc-text">1. 匹配分组相关正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例1：-3"><span class="toc-number">3.3.2.</span> <span class="toc-text">示例1：|</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例2：-3"><span class="toc-number">3.3.3.</span> <span class="toc-text">示例2：( )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例3：-num"><span class="toc-number">3.3.4.</span> <span class="toc-text">示例3：\num</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例4：-P-lt-name-gt-P-name"><span class="toc-number">3.3.5.</span> <span class="toc-text">示例4：(?P&lt;name&gt;) (?P&#x3D;name)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-小结-1"><span class="toc-number">3.3.6.</span> <span class="toc-text">2. 小结</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/08/22/2020-08-23-linux-%E5%AE%89%E8%A3%85mysql%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81/">&lt; linux 安装mysql并设置密码</a><a class="next" href="/2020/08/21/2020-08-22-python%E9%AB%98%E7%BA%A708-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93(%E6%8F%92%E5%9B%BE%E7%89%88)/">python高级08-MySQL数据库 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

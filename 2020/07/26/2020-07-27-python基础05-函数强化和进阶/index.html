@@ -1,0 +1,483 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>python基础05-函数强化和进阶 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">python基础05-函数强化和进阶</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8005-%E5%87%BD%E6%95%B0%E5%BC%BA%E5%8C%96%E5%92%8C%E8%BF%9B%E9%98%B6/">2020-07-26</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/python/">python</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h1 id="强化和进阶"><a href="#强化和进阶" class="headerlink" title="强化和进阶"></a>强化和进阶</h1><h1 id="函数强化和进阶"><a href="#函数强化和进阶" class="headerlink" title="函数强化和进阶"></a>函数强化和进阶</h1><h2 id="一、组包和拆包"><a href="#一、组包和拆包" class="headerlink" title="一、组包和拆包"></a>一、组包和拆包</h2><h3 id="1-组包"><a href="#1-组包" class="headerlink" title="1. 组包"></a>1. 组包</h3><ul>
+<li>= 右边有多个数据时, 会自动包装为元组</li>
+</ul>
+<pre><code class="python"># 组包，1, 2, 3封装成元组再赋值，多变一
+result = 10, 20, 30
+print(result, type(result))  # (10, 20, 30) &lt;class &#39;tuple&#39;&gt;</code></pre>
+<h3 id="2-拆包"><a href="#2-拆包" class="headerlink" title="2. 拆包"></a>2. 拆包</h3><ul>
+<li>如果 <strong>变量数量 = 容器长度</strong>, 容器中的元素会一一对应赋值给变量</li>
+<li>拆包时要注意，需要拆的数据的个数要与变量的个数相同，否则程序会异常</li>
+<li>除了对元组拆包之外，还可以对列表、字典等拆包</li>
+</ul>
+<pre><code class="python"># 拆包，一变多
+a, b, c = (10, 20, 30)
+print(a)  # 10
+print(b)  # 20
+print(c)  # 30</code></pre>
+<h3 id="3-应用场景"><a href="#3-应用场景" class="headerlink" title="3. 应用场景"></a>3. 应用场景</h3><h4 id="3-1-交换变量的值"><a href="#3-1-交换变量的值" class="headerlink" title="3.1 交换变量的值"></a>3.1 交换变量的值</h4><pre><code class="python">a = 10
+b = 20
+a, b = b, a  # 先自动组包，后自动解包(拆包)</code></pre>
+<h4 id="3-2-函数可以同时返回多个数"><a href="#3-2-函数可以同时返回多个数" class="headerlink" title="3.2 函数可以同时返回多个数"></a>3.2 函数可以同时返回多个数</h4><pre><code class="python"># 函数可以同时返回多个数
+def return_arg():
+    return 1, 2, 3
+
+
+# 函数调用
+# 变量名 = 函数()
+ret = return_arg()
+print(ret)
+
+# 返回值直接做拆包
+r1, r2, r3 = return_arg()
+print(r1, r2, r3)</code></pre>
+<h4 id="3-3-字典元素拆包"><a href="#3-3-字典元素拆包" class="headerlink" title="3.3 字典元素拆包"></a>3.3 字典元素拆包</h4><pre><code class="python">info_dict = {&#39;name&#39;: &#39;mike&#39;, &#39;age&#39;: 34}
+
+# 遍历字典，取出每一个item
+for temp in info_dict.items():
+    print(temp)     # 元组：(key, value)
+    key, value = temp   # 元组拆包
+    print(key, value)</code></pre>
+<h2 id="二、引用"><a href="#二、引用" class="headerlink" title="二、引用"></a>二、引用</h2><h3 id="1-引用"><a href="#1-引用" class="headerlink" title="1. 引用"></a>1. 引用</h3><ul>
+<li><p>引用：是一个变量或值的另一个名字，又称别名</p>
+<ul>
+<li>赋值本质：给右边的变量或值，起一个别名</li>
+</ul>
+</li>
+<li><p>可以使用id函数查看变量的引用地址，</p>
+<p>引用地址相等，说明指向同一个内存空间</p>
+<ul>
+<li>每一次运行程序，每次地址都可能不一样</li>
+</ul>
+</li>
+</ul>
+<pre><code class="python"># a 是 10 的引用，10的别名是a，操作a就是操作10
+a = 10
+print(id(a), id(10))  # 地址id一样，指向同一个内存空间</code></pre>
+<h3 id="2-引用指向改变"><a href="#2-引用指向改变" class="headerlink" title="2. 引用指向改变"></a>2. 引用指向改变</h3><pre><code class="python"># a 是 10 的引用，10的别名是a，操作a就是操作10
+a = 10
+print(id(a), id(10))  # 地址id一样，指向同一个内存空间
+
+# b 是 a 的引用，b的别名是a，操作a就是操作b
+b = a
+print(id(b), id(a))  # 地址id一样，指向同一个内存空间
+print(a, b)  # 10 10
+
+# b 是 20 的引用，20的别名是b，操作b就是操作20
+# b已经和上面的a没有关系，现在是20的别名
+b = 20
+print(b, id(b)) # 和a的地址不一样了，说明b和a没有关系</code></pre>
+<h3 id="3-函数传参是引用传递"><a href="#3-函数传参是引用传递" class="headerlink" title="3. 函数传参是引用传递"></a>3. 函数传参是引用传递</h3><ul>
+<li>函数传参是引用传递</li>
+</ul>
+<pre><code class="python"># 给函数传参是引用传递
+# 带参数函数定义
+def func(num):
+    print(&#39;func = &#39;, id(num))
+
+
+# 给函数传参，变量传参
+a = 10
+print(&#39;func调用前 = &#39;, id(a))
+func(a)
+print(&#39;func调用后 = &#39;, id(a))</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">func调用前 =  4404906944
+func =  4404906944
+func调用后 =  4404906944</code></pre>
+<h2 id="三、可变类型与不可变类型"><a href="#三、可变类型与不可变类型" class="headerlink" title="三、可变类型与不可变类型"></a>三、可变类型与不可变类型</h2><h3 id="1-可变类型和不可变类型"><a href="#1-可变类型和不可变类型" class="headerlink" title="1. 可变类型和不可变类型"></a>1. 可变类型和不可变类型</h3><ol>
+<li>可变类型: 在存储空间中可以直接修改的数据类型<ul>
+<li>列表 list</li>
+<li>字典 dict</li>
+<li>集合set</li>
+</ul>
+</li>
+<li>不可变类型: 在存储空间中不可以直接修改的数据类型<ul>
+<li>数值类型 int, bool, float</li>
+<li>字符串 str</li>
+<li>元组 tuple</li>
+</ul>
+</li>
+</ol>
+<pre><code class="python">&quot;&quot;&quot;
+可变类型: 列表、字典、集合
+不可变类型: 数字类型(int, bool, float)、字符串、元组
+可变类型：在地址不变的情况下，可以修改内容
+不可变类型: 在地址不变的情况下，不可修改内容
+&quot;&quot;&quot;
+
+# 验证列表是可变类型
+my_list = [&#39;a&#39;, &#39;b&#39;]
+print(&#39;改之前的地址：&#39;, id(my_list))
+
+my_list.append(&#39;c&#39;)  # 追加元素
+print(&#39;改之后的地址：&#39;, id(my_list))  # 地址和改之前一样
+print(my_list)  # [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+
+print(&#39;=&#39; * 20)
+
+# 验证int是不可变类型
+a = 10
+print(&#39;改之前的地址：&#39;, id(a))
+
+a = 20  # a是20的别名，重新指向新的空间，和前面的a没有关系，不是改前面的内容
+print(&#39;改之后的地址：&#39;, id(a))  # 和改之前地址不一样了
+print(a)  # 20</code></pre>
+<h2 id="四、range"><a href="#四、range" class="headerlink" title="四、range"></a>四、range</h2><h3 id="1-range的使用"><a href="#1-range的使用" class="headerlink" title="1. range的使用"></a>1. range的使用</h3><ul>
+<li>range() 方法可创建一个整数列表对象，一般用在 for 循环中<ul>
+<li>range(开始位置, 结束位置，步长)<ul>
+<li>和切片用法差不多</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="python"># 1. 打印：0、1、2、3、4
+# for i in range(5):  # [0, 5)
+for i in range(0, 5):  # [0, 5)
+    print(i)
+
+# 2. 1~100的累加
+# 2.1 定义辅助变量
+_sum = 0
+
+# 2.2 for 控制循环范围
+for i in range(1, 101):
+    # 2.3 累加
+    _sum += i
+
+# 2.4 在循环外面打印累加结果
+print(_sum)
+
+# 3. 验证步长，打印：0、2、4
+for i in range(0, 5, 2):  # [0, 5)
+    print(i)</code></pre>
+<h2 id="五、列表推导式"><a href="#五、列表推导式" class="headerlink" title="五、列表推导式"></a>五、列表推导式</h2><h3 id="1-列表推导式"><a href="#1-列表推导式" class="headerlink" title="1. 列表推导式"></a>1. 列表推导式</h3><ul>
+<li>列表推导式：快速生成列表元素的表达形式，通过for添加列表元素的简洁写法</li>
+<li>推导式基本格式： [计算公式 for 循环 if 判断]</li>
+<li>特点：<ul>
+<li>每循环一次，将计算公式的结果添加到列表中</li>
+<li>计算公式可以使用遍历出的数据</li>
+<li>for 遍历出的数据 必须满足 if 判断 才会使用计算公式生成元素</li>
+</ul>
+</li>
+</ul>
+<pre><code class="python"># 普通方法：遍历0~4范围的元素，这些元素添加到列表中
+# 1. 空列表
+new_list = []
+
+# 2. range(5)遍历取数
+for i in range(5):
+    # 2.1 取出来的元素追加到列表
+    new_list.append(i)
+
+# 3. 循环外面，打印结果
+print(new_list)
+
+print(&#39;=&#39;*30)
+
+# 通过列表推导式，实现上面的效果 [计算公式 for循环体]
+# 1. for i in range(5), 取出0，放在i变量中，i追加到列表
+# 2. 循环下一步，取出2，放在i变量中，i追加到列表
+# 重复，直到退出循环
+new_list2 = [i for i in range(5)]
+print(new_list2)
+
+print(&#39;=&#39;*30)
+
+
+# 0~10之间数，偶数才添加到列表
+# 普通方法实现
+# 1. 空列表
+new_list = []
+
+# 2. range(11)遍历取数
+for i in range(11):
+    # 2.1 取出来的元素是偶数的话，追加到列表
+    # 2.2 i % 2 == 0, i 对 2求余，结果为0，就是偶数
+    if i % 2 == 0:
+        new_list.append(i)
+
+# 3. 循环外面，打印结果
+print(new_list)
+
+print(&#39;=&#39;*30)
+
+# 列表推导式实现
+# [i for i in range(11) if i % 2 == 0]
+# 1. for i in range(11)取第一个元素
+# 2. if i % 2 == 0
+# 3. 上面满足条件的i, 条件到列表
+new_list2 = [i for i in range(11) if i % 2 == 0]
+print(new_list2)</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">[0, 1, 2, 3, 4]
+==============================
+[0, 1, 2, 3, 4]
+==============================
+[0, 2, 4, 6, 8, 10]
+==============================
+[0, 2, 4, 6, 8, 10]</code></pre>
+<h2 id="六、匿名函数"><a href="#六、匿名函数" class="headerlink" title="六、匿名函数"></a>六、匿名函数</h2><h3 id="1-匿名函数"><a href="#1-匿名函数" class="headerlink" title="1. 匿名函数"></a>1. 匿名函数</h3><ul>
+<li>匿名函数是简单普通函数的简洁写法</li>
+<li>定义的函数没有名字,这样的函数叫做<strong>匿名函数</strong></li>
+</ul>
+<p>匿名函数的语法结构：</p>
+<pre><code class="python">lambda [形参1], [形参2], ... : [单行表达式] 或 [函数调用]</code></pre>
+<p>示例代码:</p>
+<pre><code class="python"># 无参有返回值匿名函数
+# a) 匿名函数整体就是函数名字， 函数名字()就是函数调用
+ret = (lambda: 1 + 1)()
+print(ret)
+# b) 给匿名函数起一个函数名字，函数名字()就是调用函数
+func = lambda: 1 + 1  # 给匿名函数起一个函数名字叫func
+ret = func()  # 返回值变量 = 函数名()
+print(ret)
+
+print(&#39;=&#39; * 30)
+
+# 有参有返回值匿名函数
+# a. 直接调用匿名函数
+ret = (lambda a, b: a - b)(30, 10)
+print(ret)
+
+# b. 先给匿名函数起名，再调用
+func = lambda a, b: a - b
+ret = func(30, 10)
+print(ret)</code></pre>
+<ul>
+<li>匿名函数中不能使用 <strong>while 循环、for 循环</strong>，只能编写单行的表达式，或函数调用</li>
+<li>匿名函数中返回结果<strong>不需要使用 return</strong>，表达式的运行结果就是返回结果</li>
+<li>匿名函数中也可以不返回结果。例如： <code>lambda : print(&#39;hello world&#39;)</code></li>
+</ul>
+<h2 id="七、递归函数"><a href="#七、递归函数" class="headerlink" title="七、递归函数"></a>七、递归函数</h2><h3 id="1-什么是递归函数"><a href="#1-什么是递归函数" class="headerlink" title="1. 什么是递归函数"></a>1. 什么是递归函数</h3><ul>
+<li>如果 <strong>一个函数在内部调用其本身</strong>，这个函数就是 <strong>递归函数</strong>。</li>
+<li>递归函数一般会在特定情况下<strong>不再调用函数本身</strong>（一定要有出口），否则会导致到达最大递归次数, 程序报错</li>
+</ul>
+<h3 id="2-通过递归函数实现阶乘"><a href="#2-通过递归函数实现阶乘" class="headerlink" title="2. 通过递归函数实现阶乘"></a>2. 通过递归函数实现阶乘</h3><p><strong>阶乘的规律：</strong></p>
+<pre><code class="shell">1! = 1  
+2! = 2 × 1 = 2 × 1!  
+3! = 3 × 2 × 1 = 3 × 2!  
+4! = 4 × 3 × 2 × 1 = 4 × 3!  
+...  
+n! = n × (n-1)!</code></pre>
+<p>示例代码：</p>
+<pre><code class="python"># 1. 定义函数(参数)
+def func(n):
+    # 2. 如果我是 1 ，直接返回 1
+    if n == 1:
+        return 1
+    # 3. 否则，返回 n * 函数调用自己(n-1)
+    else:
+        ret = n * func(n-1)
+        return ret
+
+
+# 函数调用
+_ret = func(3)
+print(_ret)</code></pre>
+<h2 id="八、enumerate、del"><a href="#八、enumerate、del" class="headerlink" title="八、enumerate、del"></a>八、enumerate、del</h2><h3 id="1-enumerate-的使用"><a href="#1-enumerate-的使用" class="headerlink" title="1. enumerate 的使用"></a>1. enumerate 的使用</h3><ul>
+<li>通过 for 配合 enumerate 遍历容器同时获取元素索引位置、元素</li>
+</ul>
+<p>示例代码：</p>
+<pre><code class="python">user_list = [{&#39;name&#39;: &#39;mike&#39;, &#39;age&#39;: 34, &#39;tel&#39;: &#39;110&#39;},
+             {&#39;name&#39;: &#39;yoyo&#39;, &#39;age&#39;: 18, &#39;tel&#39;: &#39;120&#39;}]
+
+# 遍历列表，同时把索引位置能打印
+# 普通方法实现
+# 1. 定义索引位置变量
+i = 0
+# 2. for遍历列表，打印：索引、元素
+for user_dict in user_list:
+    print(i, user_dict)
+    # 3. 索引位置+1
+    i += 1
+
+print(&#39;==&#39;*20)
+
+# 通过enumerate方法实现
+# enumerate(容器变量)：获取到：元素位置，元素
+for i, user_dict in enumerate(user_list):
+    print(i, user_dict)</code></pre>
+<p>运行结果：</p>
+<pre><code class="shell">0 {&#39;name&#39;: &#39;mike&#39;, &#39;age&#39;: 34, &#39;tel&#39;: &#39;110&#39;}
+1 {&#39;name&#39;: &#39;yoyo&#39;, &#39;age&#39;: 18, &#39;tel&#39;: &#39;120&#39;}
+========================================
+0 {&#39;name&#39;: &#39;mike&#39;, &#39;age&#39;: 34, &#39;tel&#39;: &#39;110&#39;}
+1 {&#39;name&#39;: &#39;yoyo&#39;, &#39;age&#39;: 18, &#39;tel&#39;: &#39;120&#39;}</code></pre>
+<h3 id="2-通过del删除列表元素"><a href="#2-通过del删除列表元素" class="headerlink" title="2. 通过del删除列表元素"></a>2. 通过del删除列表元素</h3><ul>
+<li>通过del删除列表元素：<code>del 列表[索引]</code></li>
+</ul>
+<p>示例代码：</p>
+<pre><code class="python">user_list = [{&#39;name&#39;: &#39;mike&#39;, &#39;age&#39;: 34, &#39;tel&#39;: &#39;110&#39;},
+             {&#39;name&#39;: &#39;yoyo&#39;, &#39;age&#39;: 18, &#39;tel&#39;: &#39;120&#39;}]
+
+# 通过del删除列表元素 del 列表[索引位置]
+print(user_list)    # [{&#39;name&#39;: &#39;mike&#39;, &#39;age&#39;: 34, &#39;tel&#39;: &#39;110&#39;}, {&#39;name&#39;: &#39;yoyo&#39;, &#39;age&#39;: 18, &#39;tel&#39;: &#39;120&#39;}]
+
+# 删除索引位置为0的元素
+del user_list[0]
+
+print(user_list) # [{&#39;name&#39;: &#39;yoyo&#39;, &#39;age&#39;: 18, &#39;tel&#39;: &#39;120&#39;}]</code></pre>
+<h2 id="九、学生名片管理系统"><a href="#九、学生名片管理系统" class="headerlink" title="九、学生名片管理系统"></a>九、学生名片管理系统</h2><h3 id="1-示例代码"><a href="#1-示例代码" class="headerlink" title="1. 示例代码"></a>1. 示例代码</h3><pre><code class="python"># 0. 函数的外面，定义一个全局变量(列表)，用于保存用户信息
+user_list = [{&#39;name&#39;: &#39;mike&#39;, &#39;age&#39;: 34, &#39;tel&#39;: &#39;110&#39;},
+             {&#39;name&#39;: &#39;yoyo&#39;, &#39;age&#39;: 18, &#39;tel&#39;: &#39;120&#39;}]
+
+
+# 显示菜单函数定义
+def show_menu():
+    print(&#39;=&#39; * 20)
+    print(&#39;= 1. 添加学生&#39;)
+    print(&#39;= 2. 查询所有学生&#39;)
+    print(&#39;= 3. 查询某个学生&#39;)
+    print(&#39;= 4. 修改某个学生&#39;)
+    print(&#39;= 5. 删除某个学生&#39;)
+    print(&#39;= 6. 退出系统&#39;)
+    print(&#39;=&#39; * 20)
+
+
+# 定义新建学生的函数
+def add_stu_info():
+    &quot;&quot;&quot;添加学生信息&quot;&quot;&quot;
+    # 1. 输入用户信息：姓名、年龄、电话
+    _name = input(&#39;请输入学生姓名：&#39;)
+    _age = int(input(&#39;请输入学生年龄：&#39;))  # 年龄应该是整型，所有做了int转换
+    _tel = input(&#39;请输入学生电话：&#39;)
+
+    # 2. 通过for遍历，取出某个元素后，这个元素就是字典
+    for user_dict in user_list:
+        # 2.1 字典[‘name’] == 用户输入的名字，是否相等，相等则跳出循环
+        if user_dict[&#39;name&#39;] == _name:
+            print(&#39;此用户已经存在，请重来&#39;)
+            # 2.2 break跳出循环
+            break
+    else:
+        # 3. for中的else 如果用户不存在列表中，添加用户字典到列表
+        # 3.1 创建字典
+        info_dict = {&#39;name&#39;: _name, &#39;age&#39;: _age, &#39;tel&#39;: _tel}
+
+        # 3.2 追加列表
+        # user_list是可变类型，没有重新赋值，没有改变原来地址，所以不用global声明
+        user_list.append(info_dict)
+
+
+# 显示所有的学生，带序号的
+def show_all_stu():
+    &quot;&quot;&quot;显示所有的学生&quot;&quot;&quot;
+    # 1. 遍历前，打印一些提示信息：序号    姓名  年龄  电话
+    # \t一个tab键的空格
+    print(&#39;序号\t\t姓名\t\t年龄\t\t电话&#39;)
+
+    # 2. 遍历 for 索引位置，字典 in enumerate(user_list)：
+    for i, user_dict in enumerate(user_list):
+        # 2.1 打印一个用户的信息 索引位置+1，user_dict[‘name’]……
+        print(&#39;%d\t\t%s\t\t%d\t\t%s&#39; % (i + 1, user_dict[&#39;name&#39;], user_dict[&#39;age&#39;], user_dict[&#39;tel&#39;]))
+
+
+# 显示某个学生
+def show_one_stu():
+    &quot;&quot;&quot;显示某个学生&quot;&quot;&quot;
+    # 1. 输入姓名
+    _name = input(&#39;请输入学生姓名：&#39;)
+
+    # 2. 通过for遍历，取出一个字典user_dict
+    for user_dict in user_list:
+        # 2.1 user_dict[‘name’]和输入姓名判断
+        if user_dict[&#39;name&#39;] == _name:
+            # 2.1.1 如果相等，输出用户信息，退出循环
+            print(&#39;查询到的用户信息如下：&#39;)
+            print(&#39;%s\t%d\t%s&#39; % (user_dict[&#39;name&#39;], user_dict[&#39;age&#39;], user_dict[&#39;tel&#39;]))
+            break
+    # 3. for中的else，循环执行完毕，没有break，说明用户不存在，提示一下
+    else:
+        print(&#39;查询的用户不存在&#39;)
+
+
+def update_stu_by_name():
+    &quot;&quot;&quot;更新某个学生信息，根据输入的姓名匹配哪个学生&quot;&quot;&quot;
+    # 1. 输入需要修改的用户姓名
+    update_name = input(&#39;输入需要修改的用户姓名：&#39;)
+
+    # 2. for遍历，带索引的遍历   i, user_dict  in user_list
+    for i, user_dict in enumerate(user_list):
+        # 2.1 如果user_dict[&#39;name&#39;]和输入用户名字相等
+        if user_dict[&#39;name&#39;] == update_name:
+            # 2.1.1 重新输入新的姓名、年龄、电话
+            _name = input(&#39;请输入新的学生姓名：&#39;)
+            _age = int(input(&#39;请输入新的学生年龄：&#39;))
+            _tel = input(&#39;请输入新的学生电话：&#39;)
+            # 2.1.2 对user_list[i][&#39;name&#39;] = 新的name
+            user_list[i][&#39;name&#39;] = _name
+            user_list[i][&#39;age&#39;] = _age
+            user_list[i][&#39;tel&#39;] = _tel
+            # 2.1.3 ……、修改成功打印、break跳出循环
+            print(&#39;修改成功&#39;)
+            break
+    # 3. for中的else 输入的用户不在列表
+    else:
+        print(&#39;输入的用户不在列表，请重新输入&#39;)
+
+
+def del_stu_by_name():
+    &quot;&quot;&quot;删除某个学生，根据输入的姓名&quot;&quot;&quot;
+    # 1. 输入用户姓名
+    _name = input(&#39;请输入需要删除的名字：&#39;)
+
+    # 2. for遍历，带索引的遍历   i, user_dict
+    for i, user_dict in enumerate(user_list):
+        # 2.1 如果user_dict[&#39;name&#39;]和输入用户名字相等
+        if user_dict[&#39;name&#39;] == _name:
+            # 2.1.1 del 列表[i], 同时break跳出循环
+            del user_list[i]
+            print(&#39;删除成功&#39;)
+            break
+    # 3. for中else 输入的用户在列表中，不存在
+    else:
+        print(&#39;用户不在列表中，无法删除&#39;)
+
+
+# 写一个主程序
+def main():
+    # 1. 死循环
+    while True:
+        # 调用菜单
+        show_menu()
+
+        # 2. 用户输入数字
+        cmd = input(&quot;请输入功能数字：&quot;)
+
+        # 3. 条件选择
+        if cmd == &quot;1&quot;:
+            # print(&#39;添加学生&#39;)
+            add_stu_info()
+            # print(user_list) # 打印列表，做测试，看数据
+        elif cmd == &quot;2&quot;:
+            # print(&#39;查询所有学生&#39;)
+            show_all_stu()
+
+        elif cmd == &quot;3&quot;:
+            # print(&#39;查询某个学生&#39;)
+            show_one_stu()
+
+        elif cmd == &quot;4&quot;:
+            # print(&#39;修改某个学生&#39;)
+            update_stu_by_name()
+        elif cmd == &quot;5&quot;:
+            # print(&#39;删除某个学生&#39;)
+            del_stu_by_name()
+        elif cmd == &quot;6&quot;:
+            print(&#39;退出循环&#39;)
+            break
+        else:
+            print(&#39;输入有误，请重新输入&#39;)
+
+
+# 调用主程序
+main()</code></pre>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8005-%E5%87%BD%E6%95%B0%E5%BC%BA%E5%8C%96%E5%92%8C%E8%BF%9B%E9%98%B6/">https://caijinbo.work/2020/07/26/2020-07-27-python基础05-函数强化和进阶/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/python/">python</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#强化和进阶"><span class="toc-number">1.</span> <span class="toc-text">强化和进阶</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数强化和进阶"><span class="toc-number">2.</span> <span class="toc-text">函数强化和进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、组包和拆包"><span class="toc-number">2.1.</span> <span class="toc-text">一、组包和拆包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-组包"><span class="toc-number">2.1.1.</span> <span class="toc-text">1. 组包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-拆包"><span class="toc-number">2.1.2.</span> <span class="toc-text">2. 拆包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-应用场景"><span class="toc-number">2.1.3.</span> <span class="toc-text">3. 应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-交换变量的值"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">3.1 交换变量的值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-函数可以同时返回多个数"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">3.2 函数可以同时返回多个数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-字典元素拆包"><span class="toc-number">2.1.3.3.</span> <span class="toc-text">3.3 字典元素拆包</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、引用"><span class="toc-number">2.2.</span> <span class="toc-text">二、引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-引用"><span class="toc-number">2.2.1.</span> <span class="toc-text">1. 引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-引用指向改变"><span class="toc-number">2.2.2.</span> <span class="toc-text">2. 引用指向改变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-函数传参是引用传递"><span class="toc-number">2.2.3.</span> <span class="toc-text">3. 函数传参是引用传递</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、可变类型与不可变类型"><span class="toc-number">2.3.</span> <span class="toc-text">三、可变类型与不可变类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-可变类型和不可变类型"><span class="toc-number">2.3.1.</span> <span class="toc-text">1. 可变类型和不可变类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、range"><span class="toc-number">2.4.</span> <span class="toc-text">四、range</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-range的使用"><span class="toc-number">2.4.1.</span> <span class="toc-text">1. range的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、列表推导式"><span class="toc-number">2.5.</span> <span class="toc-text">五、列表推导式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-列表推导式"><span class="toc-number">2.5.1.</span> <span class="toc-text">1. 列表推导式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、匿名函数"><span class="toc-number">2.6.</span> <span class="toc-text">六、匿名函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-匿名函数"><span class="toc-number">2.6.1.</span> <span class="toc-text">1. 匿名函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、递归函数"><span class="toc-number">2.7.</span> <span class="toc-text">七、递归函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-什么是递归函数"><span class="toc-number">2.7.1.</span> <span class="toc-text">1. 什么是递归函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-通过递归函数实现阶乘"><span class="toc-number">2.7.2.</span> <span class="toc-text">2. 通过递归函数实现阶乘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、enumerate、del"><span class="toc-number">2.8.</span> <span class="toc-text">八、enumerate、del</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-enumerate-的使用"><span class="toc-number">2.8.1.</span> <span class="toc-text">1. enumerate 的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-通过del删除列表元素"><span class="toc-number">2.8.2.</span> <span class="toc-text">2. 通过del删除列表元素</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、学生名片管理系统"><span class="toc-number">2.9.</span> <span class="toc-text">九、学生名片管理系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-示例代码"><span class="toc-number">2.9.1.</span> <span class="toc-text">1. 示例代码</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/08/02/2020-08-03-python%E5%9F%BA%E7%A1%8009-%E5%BC%82%E5%B8%B8%E3%80%81%E6%A8%A1%E5%9D%97/">&lt; python基础09-异常、模块</a><a class="next" href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8004-%E5%87%BD%E6%95%B0/">python基础04-函数 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

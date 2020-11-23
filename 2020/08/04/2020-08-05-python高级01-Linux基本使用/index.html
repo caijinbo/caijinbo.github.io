@@ -1,0 +1,1080 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>python高级01-Linux基本使用 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">python高级01-Linux基本使用</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/08/04/2020-08-05-python%E9%AB%98%E7%BA%A701-Linux%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">2020-08-04</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/python/">python</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h2 id="第一章：Linux基本使用"><a href="#第一章：Linux基本使用" class="headerlink" title="第一章：Linux基本使用"></a>第一章：Linux基本使用</h2><h3 id="第1节：Linux系统使用"><a href="#第1节：Linux系统使用" class="headerlink" title="第1节：Linux系统使用"></a>第1节：Linux系统使用</h3><h4 id="1-Linux基础命令使用"><a href="#1-Linux基础命令使用" class="headerlink" title="1.Linux基础命令使用"></a>1.Linux基础命令使用</h4><a id="more"></a>
+
+<h5 id="1-1-查看目录命令的使用"><a href="#1-1-查看目录命令的使用" class="headerlink" title="1.1 查看目录命令的使用"></a>1.1 查看目录命令的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ls</td>
+<td align="left">查看当前目录信息</td>
+</tr>
+<tr>
+<td align="left">tree</td>
+<td align="left">以树状方式显示目录信息</td>
+</tr>
+</tbody></table>
+<h5 id="1-2-查看当前目录路径"><a href="#1-2-查看当前目录路径" class="headerlink" title="1.2 查看当前目录路径"></a>1.2 查看当前目录路径</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">pwd</td>
+<td align="left">查看当前目录路径</td>
+</tr>
+</tbody></table>
+<h5 id="1-3-清除终端内容"><a href="#1-3-清除终端内容" class="headerlink" title="1.3 清除终端内容"></a>1.3 清除终端内容</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">clear</td>
+<td align="left">清除终端内容</td>
+</tr>
+</tbody></table>
+<h5 id="1-4-切换目录命令的使用"><a href="#1-4-切换目录命令的使用" class="headerlink" title="1.4 切换目录命令的使用"></a>1.4 切换目录命令的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">cd 目录</td>
+<td align="left">切换到指定目录</td>
+</tr>
+<tr>
+<td align="left">cd ~</td>
+<td align="left">切换到当前用户的主目录</td>
+</tr>
+<tr>
+<td align="left">cd ..</td>
+<td align="left">切换到上一级目录</td>
+</tr>
+<tr>
+<td align="left">cd .</td>
+<td align="left">切换到当前目录</td>
+</tr>
+<tr>
+<td align="left">cd -</td>
+<td align="left">切换到上一次目录</td>
+</tr>
+</tbody></table>
+<p><strong>注意:</strong></p>
+<ul>
+<li>cd命令切换目录时，这个目录必须存在。</li>
+<li>cd 后面不写目录等价于cd ~</li>
+</ul>
+<h5 id="1-5-绝对路径"><a href="#1-5-绝对路径" class="headerlink" title="1.5 绝对路径"></a>1.5 绝对路径</h5><p>从根目录算起的路径叫做绝对路径</p>
+<p><strong>例如:</strong></p>
+<ul>
+<li>/home/python/Desktop</li>
+<li>/usr/bin</li>
+</ul>
+<h5 id="1-6-相对路径"><a href="#1-6-相对路径" class="headerlink" title="1.6 相对路径"></a>1.6 相对路径</h5><p>从当前目录算起的路径叫做相对路径</p>
+<p><strong>例如:</strong></p>
+<ul>
+<li>./test/hello</li>
+<li>../static/images</li>
+</ul>
+<h5 id="1-7-绝对路径和相对路径的使用"><a href="#1-7-绝对路径和相对路径的使用" class="headerlink" title="1.7 绝对路径和相对路径的使用"></a>1.7 绝对路径和相对路径的使用</h5><ol>
+<li>使用绝对路径切换到桌面<br>cd /home/python/Desktop</li>
+<li>在下载目录以相对路径切换到桌面<br>cd Downloads<br>cd ../Desktop</li>
+<li>在桌面使用相对路径切换到上一级目录的上一级目录 cd Desktop cd ../../</li>
+</ol>
+<h5 id="1-8-自动补全"><a href="#1-8-自动补全" class="headerlink" title="1.8 自动补全"></a>1.8 自动补全</h5><ul>
+<li>当敲出 文件或者目录或者命令 的前几个字母之后，按下 tab 键，如果输入的没有歧义，系统会自动补全</li>
+<li>当切换目录或者使用命令的时候，如果不确定当前目录下有那些子目录或者其它命令，可以通过两次tab键查看</li>
+</ul>
+<h5 id="1-9-创建、删除文件及目录命令的使用"><a href="#1-9-创建、删除文件及目录命令的使用" class="headerlink" title="1.9 创建、删除文件及目录命令的使用"></a>1.9 创建、删除文件及目录命令的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">touch 文件名</td>
+<td align="left">创建指定文件</td>
+</tr>
+<tr>
+<td align="left">mkdir 目录名</td>
+<td align="left">创建目录(文件夹)</td>
+</tr>
+<tr>
+<td align="left">rm 文件名或者目录名</td>
+<td align="left">删除指定文件或者目录</td>
+</tr>
+<tr>
+<td align="left">rmdir 目录名</td>
+<td align="left">删除空目录</td>
+</tr>
+</tbody></table>
+<h5 id="1-10-复制、移动文件及目录命令的使用"><a href="#1-10-复制、移动文件及目录命令的使用" class="headerlink" title="1.10 复制、移动文件及目录命令的使用"></a>1.10 复制、移动文件及目录命令的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">cp</td>
+<td align="left">拷贝文件、拷贝目录</td>
+</tr>
+<tr>
+<td align="left">mv</td>
+<td align="left">移动文件、移动目录、重命名</td>
+</tr>
+</tbody></table>
+<h5 id="1-11-终端命令格式说明"><a href="#1-11-终端命令格式说明" class="headerlink" title="1.11 终端命令格式说明"></a>1.11 终端命令格式说明</h5><p><strong>command</strong> [-options] [parameter]</p>
+<p><strong>每项信息的说明:</strong></p>
+<ul>
+<li>command：命令名, 比如: ls、pwd</li>
+<li>[-options]：选项，可以有零个、一个或者多个选项，多个选项可以合并，比如使用的 -r 就是选项。</li>
+<li>[parameter]：参数，可以有零个、一个 或者 多个参数， 比如: touch 文件名、mkdir 目录名、cd 目标目录(路径)，这些文件名和目录名都是参数。</li>
+<li>[]：代表可选</li>
+</ul>
+<h5 id="1-12-查看命令帮助方式"><a href="#1-12-查看命令帮助方式" class="headerlink" title="1.12 查看命令帮助方式"></a>1.12 查看命令帮助方式</h5><ul>
+<li>–help 使用说明: 命令 –help</li>
+<li>man 使用说明: man 命令</li>
+</ul>
+<p><strong>man命令的说明:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">操作键</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">空格</td>
+<td align="left">显示下一屏信息</td>
+</tr>
+<tr>
+<td align="left">回车</td>
+<td align="left">显示下一行信息</td>
+</tr>
+<tr>
+<td align="left">b</td>
+<td align="left">显示上一屏信息</td>
+</tr>
+<tr>
+<td align="left">f</td>
+<td align="left">显示下一屏信息</td>
+</tr>
+<tr>
+<td align="left">q</td>
+<td align="left">退出</td>
+</tr>
+</tbody></table>
+<h4 id="2-Linux命令选项的使用"><a href="#2-Linux命令选项的使用" class="headerlink" title="2.Linux命令选项的使用"></a>2.Linux命令选项的使用</h4><h5 id="2-1-ls命令选项使用"><a href="#2-1-ls命令选项使用" class="headerlink" title="2.1 ls命令选项使用"></a>2.1 ls命令选项使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令选项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-l</td>
+<td align="left">以列表方式显示</td>
+</tr>
+<tr>
+<td align="left">-h</td>
+<td align="left">以大小单位显示，默认是字节</td>
+</tr>
+<tr>
+<td align="left">-a</td>
+<td align="left">显示隐藏文件和隐藏目录</td>
+</tr>
+</tbody></table>
+<h5 id="2-2-mkdir命令选项"><a href="#2-2-mkdir命令选项" class="headerlink" title="2.2 mkdir命令选项"></a>2.2 mkdir命令选项</h5><table>
+<thead>
+<tr>
+<th align="left">命令选项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-p</td>
+<td align="left">创建所依赖的文件夹</td>
+</tr>
+</tbody></table>
+<h5 id="2-3-rm命令选项"><a href="#2-3-rm命令选项" class="headerlink" title="2.3 rm命令选项"></a>2.3 rm命令选项</h5><table>
+<thead>
+<tr>
+<th align="left">命令选项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-i</td>
+<td align="left">交互式提示</td>
+</tr>
+<tr>
+<td align="left">-r</td>
+<td align="left">递归删除目录及其内容</td>
+</tr>
+<tr>
+<td align="left">-f</td>
+<td align="left">强制删除，忽略不存在的文件，无需提示</td>
+</tr>
+<tr>
+<td align="left">-d</td>
+<td align="left">删除空目录</td>
+</tr>
+</tbody></table>
+<h5 id="2-4-cp命令选项"><a href="#2-4-cp命令选项" class="headerlink" title="2.4 cp命令选项"></a>2.4 cp命令选项</h5><table>
+<thead>
+<tr>
+<th align="left">命令选项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-i</td>
+<td align="left">交互式提示</td>
+</tr>
+<tr>
+<td align="left">-r</td>
+<td align="left">递归拷贝目录及其内容</td>
+</tr>
+<tr>
+<td align="left">-v</td>
+<td align="left">显示拷贝后的路径描述</td>
+</tr>
+<tr>
+<td align="left">-a</td>
+<td align="left">保留文件的原有权限</td>
+</tr>
+</tbody></table>
+<h5 id="2-5-mv命令选项"><a href="#2-5-mv命令选项" class="headerlink" title="2.5 mv命令选项"></a>2.5 mv命令选项</h5><table>
+<thead>
+<tr>
+<th align="left">命令选项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-i</td>
+<td align="left">交互式提示</td>
+</tr>
+<tr>
+<td align="left">-v</td>
+<td align="left">显示移动后的路径描述</td>
+</tr>
+</tbody></table>
+<h4 id="3-Linux高级命令使用"><a href="#3-Linux高级命令使用" class="headerlink" title="3. Linux高级命令使用"></a>3. Linux高级命令使用</h4><h5 id="3-1-重定向命令的使用"><a href="#3-1-重定向命令的使用" class="headerlink" title="3.1 重定向命令的使用"></a>3.1 重定向命令的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&gt;</td>
+<td align="left">如果文件存在会覆盖原有文件内容，相当于文件操作中的‘w’模式</td>
+</tr>
+<tr>
+<td align="left">&gt;&gt;</td>
+<td align="left">如果文件存在会追加写入文件末尾，相当于文件操作中的‘a’ 模式</td>
+</tr>
+</tbody></table>
+<p><strong>说明:</strong></p>
+<p>只要在终端能显示信息的命令都可以使用重定向，比如: tree</p>
+<h5 id="3-2-查看文件内容命令的使用"><a href="#3-2-查看文件内容命令的使用" class="headerlink" title="3.2 查看文件内容命令的使用"></a>3.2 查看文件内容命令的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">cat</td>
+<td align="left">查看小型文件</td>
+</tr>
+<tr>
+<td align="left">more</td>
+<td align="left">分屏查看大型文件</td>
+</tr>
+</tbody></table>
+<p><strong>说明:</strong></p>
+<ul>
+<li>cat命令结合重定向可以完成多个文件的合并</li>
+<li>gedit 文件编辑命令，可以查看和编辑文件</li>
+</ul>
+<p><strong>more命令的效果图</strong></p>
+<p>当查看内容信息过长无法在一屏上显示时，可以使用 more 命令在终端分屏显示文件内容。</p>
+<p><strong>操作键说明:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">操作键</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">空格</td>
+<td align="left">显示下一屏信息</td>
+</tr>
+<tr>
+<td align="left">回车</td>
+<td align="left">显示下一行信息</td>
+</tr>
+<tr>
+<td align="left">b</td>
+<td align="left">显示上一屏信息</td>
+</tr>
+<tr>
+<td align="left">f</td>
+<td align="left">显示下一屏信息</td>
+</tr>
+<tr>
+<td align="left">q</td>
+<td align="left">退出</td>
+</tr>
+</tbody></table>
+<h5 id="3-3-管道-命令的使用"><a href="#3-3-管道-命令的使用" class="headerlink" title="3.3 管道(|)命令的使用"></a>3.3 管道(|)命令的使用</h5><p>管道(|)：一个命令的输出可以通过管道做为另一个命令的输入，可以理解成是一个容器，存放在终端显示的内容。</p>
+<p><strong>说明:</strong></p>
+<p>管道(|)一般结合 more 命令使用，主要是分配查看终端显示内容。</p>
+<h5 id="3-4-链接命令的使用"><a href="#3-4-链接命令的使用" class="headerlink" title="3.4 链接命令的使用"></a>3.4 链接命令的使用</h5><p>链接命令是创建链接文件，链接文件分为:</p>
+<ul>
+<li>软链接</li>
+<li>硬链接</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ln -s</td>
+<td align="left">创建软链接</td>
+</tr>
+<tr>
+<td align="left">ln</td>
+<td align="left">创建硬链接</td>
+</tr>
+</tbody></table>
+<h6 id="3-4-1-软链接"><a href="#3-4-1-软链接" class="headerlink" title="3.4.1 软链接"></a>3.4.1 软链接</h6><p>类似于<strong>Windows下的快捷方式</strong>，当一个源文件的目录层级比较深，我们想要方便使用它可以给源文件创建一个软链接。</p>
+<p><strong>注意点:</strong></p>
+<ul>
+<li><strong>如果软链接和源文件不在同一个目录，源文件要使用绝对路径，不能使用相对路径。</strong></li>
+<li><strong>删除源文件则软链接失效</strong></li>
+<li><strong>可以给目录创建软链接</strong></li>
+</ul>
+<h6 id="3-4-2-硬链接"><a href="#3-4-2-硬链接" class="headerlink" title="3.4.2 硬链接"></a>3.4.2 硬链接</h6><p>类似于<strong>源文件的一个别名</strong>，也就是说这两个名字指向的是同一个文件数据。</p>
+<p><strong>注意点:</strong></p>
+<ul>
+<li><strong>创建硬链接使用相对路径和绝对路径都可以</strong></li>
+<li><strong>删除源文件，硬链接还可以访问到数据。</strong></li>
+<li><strong>创建硬链接，硬链接数会加1，删除源文件或者硬链接，硬链接数会减1。</strong></li>
+<li><strong>创建软链接，硬链接数不会加1</strong></li>
+<li><strong>不能给目录创建硬链接</strong></li>
+</ul>
+<p><strong>硬链接数:</strong></p>
+<p><strong>硬链接数就是文件数据被文件名使用的次数, 好比引用计数</strong></p>
+<h5 id="3-5-grep命令的使用"><a href="#3-5-grep命令的使用" class="headerlink" title="3.5 grep命令的使用"></a>3.5 grep命令的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">grep</td>
+<td align="left">文本搜索</td>
+</tr>
+</tbody></table>
+<h6 id="3-5-1-grep命令选项的使用"><a href="#3-5-1-grep命令选项的使用" class="headerlink" title="3.5.1  grep命令选项的使用"></a>3.5.1  grep命令选项的使用</h6><table>
+<thead>
+<tr>
+<th align="left">命令选项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-i</td>
+<td align="left">忽略大小写</td>
+</tr>
+<tr>
+<td align="left">-n</td>
+<td align="left">显示匹配行号</td>
+</tr>
+<tr>
+<td align="left">-v</td>
+<td align="left">显示不包含匹配文本的所有行</td>
+</tr>
+</tbody></table>
+<h6 id="3-5-2-grep命令结合正则表达式的使用"><a href="#3-5-2-grep命令结合正则表达式的使用" class="headerlink" title="3.5.2 grep命令结合正则表达式的使用"></a>3.5.2 grep命令结合正则表达式的使用</h6><table>
+<thead>
+<tr>
+<th align="left">正则表达式</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">^</td>
+<td align="left">以指定字符串开头</td>
+</tr>
+<tr>
+<td align="left">$</td>
+<td align="left">以指定字符串结尾</td>
+</tr>
+<tr>
+<td align="left">.</td>
+<td align="left">匹配一个非换行符的字符</td>
+</tr>
+</tbody></table>
+<h5 id="3-6-find命令及选项的使用"><a href="#3-6-find命令及选项的使用" class="headerlink" title="3.6  find命令及选项的使用"></a>3.6  find命令及选项的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">find</td>
+<td align="left">在指定目录下查找文件(包括目录)</td>
+</tr>
+</tbody></table>
+<p><strong>find命令选项:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-name</td>
+<td align="left">根据文件名(包括目录名)字查找</td>
+</tr>
+</tbody></table>
+<h6 id="3-6-1-find命令结合通配符的使用"><a href="#3-6-1-find命令结合通配符的使用" class="headerlink" title="3.6.1 find命令结合通配符的使用"></a>3.6.1 find命令结合通配符的使用</h6><p><strong>通配符:</strong></p>
+<p>是一种特殊语句，主要有星号(*)和问号(?)，用来模糊搜索文件</p>
+<table>
+<thead>
+<tr>
+<th align="left">通配符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">*</td>
+<td align="left">代表0个或多个任意字符</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">代表任意一个字符</td>
+</tr>
+</tbody></table>
+<p><strong>扩展:</strong></p>
+<p>通配符不仅能结合 <strong>find</strong> 命令使用，还可以结合其它命令使用, 比如: <strong>ls、mv、cp</strong> 等，这里需要注意只有 <strong>find</strong> 命令使用通配符需要加上引号。</p>
+<h5 id="3-7-tar命令及选项的使用"><a href="#3-7-tar命令及选项的使用" class="headerlink" title="3.7 tar命令及选项的使用"></a>3.7 tar命令及选项的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">tar</td>
+<td align="left">压缩和解压缩命令</td>
+</tr>
+</tbody></table>
+<p><strong>tar命令选项:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-c</td>
+<td align="left">创建打包文件</td>
+</tr>
+<tr>
+<td align="left">-v</td>
+<td align="left">显示打包或者解包的详细信息</td>
+</tr>
+<tr>
+<td align="left">-f</td>
+<td align="left">指定文件名称, 必须放到所有选项后面</td>
+</tr>
+<tr>
+<td align="left">-z</td>
+<td align="left">压缩或解压缩(.gz)</td>
+</tr>
+<tr>
+<td align="left">-j</td>
+<td align="left">压缩或解压缩(.bz2)</td>
+</tr>
+<tr>
+<td align="left">-x</td>
+<td align="left">解包</td>
+</tr>
+<tr>
+<td align="left">-C</td>
+<td align="left">解压缩到指定目录</td>
+</tr>
+</tbody></table>
+<h5 id="3-8-zip和unzip命令及选项的使用"><a href="#3-8-zip和unzip命令及选项的使用" class="headerlink" title="3.8 zip和unzip命令及选项的使用"></a>3.8 zip和unzip命令及选项的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">zip</td>
+<td align="left">压缩成.zip格式文件</td>
+</tr>
+<tr>
+<td align="left">unzip</td>
+<td align="left">解压缩.zip格式文件</td>
+</tr>
+</tbody></table>
+<p><strong>unzip命令选项:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-d</td>
+<td align="left">解压缩到指定目录</td>
+</tr>
+</tbody></table>
+<p><strong>说明:</strong></p>
+<ul>
+<li>压缩文件尽量使用.bz2格式，因为占用空间较少</li>
+<li>使用zip命令压缩的文件占用空间比较多, 当时比较通用，操作更加简单。</li>
+</ul>
+<h5 id="3-9-chmod命令的介绍"><a href="#3-9-chmod命令的介绍" class="headerlink" title="3.9 chmod命令的介绍"></a>3.9 chmod命令的介绍</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">chmod</td>
+<td align="left">修改文件权限</td>
+</tr>
+</tbody></table>
+<p>chmod修改文件权限有两种方式:</p>
+<ul>
+<li>字母法</li>
+<li>数字法</li>
+</ul>
+<h6 id="3-91-chmod-字母法的使用"><a href="#3-91-chmod-字母法的使用" class="headerlink" title="3.91 chmod 字母法的使用"></a>3.91 chmod 字母法的使用</h6><p><strong>角色说明:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">角色</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">u</td>
+<td align="left">user, 表示该文件的所有者</td>
+</tr>
+<tr>
+<td align="left">g</td>
+<td align="left">group, 表示用户组</td>
+</tr>
+<tr>
+<td align="left">o</td>
+<td align="left">other, 表示其他用户</td>
+</tr>
+<tr>
+<td align="left">a</td>
+<td align="left">all, 表示所有用户</td>
+</tr>
+</tbody></table>
+<p><strong>权限设置说明:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">操作符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">+</td>
+<td align="left">增加权限</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">撤销权限</td>
+</tr>
+<tr>
+<td align="left">=</td>
+<td align="left">设置权限</td>
+</tr>
+</tbody></table>
+<p><strong>权限说明:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">权限</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">r</td>
+<td align="left">可读</td>
+</tr>
+<tr>
+<td align="left">w</td>
+<td align="left">可写</td>
+</tr>
+<tr>
+<td align="left">x</td>
+<td align="left">可执行</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">无任何权限</td>
+</tr>
+</tbody></table>
+<h6 id="3-9-2-chmod-数字法的使用"><a href="#3-9-2-chmod-数字法的使用" class="headerlink" title="3.9.2 chmod 数字法的使用"></a>3.9.2 chmod 数字法的使用</h6><p>数字法就是“rwx” 这些权限也可以用<strong>数字来代替</strong></p>
+<p><strong>权限说明:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">权限</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">r</td>
+<td align="left">可读，权限值是4</td>
+</tr>
+<tr>
+<td align="left">w</td>
+<td align="left">可写，权限值是2</td>
+</tr>
+<tr>
+<td align="left">x</td>
+<td align="left">可执行，权限值是1</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">无任何权限，权限值是0</td>
+</tr>
+</tbody></table>
+<h5 id="3-10-sudo命令的使用"><a href="#3-10-sudo命令的使用" class="headerlink" title="3.10 sudo命令的使用"></a>3.10 sudo命令的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">sudo -s</td>
+<td align="left">切换到root用户，获取管理员权限</td>
+</tr>
+<tr>
+<td align="left">sudo</td>
+<td align="left">某个命令的执行需要获取管理员权限可以在执行命令前面加上sudo</td>
+</tr>
+</tbody></table>
+<h5 id="3-11-whoami命令的使用"><a href="#3-11-whoami命令的使用" class="headerlink" title="3.11 whoami命令的使用"></a>3.11 whoami命令的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">whoami</td>
+<td align="left">查看当前用户</td>
+</tr>
+</tbody></table>
+<h5 id="3-12-exit命令的使用"><a href="#3-12-exit命令的使用" class="headerlink" title="3.12 exit命令的使用"></a>3.12 exit命令的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">exit</td>
+<td align="left">退出登录用户</td>
+</tr>
+</tbody></table>
+<h5 id="3-13-who命令的使用"><a href="#3-13-who命令的使用" class="headerlink" title="3.13 who命令的使用"></a>3.13 who命令的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">who</td>
+<td align="left">查看所有的登录用户</td>
+</tr>
+</tbody></table>
+<h5 id="3-14-passwd命令的使用"><a href="#3-14-passwd命令的使用" class="headerlink" title="3.14 passwd命令的使用"></a>3.14 passwd命令的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">passwd</td>
+<td align="left">修改用户密码，不指定用户默认修改当前登录用户密码</td>
+</tr>
+</tbody></table>
+<h5 id="3-15-which命令的使用"><a href="#3-15-which命令的使用" class="headerlink" title="3.15 which命令的使用"></a>3.15 which命令的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">which</td>
+<td align="left">查看命令位置</td>
+</tr>
+</tbody></table>
+<h5 id="3-16-关机和重启命令的使用"><a href="#3-16-关机和重启命令的使用" class="headerlink" title="3.16 关机和重启命令的使用"></a>3.16 关机和重启命令的使用</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">shutdown –h now  或者 poweroff</td>
+<td align="left">立刻关机</td>
+</tr>
+<tr>
+<td align="left">reboot</td>
+<td align="left">重启</td>
+</tr>
+</tbody></table>
+<h5 id="3-17-useradd创建用户"><a href="#3-17-useradd创建用户" class="headerlink" title="3.17 useradd创建用户"></a>3.17 useradd创建用户</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">useradd</td>
+<td align="left">创建(添加)用户</td>
+</tr>
+</tbody></table>
+<p><strong>useradd命令选项:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-m</td>
+<td align="left">自动创建用户主目录,主目录的名字就是用户名</td>
+</tr>
+<tr>
+<td align="left">-g</td>
+<td align="left">指定用户所属的用户组，默认不指定会自动创建一个同名的用户组</td>
+</tr>
+</tbody></table>
+<p><strong>说明:</strong></p>
+<ul>
+<li><strong>useradd</strong> 命令的使用需要使用管理员权限，前面需要加上 <strong>sudo</strong></li>
+<li>创建用户如果不指定用户组，默认会自动创建一个同名的用户组</li>
+<li>查看用户是否创建成功，可以查看<strong>/etc/passwd</strong>这个文件</li>
+<li>查看用户组是否创建成功，可以查看<strong>/etc/group</strong>这个文件</li>
+</ul>
+<p><strong>passwd文件中的每项信息说明,以root:x:0:0:root:/root:/bin/bash为例:</strong></p>
+<ul>
+<li>第一个：用户名</li>
+<li>第二个：密码占位符</li>
+<li>第三个：uid, 用户id</li>
+<li>第四个：gid, 用户所在组id</li>
+<li>第五个：用户描述, 可选，</li>
+<li>第六个：用户的主目录所在位置</li>
+<li>第七个：用户所用 shell 的类型，一般由bash或者sh，默认不设置是sh类型</li>
+</ul>
+<p><strong>group文件中的每项信息说明, 以laowang:x:1001:为例:</strong></p>
+<ul>
+<li>第一个：用户组名</li>
+<li>第二个：用户组密码占位符，一般Linux系统的用户组都没有密码的</li>
+<li>第三个：组id</li>
+</ul>
+<h5 id="3-18-id命令查看用户信息"><a href="#3-18-id命令查看用户信息" class="headerlink" title="3.18 id命令查看用户信息"></a>3.18 id命令查看用户信息</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">id</td>
+<td align="left">查看用户信息</td>
+</tr>
+</tbody></table>
+<p><strong>每项信息说明:</strong></p>
+<p>uid=1001(laowang) gid=1001(laowang) 组=1001(laowang)</p>
+<ul>
+<li>第一个: uid 表示用户id</li>
+<li>第二个: gid 表示用户组id</li>
+<li>第三个: 组 表示用户所在的用户组</li>
+</ul>
+<h5 id="3-19-su切换用户"><a href="#3-19-su切换用户" class="headerlink" title="3.19 su切换用户"></a>3.19 su切换用户</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">su</td>
+<td align="left">切换用户</td>
+</tr>
+</tbody></table>
+<p><strong>语法格式: su - 用户名</strong></p>
+<h5 id="3-20-userdel删除用户"><a href="#3-20-userdel删除用户" class="headerlink" title="3.20 userdel删除用户"></a>3.20 userdel删除用户</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">userdel</td>
+<td align="left">删除用户</td>
+</tr>
+</tbody></table>
+<p><strong>语法格式: userdel 用户名</strong></p>
+<p><strong>userdel命令选项:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-r 用户名</td>
+<td align="left">删除用户主目录，必须要设置，否则用户主目录不会删除</td>
+</tr>
+</tbody></table>
+<p><strong>说明:</strong></p>
+<ul>
+<li>删除用户，默认同名的用户组也会被删除</li>
+</ul>
+<h5 id="3-21-groupadd创建用户组"><a href="#3-21-groupadd创建用户组" class="headerlink" title="3.21 groupadd创建用户组"></a>3.21 groupadd创建用户组</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">groupadd</td>
+<td align="left">创建(添加)用户组</td>
+</tr>
+</tbody></table>
+<p>创建用户并指定用户组 :</p>
+<pre><code class="shell"> sudo useradd -m ubuntu -g root </code></pre>
+<h4 id="4-远程登录和远程拷贝"><a href="#4-远程登录和远程拷贝" class="headerlink" title="4. 远程登录和远程拷贝"></a>4. 远程登录和远程拷贝</h4><h5 id="4-1-ssh命令的使用"><a href="#4-1-ssh命令的使用" class="headerlink" title="4.1 ssh命令的使用"></a>4.1 ssh命令的使用</h5><p><strong>ssh命令格式:</strong></p>
+<p>ssh 用户名@ip地址</p>
+<p>示例：</p>
+<pre><code class="shell">ssh root@192.168.1.24</code></pre>
+<p>安装：</p>
+<pre><code class="shell">sudo apt install openssh-server
+
+yum install openssh-server
+
+sudo pacman -S openssh-server</code></pre>
+<p>启动服务：</p>
+<pre><code class="shell">sudo systemctl start ssh
+
+sudo service ssh start</code></pre>
+<h5 id="4-2-scp命令的使用"><a href="#4-2-scp命令的使用" class="headerlink" title="4.2 scp命令的使用"></a>4.2 scp命令的使用</h5><p><strong>scp命令格式</strong></p>
+<p>scp 源文件 目标</p>
+<p>示例：从本地拷贝到远程目标</p>
+<pre><code class="shell">scp test.txt root@192.168.1.24:/home/</code></pre>
+<p>从远程拷贝文件到本地</p>
+<pre><code class="shell">scp root@192.168.1.24:/home/test.txt /home/</code></pre>
+<h4 id="5-vim编辑器使用"><a href="#5-vim编辑器使用" class="headerlink" title="5. vim编辑器使用"></a>5. vim编辑器使用</h4><h5 id="5-1-vim-的工作模式"><a href="#5-1-vim-的工作模式" class="headerlink" title="5.1 vim 的工作模式"></a>5.1 vim 的工作模式</h5><ul>
+<li>命令模式</li>
+<li>编辑模式</li>
+<li>末行模式</li>
+</ul>
+<h5 id="5-2-vim-的末行模式命令"><a href="#5-2-vim-的末行模式命令" class="headerlink" title="5.2 vim 的末行模式命令"></a>5.2 vim 的末行模式命令</h5><ul>
+<li>:w 保存</li>
+<li>:wq 保存退出</li>
+<li>:x 保存退出</li>
+<li>:q! 强制退出</li>
+</ul>
+<h5 id="5-3-vim-的常用命令"><a href="#5-3-vim-的常用命令" class="headerlink" title="5.3 vim 的常用命令"></a>5.3 vim 的常用命令</h5><table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">yy</td>
+<td align="left">复制光标所在行</td>
+</tr>
+<tr>
+<td align="left">p</td>
+<td align="left">粘贴</td>
+</tr>
+<tr>
+<td align="left">dd</td>
+<td align="left">删除/剪切当前行</td>
+</tr>
+<tr>
+<td align="left">u</td>
+<td align="left">撤销</td>
+</tr>
+<tr>
+<td align="left">/搜索的内容</td>
+<td align="left">搜索指定内容</td>
+</tr>
+<tr>
+<td align="left">G</td>
+<td align="left">回到最后一行</td>
+</tr>
+<tr>
+<td align="left">gg</td>
+<td align="left">回到第一行</td>
+</tr>
+<tr>
+<td align="left">数字+G</td>
+<td align="left">回到指定行</td>
+</tr>
+</tbody></table>
+<p>常用命令扩展</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&gt;&gt;</td>
+<td align="left">往右缩进</td>
+</tr>
+<tr>
+<td align="left">&lt;&lt;</td>
+<td align="left">往左缩进</td>
+</tr>
+<tr>
+<td align="left">:%s/要替换的内容/替换后的内容/g</td>
+<td align="left">全局替换</td>
+</tr>
+<tr>
+<td align="left">:开始行数,结束行数s/要替换的内容/替换后的内容</td>
+<td align="left">局部替换</td>
+</tr>
+<tr>
+<td align="left">.</td>
+<td align="left">重复上一次命令操作</td>
+</tr>
+<tr>
+<td align="left">shift+6</td>
+<td align="left">回到当前行的行首</td>
+</tr>
+<tr>
+<td align="left">shift+4</td>
+<td align="left">回到当前行的行末</td>
+</tr>
+<tr>
+<td align="left">ctr+f</td>
+<td align="left">下一屏</td>
+</tr>
+<tr>
+<td align="left">ctr+b</td>
+<td align="left">上一屏</td>
+</tr>
+<tr>
+<td align="left">V</td>
+<td align="left">按行选中</td>
+</tr>
+<tr>
+<td align="left">ctr+r</td>
+<td align="left">反撤销</td>
+</tr>
+</tbody></table>
+<h4 id="6-ubuntu软件安装和软件卸载"><a href="#6-ubuntu软件安装和软件卸载" class="headerlink" title="6. ubuntu软件安装和软件卸载"></a>6. ubuntu软件安装和软件卸载</h4><h5 id="6-1-deb文件格式安装"><a href="#6-1-deb文件格式安装" class="headerlink" title="6.1 deb文件格式安装"></a>6.1 deb文件格式安装</h5><p>是 Ubuntu 的安装包格式，可以使用 <strong>dpkg</strong> 命令进行软件的安装和卸载。</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">dpkg</td>
+<td align="left">安装和卸载deb安装包</td>
+</tr>
+</tbody></table>
+<p><strong>dpkg命令选项:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-i</td>
+<td align="left">离线安装deb安装包</td>
+</tr>
+</tbody></table>
+<h5 id="6-2-apt方式安装"><a href="#6-2-apt方式安装" class="headerlink" title="6.2 apt方式安装"></a>6.2 apt方式安装</h5><p>是在线安装deb软件包的命令，主要用于在线从互联网的软件仓库中<strong>搜索、安装、升级、卸载</strong>软件。</p>
+<p><strong>在线安装软件命令格式:</strong></p>
+<ul>
+<li><strong>sudo apt install 安装包</strong> , 表示在线安装deb安装包</li>
+</ul>
+<h5 id="6-3-更改镜像源"><a href="#6-3-更改镜像源" class="headerlink" title="6.3 更改镜像源"></a>6.3 更改镜像源</h5><p>因为使用 apt-get 命令默认是从国外的服务器下载安装软件的，会导致下载安装速度很慢，所以需要更改成国内的镜像源服务器。</p>
+<p><strong>镜像源说明:</strong></p>
+<p>镜像源就是下载软件来源的服务器。</p>
+<p><strong>更改镜像源的方式:</strong></p>
+<ol>
+<li>可视化方式更改镜像源</li>
+<li>手动方式更改镜像源</li>
+</ol>
+<p><strong>说明:</strong></p>
+<ol>
+<li>手动修改镜像源，配置完成以后需要执行 <strong>sudo apt update</strong> 这个命令，更新镜像源保证可以下载最新的软件。</li>
+<li><strong>使用apt方式安装软件一定要联网</strong></li>
+</ol>
+<h5 id="6-4-deb-文件格式卸载"><a href="#6-4-deb-文件格式卸载" class="headerlink" title="6.4 deb 文件格式卸载"></a>6.4 deb 文件格式卸载</h5><p><strong>命令格式:</strong></p>
+<p><strong>sudo dpkg –r 安装包名</strong></p>
+<p>-r 选项表示安装的卸载</p>
+<h5 id="6-5-apt-方式卸载"><a href="#6-5-apt-方式卸载" class="headerlink" title="6.5 apt 方式卸载"></a>6.5 apt 方式卸载</h5><p><strong>命令格式:</strong></p>
+<p>**sudo apt remove 安装包名</p>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/08/04/2020-08-05-python%E9%AB%98%E7%BA%A701-Linux%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">https://caijinbo.work/2020/08/04/2020-08-05-python高级01-Linux基本使用/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/python/">python</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一章：Linux基本使用"><span class="toc-number">1.</span> <span class="toc-text">第一章：Linux基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第1节：Linux系统使用"><span class="toc-number">1.1.</span> <span class="toc-text">第1节：Linux系统使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Linux基础命令使用"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.Linux基础命令使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-查看目录命令的使用"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">1.1 查看目录命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-查看当前目录路径"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">1.2 查看当前目录路径</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-清除终端内容"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">1.3 清除终端内容</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-切换目录命令的使用"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">1.4 切换目录命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-5-绝对路径"><span class="toc-number">1.1.1.5.</span> <span class="toc-text">1.5 绝对路径</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-6-相对路径"><span class="toc-number">1.1.1.6.</span> <span class="toc-text">1.6 相对路径</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-7-绝对路径和相对路径的使用"><span class="toc-number">1.1.1.7.</span> <span class="toc-text">1.7 绝对路径和相对路径的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-8-自动补全"><span class="toc-number">1.1.1.8.</span> <span class="toc-text">1.8 自动补全</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-9-创建、删除文件及目录命令的使用"><span class="toc-number">1.1.1.9.</span> <span class="toc-text">1.9 创建、删除文件及目录命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-10-复制、移动文件及目录命令的使用"><span class="toc-number">1.1.1.10.</span> <span class="toc-text">1.10 复制、移动文件及目录命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-11-终端命令格式说明"><span class="toc-number">1.1.1.11.</span> <span class="toc-text">1.11 终端命令格式说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-12-查看命令帮助方式"><span class="toc-number">1.1.1.12.</span> <span class="toc-text">1.12 查看命令帮助方式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Linux命令选项的使用"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.Linux命令选项的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-ls命令选项使用"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">2.1 ls命令选项使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-mkdir命令选项"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">2.2 mkdir命令选项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-rm命令选项"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">2.3 rm命令选项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-cp命令选项"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">2.4 cp命令选项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-5-mv命令选项"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">2.5 mv命令选项</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Linux高级命令使用"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. Linux高级命令使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-重定向命令的使用"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">3.1 重定向命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-查看文件内容命令的使用"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">3.2 查看文件内容命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-管道-命令的使用"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">3.3 管道(|)命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-4-链接命令的使用"><span class="toc-number">1.1.3.4.</span> <span class="toc-text">3.4 链接命令的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#3-4-1-软链接"><span class="toc-number">1.1.3.4.1.</span> <span class="toc-text">3.4.1 软链接</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-4-2-硬链接"><span class="toc-number">1.1.3.4.2.</span> <span class="toc-text">3.4.2 硬链接</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-grep命令的使用"><span class="toc-number">1.1.3.5.</span> <span class="toc-text">3.5 grep命令的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#3-5-1-grep命令选项的使用"><span class="toc-number">1.1.3.5.1.</span> <span class="toc-text">3.5.1  grep命令选项的使用</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-5-2-grep命令结合正则表达式的使用"><span class="toc-number">1.1.3.5.2.</span> <span class="toc-text">3.5.2 grep命令结合正则表达式的使用</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-6-find命令及选项的使用"><span class="toc-number">1.1.3.6.</span> <span class="toc-text">3.6  find命令及选项的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#3-6-1-find命令结合通配符的使用"><span class="toc-number">1.1.3.6.1.</span> <span class="toc-text">3.6.1 find命令结合通配符的使用</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-7-tar命令及选项的使用"><span class="toc-number">1.1.3.7.</span> <span class="toc-text">3.7 tar命令及选项的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-8-zip和unzip命令及选项的使用"><span class="toc-number">1.1.3.8.</span> <span class="toc-text">3.8 zip和unzip命令及选项的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-9-chmod命令的介绍"><span class="toc-number">1.1.3.9.</span> <span class="toc-text">3.9 chmod命令的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#3-91-chmod-字母法的使用"><span class="toc-number">1.1.3.9.1.</span> <span class="toc-text">3.91 chmod 字母法的使用</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-9-2-chmod-数字法的使用"><span class="toc-number">1.1.3.9.2.</span> <span class="toc-text">3.9.2 chmod 数字法的使用</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-10-sudo命令的使用"><span class="toc-number">1.1.3.10.</span> <span class="toc-text">3.10 sudo命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-11-whoami命令的使用"><span class="toc-number">1.1.3.11.</span> <span class="toc-text">3.11 whoami命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-12-exit命令的使用"><span class="toc-number">1.1.3.12.</span> <span class="toc-text">3.12 exit命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-13-who命令的使用"><span class="toc-number">1.1.3.13.</span> <span class="toc-text">3.13 who命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-14-passwd命令的使用"><span class="toc-number">1.1.3.14.</span> <span class="toc-text">3.14 passwd命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-15-which命令的使用"><span class="toc-number">1.1.3.15.</span> <span class="toc-text">3.15 which命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-16-关机和重启命令的使用"><span class="toc-number">1.1.3.16.</span> <span class="toc-text">3.16 关机和重启命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-17-useradd创建用户"><span class="toc-number">1.1.3.17.</span> <span class="toc-text">3.17 useradd创建用户</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-18-id命令查看用户信息"><span class="toc-number">1.1.3.18.</span> <span class="toc-text">3.18 id命令查看用户信息</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-19-su切换用户"><span class="toc-number">1.1.3.19.</span> <span class="toc-text">3.19 su切换用户</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-20-userdel删除用户"><span class="toc-number">1.1.3.20.</span> <span class="toc-text">3.20 userdel删除用户</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-21-groupadd创建用户组"><span class="toc-number">1.1.3.21.</span> <span class="toc-text">3.21 groupadd创建用户组</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-远程登录和远程拷贝"><span class="toc-number">1.1.4.</span> <span class="toc-text">4. 远程登录和远程拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-ssh命令的使用"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">4.1 ssh命令的使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-scp命令的使用"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">4.2 scp命令的使用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-vim编辑器使用"><span class="toc-number">1.1.5.</span> <span class="toc-text">5. vim编辑器使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-vim-的工作模式"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">5.1 vim 的工作模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-2-vim-的末行模式命令"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">5.2 vim 的末行模式命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-3-vim-的常用命令"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">5.3 vim 的常用命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-ubuntu软件安装和软件卸载"><span class="toc-number">1.1.6.</span> <span class="toc-text">6. ubuntu软件安装和软件卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#6-1-deb文件格式安装"><span class="toc-number">1.1.6.1.</span> <span class="toc-text">6.1 deb文件格式安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-2-apt方式安装"><span class="toc-number">1.1.6.2.</span> <span class="toc-text">6.2 apt方式安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-3-更改镜像源"><span class="toc-number">1.1.6.3.</span> <span class="toc-text">6.3 更改镜像源</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-4-deb-文件格式卸载"><span class="toc-number">1.1.6.4.</span> <span class="toc-text">6.4 deb 文件格式卸载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-5-apt-方式卸载"><span class="toc-number">1.1.6.5.</span> <span class="toc-text">6.5 apt 方式卸载</span></a></li></ol></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/08/05/2020-08-06-python%E9%AB%98%E7%BA%A702-%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/">&lt; python高级02-多任务编程</a><a class="next" href="/2020/08/02/2020-08-03-python%E5%9F%BA%E7%A1%8010-%E5%8C%85%E3%80%81%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E3%80%81%E6%A1%88%E4%BE%8B/">python基础10-包、代码规范、案例 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

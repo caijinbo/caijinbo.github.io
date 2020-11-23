@@ -1,0 +1,620 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>python高级07-jQuery | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">python高级07-jQuery</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/08/21/2020-08-22-python%E9%AB%98%E7%BA%A707-jQuery/">2020-08-21</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/python/">python</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h1 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h1><h2 id="一、jQuery的介绍"><a href="#一、jQuery的介绍" class="headerlink" title="一、jQuery的介绍"></a>一、jQuery的介绍</h2><h3 id="1-jQuery的定义"><a href="#1-jQuery的定义" class="headerlink" title="1. jQuery的定义"></a>1. jQuery的定义</h3><a id="more"></a>
+
+<p>jQuery是对JavaScript的封装，它是免费、开源的JavaScript函数库，jQuery 极大地简化了 JavaScript 编程。</p>
+<p>jQuery官网：<a href="https://jquery.com/" target="_blank" rel="noopener">https://jquery.com/</a></p>
+<h3 id="2-jQuery的作用"><a href="#2-jQuery的作用" class="headerlink" title="2. jQuery的作用"></a>2. jQuery的作用</h3><p>jQuery和JavaScript它们的作用一样，都是负责网页行为操作，增加网页和用户的交互效果的，只不过jQuery简化了JavaScript编程，jQuery实现交互效果更简单。</p>
+<h3 id="3-jQuery的优点"><a href="#3-jQuery的优点" class="headerlink" title="3. jQuery的优点"></a>3. jQuery的优点</h3><ul>
+<li>jQuery兼容了现在主流的浏览器，增加了程序员的开发效率。</li>
+<li>jQuery简化了 JavaScript 编程，代码编写更加简单。</li>
+</ul>
+<h2 id="二、jQuery的用法"><a href="#二、jQuery的用法" class="headerlink" title="二、jQuery的用法"></a>二、jQuery的用法</h2><h3 id="1-jQuery的引入"><a href="#1-jQuery的引入" class="headerlink" title="1. jQuery的引入"></a>1. jQuery的引入</h3><pre><code class="js">&lt;script src=&quot;js/jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+<p>jQuery入口函数有两种写法:</p>
+<pre><code class="js">  // 完整写法
+  $(document).ready(function(){
+       ...
+  });
+
+  // 简化写法
+  $(function(){
+       ...
+  });</code></pre>
+<h3 id="2-jQuery的入口函数"><a href="#2-jQuery的入口函数" class="headerlink" title="2. jQuery的入口函数"></a>2. jQuery的入口函数</h3><p>我们知道使用js获取标签元素，需要页面加载完成以后再获取，我们通过给onload事件属性设置了一个函数来获取标签元素，而jquery提供了<strong>ready函数</strong>来解决这个问题，保证获取标签元素没有问题，<strong>它的速度比原生的 window.onload 更快</strong>。</p>
+<p><strong>入口函数示例代码:</strong></p>
+<pre><code class="js">&lt;script src=&quot;js/jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    window.onload = function(){
+        var oDiv = document.getElementById(&#39;div01&#39;);
+        alert(&#39;原生就是获取的div：&#39; + oDiv);
+    };
+    $(document).ready(function(){
+        var $div = $(&#39;#div01&#39;);
+        alert(&#39;jquery获取的div：&#39; + $div);
+    });
+&lt;/script&gt;
+
+&lt;div id=&quot;div01&quot;&gt;这是一个div&lt;/div&gt;</code></pre>
+<p><strong>入口函数的简写示例代码:</strong></p>
+<pre><code class="js">&lt;script src=&quot;js/jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    window.onload = function(){
+        var oDiv = document.getElementById(&#39;div01&#39;);
+        alert(&#39;原生就是获取的div：&#39; + oDiv);
+    };
+
+    /*
+    $(document).ready(function(){
+        var $div = $(&#39;#div01&#39;);
+        alert(&#39;jquery获取的div：&#39; + $div);
+    });
+    */
+
+    // 上面ready的写法可以简写成下面的形式：
+    $(function(){
+        var $div = $(&#39;#div01&#39;);
+        alert(&#39;jquery获取的div：&#39; + $div);
+    }); 
+&lt;/script&gt;
+
+&lt;div id=&quot;div01&quot;&gt;这是一个div&lt;/div&gt;</code></pre>
+<h2 id="三、jQuery选择器"><a href="#三、jQuery选择器" class="headerlink" title="三、jQuery选择器"></a>三、jQuery选择器</h2><h3 id="1-jQuery选择器的介绍"><a href="#1-jQuery选择器的介绍" class="headerlink" title="1. jQuery选择器的介绍"></a>1. jQuery选择器的介绍</h3><p>jquery选择器就是快速选择标签元素，获取标签的，选择规则和css样式一样。</p>
+<p>jquery给标签设置样式使用css方法</p>
+<h3 id="2-jQuery选择器的种类"><a href="#2-jQuery选择器的种类" class="headerlink" title="2. jQuery选择器的种类"></a>2. jQuery选择器的种类</h3><ol>
+<li>标签选择器</li>
+<li>类选择器</li>
+<li>id选择器</li>
+<li>层级选择器</li>
+<li>属性选择器</li>
+</ol>
+<ul>
+<li>jQuery选择器就是选择标签的</li>
+<li>标签选择器是<strong>根据标签名来选择标签</strong></li>
+<li>类选择器是<strong>根据类名来选择标签</strong></li>
+<li>id选择器是<strong>根据id来选择标签</strong></li>
+<li>层级选择器是<strong>根据层级关系来选择标签</strong></li>
+<li>属性选择器是<strong>根据属性名来选择标签</strong></li>
+</ul>
+<p><strong>示例代码:</strong></p>
+<pre><code class="js">$(&#39;#myId&#39;) //选择id为myId的标签
+$(&#39;.myClass&#39;) // 选择class为myClass的标签
+$(&#39;li&#39;) //选择所有的li标签
+$(&#39;#ul1 li span&#39;) //选择id为ul1标签下的所有li标签下的span标签
+$(&#39;input[name=first]&#39;) // 选择name属性等于first的input标签</code></pre>
+<p><strong>说明:</strong><br>可以使用length属性来判断标签是否选择成功, 如果length大于0表示选择成功，否则选择失败。</p>
+<pre><code class="js">$(function(){
+    result = $(&quot;div&quot;).length;
+    alert(result);
+});</code></pre>
+<h2 id="四、选择集过滤"><a href="#四、选择集过滤" class="headerlink" title="四、选择集过滤"></a>四、选择集过滤</h2><h3 id="1-选择集过滤的介绍"><a href="#1-选择集过滤的介绍" class="headerlink" title="1. 选择集过滤的介绍"></a>1. 选择集过滤的介绍</h3><p>选择集过滤就是在选择标签的集合里面过滤自己需要的标签</p>
+<ul>
+<li>选择集过滤可以使用has方法和eq方法来完成</li>
+</ul>
+<h3 id="2-选择集过滤的操作"><a href="#2-选择集过滤的操作" class="headerlink" title="2. 选择集过滤的操作"></a>2. 选择集过滤的操作</h3><ul>
+<li>has(选择器名称)方法，表示选取包含指定选择器的标签</li>
+<li>eq(索引)方法，表示选取指定索引的标签</li>
+</ul>
+<p><strong>has方法的示例代码:</strong></p>
+<pre><code class="js">&lt;script&gt;
+    $(function(){
+        //  has方法的使用
+        var $div = $(&quot;div&quot;).has(&quot;#mytext&quot;);
+        //  设置样式
+        $div.css({&quot;background&quot;:&quot;red&quot;});
+    });
+&lt;/script&gt;
+
+&lt;div&gt;
+    这是第一个div
+    &lt;input type=&quot;text&quot; id=&quot;mytext&quot;&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    这是第二个div
+    &lt;input type=&quot;text&quot;&gt;
+    &lt;input type=&quot;button&quot;&gt;
+&lt;/div&gt;</code></pre>
+<p><strong>eq方法的示例代码:</strong></p>
+<pre><code class="js">&lt;script&gt;
+    $(function(){
+        //  has方法的使用
+        var $div = $(&quot;div&quot;).has(&quot;#mytext&quot;);
+        //  设置样式
+        $div.css({&quot;background&quot;:&quot;red&quot;});
+
+        //  eq方法的使用
+        var $div = $(&quot;div&quot;).eq(1);
+        //  设置样式
+        $div.css({&quot;background&quot;:&quot;yellow&quot;});
+    });
+&lt;/script&gt;
+
+&lt;div&gt;
+    这是第一个div
+    &lt;input type=&quot;text&quot; id=&quot;mytext&quot;&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    这是第二个div
+    &lt;input type=&quot;text&quot;&gt;
+    &lt;input type=&quot;button&quot;&gt;
+&lt;/div&gt;</code></pre>
+<h2 id="五、选择集转移"><a href="#五、选择集转移" class="headerlink" title="五、选择集转移"></a>五、选择集转移</h2><h3 id="1-选择集转移介绍"><a href="#1-选择集转移介绍" class="headerlink" title="1. 选择集转移介绍"></a>1. 选择集转移介绍</h3><p>选择集转移就是以选择的标签为参照，然后获取转移后的标签</p>
+<ul>
+<li>prev() 表示获取上一个同级元素</li>
+<li>prevAll() 表示获取上面所有同级元素</li>
+<li>next() 表示获取下一个同级元素</li>
+<li>nextAll() 表示获取下面所有同级元素</li>
+<li>parent() 表示获取父元素</li>
+<li>children() 表示获取所有的子元素</li>
+<li>siblings() 表示获取其它同级元素</li>
+<li>find(“选择器名称”) 表示获取指定选择器的元素</li>
+</ul>
+<h3 id="2-选择集转移操作"><a href="#2-选择集转移操作" class="headerlink" title="2. 选择集转移操作"></a>2. 选择集转移操作</h3><ul>
+<li>$(‘#box’).prev(); 表示选择id是box元素的上一个的同级元素</li>
+<li>$(‘#box’).prevAll(); 表示选择id是box元素的上面所有的同级元素</li>
+<li>$(‘#box’).next(); 表示选择id是box元素的下一个的同级元素</li>
+<li>$(‘#box’).nextAll(); 表示选择id是box元素的下面所有的同级元素</li>
+<li>$(‘#box’).parent(); 表示选择id是box元素的父元素</li>
+<li>$(‘#box’).children(); 表示选择id是box元素的所有子元素</li>
+<li>$(‘#box’).siblings(); 表示选择id是box元素的其它同级元素</li>
+<li>$(‘#box’).find(‘.myClass’); 表示选择id是box元素的class等于myClass的元素</li>
+</ul>
+<p><strong>选择集转移的示例代码:</strong></p>
+<pre><code class="js">&lt;script&gt;
+    $(function(){
+        var $div = $(&#39;#div01&#39;);
+
+        $div.prev().css({&#39;color&#39;:&#39;red&#39;});
+        $div.prevAll().css({&#39;text-indent&#39;:50});
+        $div.next().css({&#39;color&#39;:&#39;blue&#39;});
+        $div.nextAll().css({&#39;text-indent&#39;:80});
+        $div.siblings().css({&#39;text-decoration&#39;:&#39;underline&#39;})
+        $div.parent().css({&#39;background&#39;:&#39;gray&#39;});
+        $div.children().css({&#39;color&#39;:&#39;red&#39;});
+        $div.find(&#39;.sp02&#39;).css({&#39;font-size&#39;:30});
+    });  
+&lt;/script&gt;
+
+&lt;div&gt;
+    &lt;h2&gt;这是第一个h2标签&lt;/h2&gt;
+    &lt;p&gt;这是第一个段落&lt;/p&gt;
+    &lt;div id=&quot;div01&quot;&gt;这是一个&lt;span&gt;div&lt;/span&gt;&lt;span class=&quot;sp02&quot;&gt;第二个span&lt;/span&gt;&lt;/div&gt;
+    &lt;h2&gt;这是第二个h2标签&lt;/h2&gt;
+    &lt;p&gt;这是第二个段落&lt;/p&gt;</code></pre>
+<h2 id="六、获取和设置元素内容"><a href="#六、获取和设置元素内容" class="headerlink" title="六、获取和设置元素内容"></a>六、获取和设置元素内容</h2><h3 id="1-html方法的使用"><a href="#1-html方法的使用" class="headerlink" title="1. html方法的使用"></a>1. html方法的使用</h3><ul>
+<li><p>获取和设置元素的内容使用: html方法</p>
+</li>
+<li><p>给指定元素追加html内容使用: append方法</p>
+</li>
+</ul>
+<p>jquery中的html方法可以获取和设置标签的html内容</p>
+<p><strong>示例代码:</strong></p>
+<pre><code class="js">&lt;script&gt;
+    $(function(){
+
+        var $div = $(&quot;#div1&quot;);
+        //  获取标签的html内容
+        var result = $div.html();
+        alert(result);
+        //  设置标签的html内容，之前的内容会清除
+        $div.html(&quot;&lt;span style=&#39;color:red&#39;&gt;你好&lt;/span&gt;&quot;);
+        //  追加html内容
+        $div.append(&quot;&lt;span style=&#39;color:red&#39;&gt;你好&lt;/span&gt;&quot;);
+
+    });
+&lt;/script&gt;
+
+&lt;div id=&quot;div1&quot;&gt;
+    &lt;p&gt;hello&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<p><strong>说明:</strong></p>
+<p>给指定标签追加html内容使用<strong>append方法</strong></p>
+<h2 id="七、获取和设置元素属性"><a href="#七、获取和设置元素属性" class="headerlink" title="七、获取和设置元素属性"></a>七、获取和设置元素属性</h2><h3 id="1-prop方法的使用"><a href="#1-prop方法的使用" class="headerlink" title="1. prop方法的使用"></a>1. prop方法的使用</h3><p>之前使用css方法可以给标签设置样式属性，那么设置标签的其它属性可以使用prop方法了。</p>
+<ul>
+<li>获取和设置元素属性的操作可以通过prop方法来完成</li>
+<li>获取和设置元素的value属性可以通过val方法来完成，更加简单和方便</li>
+</ul>
+<p><strong>示例代码:</strong></p>
+<pre><code class="js">&lt;style&gt;
+    .a01{
+        color:red;
+    }
+&lt;/style&gt;
+
+&lt;script&gt;
+    $(function(){
+        var $a = $(&quot;#link01&quot;);
+        var $input = $(&#39;#input01&#39;)
+
+        // 获取元素属性
+        var sId = $a.prop(&quot;id&quot;);
+        alert(sId);
+
+        // 设置元素属性
+        $a.prop({&quot;href&quot;:&quot;http://www.baidu.com&quot;,&quot;title&quot;:&#39;这是去到百度的链接&#39;,&quot;class&quot;:&quot;a01&quot;});
+
+        //  获取value属性
+        // var sValue = $input.prop(&quot;value&quot;);
+        // alert(sValue);
+
+        // 获取value属性使用val()方法的简写方式
+        var sValue = $input.val();
+        alert(sValue);
+        // 设置value值
+        $input.val(&quot;222222&quot;);
+    })
+&lt;/script&gt;
+
+&lt;a id=&quot;link01&quot;&gt;这是一个链接&lt;/a&gt;
+&lt;input type=&quot;text&quot; id=&quot;input01&quot; value=&quot;111111&quot;&gt;</code></pre>
+<p><strong>说明:</strong> 获取value属性和设置value属性还可以通过<strong>val方法</strong>来完成。</p>
+<h2 id="八、jQuery事件"><a href="#八、jQuery事件" class="headerlink" title="八、jQuery事件"></a>八、jQuery事件</h2><h3 id="1-常用事件"><a href="#1-常用事件" class="headerlink" title="1. 常用事件"></a>1. 常用事件</h3><ul>
+<li>click() 鼠标单击</li>
+<li>blur() 元素失去焦点</li>
+<li>focus() 元素获得焦点</li>
+<li>mouseover() 鼠标进入（进入子元素也触发）</li>
+<li>mouseout() 鼠标离开（离开子元素也触发）</li>
+<li>ready() DOM加载完成</li>
+</ul>
+<p><strong>示例代码:</strong></p>
+<pre><code class="js">&lt;script&gt;
+    $(function(){
+        var $li = $(&#39;.list li&#39;);
+        var $button = $(&#39;#button1&#39;)
+        var $text = $(&quot;#text1&quot;);
+        var $div = $(&quot;#div1&quot;)
+
+        //  鼠标点击
+        $li.click(function(){             
+            // this指的是当前发生事件的对象，但是它是一个原生js对象
+            // this.style.background = &#39;red&#39;;
+
+            // $(this) 指的是当前发生事件的jquery对象
+            $(this).css({&#39;background&#39;:&#39;gold&#39;});
+            // 获取jquery对象的索引值,通过index() 方法
+            alert($(this).index());
+        });
+
+        //  一般和按钮配合使用
+        $button.click(function(){
+            alert($text.val());
+        });
+
+        //  获取焦点
+        $text.focus(function(){
+            $(this).css({&#39;background&#39;:&#39;red&#39;});
+
+        });
+
+        //  失去焦点
+        $text.blur(function(){
+            $(this).css({&#39;background&#39;:&#39;white&#39;});
+
+        });
+
+        //  鼠标进入
+        $div.mouseover(function(){
+            $(this).css({&#39;background&#39;:&#39;gold&#39;});
+
+        });
+
+        //  鼠标离开
+        $div.mouseout(function() {
+            $(this).css({&#39;background&#39;:&#39;white&#39;});
+        });
+    });
+&lt;/script&gt;
+
+&lt;div id=&quot;div1&quot;&gt;
+    &lt;ul class=&quot;list&quot;&gt;
+        &lt;li&gt;列表文字&lt;/li&gt;
+        &lt;li&gt;列表文字&lt;/li&gt;
+        &lt;li&gt;列表文字&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;input type=&quot;text&quot; id=&quot;text1&quot;&gt;
+    &lt;input type=&quot;button&quot; id=&quot;button1&quot; value=&quot;点击&quot;&gt;
+&lt;/div&gt;</code></pre>
+<p><strong>说明:</strong></p>
+<ul>
+<li>this指的是当前发生事件的对象，但是它是一个原生js对象</li>
+<li>$(this) 指的是当前发生事件的jquery对象</li>
+</ul>
+<h2 id="九、事件代理"><a href="#九、事件代理" class="headerlink" title="九、事件代理"></a>九、事件代理</h2><h3 id="1-事件代理介绍"><a href="#1-事件代理介绍" class="headerlink" title="1. 事件代理介绍"></a>1. 事件代理介绍</h3><p>事件代理就是利用事件冒泡的原理(事件冒泡就是事件会向它的父级一级一级传递),把事件加到父级上，通过判断事件来源，执行相应的子元素的操作，<strong>事件代理首先可以极大减少事件绑定次数，提高性能；其次可以让新加入的子元素也可以拥有相同的操作</strong>。</p>
+<ul>
+<li>事件代理就是使用父元素来代理子元素的事件，好处是减少事件的绑定次数，提高性能。</li>
+<li>使用场景当多个相同的子元素绑定同一个事件，可以使用事件代理。</li>
+<li>事件代理使用是使用delegate方法来完成</li>
+</ul>
+<p><strong>事件冒泡代码:</strong></p>
+<pre><code class="js"> &lt;script&gt;
+    $(function(){
+
+        var $div1 = $(&#39;#div1&#39;);
+        var $div2 = $(&#39;#div2&#39;);
+
+        $div1.click(function(){
+            alert($(this).html());
+        }); 
+
+        $div2.click(function(){
+            alert($(this).html());
+        }); 
+    });
+&lt;/script&gt;
+
+ &lt;div id=&quot;div1&quot; style=&quot;width:200px; height:200px; background: red;&quot;&gt;
+    &lt;div id=&quot;div2&quot; style=&quot;width:100px; height:100px;background: yellow;&quot;&gt;
+        哈哈
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p><strong>说明:</strong></p>
+<p>当点击子元素div，它的点击事件会向它父元素传递，也会触发了父元素的点击事件，这就是事件冒泡。</p>
+<h3 id="2-事件代理的使用"><a href="#2-事件代理的使用" class="headerlink" title="2. 事件代理的使用"></a>2. 事件代理的使用</h3><p><strong>一般绑定事件的写法:</strong></p>
+<pre><code class="js">$(function(){
+    $ali = $(&#39;#list li&#39;);
+    $ali.click(function() {
+        $(this).css({background:&#39;red&#39;});
+    });
+})
+
+&lt;ul id=&quot;list&quot;&gt;
+    &lt;li&gt;1&lt;/li&gt;
+    &lt;li&gt;2&lt;/li&gt;
+    &lt;li&gt;3&lt;/li&gt;
+    &lt;li&gt;4&lt;/li&gt;
+    &lt;li&gt;5&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p><strong>事件代理的写法</strong></p>
+<pre><code class="js">$(function(){
+    $list = $(&#39;#list&#39;);
+    // 父元素ul 来代理 子元素li的点击事件
+    $list.delegate(&#39;li&#39;, &#39;click&#39;, function() {
+        // $(this)表示当前点击的子元素对象
+        $(this).css({background:&#39;red&#39;});
+    });
+})
+
+&lt;ul id=&quot;list&quot;&gt;
+    &lt;li&gt;1&lt;/li&gt;
+    &lt;li&gt;2&lt;/li&gt;
+    &lt;li&gt;3&lt;/li&gt;
+    &lt;li&gt;4&lt;/li&gt;
+    &lt;li&gt;5&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p><strong>delegate方法参数说明:</strong></p>
+<p>delegate(childSelector,event,function)</p>
+<ul>
+<li>childSelector: 子元素的选择器</li>
+<li>event: 事件名称，比如: ‘click’</li>
+<li>function: 当事件触发执行的函数</li>
+</ul>
+<h2 id="十、JavaScript对象"><a href="#十、JavaScript对象" class="headerlink" title="十、JavaScript对象"></a>十、JavaScript对象</h2><h3 id="1-JavaScript对象的介绍"><a href="#1-JavaScript对象的介绍" class="headerlink" title="1. JavaScript对象的介绍"></a>1. JavaScript对象的介绍</h3><p>JavaScript 中的所有事物都是对象：字符串、数值、数组、函数等都可以认为是对象，此外，JavaScript 允许自定义对象，对象可以拥有属性和方法。</p>
+<p>创建自定义javascript对象有两种方式:</p>
+<ul>
+<li>Object</li>
+<li>字面量</li>
+</ul>
+<h3 id="2-JavaScript创建对象操作"><a href="#2-JavaScript创建对象操作" class="headerlink" title="2. JavaScript创建对象操作"></a>2. JavaScript创建对象操作</h3><p>创建自定义javascript对象有两种方式:</p>
+<ul>
+<li>通过顶级Object类型来实例化一个对象</li>
+<li>通过对象字面量创建一个对象</li>
+</ul>
+<p><strong>Object类创建对象的示例代码:</strong></p>
+<pre><code class="js">&lt;script&gt;
+    var person = new Object();
+
+    // 添加属性：
+    person.name = &#39;tom&#39;;
+    person.age = &#39;25&#39;;
+
+    // 添加方法：
+    person.sayName = function(){
+        alert(this.name);
+    }
+
+    // 调用属性和方法：
+    alert(person.age);
+    person.sayName();
+&lt;/script&gt;</code></pre>
+<p><strong>对象字面量创建对象的示例代码:</strong></p>
+<pre><code class="js">&lt;script&gt;
+    var person2 = {
+        name:&#39;Rose&#39;,
+        age: 18,
+        sayName:function(){
+            alert(&#39;My name is&#39; + this.name);
+        }
+    }
+
+    // 调用属性和方法：
+    alert(person2.age);
+    person2.sayName();
+&lt;/script&gt;</code></pre>
+<p><strong>说明:</strong></p>
+<p>调用属性和方法的操作都是通过点语法的方式来完成，对象的创建推荐使用字面量方式，因为更加简单。</p>
+<h2 id="十一、json"><a href="#十一、json" class="headerlink" title="十一、json"></a>十一、json</h2><h3 id="1-json的介绍"><a href="#1-json的介绍" class="headerlink" title="1. json的介绍"></a>1. json的介绍</h3><p>json是 JavaScript Object Notation 的首字母缩写，翻译过来就是javascript对象表示法，这里说的json就是<strong>类似于javascript对象的字符串</strong>，它同时是一种<strong>数据格式</strong>，目前这种数据格式比较流行，逐渐替换掉了传统的xml数据格式。</p>
+<ul>
+<li>json就是一个javascript对象表示法，json本质上是一个字符串。</li>
+<li>json有两种格式：1. 对象格式, 2. 数组格式</li>
+</ul>
+<h3 id="2-json的格式"><a href="#2-json的格式" class="headerlink" title="2. json的格式"></a>2. json的格式</h3><p>json有两种格式：</p>
+<ol>
+<li>对象格式</li>
+<li>数组格式</li>
+</ol>
+<p><strong>对象格式:</strong></p>
+<p>对象格式的json数据，使用一对大括号({})，大括号里面放入key:value形式的键值对，多个键值对使用逗号分隔。</p>
+<p><strong>对象格式的json数据:</strong></p>
+<pre><code class="json">{
+    &quot;name&quot;:&quot;tom&quot;,
+    &quot;age&quot;:18
+}</code></pre>
+<p><strong>格式说明:</strong></p>
+<p>json中的(key)属性名称和字符串值需要用<strong>双引号</strong>引起来，用单引号或者不用引号会导致读取数据错误。</p>
+<p><strong>数组格式:</strong></p>
+<p>数组格式的json数据，使用一对中括号([])，中括号里面的数据使用逗号分隔。</p>
+<p><strong>数组格式的json数据:</strong></p>
+<pre><code class="json">[&quot;tom&quot;,18,&quot;programmer&quot;]</code></pre>
+<p><strong>实际开发的json格式比较复杂,例如:</strong></p>
+<pre><code class="json">{
+    &quot;name&quot;:&quot;jack&quot;,
+    &quot;age&quot;:29,
+    &quot;hobby&quot;:[&quot;reading&quot;,&quot;travel&quot;,&quot;photography&quot;]
+    &quot;school&quot;:{
+        &quot;name&quot;:&quot;Merrimack College&quot;,
+        &quot;location&quot;:&quot;North Andover, MA&quot;
+    }
+}</code></pre>
+<h3 id="3-json数据转换成JavaScript对象"><a href="#3-json数据转换成JavaScript对象" class="headerlink" title="3. json数据转换成JavaScript对象"></a>3. json数据转换成JavaScript对象</h3><p><strong>json本质上是字符串</strong>，如果在js中操作json数据，可以将json字符串转化为JavaScript对象。</p>
+<p><strong>示例代码:</strong></p>
+<pre><code class="json">var sJson = &#39;{&quot;name&quot;:&quot;tom&quot;,&quot;age&quot;:18}&#39;;
+var oPerson = JSON.parse(sJson);
+
+// 操作属性
+alert(oPerson.name);
+alert(oPerson.age);</code></pre>
+<h2 id="十二、ajax"><a href="#十二、ajax" class="headerlink" title="十二、ajax"></a>十二、ajax</h2><h3 id="1-ajax的介绍"><a href="#1-ajax的介绍" class="headerlink" title="1. ajax的介绍"></a>1. ajax的介绍</h3><p>ajax 是 Asynchronous JavaScript and XML的简写，ajax一个前后台配合的技术，它可以<strong>让 javascript 发送异步的 http 请求，与后台通信进行数据的获取</strong>，ajax 最大的优点是<strong>实现局部刷新</strong>，ajax可以发送http请求，当获取到后台数据的时候更新页面显示数据实现局部刷新，在这里大家只需要记住，<strong>当前端页面想和后台服务器进行数据交互就可以使用ajax了。</strong></p>
+<p>这里提示一下大家, <strong>在html页面使用ajax需要在web服务器环境下运行, 一般向自己的web服务器发送ajax请求。</strong></p>
+<ul>
+<li>ajax 是发送http请求获取后台服务器数据的技术</li>
+<li>ajax的简写方式可以使用$.get和$.post方法来完成</li>
+</ul>
+<h3 id="2-ajax的使用"><a href="#2-ajax的使用" class="headerlink" title="2. ajax的使用"></a>2. ajax的使用</h3><p>jquery将它封装成了一个方法$.ajax()，我们可以直接用这个方法来执行ajax请求。</p>
+<p><strong>示例代码:</strong></p>
+<pre><code class="js">&lt;script&gt;
+    $.ajax({
+    // 1.url 请求地址
+    url:&#39;http://t.weather.sojson.com/api/weather/city/101010100&#39;,
+    // 2.type 请求方式，默认是&#39;GET&#39;，常用的还有&#39;POST&#39;
+    type:&#39;GET&#39;,
+    // 3.dataType 设置返回的数据格式，常用的是&#39;json&#39;格式
+    dataType:&#39;JSON&#39;,
+    // 4.data 设置发送给服务器的数据, 没有参数不需要设置
+
+    // 5.success 设置请求成功后的回调函数
+    success:function (response) {
+        console.log(response);    
+    },
+    // 6.error 设置请求失败后的回调函数
+    error:function () {
+        alert(&quot;请求失败,请稍后再试!&quot;);
+    },
+    // 7.async 设置是否异步，默认值是&#39;true&#39;，表示异步，一般不用写
+    async:true
+});
+&lt;/script&gt;</code></pre>
+<p><strong>ajax方法的参数说明:</strong></p>
+<ol>
+<li>url 请求地址</li>
+<li>type 请求方式，默认是’GET’，常用的还有’POST’</li>
+<li>dataType 设置返回的数据格式，常用的是’json’格式</li>
+<li>data 设置发送给服务器的数据，没有参数不需要设置</li>
+<li>success 设置请求成功后的回调函数</li>
+<li>error 设置请求失败后的回调函数</li>
+<li>async 设置是否异步，默认值是’true’，表示异步，一般不用写</li>
+<li>同步和异步说明<ul>
+<li>同步是一个ajax请求完成另外一个才可以请求，需要等待上一个ajax请求完成，好比线程同步。</li>
+<li>异步是多个ajax同时请求，不需要等待其它ajax请求完成， 好比线程异步。</li>
+</ul>
+</li>
+</ol>
+<p><strong>ajax的简写方式:</strong></p>
+<p>$.ajax按照请求方式可以简写成$.get或者$.post方式</p>
+<p><strong>ajax简写方式的示例代码:</strong></p>
+<pre><code class="js"> &lt;script&gt;
+    $(function(){
+        /*
+         1. url 请求地址
+         2. data 设置发送给服务器的数据, 没有参数不需要设置
+         3. success 设置请求成功后的回调函数
+         4. dataType 设置返回的数据格式，常用的是&#39;json&#39;格式, 默认智能判断数据格式
+        */ 
+        $.get(&quot;http://t.weather.sojson.com/api/weather/city/101010100&quot;, function(dat,status){
+            console.log(dat);
+            console.log(status);
+            alert(dat);
+        }).error(function(){
+            alert(&quot;网络异常&quot;);
+        });
+
+        /*
+         1. url 请求地址
+         2. data 设置发送给服务器的数据, 没有参数不需要设置
+         3. success 设置请求成功后的回调函数
+         4. dataType 设置返回的数据格式，常用的是&#39;json&#39;格式, 默认智能判断数据格式
+        */ 
+        $.post(&quot;test.php&quot;, {&quot;func&quot;: &quot;getNameAndTime&quot;}, function(data){
+            alert(data.name); 
+            console.log(data.time); 
+        }, &quot;json&quot;).error(function(){
+            alert(&quot;网络异常&quot;);
+        }); 
+    });
+
+
+&lt;/script&gt;</code></pre>
+<p><strong>$.get和$.post方法的参数说明:</strong></p>
+<p>$.get(url,data,success(data, status, xhr),dataType).error(func)<br>$.post(url,data,success(data, status, xhr),dataType).error(func)</p>
+<ol>
+<li>url 请求地址</li>
+<li>data 设置发送给服务器的数据，没有参数不需要设置</li>
+<li>success 设置请求成功后的回调函数<ul>
+<li>data 请求的结果数据</li>
+<li>status 请求的状态信息, 比如: “success”</li>
+<li>xhr 底层发送http请求XMLHttpRequest对象</li>
+</ul>
+</li>
+<li>dataType 设置返回的数据格式<ul>
+<li>“xml”</li>
+<li>“html”</li>
+<li>“text”</li>
+<li>“json”</li>
+</ul>
+</li>
+<li>error 表示错误异常处理<ul>
+<li>func 错误异常回调函数</li>
+</ul>
+</li>
+</ol>
+<h2 id="十三、Ajax-综合练习"><a href="#十三、Ajax-综合练习" class="headerlink" title="十三、Ajax 综合练习"></a>十三、Ajax 综合练习</h2><pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+    &lt;script src=&quot;js/jquery-3.5.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        function search(){
+            var search_str = $(&quot;input01&quot;).val();
+            $.get(&quot;http://ttapi.research.itcast.cn/app/v1_0/search?q=&quot; + search_str,function(response){
+                console.log(typeof(response),response);
+                var res_array = response.data.results;
+                var $ul = $(&quot;#content&quot;);
+                $ul.html(&quot;&quot;);
+                for(var i=0;i &lt; res_array.length;i++){
+                    console.log(res_array[i].title);
+                    $ul.append(&quot;&lt;li&gt;&quot; + res_array[i].title + &quot;&lt;/li&gt;&quot;);
+                }
+            },&quot;JSON&quot;).error(function(){
+                alert(&quot;请求失败，请稍后再试&quot;)
+            });
+
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;text&quot; id=&quot;input01&quot;&gt;
+    &lt;input type=&quot;button&quot; id=&quot;btn01&quot; value=&quot;搜索&quot; onclick=&quot;search();&quot;&gt;
+    &lt;ul id=&quot;content&quot;&gt;
+
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/08/21/2020-08-22-python%E9%AB%98%E7%BA%A707-jQuery/">https://caijinbo.work/2020/08/21/2020-08-22-python高级07-jQuery/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/python/">python</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jQuery"><span class="toc-number">1.</span> <span class="toc-text">jQuery</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、jQuery的介绍"><span class="toc-number">1.1.</span> <span class="toc-text">一、jQuery的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-jQuery的定义"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. jQuery的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-jQuery的作用"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. jQuery的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-jQuery的优点"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. jQuery的优点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、jQuery的用法"><span class="toc-number">1.2.</span> <span class="toc-text">二、jQuery的用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-jQuery的引入"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. jQuery的引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-jQuery的入口函数"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. jQuery的入口函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、jQuery选择器"><span class="toc-number">1.3.</span> <span class="toc-text">三、jQuery选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-jQuery选择器的介绍"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. jQuery选择器的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-jQuery选择器的种类"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. jQuery选择器的种类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、选择集过滤"><span class="toc-number">1.4.</span> <span class="toc-text">四、选择集过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-选择集过滤的介绍"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 选择集过滤的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-选择集过滤的操作"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 选择集过滤的操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、选择集转移"><span class="toc-number">1.5.</span> <span class="toc-text">五、选择集转移</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-选择集转移介绍"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 选择集转移介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-选择集转移操作"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. 选择集转移操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、获取和设置元素内容"><span class="toc-number">1.6.</span> <span class="toc-text">六、获取和设置元素内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-html方法的使用"><span class="toc-number">1.6.1.</span> <span class="toc-text">1. html方法的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、获取和设置元素属性"><span class="toc-number">1.7.</span> <span class="toc-text">七、获取和设置元素属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-prop方法的使用"><span class="toc-number">1.7.1.</span> <span class="toc-text">1. prop方法的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、jQuery事件"><span class="toc-number">1.8.</span> <span class="toc-text">八、jQuery事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-常用事件"><span class="toc-number">1.8.1.</span> <span class="toc-text">1. 常用事件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、事件代理"><span class="toc-number">1.9.</span> <span class="toc-text">九、事件代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-事件代理介绍"><span class="toc-number">1.9.1.</span> <span class="toc-text">1. 事件代理介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-事件代理的使用"><span class="toc-number">1.9.2.</span> <span class="toc-text">2. 事件代理的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、JavaScript对象"><span class="toc-number">1.10.</span> <span class="toc-text">十、JavaScript对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-JavaScript对象的介绍"><span class="toc-number">1.10.1.</span> <span class="toc-text">1. JavaScript对象的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-JavaScript创建对象操作"><span class="toc-number">1.10.2.</span> <span class="toc-text">2. JavaScript创建对象操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十一、json"><span class="toc-number">1.11.</span> <span class="toc-text">十一、json</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-json的介绍"><span class="toc-number">1.11.1.</span> <span class="toc-text">1. json的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-json的格式"><span class="toc-number">1.11.2.</span> <span class="toc-text">2. json的格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-json数据转换成JavaScript对象"><span class="toc-number">1.11.3.</span> <span class="toc-text">3. json数据转换成JavaScript对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十二、ajax"><span class="toc-number">1.12.</span> <span class="toc-text">十二、ajax</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ajax的介绍"><span class="toc-number">1.12.1.</span> <span class="toc-text">1. ajax的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ajax的使用"><span class="toc-number">1.12.2.</span> <span class="toc-text">2. ajax的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十三、Ajax-综合练习"><span class="toc-number">1.13.</span> <span class="toc-text">十三、Ajax 综合练习</span></a></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/08/21/2020-08-22-python%E9%AB%98%E7%BA%A704-HTTP%E5%8D%8F%E8%AE%AE%E5%92%8C%E9%9D%99%E6%80%81WEB%E6%9C%8D%E5%8A%A1%E5%99%A8/">&lt; python高级04-HTTP协议和静态WEB服务器</a><a class="next" href="/2020/08/05/2020-08-06-python%E9%AB%98%E7%BA%A702-%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/">python高级02-多任务编程 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

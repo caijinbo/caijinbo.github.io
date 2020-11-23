@@ -1,0 +1,318 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>python高级03-网络编程 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">python高级03-网络编程</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/08/21/2020-08-10-python%E9%AB%98%E7%BA%A703-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">2020-08-21</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/python/">python</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><h2 id="一-IP地址的介绍"><a href="#一-IP地址的介绍" class="headerlink" title="一. IP地址的介绍"></a>一. IP地址的介绍</h2><h3 id="1-IP-地址的概念"><a href="#1-IP-地址的概念" class="headerlink" title="1. IP 地址的概念"></a>1. IP 地址的概念</h3><a id="more"></a>
+
+<p>IP地址（Internet Protocol Address）是指互联网协议地址，又译为网际协议地址。</p>
+<p>IP地址是<a href="https://baike.baidu.com/item/IP协议" target="_blank" rel="noopener">IP协议</a>提供的一种统一的地址格式，它为互联网上的每一个网络和每一台主机分配一个逻辑地址，以此来屏蔽物理地址的差异。</p>
+<p>IP 地址就是<strong>标识网络中设备的一个地址</strong>，好比现实生活中的家庭地址。</p>
+<p><strong>说明:</strong></p>
+<ul>
+<li>IP 地址分为两类： <strong>IPv4</strong> 和 <strong>IPv6</strong></li>
+<li>IPv4 是目前使用的ip地址</li>
+<li>IPv6 是未来使用的ip地址</li>
+<li>IPv4 是由点分十进制组成</li>
+<li>IPv6 是由冒号十六进制组成</li>
+</ul>
+<h3 id="2-IP-地址的作用"><a href="#2-IP-地址的作用" class="headerlink" title="2. IP 地址的作用"></a>2. IP 地址的作用</h3><p>IP 地址的作用是<strong>标识网络中唯一的一台设备的</strong>，也就是说通过IP地址能够找到网络中某台设备。</p>
+<h3 id="3-查看-IP-地址"><a href="#3-查看-IP-地址" class="headerlink" title="3. 查看 IP 地址"></a>3. 查看 IP 地址</h3><ul>
+<li>Linux 和 mac OS 使用 <strong>ifconfig</strong> 这个命令</li>
+<li>Windows 使用 <strong>ipconfig</strong> 这个命令</li>
+</ul>
+<p>说明:</p>
+<ul>
+<li>127.0.0.1表示本机地址，提示：如果和自己的电脑通信就可以使用该地址。</li>
+<li>127.0.0.1该地址对应的域名是<strong>localhost</strong>，<strong>域名是 ip 地址的别名</strong>，通过域名能解析出一个对应的ip地址。</li>
+</ul>
+<h3 id="4-检查网络是否正常"><a href="#4-检查网络是否正常" class="headerlink" title="4. 检查网络是否正常"></a>4. 检查网络是否正常</h3><ul>
+<li>检查网络是否正常使用 ping 命令</li>
+</ul>
+<p><strong>说明:</strong></p>
+<ul>
+<li>ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 检查是否能上公网</li>
+<li>ping 当前局域网的ip地址 检查是否在同一个局域网内</li>
+<li>ping 127.0.0.1 检查本地网卡是否正常</li>
+</ul>
+<h2 id="二-端口和端口号的介绍"><a href="#二-端口和端口号的介绍" class="headerlink" title="二. 端口和端口号的介绍"></a>二. 端口和端口号的介绍</h2><h3 id="1-什么是端口"><a href="#1-什么是端口" class="headerlink" title="1. 什么是端口"></a>1. 什么是端口</h3><p><strong>每运行一个网络程序都会有一个端口，想要给对应的程序发送数据，找到对应的端口即可。</strong></p>
+<p><strong>端口是传输数据的通道</strong>，好比教室的门，<strong>是数据传输必经之路</strong>。</p>
+<p>那么如何准确的找到对应的端口呢?</p>
+<p><strong>其实，每一个端口都会有一个对应的端口号，好比每个教室的门都有一个门牌号，想要找到端口通过端口号即可。</strong></p>
+<h3 id="2-什么是端口号"><a href="#2-什么是端口号" class="headerlink" title="2. 什么是端口号"></a>2. 什么是端口号</h3><p>操作系统为了统一管理这么多端口，<strong>就对端口进行了编号</strong>，这就是端口号，<strong>端口号其实就是一个数字</strong>，好比我们现实生活中的门牌号，端口号可以标识唯一的一个端口。</p>
+<p>端口号有65536个。</p>
+<p><strong>知名端口号:</strong></p>
+<p>知名端口号是指<strong>众所周知的端口号，范围从0到1023。</strong></p>
+<ul>
+<li>这些端口号一般固定分配给一些服务，比如21端口分配给FTP(文件传输协议)服务，25端口分配给SMTP（简单邮件传输协议）服务，80端口分配给HTTP服务。</li>
+</ul>
+<p><strong>动态端口号:</strong></p>
+<p>一般程序员<strong>开发应用程序使用端口号称为动态端口号, 范围是从1024到65535。</strong></p>
+<ul>
+<li>如果程序员开发的程序没有设置端口号，操作系统会在动态端口号这个范围内随机生成一个给开发的应用程序使用。</li>
+<li>当运行一个程序默认会有一个端口号，当这个程序退出时，所占用的这个端口号就会被释放。</li>
+</ul>
+<h2 id="三-TCP的介绍"><a href="#三-TCP的介绍" class="headerlink" title="三. TCP的介绍"></a>三. TCP的介绍</h2><h3 id="1-TCP-的概念"><a href="#1-TCP-的概念" class="headerlink" title="1. TCP 的概念"></a>1. TCP 的概念</h3><p>TCP 的英文全拼(Transmission Control Protocol)简称<strong>传输控制协议</strong>，它是一种<strong>面向连接的、可靠的、基于字节流的传输层通信协议</strong>。</p>
+<p><strong>TCP 通信步骤:</strong></p>
+<ol>
+<li>创建连接</li>
+<li>传输数据</li>
+<li>关闭连接</li>
+</ol>
+<p><strong>说明:</strong></p>
+<p>TCP 通信模型相当于生活中的’打电话‘，在通信开始之前，一定要先建立好连接，才能发送数据，通信结束要关闭连接。</p>
+<h3 id="2-TCP-的特点"><a href="#2-TCP-的特点" class="headerlink" title="2. TCP 的特点"></a>2. TCP 的特点</h3><ol>
+<li>面向连接<ul>
+<li>通信双方必须先建立好连接才能进行数据的传输，数据传输完成后，双方必须断开此连接，以释放系统资源。</li>
+</ul>
+</li>
+<li>可靠传输<ul>
+<li>TCP 采用发送应答机制</li>
+<li>超时重传</li>
+<li>错误校验</li>
+<li>流量控制和阻塞管理</li>
+</ul>
+</li>
+</ol>
+<h2 id="四-socket的介绍"><a href="#四-socket的介绍" class="headerlink" title="四. socket的介绍"></a>四. socket的介绍</h2><h3 id="1-socket-的概念"><a href="#1-socket-的概念" class="headerlink" title="1. socket 的概念"></a>1. socket 的概念</h3><p>socket (简称 套接字) 是<strong>进程之间通信一个工具</strong>，好比现实生活中的<strong>插座</strong>，所有的家用电器要想工作都是基于插座进行，<strong>进程之间想要进行网络通信需要基于这个 socket</strong>。</p>
+<h3 id="2-socket-的作用"><a href="#2-socket-的作用" class="headerlink" title="2. socket 的作用"></a>2. socket 的作用</h3><p>负责<strong>进程之间的网络数据传输</strong>，好比数据的搬运工。</p>
+<h3 id="3-socket-使用场景"><a href="#3-socket-使用场景" class="headerlink" title="3. socket 使用场景"></a>3. socket 使用场景</h3><p>不夸张的说，只要跟<strong>网络相关的应用程序或者软件都使用到了 socket</strong> 。</p>
+<h2 id="五-TCP网络应用程序开发流程"><a href="#五-TCP网络应用程序开发流程" class="headerlink" title="五. TCP网络应用程序开发流程"></a>五. TCP网络应用程序开发流程</h2><h3 id="1-TCP-网络应用程序开发流程的介绍"><a href="#1-TCP-网络应用程序开发流程的介绍" class="headerlink" title="1. TCP 网络应用程序开发流程的介绍"></a>1. TCP 网络应用程序开发流程的介绍</h3><p>TCP 网络应用程序开发分为:</p>
+<ul>
+<li>TCP 客户端程序开发</li>
+<li>TCP 服务端程序开发</li>
+</ul>
+<p><strong>说明:</strong></p>
+<p>客户端程序是指运行在<strong>用户设备上的程序</strong> 服务端程序是指运行在<strong>服务器设备上的程序</strong>，专门为客户端提供数据服务。</p>
+<ol>
+<li><strong>主动发起建立连接请求的</strong>是客户端程序</li>
+<li><strong>等待接受连接请求的</strong>是服务端程序</li>
+</ol>
+<h3 id="2-TCP-客户端程序开发流程的介绍"><a href="#2-TCP-客户端程序开发流程的介绍" class="headerlink" title="2. TCP 客户端程序开发流程的介绍"></a>2. TCP 客户端程序开发流程的介绍</h3><ol>
+<li>创建客户端套接字对象</li>
+<li>和服务端套接字建立连接</li>
+<li>发送数据</li>
+<li>接收数据</li>
+<li>关闭客户端套接字</li>
+</ol>
+<h3 id="3-TCP-服务端程序开发流程的介绍"><a href="#3-TCP-服务端程序开发流程的介绍" class="headerlink" title="3. TCP 服务端程序开发流程的介绍"></a>3. TCP 服务端程序开发流程的介绍</h3><ol>
+<li>创建服务端端套接字对象</li>
+<li>绑定端口号</li>
+<li>设置监听</li>
+<li>等待接受客户端的连接请求</li>
+<li>接收数据</li>
+<li>发送数据</li>
+<li>关闭套接字</li>
+</ol>
+<h2 id="六-TCP客户端程序开发"><a href="#六-TCP客户端程序开发" class="headerlink" title="六. TCP客户端程序开发"></a>六. TCP客户端程序开发</h2><h3 id="1-开发-TCP-客户端程序开发步骤回顾"><a href="#1-开发-TCP-客户端程序开发步骤回顾" class="headerlink" title="1. 开发 TCP 客户端程序开发步骤回顾"></a>1. 开发 TCP 客户端程序开发步骤回顾</h3><ol>
+<li>创建客户端套接字对象</li>
+<li>和服务端套接字建立连接</li>
+<li>发送数据</li>
+<li>接收数据</li>
+<li>关闭客户端套接字</li>
+</ol>
+<h3 id="2-socket-类的介绍"><a href="#2-socket-类的介绍" class="headerlink" title="2. socket 类的介绍"></a>2. socket 类的介绍</h3><p>导入 socket 模块<br><strong>import socket</strong></p>
+<p>创建客户端 socket 对象<br><strong>socket.socket(AddressFamily, Type)</strong></p>
+<p><strong>参数说明:</strong></p>
+<ul>
+<li>AddressFamily 表示IP地址类型, 分为IPv4和IPv6</li>
+<li>Type 表示传输协议类型</li>
+</ul>
+<p><strong>方法说明:</strong></p>
+<ul>
+<li>connect((host, port)) 表示和服务端套接字建立连接, host是服务器ip地址，port是应用程序的端口号</li>
+<li>send(data) 表示发送数据，data是二进制数据</li>
+<li>recv(buffersize) 表示接收数据, buffersize是每次接收数据的长度</li>
+</ul>
+<h3 id="3-TCP-客户端程序开发示例代码"><a href="#3-TCP-客户端程序开发示例代码" class="headerlink" title="3. TCP 客户端程序开发示例代码"></a>3. TCP 客户端程序开发示例代码</h3><pre><code class="python">import socket
+
+
+if __name__ == &#39;__main__&#39;:
+    # 创建tcp客户端套接字
+    # 1. AF_INET：表示ipv4
+    # 2. SOCK_STREAM: tcp传输协议
+    tcp_client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # 和服务端应用程序建立连接
+    tcp_client_socket.connect((&quot;192.168.131.62&quot;, 8080))
+    # 代码执行到此，说明连接建立成功
+    # 准备发送的数据
+    send_data = &quot;你好服务端，我是客户端!&quot;.encode(&quot;utf-8&quot;)
+    # 发送数据
+    tcp_client_socket.send(send_data)
+    # 接收数据, 这次接收的数据最大字节数是1024
+    recv_data = tcp_client_socket.recv(1024)
+    # 返回的直接是服务端程序发送的二进制数据
+    print(recv_data)
+    # 对数据进行解码
+    recv_content = recv_data.decode(&quot;utf-8&quot;)
+    print(&quot;接收服务端的数据为:&quot;, recv_content)
+    # 关闭套接字
+    tcp_client_socket.close()</code></pre>
+<p><strong>执行结果:</strong></p>
+<pre><code class="py">b&#39;hello&#39;
+接收服务端的数据为: hello</code></pre>
+<p><strong>说明</strong></p>
+<ol>
+<li>str.encode(编码格式) 表示把字符串编码成为二进制</li>
+<li>data.decode(编码格式) 表示把二进制解码成为字符串</li>
+</ol>
+<h2 id="七-TCP服务端程序开发"><a href="#七-TCP服务端程序开发" class="headerlink" title="七. TCP服务端程序开发"></a>七. TCP服务端程序开发</h2><h3 id="1-开发-TCP-服务端程序开发步骤回顾"><a href="#1-开发-TCP-服务端程序开发步骤回顾" class="headerlink" title="1. 开发 TCP 服务端程序开发步骤回顾"></a>1. 开发 TCP 服务端程序开发步骤回顾</h3><ol>
+<li>创建服务端端套接字对象</li>
+<li>绑定端口号</li>
+<li>设置监听</li>
+<li>等待接受客户端的连接请求</li>
+<li>接收数据</li>
+<li>发送数据</li>
+<li>关闭套接字</li>
+</ol>
+<h3 id="2-socket-类的介绍-1"><a href="#2-socket-类的介绍-1" class="headerlink" title="2. socket 类的介绍"></a>2. socket 类的介绍</h3><p>导入 socket 模块<br><strong>import socket</strong></p>
+<p>创建服务端 socket 对象<br><strong>socket.socket(AddressFamily, Type)</strong></p>
+<p><strong>参数说明:</strong></p>
+<ul>
+<li>AddressFamily 表示IP地址类型, 分为IPv4和IPv6</li>
+<li>Type 表示传输协议类型</li>
+</ul>
+<p><strong>方法说明:</strong></p>
+<ul>
+<li>bind((host, port)) 表示绑定端口号, host 是 ip 地址，port 是端口号，ip 地址一般不指定，表示本机的任何一个ip地址都可以。</li>
+<li>listen (backlog) 表示设置监听，backlog参数表示最大等待建立连接的个数。</li>
+<li>accept() 表示等待接受客户端的连接请求</li>
+<li>send(data) 表示发送数据，data 是二进制数据</li>
+<li>recv(buffersize) 表示接收数据, buffersize 是每次接收数据的长度</li>
+</ul>
+<h3 id="3-TCP-服务端程序开发示例代码"><a href="#3-TCP-服务端程序开发示例代码" class="headerlink" title="3. TCP 服务端程序开发示例代码"></a>3. TCP 服务端程序开发示例代码</h3><pre><code class="python">import socket
+
+if __name__ == &#39;__main__&#39;:
+    # 创建tcp服务端套接字
+    tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # 设置端口号复用，让程序退出端口号立即释放
+    tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True) 
+    # 给程序绑定端口号
+    tcp_server_socket.bind((&quot;&quot;, 8080))
+    # 设置监听
+    # 128:最大等待建立连接的个数， 提示： 目前是单任务的服务端，同一时刻只能服务与一个客户端，后续使用多任务能够让服务端同时服务与多个客户端，
+    # 不需要让客户端进行等待建立连接
+    # listen后的这个套接字只负责接收客户端连接请求，不能收发消息，收发消息使用返回的这个新套接字来完成
+    tcp_server_socket.listen(128)
+    # 等待客户端建立连接的请求, 只有客户端和服务端建立连接成功代码才会解阻塞，代码才能继续往下执行
+    # 1. 专门和客户端通信的套接字： service_client_socket
+    # 2. 客户端的ip地址和端口号： ip_port
+    service_client_socket, ip_port = tcp_server_socket.accept()
+    # 代码执行到此说明连接建立成功
+    print(&quot;客户端的ip地址和端口号:&quot;, ip_port)
+    # 接收客户端发送的数据, 这次接收数据的最大字节数是1024
+    recv_data = service_client_socket.recv(1024)
+    # 获取数据的长度
+    recv_data_length = len(recv_data)
+    print(&quot;接收数据的长度为:&quot;, recv_data_length)
+    # 对二进制数据进行解码
+    recv_content = recv_data.decode(&quot;utf-8&quot;)
+    print(&quot;接收客户端的数据为:&quot;, recv_content)
+    # 准备发送的数据
+    send_data = &quot;ok, 问题正在处理中...&quot;.encode(&quot;utf-8&quot;)
+    # 发送数据给客户端
+    service_client_socket.send(send_data)
+    # 关闭服务与客户端的套接字， 终止和客户端通信的服务
+    service_client_socket.close()
+    # 关闭服务端的套接字, 终止和客户端提供建立连接请求的服务
+    tcp_server_socket.close()</code></pre>
+<p><strong>执行结果:</strong></p>
+<pre><code class="python">客户端的ip地址和端口号: (&#39;172.16.47.209&#39;, 52472)
+接收数据的长度为: 5
+接收客户端的数据为: hello</code></pre>
+<p><strong>说明:</strong></p>
+<p>当客户端和服务端建立连接后，<strong>服务端程序退出后端口号不会立即释放，需要等待大概1-2分钟。</strong></p>
+<p>解决办法有两种:</p>
+<ol>
+<li>更换服务端端口号</li>
+<li>设置端口号复用(推荐大家使用)，也就是说让服务端程序退出后端口号立即释放。</li>
+</ol>
+<p>设置端口号复用的代码如下:</p>
+<pre><code class="py"># 参数1: 表示当前套接字
+# 参数2: 设置端口号复用选项
+# 参数3: 设置端口号复用选项对应的值
+tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)</code></pre>
+<h2 id="八-TCP网络应用程序的注意点"><a href="#八-TCP网络应用程序的注意点" class="headerlink" title="八. TCP网络应用程序的注意点"></a>八. TCP网络应用程序的注意点</h2><h3 id="1-TCP网络应用程序的注意点介绍"><a href="#1-TCP网络应用程序的注意点介绍" class="headerlink" title="1. TCP网络应用程序的注意点介绍"></a>1. TCP网络应用程序的注意点介绍</h3><ol>
+<li>当 TCP 客户端程序想要和 TCP 服务端程序进行通信的时候必须要先<strong>建立连接</strong></li>
+<li>TCP 客户端程序一般不需要绑定端口号，因为客户端是主动发起建立连接的。</li>
+<li><strong>TCP 服务端程序必须绑定端口号</strong>，否则客户端找不到这个 TCP 服务端程序。</li>
+<li>listen 后的套接字是被动套接字，<strong>只负责接收新的客户端的连接请求，不能收发消息。</strong></li>
+<li>当 TCP 客户端程序和 TCP 服务端程序连接成功后， TCP 服务器端程序会产生一个<strong>新的套接字</strong>，收发客户端消息使用该套接字。</li>
+<li><strong>关闭 accept 返回的套接字意味着和这个客户端已经通信完毕</strong>。</li>
+<li><strong>关闭 listen 后的套接字意味着服务端的套接字关闭了，会导致新的客户端不能连接服务端，但是之前已经接成功的客户端还能正常通信。</strong></li>
+<li><strong>当客户端的套接字调用 close 后，服务器端的 recv 会解阻塞，返回的数据长度为0</strong>，服务端可以通过返回数据的长度来判断客户端是否已经下线，反之<strong>服务端关闭套接字，客户端的 recv 也会解阻塞，返回的数据长度也为0</strong>。</li>
+</ol>
+<h2 id="九-案例-多任务版TCP服务程序"><a href="#九-案例-多任务版TCP服务程序" class="headerlink" title="九. 案例-多任务版TCP服务程序"></a>九. 案例-多任务版TCP服务程序</h2><h3 id="1-需求"><a href="#1-需求" class="headerlink" title="1. 需求"></a>1. 需求</h3><p>目前我们开发的TCP服务端程序只能服务于一个客户端，如何开发一个多任务版的TCP服务端程序能够服务于多个客户端呢?</p>
+<p>完成多任务，可以使用<strong>线程</strong>，比进程更加节省内存资源。</p>
+<h3 id="2-具体实现步骤"><a href="#2-具体实现步骤" class="headerlink" title="2. 具体实现步骤"></a>2. 具体实现步骤</h3><ol>
+<li>编写一个TCP服务端程序，循环等待接受客户端的连接请求</li>
+<li>当客户端和服务端建立连接成功，创建子线程，使用子线程专门处理客户端的请求，防止主线程阻塞</li>
+<li>把创建的子线程设置成为守护主线程，防止主线程无法退出。</li>
+</ol>
+<h3 id="3-多任务版TCP服务端程序的示例代码"><a href="#3-多任务版TCP服务端程序的示例代码" class="headerlink" title="3. 多任务版TCP服务端程序的示例代码:"></a>3. 多任务版TCP服务端程序的示例代码:</h3><pre><code class="python">import socket
+import threading
+
+
+# 处理客户端的请求操作
+def handle_client_request(service_client_socket, ip_port):
+    # 循环接收客户端发送的数据
+    while True:
+        # 接收客户端发送的数据
+        recv_data = service_client_socket.recv(1024)
+        # 容器类型判断是否有数据可以直接使用if语句进行判断，如果容器类型里面有数据表示条件成立，否则条件失败
+        # 容器类型: 列表、字典、元组、字符串、set、range、二进制数据
+        if recv_data:
+            print(recv_data.decode(&quot;utf-8&quot;), ip_port)
+            # 回复
+            service_client_socket.send(&quot;ok，问题正在处理中...&quot;.encode(&quot;utf-8&quot;))
+
+        else:
+            print(&quot;客户端下线了:&quot;, ip_port)
+            break
+    # 终止和客户端进行通信
+    service_client_socket.close()
+
+
+if __name__ == &#39;__main__&#39;:
+    # 创建tcp服务端套接字
+    tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # 设置端口号复用，让程序退出端口号立即释放
+    tcp_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, True)
+    # 绑定端口号
+    tcp_server_socket.bind((&quot;&quot;, 8080))
+    # 设置监听, listen后的套接字是被动套接字，只负责接收客户端的连接请求
+    tcp_server_socket.listen(128)
+    # 循环等待接收客户端的连接请求
+    while True:
+        # 等待接收客户端的连接请求
+        service_client_socket, ip_port = tcp_server_socket.accept()
+        print(&quot;客户端连接成功:&quot;, ip_port)
+        # 当客户端和服务端建立连接成功以后，需要创建一个子线程，不同子线程负责接收不同客户端的消息
+        sub_thread = threading.Thread(target=handle_client_request, args=(service_client_socket, ip_port))
+        # 设置守护主线程
+        sub_thread.setDaemon(True)
+        # 启动子线程
+        sub_thread.start()
+
+
+    # tcp服务端套接字可以不需要关闭，因为服务端程序需要一直运行
+    # tcp_server_socket.close()</code></pre>
+<p><strong>执行结果:</strong></p>
+<pre><code class="python">客户端连接成功: (&#39;172.16.47.209&#39;, 51528)
+客户端连接成功: (&#39;172.16.47.209&#39;, 51714)
+hello1 (&#39;172.16.47.209&#39;, 51528)
+hello2 (&#39;172.16.47.209&#39;, 51714)</code></pre>
+<h2 id="十-socket的send和recv原理剖析"><a href="#十-socket的send和recv原理剖析" class="headerlink" title="十. socket的send和recv原理剖析"></a>十. socket的send和recv原理剖析</h2><h3 id="1-认识TCP-socket的发送和接收缓冲区"><a href="#1-认识TCP-socket的发送和接收缓冲区" class="headerlink" title="1. 认识TCP socket的发送和接收缓冲区"></a>1. 认识TCP socket的发送和接收缓冲区</h3><p>当创建一个TCP socket对象的时候会有一个<strong>发送缓冲区</strong>和一个<strong>接收缓冲区</strong>，<strong>这个发送和接收缓冲区指的就是内存中的一片空间。</strong></p>
+<h3 id="2-send原理剖析"><a href="#2-send原理剖析" class="headerlink" title="2. send原理剖析"></a>2. send原理剖析</h3><p>send是不是直接把数据发给服务端?</p>
+<p>不是，要想发数据，必须得<strong>通过网卡发送数据</strong>，应用程序是无法直接通过网卡发送数据的，它需要调用操作系统接口，也就是说，应用程序把发送的数据先写入到<strong>发送缓冲区</strong>(内存中的一片空间)，再<strong>由操作系统控制网卡把发送缓冲区的数据发送给服务端网卡</strong> 。</p>
+<h3 id="3-recv原理剖析"><a href="#3-recv原理剖析" class="headerlink" title="3. recv原理剖析"></a>3. recv原理剖析</h3><p>recv是不是直接从客户端接收数据?</p>
+<p>不是，<strong>应用软件是无法直接通过网卡接收数据的</strong>，它需要调用操作系统接口，<strong>由操作系统通过网卡接收数据</strong>，把接收的数据<strong>写入到接收缓冲区</strong>(内存中的一片空间），应用程序<strong>再从接收缓存区获取客户端发送的数据</strong>。</p>
+<p><strong>说明:</strong></p>
+<ul>
+<li>发送数据是发送到发送缓冲区</li>
+<li>接收数据是从接收缓冲区 获取</li>
+</ul>
+<h3 id="4-小结"><a href="#4-小结" class="headerlink" title="4. 小结"></a>4. 小结</h3><p>不管是recv还是send都不是直接接收到对方的数据和发送数据到对方，<strong>发送数据会写入到发送缓冲区，接收数据是从接收缓冲区来读取，发送数据和接收数据最终是由操作系统控制网卡来完成。</strong></p>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/08/21/2020-08-10-python%E9%AB%98%E7%BA%A703-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">https://caijinbo.work/2020/08/21/2020-08-10-python高级03-网络编程/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/python/">python</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#网络编程"><span class="toc-number">1.</span> <span class="toc-text">网络编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-IP地址的介绍"><span class="toc-number">1.1.</span> <span class="toc-text">一. IP地址的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-IP-地址的概念"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. IP 地址的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-IP-地址的作用"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. IP 地址的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-查看-IP-地址"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. 查看 IP 地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-检查网络是否正常"><span class="toc-number">1.1.4.</span> <span class="toc-text">4. 检查网络是否正常</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-端口和端口号的介绍"><span class="toc-number">1.2.</span> <span class="toc-text">二. 端口和端口号的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-什么是端口"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 什么是端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-什么是端口号"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 什么是端口号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-TCP的介绍"><span class="toc-number">1.3.</span> <span class="toc-text">三. TCP的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-TCP-的概念"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. TCP 的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-TCP-的特点"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. TCP 的特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-socket的介绍"><span class="toc-number">1.4.</span> <span class="toc-text">四. socket的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-socket-的概念"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. socket 的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-socket-的作用"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. socket 的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-socket-使用场景"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. socket 使用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-TCP网络应用程序开发流程"><span class="toc-number">1.5.</span> <span class="toc-text">五. TCP网络应用程序开发流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-TCP-网络应用程序开发流程的介绍"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. TCP 网络应用程序开发流程的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-TCP-客户端程序开发流程的介绍"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. TCP 客户端程序开发流程的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-TCP-服务端程序开发流程的介绍"><span class="toc-number">1.5.3.</span> <span class="toc-text">3. TCP 服务端程序开发流程的介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六-TCP客户端程序开发"><span class="toc-number">1.6.</span> <span class="toc-text">六. TCP客户端程序开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-开发-TCP-客户端程序开发步骤回顾"><span class="toc-number">1.6.1.</span> <span class="toc-text">1. 开发 TCP 客户端程序开发步骤回顾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-socket-类的介绍"><span class="toc-number">1.6.2.</span> <span class="toc-text">2. socket 类的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-TCP-客户端程序开发示例代码"><span class="toc-number">1.6.3.</span> <span class="toc-text">3. TCP 客户端程序开发示例代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七-TCP服务端程序开发"><span class="toc-number">1.7.</span> <span class="toc-text">七. TCP服务端程序开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-开发-TCP-服务端程序开发步骤回顾"><span class="toc-number">1.7.1.</span> <span class="toc-text">1. 开发 TCP 服务端程序开发步骤回顾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-socket-类的介绍-1"><span class="toc-number">1.7.2.</span> <span class="toc-text">2. socket 类的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-TCP-服务端程序开发示例代码"><span class="toc-number">1.7.3.</span> <span class="toc-text">3. TCP 服务端程序开发示例代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八-TCP网络应用程序的注意点"><span class="toc-number">1.8.</span> <span class="toc-text">八. TCP网络应用程序的注意点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-TCP网络应用程序的注意点介绍"><span class="toc-number">1.8.1.</span> <span class="toc-text">1. TCP网络应用程序的注意点介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九-案例-多任务版TCP服务程序"><span class="toc-number">1.9.</span> <span class="toc-text">九. 案例-多任务版TCP服务程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-需求"><span class="toc-number">1.9.1.</span> <span class="toc-text">1. 需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-具体实现步骤"><span class="toc-number">1.9.2.</span> <span class="toc-text">2. 具体实现步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-多任务版TCP服务端程序的示例代码"><span class="toc-number">1.9.3.</span> <span class="toc-text">3. 多任务版TCP服务端程序的示例代码:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十-socket的send和recv原理剖析"><span class="toc-number">1.10.</span> <span class="toc-text">十. socket的send和recv原理剖析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-认识TCP-socket的发送和接收缓冲区"><span class="toc-number">1.10.1.</span> <span class="toc-text">1. 认识TCP socket的发送和接收缓冲区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-send原理剖析"><span class="toc-number">1.10.2.</span> <span class="toc-text">2. send原理剖析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-recv原理剖析"><span class="toc-number">1.10.3.</span> <span class="toc-text">3. recv原理剖析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-小结"><span class="toc-number">1.10.4.</span> <span class="toc-text">4. 小结</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/08/21/2020-08-22-python%E9%AB%98%E7%BA%A705-HTML+CSS%E5%9F%BA%E7%A1%80/">&lt; python高级05-HTML+CSS基础</a><a class="next" href="/2020/08/21/2020-08-22-python%E9%AB%98%E7%BA%A708-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/">python高级08-MySQL数据库 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

@@ -1,0 +1,2623 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>Django框架基础 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">Django框架基础</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/09/21/2020-09-22-Django%20%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80/">2020-09-21</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/python/">python</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h1 id="Django-框架基础"><a href="#Django-框架基础" class="headerlink" title="Django 框架基础"></a>Django 框架基础</h1><h2 id="一、Django工程搭建"><a href="#一、Django工程搭建" class="headerlink" title="一、Django工程搭建"></a>一、Django工程搭建</h2><h3 id="1-web本质和意义"><a href="#1-web本质和意义" class="headerlink" title="1.web本质和意义"></a>1.web本质和意义</h3><a id="more"></a>
+
+<h4 id="1-1-web应用程序处理流程"><a href="#1-1-web应用程序处理流程" class="headerlink" title="1.1 web应用程序处理流程"></a>1.1 web应用程序处理流程</h4><p>前端客户端(浏览器、APP、ajax、爬虫程序) </p>
+<p>–HTTP请求–&gt;</p>
+<p>服务器程序（如：gunicorn、uwsgi）接收和解析HTTP请求报文</p>
+<p>–WSGI协议–&gt;</p>
+<p>框架程序（如：flask、Django）HTTP请求对象(request)–&gt;中间层处理–&gt;具体视图处理-业务处理(如数据库、模板、表单)–&gt;中间层处理–&gt;HTTP响应对象(response)</p>
+<p>–WSGI协议–&gt;</p>
+<p>服务器程序（如：gunicorn、uwsgi）构建和返回HTTP响应报文</p>
+<p>–HTTP响应–&gt;</p>
+<p>前端客户端(浏览器、APP、ajax、爬虫程序) </p>
+<h4 id="1-2-Web应用程序的本质"><a href="#1-2-Web应用程序的本质" class="headerlink" title="1.2  Web应用程序的本质"></a>1.2  Web应用程序的本质</h4><ul>
+<li>接收并解析HTTP请求，获取具体的请求信息</li>
+<li>处理本次HTTP请求，即完成本次请求的业务逻辑处理</li>
+<li>构造并返回处理结果——HTTP响应</li>
+</ul>
+<h4 id="1-3-Web程序框架的意义"><a href="#1-3-Web程序框架的意义" class="headerlink" title="1.3  Web程序框架的意义"></a>1.3  Web程序框架的意义</h4><ul>
+<li>用于搭建Web应用程序</li>
+<li>免去不同Web应用相同代码部分的重复编写，只需关心Web应用核心的业务逻辑实现</li>
+</ul>
+<h3 id="2-Django框架介绍"><a href="#2-Django框架介绍" class="headerlink" title="2.Django框架介绍"></a>2.Django框架介绍</h3><h4 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1 简介"></a>2.1 简介</h4><ul>
+<li>Django <strong>发音[`dʒæŋɡəʊ]</strong>，是用python语言写的开源web开发框架，并遵循MVC设计模式。</li>
+<li><strong>Django的主要目的是简便、快速的开发数据库驱动的网站。</strong></li>
+</ul>
+<h4 id="2-2-特点"><a href="#2-2-特点" class="headerlink" title="2.2 特点"></a>2.2 特点</h4><blockquote>
+<p><strong>1. 重量级框架</strong></p>
+</blockquote>
+<ul>
+<li>Django框架相比较于Python其他的Web框架而言是<strong>大而全</strong>的。</li>
+<li>Django提供了原生的众多功能组件，让开发更简便快速。</li>
+<li>提供项目工程管理的自动化脚本工具。</li>
+<li>支持ORM以面向对象的形式操作数据库。（Object Relational Mapping）</li>
+<li>提供了强大的模板引擎，用于渲染页面。</li>
+<li>提供了文件管理、认证权限、session机制和缓存。</li>
+</ul>
+<blockquote>
+<p><strong>2. 遵守MVT设计模式</strong></p>
+</blockquote>
+<h5 id="MVC设计模式说明"><a href="#MVC设计模式说明" class="headerlink" title="MVC设计模式说明"></a>MVC设计模式说明</h5><ul>
+<li><strong>MVC</strong> 的全拼为 <strong>Model-View-Controller</strong></li>
+<li><strong>M</strong> 全拼为 <strong>Model</strong>，主要封装对数据库层的访问，对数据库中的数据进行增、删、改、查操作。</li>
+<li><strong>V</strong> 全拼为 <strong>View</strong>，用于封装结果，生成页面展示的html内容。</li>
+<li><strong>C</strong> 全拼为 <strong>Controller</strong>，用于接收请求，处理业务逻辑，与Model和View交互，返回结果。</li>
+<li><strong>MVC 的核心思想是分工、解耦，让不同的代码块之间降低耦合，增强代码的可扩展性和可移植性，实现向后兼容</strong>。</li>
+</ul>
+<h5 id="Django的MVT设计模式说明"><a href="#Django的MVT设计模式说明" class="headerlink" title="Django的MVT设计模式说明"></a>Django的MVT设计模式说明</h5><ul>
+<li><strong>MVT</strong> 的全拼为 <strong>Model-View-Template</strong></li>
+<li><strong>M</strong> 全拼为 <strong>Model</strong>，与MVC中的M功能相同，负责和数据库交互，进行数据处理。</li>
+<li><strong>V</strong> 全拼为 <strong>View</strong>，与MVC中的C功能相同，接收请求，进行业务处理，返回应答。</li>
+<li><strong>T</strong> 全拼为 <strong>Template</strong>，与MVC中的V功能相同，负责封装构造要返回的html。</li>
+<li><strong>MVT 的核心思想和 MVC 是相同的</strong></li>
+</ul>
+<h3 id="3-虚拟环境"><a href="#3-虚拟环境" class="headerlink" title="3.虚拟环境"></a>3.虚拟环境</h3><h4 id="3-1-为什么要创建虚拟环境"><a href="#3-1-为什么要创建虚拟环境" class="headerlink" title="3.1 为什么要创建虚拟环境"></a>3.1 为什么要创建虚拟环境</h4><ul>
+<li><p>在开发过程中, 当需要使用python的某些工具包/框架时需要联网安装</p>
+<ul>
+<li><p>比如联网安装Django框架 django==2.2.16 版本</p>
+<pre><code>sudo pip install django==2.2.16</code></pre></li>
+</ul>
+</li>
+<li><p><strong>提示</strong>：使用如上命令, 会将<code>django==2.2.16</code>安装到<code>/usr/local/lib/python版本/dist-packages</code>路径下</p>
+</li>
+<li><p><strong>问题</strong> : 如果在一台电脑上, 想开发多个不同的项目, 需要用到同一个包的不同版本, 如果使用上面的命令, 在同一个目录下安装或者更新, 新版本会覆盖以前的版本, 其它的项目就无法运行了。</p>
+</li>
+<li><p>解决方案:   <code>虚拟环境</code></p>
+<ul>
+<li><strong>作用</strong> : <code>虚拟环境</code>可以搭建独立的<code>python运行环境</code>, 使得单个项目的运行环境与其它项目互不影响.</li>
+<li>所有的<code>虚拟环境</code>都位于<code>/home/</code>下的隐藏目录<code>.virtualenvs</code>下</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-2-如何创建虚拟环境"><a href="#3-2-如何创建虚拟环境" class="headerlink" title="3.2 如何创建虚拟环境"></a>3.2 如何创建虚拟环境</h4><ul>
+<li><p>安装虚拟环境的命令 :</p>
+<pre><code class="bash">sudo pip install virtualenv
+sudo pip install virtualenvwrapper</code></pre>
+</li>
+<li><p>创建虚拟环境的命令 :</p>
+<ul>
+<li>提示：如果不指定python版本，虚拟环境就会使用默认的python版本</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li><p>使用默认的python创建虚拟环境</p>
+<pre><code class="bash">mkvirtualenv 虚拟环境名称
+例 ：
+mkvirtualenv py_django</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>指定python版本创建虚拟环境</p>
+<pre><code class="bash">mkvirtualenv -p python3 虚拟环境名称
+例 ：
+mkvirtualenv -p python3 py_django  # 使用的是默认的python3版本
+mkvirtualenv -p python3.5 py_django  # 使用的是python3.5版本，注意，所使用的python版本在本机已经安装才行</code></pre>
+<p>提示 :</p>
+<ul>
+<li>创建虚拟环境需要联网</li>
+<li>创建成功后, 会自动工作在这个虚拟环境上</li>
+<li>工作在虚拟环境上, 提示符最前面会出现 “虚拟环境名称”</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-3-如何使用虚拟环境"><a href="#3-3-如何使用虚拟环境" class="headerlink" title="3.3 如何使用虚拟环境"></a>3.3 如何使用虚拟环境</h4><p>查看所有虚拟环境的命令 :</p>
+<pre><code class="bash">  workon 两次tab键</code></pre>
+<p>使用虚拟环境的命令 :</p>
+<pre><code class="bash">  workon 虚拟环境名称
+  例：
+  workon py_django</code></pre>
+<p>退出虚拟环境的命令 :</p>
+<pre><code>  deactivate</code></pre><p> 删除虚拟环境的命令 :</p>
+<pre><code class="bash">  rmvirtualenv 虚拟环境名称
+
+  先退出：deactivate
+  再删除：rmvirtualenv 虚拟环境名称</code></pre>
+<h4 id="3-4-如何在虚拟环境中安装工具包"><a href="#3-4-如何在虚拟环境中安装工具包" class="headerlink" title="3.4 如何在虚拟环境中安装工具包"></a>3.4 如何在虚拟环境中安装工具包</h4><ul>
+<li><p>虚拟环境中安装框架、包命令 :</p>
+<pre><code class="shell">  pip install 框架、包名称
+
+  例 : 安装`django==2.2.16`
+  pip install django==2.2.16</code></pre>
+</li>
+<li><p>框架、包安装的位置 :</p>
+<ul>
+<li><code>~/.virtualenvs/虚拟环境名称/lib/python版本/site-packages</code></li>
+</ul>
+</li>
+<li><p>查看虚拟环境中安装的包 :</p>
+<pre><code class="shell">pip freeze 或者 pip list</code></pre>
+</li>
+</ul>
+<h4 id="3-5-特别提示"><a href="#3-5-特别提示" class="headerlink" title="3.5 特别提示"></a>3.5 特别提示</h4><blockquote>
+<ul>
+<li>在虚拟环境中，直接使用 <code>pip install</code> 安装Django框架或者扩展包时，速度特别慢，甚至报红色警告。</li>
+<li>这主要是因为Django框架和很多的扩展包都是从国外服务器进行下载安装的。</li>
+</ul>
+</blockquote>
+<p><strong>指定镜像源：加速下载安装Django框架或者扩展包</strong></p>
+<p><strong><code>pip install django==2.2.16 -i https://pypi.tuna.tsinghua.edu.cn/simple/</code></strong></p>
+<p>如果还是下载安装比较慢，可以把上面的镜像源链接换为下面的任意一个：</p>
+<pre><code class="http">https://mirrors.aliyun.com/pypi/simple/
+http://pypi.douban.com/simple/
+http://pypi.mirrors.ustc.edu.cn/simple/</code></pre>
+<h3 id="4-Django工程创建"><a href="#4-Django工程创建" class="headerlink" title="4.Django工程创建"></a>4.Django工程创建</h3><h4 id="4-1-创建工程"><a href="#4-1-创建工程" class="headerlink" title="4.1 创建工程"></a>4.1 创建工程</h4><p>创建工程的命令为：</p>
+<pre><code class="shell">django-admin startproject 工程名称
+例子：
+cd ~/Desktop/
+django-admin startproject Django_test</code></pre>
+<p>执行后，会多出一个新目录名为 <strong>Django_test</strong>，此即为新创建的工程目录。</p>
+<h4 id="4-2-工程目录说明"><a href="#4-2-工程目录说明" class="headerlink" title="4.2 工程目录说明"></a>4.2 工程目录说明</h4><ul>
+<li>与项目同名的目录，此处为 <strong>Django_test</strong>。</li>
+<li><strong>settings.py</strong> 是项目的整体配置文件。</li>
+<li><strong>urls.py</strong> 是项目的URL配置文件。</li>
+<li><strong>wsgi.py</strong> 是项目与WSGI兼容的Web服务器入口。</li>
+<li><strong>manage.py</strong> 是项目管理文件，通过它管理项目。</li>
+</ul>
+<h4 id="4-3-运行开发服务器"><a href="#4-3-运行开发服务器" class="headerlink" title="4.3 运行开发服务器"></a>4.3 运行开发服务器</h4><p>在开发阶段，为了能够快速预览到开发的效果，django提供了一个纯python编写的轻量级web服务器，仅在开发阶段使用。</p>
+<p>运行服务器命令如下：</p>
+<pre><code class="shell">python manage.py runserver ip:端口
+例：
+python manage.py runserver 127.0.0.1:9000
+或：
+python manage.py runserver    # 可以不写IP和端口，默认IP是127.0.0.1，默认端口为8000。</code></pre>
+<p>在浏览器中输入网址“127.0.0.1:8000”便可看到效果。</p>
+<ul>
+<li>django默认工作在调式Debug模式下，如果增加、修改、删除文件，服务器会自动重启。</li>
+</ul>
+<h3 id="5-Django工程配置"><a href="#5-Django工程配置" class="headerlink" title="5. Django工程配置"></a>5. Django工程配置</h3><p>提示：</p>
+<ul>
+<li>工程的配置文件是 <strong>settings.py</strong></li>
+<li>以下内容仅仅是测试Django工程修改配置文件后的效果</li>
+</ul>
+<h4 id="5-1-BASE-DIR"><a href="#5-1-BASE-DIR" class="headerlink" title="5.1 BASE_DIR"></a>5.1 BASE_DIR</h4><pre><code class="python">BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))</code></pre>
+<p>当前工程的根目录，Django会依此来定位工程内的相关文件，我们也可以使用该参数来构造文件路径。</p>
+<h4 id="5-2-DEBUG"><a href="#5-2-DEBUG" class="headerlink" title="5.2 DEBUG"></a>5.2 DEBUG</h4><p>调试模式，创建工程后初始值为<strong>True</strong>，即默认工作在调试模式下。</p>
+<p>作用：</p>
+<ul>
+<li>修改代码文件，程序自动重启</li>
+</ul>
+<p><strong>注意：部署线上运行的Django不要运行在调式模式下，记得修改DEBUG=False。</strong></p>
+<h4 id="5-3-本地语言与时区"><a href="#5-3-本地语言与时区" class="headerlink" title="5.3 本地语言与时区"></a>5.3 本地语言与时区</h4><p>Django支持本地化处理，即显示语言与时区支持本地化。</p>
+<p>本地化是将显示的语言、时间等使用本地的习惯，这里的本地化就是进行中国化，中国大陆地区使用<strong>简体中文</strong>，时区使用<strong>亚洲/上海</strong>时区，注意这里不使用北京时区表示。</p>
+<p>初始化的工程默认语言和时区为英语和UTC标准时区</p>
+<pre><code class="python">LANGUAGE_CODE = &#39;en-us&#39; # 语言：英语
+
+TIME_ZONE = &#39;UTC&#39; # UTC标准时区</code></pre>
+<p>将语言和时区修改为中国大陆信息</p>
+<pre><code class="python">LANGUAGE_CODE = &#39;zh-hans&#39; # 语言：简体中文
+
+TIME_ZONE = &#39;Asia/Shanghai&#39; # 亚洲上海</code></pre>
+<h3 id="6-Django子应用"><a href="#6-Django子应用" class="headerlink" title="6. Django子应用"></a>6. Django子应用</h3><p>提示：</p>
+<ul>
+<li>在Web应用中，通常有一些业务功能模块是可以在不同的项目中复用的。</li>
+<li>所以，在开发中通常将项目工程拆分为不同的子功能模块。</li>
+<li>而且各功能模块间保持了相对的独立，在其他项目中需要用到某个特定功能模块时，可以将该模块代码整体复制过去，达到复用。</li>
+</ul>
+<h4 id="6-1-创建子应用"><a href="#6-1-创建子应用" class="headerlink" title="6.1 创建子应用"></a>6.1 创建子应用</h4><p>在Django中，创建子应用仍然可以通过命令来操作，即：</p>
+<pre><code class="shell">cd 项目工程
+
+django-admin startapp 子应用名称(推荐)
+或者
+python manage.py startapp 子应用名称</code></pre>
+<ul>
+<li>例如：<ul>
+<li>在上一步创建的 <strong>Django_test</strong> 工程中，创建一个专门管理 <strong>用户模块</strong> 的子应用</li>
+<li>如果管理 <strong>用户模块</strong> 的子应用名称设计为 <strong>users</strong>，则命令为：</li>
+</ul>
+</li>
+</ul>
+<pre><code class="shell">cd ~/Desktop/Django_test/
+
+django-admin startapp users
+或者
+python manage.py startapp users</code></pre>
+<h4 id="6-2-子应用目录说明"><a href="#6-2-子应用目录说明" class="headerlink" title="6.2 子应用目录说明"></a>6.2 子应用目录说明</h4><ul>
+<li><strong>admin.py</strong> 文件跟网站的后台管理站点配置相关。</li>
+<li><strong>apps.py</strong> 文件用于配置当前子应用的相关信息。</li>
+<li><strong>migrations</strong> 目录用于存放数据库迁移历史文件。</li>
+<li><strong>models.py</strong> 文件用户保存数据库模型类。</li>
+<li><strong>tests.py</strong> 文件用于开发测试用例，编写单元测试。</li>
+<li><strong>views.py</strong> 文件用于编写Web应用视图。</li>
+</ul>
+<h4 id="6-3-注册子应用"><a href="#6-3-注册子应用" class="headerlink" title="6.3 注册子应用"></a>6.3 注册子应用</h4><p>创建出来的子应用目录文件虽然被放到了工程项目目录中，但是django工程并不能立即直接使用该子应用，需要注册安装后才能使用。</p>
+<p>在工程配置文件settings.py中，<strong>INSTALLED_APPS</strong>项保存了工程中已经注册安装的子应用，初始工程中的INSTALLED_APPS如下：</p>
+<p><strong>注册安装一个子应用的方法，即是将子应用的配置信息文件apps.py中的Config类添加到INSTALLED_APPS列表中。</strong></p>
+<pre><code class="python">INSTALLED_APPS = [
+    &#39;django.contrib.admin&#39;,
+    &#39;django.contrib.auth&#39;,
+    &#39;django.contrib.contenttypes&#39;,
+    &#39;django.contrib.sessions&#39;,
+    &#39;django.contrib.messages&#39;,
+    &#39;django.contrib.staticfiles&#39;,
+
+    &#39;users&#39;, # 用户模块子应用
+]</code></pre>
+<h2 id="二、视图（views）"><a href="#二、视图（views）" class="headerlink" title="二、视图（views）"></a>二、视图（views）</h2><p><strong>经验值分享</strong></p>
+<ol>
+<li><strong>请求对象的</strong>user属性</li>
+</ol>
+<p>参考知识点：<strong>请求HttpRequest</strong></p>
+<ul>
+<li>提示：<ul>
+<li>请求对象的user属性返回的是<strong>请求过程中认证出来的用户对象</strong></li>
+</ul>
+</li>
+<li>使用方式：<ul>
+<li><code>user = request.user</code></li>
+</ul>
+</li>
+<li>使用场景：<ul>
+<li>从请求中获取当前登录用户对象信息</li>
+</ul>
+</li>
+<li>注意点：<ul>
+<li><strong><code>request.user</code></strong>获取到的不一定是当前登录用户对象</li>
+<li>如果当前请求是已登录用户发送的，那么<strong><code>request.user</code></strong>获取到的才是当前登录用户对象</li>
+<li>如果当前请求是未登录用户发送的，那么<strong><code>request.user</code></strong>获取到的会是一个AnonymousUser对象（匿名用户，没有任何用户信息，没有使用价值）。</li>
+</ul>
+</li>
+<li>工作中如何使用<code>request.user</code>？<ul>
+<li><strong><code>request.user</code></strong>需要搭配用户访问的限制来使用。</li>
+<li>需要先判断用户是否已登录，如果用户已登录，就可以大胆放心的使用<strong><code>request.user</code></strong>。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>自定义中间件注册原则</strong></li>
+</ol>
+<p>参考知识点：<strong>中间件Middleware</strong></p>
+<ul>
+<li>提示：多个中间件执行的顺序是有规律的</li>
+</ul>
+<pre><code class="python">多个中间件注册顺序：
+MIDDLEWARE = [
+    &#39;Middleware1&#39;,
+    &#39;Middleware2&#39;,
+    &#39;Middleware3&#39;,
+]
+
+请求时：按照顺序由上而下进入中间件
+    [1 ---&gt; 2 ---&gt; 3]
+响应时：先进入的中间件后执行完的
+    [3 ---&gt; 2 ---&gt; 1]
+
+经验：
+    中间件中请求优先的逻辑，中间件一定要放在最前注册
+    中间件中响应优先的逻辑，中间件一定要放在最后注册
+
+例子：
+    解决前后端分离时请求跨域的问题
+    每个请求都要解决跨域的问题，所以需要用到中间件
+    而且需要在请求处理时最先处理跨域的问题，所以解决请求跨域时的中间件需要最先注册</code></pre>
+<h3 id="1-函数视图"><a href="#1-函数视图" class="headerlink" title="1.函数视图"></a>1.函数视图</h3><h4 id="1-1-定义函数视图"><a href="#1-1-定义函数视图" class="headerlink" title="1.1 定义函数视图"></a>1.1 定义函数视图</h4><blockquote>
+<p><strong>函数视图定义方式：</strong></p>
+</blockquote>
+<pre><code class="python">1. 函数视图它是一个标准的Python函数。
+2. 函数视图中，第一个参数必须定义：第一个参数为请求对象，用于接收用户发送的请求报文。
+3. 函数视图中，必须返回响应对象：用于构造响应报文，并响应给用户。
+4. 说明：
+    请求对象：HttpRequest() 对应的对象
+    响应对象：HttpResponse() 对应的对象
+from django.shortcuts import render
+from django import http
+
+# Create your views here.
+
+
+def register(request):
+    &quot;&quot;&quot;
+    用户注册函数视图
+    :param request: 请求对象，包含了请求报文信息
+    :return: 响应对象，用于构造响应报文，并响应给用户
+    &quot;&quot;&quot;
+    # 响应数据
+    return http.HttpResponse(&#39;这里假装返回注册页面&#39;)</code></pre>
+<h4 id="1-2-访问函数视图"><a href="#1-2-访问函数视图" class="headerlink" title="1.2 访问函数视图"></a>1.2 访问函数视图</h4><blockquote>
+<p><strong>提示：</strong></p>
+</blockquote>
+<ul>
+<li>我们定义好的函数视图，需要用户能够访问到。</li>
+<li>用户如何访问函数视图？<ul>
+<li><strong>通过网络地址向Django程序发请求，即可访问到函数视图</strong></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>问题：</strong></p>
+</blockquote>
+<ul>
+<li>如何保证用户发送的请求，能够访问到对应的函数视图？</li>
+</ul>
+<blockquote>
+<p><strong>解决：</strong></p>
+</blockquote>
+<ul>
+<li><strong>路由：使用路由匹配请求地址，每匹配成功一个就执行对应的函数视图逻辑</strong></li>
+<li><strong>定义路由的方法：path()、re_path()、url()</strong></li>
+</ul>
+<blockquote>
+<p><strong>需求：</strong></p>
+</blockquote>
+<ul>
+<li>用户通过网络地址<strong><code>http://127.0.0.1:8000/users/register/</code></strong>访问用户注册视图</li>
+</ul>
+<h4 id="1-3-访问函数视图：需求实现-–-gt-path"><a href="#1-3-访问函数视图：需求实现-–-gt-path" class="headerlink" title="1.3 访问函数视图：需求实现 –&gt; path()"></a>1.3 访问函数视图：需求实现 –&gt; path()</h4><blockquote>
+<p><strong>1. 新建子路由文件</strong></p>
+<ul>
+<li>在<strong><code>子应用</code></strong>中新建一个<strong><code>urls.py</code></strong>文件用于定义该应用的所有路由信息</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>2. 注册子路由</strong></p>
+<ul>
+<li>在<strong><code>子应用/urls.py</code></strong>文件中定义路由信息</li>
+</ul>
+</blockquote>
+<pre><code class="python">from django.urls import path
+
+from . import views
+
+# urlpatterns是被Django自动识别的路由列表变量：定义该应用的所有路由信息
+urlpatterns = [
+    # 函数视图路由语法：
+    # path(&#39;网络地址正则表达式&#39;, 函数视图名),
+
+    # 用户注册：http://127.0.0.1:8000/users/register/
+    path(&#39;users/register/&#39;, views.register),
+]</code></pre>
+<blockquote>
+<p><strong>3. 注册总路由</strong></p>
+<ul>
+<li>在工程总路由<strong><code>工程同名目录/urls.py</code></strong>中包含子应用的路由数据</li>
+</ul>
+</blockquote>
+<pre><code class="python">from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    # 自带的后台管理系统的总路由：可以忽略
+    path(&#39;admin/&#39;, admin.site.urls),
+
+    # 总路由包含子路由语法
+    # path(&#39;网络地址前缀/&#39;, include(&#39;子应用.urls&#39;)),
+    # 或者
+    # path(&#39;&#39;, include(&#39;子应用.urls&#39;)),
+
+    # 用户模块：http://127.0.0.1:8000/users/register/
+    path(&#39;&#39;, include(&#39;users.urls&#39;)),
+]</code></pre>
+<blockquote>
+<p>总路由说明：</p>
+</blockquote>
+<ul>
+<li>一个子应用对应一个总路由。</li>
+<li>总路由中，使用<strong><code>include()</code></strong>来将<strong><code>users子应用</code></strong>里的所有路由都包含进工程总路由中。</li>
+</ul>
+<blockquote>
+<p><strong>4. 启动运行测试</strong></p>
+</blockquote>
+<p>重新启动django程序</p>
+<pre><code class="shell">python manage.py runserver</code></pre>
+<p>使用postman进行请求测试： <strong><code>http://127.0.0.1:8000/users/register/</code></strong></p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h3 id="2-类视图"><a href="#2-类视图" class="headerlink" title="2.类视图"></a>2.类视图</h3><h4 id="2-1-函数视图问题说明-不推荐使用函数视图"><a href="#2-1-函数视图问题说明-不推荐使用函数视图" class="headerlink" title="2.1 函数视图问题说明(不推荐使用函数视图)"></a>2.1 函数视图问题说明(不推荐使用函数视图)</h4><pre><code class="python"># GET http://127.0.0.1:8000/users/register/
+def register(request):
+    &quot;&quot;&quot;
+    用户注册函数视图
+    :param request: 请求对象，包含了请求报文信息
+    :return: 响应对象，用于构造响应报文，并响应给用户
+    &quot;&quot;&quot;
+    # 响应数据
+    return http.HttpResponse(&#39;这里假装返回注册页面&#39;)</code></pre>
+<blockquote>
+<p><strong>需求：</strong></p>
+</blockquote>
+<ul>
+<li>用户向地址<strong><code>http://127.0.0.1:8000/users/register/</code></strong>发送GET请求，用来获取注册页面。</li>
+<li>用户向地址<strong><code>http://127.0.0.1:8000/users/register/</code></strong>发送POST请求，用来实现注册逻辑。</li>
+</ul>
+<blockquote>
+<p><strong>需求实现：</strong></p>
+</blockquote>
+<pre><code class="python">def register(request):
+    &quot;&quot;&quot;
+    用户注册函数视图
+    :param request: 请求对象，包含了请求报文信息
+    :return: 响应对象，用于构造响应报文，并响应给用户
+    &quot;&quot;&quot;
+    # 获取请求方法，判断是GET还是POST请求
+    if request.method == &#39;GET&#39;:
+        # 处理GET请求，返回注册页面
+        return HttpResponse(&#39;这里假装返回注册页面&#39;)
+    else:
+        # 处理POST请求，实现注册逻辑
+        return HttpResponse(&#39;这里假装实现注册逻辑&#39;)</code></pre>
+<blockquote>
+<p><strong>函数视图问题说明：</strong></p>
+</blockquote>
+<ul>
+<li>当遇到视图对应的同一个路径，提供了多种不同HTTP请求方式的支持时，便需要在一个函数中编写不同的业务逻辑，代码可读性与复用性都很差。</li>
+</ul>
+<blockquote>
+<p><strong>解决方案：</strong></p>
+</blockquote>
+<ul>
+<li><strong>类视图</strong></li>
+</ul>
+<h4 id="2-2-定义类视图"><a href="#2-2-定义类视图" class="headerlink" title="2.2 定义类视图"></a>2.2 定义类视图</h4><blockquote>
+<p><strong>类视图定义方式：</strong></p>
+</blockquote>
+<pre><code class="python">1. 类视图它是一个标准的Python类。
+2. 类视图需要继承自Django提供的父类视图View。
+3. 在类视图中，
+    3.1 需要定义跟请求方法同名的函数来对应不同请求方式
+    3.2 在请求方法同名的函数中，还必须定义一个接收请求的参数（同函数视图）
+    3.3 在请求方法同名的函数中，还必须返回一个响应对象（同函数视图）
+from django.views import View
+
+
+class RegisterView(View):
+    &quot;&quot;&quot;用户注册类视图
+    http://127.0.0.1:8000/users/register/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        &quot;&quot;&quot;
+        处理GET请求，返回注册页面
+        :param request: 请求对象，包含了请求报文信息
+        :return: 响应对象，用于构造响应报文，并响应给用户
+        &quot;&quot;&quot;
+        return http.HttpResponse(&#39;这里假装返回注册页面&#39;)
+
+    def post(self, request):
+        &quot;&quot;&quot;
+        处理POST请求，实现注册逻辑
+        :param request: 请求对象，包含了请求报文信息
+        :return: 响应对象，用于构造响应报文，并响应给用户
+        &quot;&quot;&quot;
+        return http.HttpResponse(&#39;这里假装实现注册逻辑&#39;)</code></pre>
+<blockquote>
+<p><strong>类视图的好处：</strong></p>
+<ul>
+<li><strong>代码可读性好</strong></li>
+<li><strong>类视图相对于函数视图有更高的复用性</strong>， 如果其他地方需要用到某个类视图的某个特定逻辑，直接继承该类视图即可。</li>
+</ul>
+</blockquote>
+<h4 id="2-3-访问类视图"><a href="#2-3-访问类视图" class="headerlink" title="2.3 访问类视图"></a>2.3 访问类视图</h4><blockquote>
+<p><strong>说明：</strong></p>
+</blockquote>
+<ul>
+<li>类视图的访问和函数视图的访问是一模一样的。</li>
+<li><strong>类视图的访问也是使用路由匹配请求地址，每匹配成功一个就执行对应的类视图逻辑</strong></li>
+</ul>
+<blockquote>
+<p><strong>需求：</strong></p>
+</blockquote>
+<ul>
+<li>用户向地址<strong><code>http://127.0.0.1:8000/users/register/</code></strong>发送GET请求，用来获取注册页面。</li>
+<li>用户向地址<strong><code>http://127.0.0.1:8000/users/register/</code></strong>发送POST请求，用来实现注册逻辑。</li>
+</ul>
+<h4 id="2-4-访问类视图：需求实现-–-gt-path"><a href="#2-4-访问类视图：需求实现-–-gt-path" class="headerlink" title="2.4 访问类视图：需求实现 –&gt; path()"></a>2.4 访问类视图：需求实现 –&gt; path()</h4><blockquote>
+<p><strong>1. 注册子路由</strong></p>
+<ul>
+<li>在<strong><code>子应用/urls.py</code></strong>文件中定义路由信息</li>
+<li>由于当前代码还是编写在users子应用中的，所以总路由注册过一次之后，不用再注册</li>
+</ul>
+</blockquote>
+<pre><code class="python">from django.urls import path
+
+from . import views
+
+# urlpatterns是被Django自动识别的路由列表变量：定义该应用的所有路由信息
+urlpatterns = [
+    # 类视图路由语法：
+    # path(&#39;网络地址正则表达式&#39;, 类视图.as_view()),
+
+    # 用户注册：http://127.0.0.1:8000/users/register/
+    path(&#39;users/register/&#39;, views.RegisterView.as_view()),
+]</code></pre>
+<blockquote>
+<p><strong>2. 启动运行测试</strong></p>
+</blockquote>
+<ul>
+<li>2.1 注释CSRF中间件<ul>
+<li><strong>Django默认开启了CSRF防护</strong>，会对非GET请求(POST, PUT, DELETE)进行CSRF防护验证，在测试时可以关闭CSRF防护机制</li>
+<li>关闭CSRF防护机制是在<code>settings.py</code>文件中注释掉<code>CSRF中间件</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="python"># 中间件
+MIDDLEWARE = [
+    &#39;django.middleware.security.SecurityMiddleware&#39;,
+    &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+    &#39;django.middleware.common.CommonMiddleware&#39;,
+    # 为保证非GET请求(POST, PUT, DELETE)可以正常接收，该中间件需要注释掉
+    # &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,
+    &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+    &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+    &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,
+]</code></pre>
+<ul>
+<li><strong>2.2 重新启动Django程序</strong></li>
+</ul>
+<pre><code class="shell">python manage.py runserver</code></pre>
+<ul>
+<li>2.3 使用postman进行请求测试： <strong><code>http://127.0.0.1:8000/users/register/</code></strong></li>
+</ul>
+<h4 id="2-5-as-view-底层原理（仅做了解）"><a href="#2-5-as-view-底层原理（仅做了解）" class="headerlink" title="2.5 as_view()底层原理（仅做了解）"></a>2.5 as_view()底层原理（仅做了解）</h4><pre><code class="python">class View:
+    &quot;&quot;&quot;
+    Intentionally simple parent class for all views. Only implements
+    dispatch-by-method and simple sanity checking.
+    # 为所有视图定义简单的父类，只实现了请求方法分派和简单的完整性检查。
+    &quot;&quot;&quot;
+    # 定义Django允许接收的请求方法
+    http_method_names = [&#39;get&#39;, &#39;post&#39;, &#39;put&#39;, &#39;patch&#39;, &#39;delete&#39;, &#39;head&#39;, &#39;options&#39;, &#39;trace&#39;]
+
+    def __init__(self, **kwargs):
+        &quot;&quot;&quot;
+        Constructor. Called in the URLconf; can contain helpful extra
+        keyword arguments, and other things.
+        # 类视图的初始化构造函数，创建类视图对象时会被调用，并可以接收额外的参数
+        &quot;&quot;&quot;
+        # Go through keyword arguments, and either save their values to our
+        # instance, or raise an error.
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+    @classonlymethod
+    def as_view(cls, **initkwargs):
+        &quot;&quot;&quot;Main entry point for a request-response process.
+        # 请求-响应过程的主要入口点.
+        &quot;&quot;&quot;
+        for key in initkwargs:
+            # 遍历as_view()接收的参数
+            # 省略......
+
+        def view(request, *args, **kwargs):
+            &quot;&quot;&quot;准备一个函数视图，将来作为as_view()的返回值，并用于路由匹配&quot;&quot;&quot;
+            # 初始化类视图对象
+            self = cls(**initkwargs)
+            if hasattr(self, &#39;get&#39;) and not hasattr(self, &#39;head&#39;):
+                self.head = self.get
+            # 将路由中传入的参数，绑定到类视图对象中
+            self.setup(request, *args, **kwargs)
+            # 检查类视图是否完整：类视图中必须要有&#39;request&#39; attribute
+            if not hasattr(self, &#39;request&#39;):
+                raise AttributeError(
+                    &quot;%s instance has no &#39;request&#39; attribute. Did you override &quot;
+                    &quot;setup() and forget to call super()?&quot; % cls.__name__
+                )
+            # 调用请求分发的方法(最核心)：将请求分发给跟请求方法同名的函数
+            return self.dispatch(request, *args, **kwargs)
+        view.view_class = cls
+        view.view_initkwargs = initkwargs
+
+        # take name and docstring from class
+        update_wrapper(view, cls, updated=())
+
+        # and possible attributes set by decorators
+        # like csrf_exempt from dispatch
+        update_wrapper(view, cls.dispatch, assigned=())
+        return view
+
+    def setup(self, request, *args, **kwargs):
+        &quot;&quot;&quot;Initialize attributes shared by all view methods.
+        # 初始化所有视图方法共享的属性：将路由中传入的参数，绑定到类视图对象中
+        &quot;&quot;&quot;
+        self.request = request
+        self.args = args
+        self.kwargs = kwargs
+
+    def dispatch(self, request, *args, **kwargs):
+        # Try to dispatch to the right method; if a method doesn&#39;t exist,
+        # defer to the error handler. Also defer to the error handler if the
+        # request method isn&#39;t on the approved list.
+        # 尽量采用正确的调度方法;如果方法不存在，请遵从错误处理程序。如果请求方法不在批准的列表中，也遵从错误处理程序。
+        # 先判断客户端的请求方法是否在允许接收的方法列表中
+        if request.method.lower() in self.http_method_names:
+            # 如果客户端的请求方法在允许接收的方法列表中，
+            # 取出类视图对象中的跟请求方法同名的函数名，赋值给handler
+            # 比如：当前客户端发送的请求，请求方法是GET，那么，handler=get
+            handler = getattr(self, request.method.lower(), self.http_method_not_allowed)
+        else:
+            # 如果客户端的请求方法不在允许接收的方法列表中，遵从错误处理程序
+            handler = self.http_method_not_allowed
+        # 如果请求分发没有问题，那么就去调用该跟请求分发同名的函数
+        # 如果当前客户端发送的请求，请求方法是GET
+        # handler(request, *args, **kwargs)等价于get(request, *args, **kwargs)
+        # 如果handler()调用成功，那么跟请求分发同名的函数就会被调用执行
+        return handler(request, *args, **kwargs)
+
+    def http_method_not_allowed(self, request, *args, **kwargs):
+        &quot;&quot;&quot;错误处理程序：请求方法不匹配时，响应的错误信息&quot;&quot;&quot;
+        logger.warning(
+            &#39;Method Not Allowed (%s): %s&#39;, request.method, request.path,
+            extra={&#39;status_code&#39;: 405, &#39;request&#39;: request}
+        )
+        return HttpResponseNotAllowed(self._allowed_methods())</code></pre>
+<h4 id="2-6-类视图添加扩展类"><a href="#2-6-类视图添加扩展类" class="headerlink" title="2.6 类视图添加扩展类"></a>2.6 类视图添加扩展类</h4><blockquote>
+<p>提示：</p>
+</blockquote>
+<ul>
+<li>使用面向对象多继承的特性，可以给类视图定义扩展类。</li>
+<li>在扩展类中，可以定义想要向类视图补充的方法。</li>
+<li>类视图继承这些扩展类作为父类，便可实现代码复用。</li>
+</ul>
+<blockquote>
+<p>示例：</p>
+</blockquote>
+<pre><code class="python">class ListModelMixin(object):
+    &quot;&quot;&quot;list扩展类 &quot;&quot;&quot;
+    def list(self, request, *args, **kwargs):
+        pass
+
+
+class CreateModelMixin(object):
+    &quot;&quot;&quot;create扩展类 &quot;&quot;&quot;
+    def create(self, request, *args, **kwargs):
+        pass
+
+
+class TestMixinView(CreateModelMixin, ListModelMixin, View):
+    &quot;&quot;&quot;同时继承两个扩展类，复用list和create方法&quot;&quot;&quot;
+    def get(self, request):
+        self.list(request)
+        pass
+
+    def post(self, request):
+        self.create(request)
+        pass</code></pre>
+<h3 id="3-路由"><a href="#3-路由" class="headerlink" title="3.路由"></a>3.路由</h3><blockquote>
+<p><strong>提示：</strong></p>
+</blockquote>
+<ul>
+<li><strong>路由可以保证用户发送的请求，能够访问到对应的视图</strong></li>
+<li><strong>使用路由匹配请求地址，每匹配成功一个就执行对应的函数视图逻辑</strong></li>
+<li>定义路由的方法：path()、re_path()、url()<ul>
+<li>Django==1.x版本：url()</li>
+<li>Django==2.x版本：path()、re_path()</li>
+</ul>
+</li>
+<li>说明：<ul>
+<li>为了在版本迭代中，保留旧版本的路由系统，url()在新版中依然可用。</li>
+<li>并新增了一个url()的替代方案re_path()，所以url()几乎跟re_path()一样。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>需求：</strong></p>
+</blockquote>
+<ul>
+<li>用户通过网络地址<strong><code>http://127.0.0.1:8000/users/login/</code></strong>访问用户登录视图</li>
+<li>我们后续演示路由，都会选择使用类视图。</li>
+</ul>
+<h4 id="3-1-定义用户登录类视图"><a href="#3-1-定义用户登录类视图" class="headerlink" title="3.1 定义用户登录类视图"></a>3.1 定义用户登录类视图</h4><pre><code class="python">class LoginView(View):
+    &quot;&quot;&quot;用户登录类视图
+    http://127.0.0.1:8000/users/login/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        &quot;&quot;&quot;
+        处理GET请求，返回登录页面
+        :param request: 请求对象，包含了请求报文信息
+        :return: 响应对象，用于构造响应报文，并响应给用户
+        &quot;&quot;&quot;
+        return http.HttpResponse(&#39;假装这是个登录页面&#39;)
+
+    def post(self, request):
+        &quot;&quot;&quot;
+        处理POST请求，实现登录逻辑
+        :param request: 请求对象，包含了请求报文信息
+        :return: 响应对象，用于构造响应报文，并响应给用户
+        &quot;&quot;&quot;
+        return http.HttpResponse(&#39;假装实现登录逻辑&#39;)</code></pre>
+<h4 id="3-2-re-path-定义路由"><a href="#3-2-re-path-定义路由" class="headerlink" title="3.2 re_path()定义路由"></a>3.2 re_path()定义路由</h4><blockquote>
+<p><strong>1. 注册子路由</strong></p>
+</blockquote>
+<pre><code class="python">from django.urls import re_path， path
+
+urlpatterns = [
+    # 函数视图re_path()路由语法：
+    # re_path(r&#39;^网络地址正则表达式$&#39;, 函数视图名),
+
+    # 类视图re_path()路由语法：
+    # re_path(r&#39;^网络地址正则表达式$&#39;, 类视图.as_view()),
+
+    # 用户登录：http://127.0.0.1:8000/users/login/
+    re_path(r&#39;^users/login/$&#39;, views.LoginView.as_view()),
+    #或者使用 path(&#39;users/login/&#39;, views.LoginView.as_view()),
+]</code></pre>
+<h4 id="3-3-url-定义路由"><a href="#3-3-url-定义路由" class="headerlink" title="3.3 url()定义路由"></a>3.3 url()定义路由</h4><blockquote>
+<p><strong>1. 注册子路由</strong></p>
+</blockquote>
+<pre><code class="python">from django.urls import re_path
+
+urlpatterns = [
+    # 函数视图url()路由语法：
+    # url(r&#39;^网络地址正则表达式$&#39;, 函数视图名),
+
+    # 类视图url()路由语法：
+    # url(r&#39;^网络地址正则表达式$&#39;, 类视图.as_view()),
+
+    # 用户登录：http://127.0.0.1:8000/users/login/
+    url(r&#39;^users/login/$&#39;, views.LoginView.as_view()),
+]</code></pre>
+<blockquote>
+<p><strong>2. postman进行请求测试</strong></p>
+<ul>
+<li>使用postman分别向<code>http://127.0.0.1:8000/users/login/</code>发送GET和POST请求</li>
+</ul>
+</blockquote>
+<h4 id="3-4-路由方法对比"><a href="#3-4-路由方法对比" class="headerlink" title="3.4 路由方法对比"></a>3.4 路由方法对比</h4><blockquote>
+<p><strong>path()</strong></p>
+</blockquote>
+<pre><code class="python"># 函数视图path()路由语法：
+# path(&#39;网络地址正则表达式&#39;, 函数视图名),
+
+# 类视图path()路由语法：
+# path(&#39;网络地址正则表达式&#39;, 类视图.as_view()),</code></pre>
+<ul>
+<li><code>path()</code>路由语法中，不需要定义正则表达式严格的开头和结尾，因为已经封装好了</li>
+</ul>
+<blockquote>
+<p><strong>re_path()、url()</strong></p>
+</blockquote>
+<pre><code class="python"># 函数视图re_path()路由语法：
+# re_path(r&#39;^网络地址正则表达式$&#39;, 函数视图名),
+
+# 类视图re_path()路由语法：
+# re_path(r&#39;^网络地址正则表达式$&#39;, 类视图.as_view()),
+# 函数视图url()路由语法：
+# url(r&#39;^网络地址正则表达式$&#39;, 函数视图名),
+
+# 类视图url()路由语法：
+# url(r&#39;^网络地址正则表达式$&#39;, 类视图.as_view()),</code></pre>
+<ul>
+<li><code>re_path()和url()</code>路由语法中，必须要定义正则表达式严格的开头和结尾</li>
+</ul>
+<h4 id="3-5-路由解析顺序"><a href="#3-5-路由解析顺序" class="headerlink" title="3.5 路由解析顺序"></a>3.5 路由解析顺序</h4><ul>
+<li>Django的总路由和子路由都是定义在<strong><code>urlpatterns</code></strong>列表中的。</li>
+<li>Django在接收到一个请求时，从总路由文件中的<code>urlpatterns</code>列表中以由上至下的顺序查找对应路由规则。</li>
+<li>如果发现规则在<code>include</code>中包含了，则再进入被包含的<code>urls</code>中的<code>urlpatterns</code>列表由上至下进行查询。</li>
+</ul>
+<blockquote>
+<p><strong>可能存在的问题：</strong></p>
+</blockquote>
+<ul>
+<li>如果网络地址正则表达式没有写完整，比如，没有写严格的开头和结尾，那么就很容易出现前面的路由屏蔽掉了后面的路由。</li>
+</ul>
+<blockquote>
+<p><strong>提示：</strong></p>
+</blockquote>
+<ul>
+<li><strong>该问题只会出现在使用<code>re_path()、url()</code>定义路由时出现。</strong></li>
+<li>因为 <code>path()</code> 定义路由时，网络地址正则表达式默认就是严格的开头和结尾。</li>
+</ul>
+<blockquote>
+<p><strong>例子：</strong></p>
+</blockquote>
+<pre><code class="python">class SayView(View):
+    &quot;&quot;&quot;测试路由屏蔽
+    http://127.0.0.1:8000/say/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        return http.HttpResponse(&#39;say&#39;)
+
+
+class SayHelloView(View):
+    &quot;&quot;&quot;测试路由屏蔽
+    http://127.0.0.1:8000/sayhello/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        return http.HttpResponse(&#39;say hello&#39;)
+# 测试路由屏蔽
+# http://127.0.0.1:8000/say/
+re_path(r&#39;^say&#39;, views.SayView.as_view()),
+# http://127.0.0.1:8000/sayhello/
+re_path(r&#39;^sayhello&#39;, views.SayHelloView.as_view()),</code></pre>
+<blockquote>
+<p><strong>完整的、正确的路由定义方式：</strong></p>
+</blockquote>
+<pre><code class="python"># 测试路由屏蔽
+# http://127.0.0.1:8000/say/
+re_path(r&#39;^say/$&#39;, views.SayView.as_view()),
+# # http://127.0.0.1:8000/sayhello/
+re_path(r&#39;^sayhello/$&#39;, views.SayHelloView.as_view()),</code></pre>
+<h3 id="4-请求HttpRequest"><a href="#4-请求HttpRequest" class="headerlink" title="4.请求HttpRequest"></a>4.请求HttpRequest</h3><blockquote>
+<p>提示：</p>
+</blockquote>
+<ul>
+<li><strong>用户发送请求时携带的参数后端需要使用，而不同的发送参数的方式对应了不同的提取参数的方式</strong></li>
+<li>所以要学会如何提取参数，我们就需要先了解前端传参数有哪些方式</li>
+</ul>
+<blockquote>
+<p>利用HTTP协议向服务器传参有以下几种途径</p>
+</blockquote>
+<ul>
+<li>查询字符串数据（query string）：<ul>
+<li>形如：<code>?key1=value1&amp;key2=value2</code></li>
+<li>比如：<code>http://www.meiduo.site/list/115/1/?sort=price</code>中的<strong><code>?sort=price</code></strong></li>
+</ul>
+</li>
+<li>请求体数据（body）：<ul>
+<li>比如：表单数据、json、……</li>
+</ul>
+</li>
+<li>URL路径中的特定部分数据：<ul>
+<li>比如：<code>http://www.meiduo.site/detail/2/</code>中的<strong><code>/2/</code></strong></li>
+<li>请求地址中的该部分数据，可以在路由中使用正则表达式提取出来</li>
+</ul>
+</li>
+<li>请求头数据：<ul>
+<li>HTTP请求报文中的请求头数据（header）</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-1-提取查询字符串数据"><a href="#4-1-提取查询字符串数据" class="headerlink" title="4.1 提取查询字符串数据"></a>4.1 提取查询字符串数据</h4><blockquote>
+<p><strong>提示：</strong></p>
+</blockquote>
+<ul>
+<li>获取请求路径中的查询字符串参数，形如：<strong><code>?k1=v1&amp;k2=v2</code></strong></li>
+<li>可以通过<strong><code>request.GET</code></strong>属性获取，并返回QueryDict类型的对象</li>
+</ul>
+<pre><code class="python"># 注册总路由
+urlpatterns = [
+    # 用户模块：http://127.0.0.1:8000/users/register/
+    path(&#39;&#39;, include(&#39;users.urls&#39;)),
+
+    # 请求和响应
+    path(&#39;&#39;, include(&#39;request_response.urls&#39;)),
+]</code></pre>
+<pre><code class="python">class QSParamView(View):
+    &quot;&quot;&quot;测试提取查询字符串参数
+    http://127.0.0.1:8000/querystring/?name=zxc&amp;age=18
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        # 获取查询字符串参数name、age
+        name = request.GET.get(&#39;name&#39;, &#39;小明&#39;)
+        age = request.GET.get(&#39;age&#39;, &#39;0&#39;)
+
+        return http.HttpResponse(&#39;查询字符串参数：%s--%s&#39; % (name, age))</code></pre>
+<pre><code class="python"># 注册子路由
+urlpatterns = [
+    # 测试提取查询字符串参数：http://127.0.0.1:8000/querystring/?name=zxc&amp;age=18
+    path(&#39;querystring/&#39;, views.QSParamView.as_view()),
+]</code></pre>
+<blockquote>
+<p><strong>重要提示：</strong></p>
+</blockquote>
+<ul>
+<li><strong>提取查询字符串参数不区分请求方式，即使客户端进行POST方式的请求，依然可以通过request.GET获取请求中的查询字符串参数。</strong></li>
+</ul>
+<blockquote>
+<p><strong><code>QueryDict</code>补充：</strong></p>
+</blockquote>
+<ul>
+<li><p><strong><code>QueryDict</code></strong>是由Django自己封装的一个数据类型，继承自python的字典Dict</p>
+</li>
+<li><p>它被定义在<code>django.http.QueryDict</code>中</p>
+</li>
+<li><p>它专门用来存储请求中提取的查询字符串参数和请求体参数</p>
+<ul>
+<li>即，HttpRequest对象中的属性GET、POST都是QueryDict类型的数据</li>
+</ul>
+</li>
+<li><p><code>QueryDict</code></p>
+<p>的使用：</p>
+<pre><code class="python"># 如果键不存在则返回None值，可以设置默认值进行后续处理
+query_dict.get(&#39;键&#39;,默认值)
+# 可简写为：
+query_dict[&#39;键&#39;]</code></pre>
+</li>
+</ul>
+<h4 id="4-2-提取请求体数据"><a href="#4-2-提取请求体数据" class="headerlink" title="4.2 提取请求体数据"></a>4.2 提取请求体数据</h4><blockquote>
+<p>提示：</p>
+</blockquote>
+<ul>
+<li>可以发送请求体数据的请求方式有：<strong>POST</strong>、<strong>PUT</strong>、<strong>PATCH</strong>、<strong>DELETE</strong></li>
+<li>请求体数据格式不固定，常见的有：<strong><code>表单类型数据和JSON字符串类型</code></strong>，我们应区别对待</li>
+</ul>
+<h5 id="4-2-1-表单类型请求体数据-Form-Data"><a href="#4-2-1-表单类型请求体数据-Form-Data" class="headerlink" title="4.2.1 表单类型请求体数据(Form Data)"></a>4.2.1 表单类型请求体数据(Form Data)</h5><blockquote>
+<p>前端发送的表单类型的请求体数据，可以通过<strong><code>request.POST</code></strong>属性获取，并返回QueryDict对象。</p>
+</blockquote>
+<pre><code class="python"># 测试提取表单类型请求体数据：http://127.0.0.1:8000/formdata/
+path(&#39;formdata/&#39;, views.FormDataParamView.as_view()),
+class FormDataParamView(View):
+    &quot;&quot;&quot;测试提取表单类型请求体参数
+    http://127.0.0.1:8000/formdata/
+    &quot;&quot;&quot;
+
+    def post(self, request):
+        # 获取表单类型请求体参数中的username、password
+        username = request.POST.get(&#39;username&#39;)
+        password = request.POST.get(&#39;password&#39;)
+
+        return http.HttpResponse(&#39;表单类型请求体参数：%s--%s&#39; % (username, password))</code></pre>
+<blockquote>
+<p><strong>重要提示：</strong></p>
+<ul>
+<li><strong><code>request.POST</code>只能用来获取POST表单发送的请求体数据</strong></li>
+</ul>
+</blockquote>
+<h5 id="4-2-2-非表单类型请求体数据-Non-Form-Data-：JSON"><a href="#4-2-2-非表单类型请求体数据-Non-Form-Data-：JSON" class="headerlink" title="4.2.2 非表单类型请求体数据(Non-Form Data)：JSON"></a>4.2.2 非表单类型请求体数据(Non-Form Data)：JSON</h5><blockquote>
+<p>提示：</p>
+</blockquote>
+<ul>
+<li>非表单类型的请求体数据，Django无法自动解析，可以通过<strong><code>request.body</code></strong>属性获取最原始的请求体数据</li>
+<li>然后自己按照具体请求体原始数据的格式（JSON等）进行解析</li>
+<li><strong><code>request.body</code>获取的是<code>bytes类型</code>的请求体原始数据</strong></li>
+</ul>
+<blockquote>
+<p>需求：</p>
+</blockquote>
+<ul>
+<li>获取请求体中的如下JSON数据</li>
+</ul>
+<pre><code class="json">{
+    &quot;username&quot;: &quot;张三&quot;,
+    &quot;password&quot;: &quot;123&quot;
+}</code></pre>
+<p>可以进行如下方法操作：</p>
+<pre><code class="python"># 测试提取非表单类型请求体参数：http://127.0.0.1:8000/json/
+path(&#39;json/&#39;, views.JSONParamView.as_view()),
+import json
+
+class JSONParamView(View):
+    &quot;&quot;&quot;测试提取非表单类型请求体参数
+    http://127.0.0.1:8000/json/
+    &quot;&quot;&quot;
+
+    def post(self, request):
+        # 获取请求体中原始的JSON数据
+        json_str = request.body
+        # 使用json模块将原始的JSON数据转字典
+        json_dict = json.loads(json_str)
+
+        # 提取JSON数据中的参数
+        username = json_dict.get(&#39;username&#39;)
+        password = json_dict.get(&#39;password&#39;)
+
+        return http.HttpResponse(&#39;非表单类型请求体参数：%s--%s&#39; % (username, password))</code></pre>
+<h4 id="4-3-URL路径参数：提取URL路径中的特定部分数据"><a href="#4-3-URL路径参数：提取URL路径中的特定部分数据" class="headerlink" title="4.3 URL路径参数：提取URL路径中的特定部分数据"></a>4.3 URL路径参数：提取URL路径中的特定部分数据</h4><blockquote>
+<p>提示：</p>
+</blockquote>
+<ul>
+<li>在定义路由时，可以从URL中获取特定部分的路径参数</li>
+<li>Django的路由系统会将提取的路径参数传递到视图的内部</li>
+<li>path()和re_path()都可以提取路径参数</li>
+</ul>
+<blockquote>
+<p>需求：</p>
+</blockquote>
+<ul>
+<li><p>需求1：</p>
+<pre><code>http://127.0.0.1:8000/url_param1/18/</code></pre><ul>
+<li>提取路径中的数字<code>18</code></li>
+</ul>
+</li>
+<li><p>需求2：</p>
+<pre><code>http://127.0.0.1:8000/url_param2/18500001111/</code></pre><ul>
+<li>提取路径中的手机号<code>18500001111</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="4-3-1-path-提取路径参数"><a href="#4-3-1-path-提取路径参数" class="headerlink" title="4.3.1 path()提取路径参数"></a>4.3.1 path()提取路径参数</h5><blockquote>
+<p><strong>实现需求1</strong></p>
+</blockquote>
+<pre><code class="python"># 测试path()提取普通路径参数：http://127.0.0.1:8000/url_param1/18/
+path(&#39;url_param1/&lt;int:age&gt;/&#39;, views.URLParam1View.as_view()),
+class URLParam1View(View):
+    &quot;&quot;&quot;测试path()提取普通路径参数
+    http://127.0.0.1:8000/url_param1/18/
+    &quot;&quot;&quot;
+
+    def get(self, request, age):
+        &quot;&quot;&quot;
+        :param age: 路由提取的关键字参数
+        &quot;&quot;&quot;
+        return http.HttpResponse(&#39;测试path()提取普通路径参数：%s&#39; % age)</code></pre>
+<blockquote>
+<p>重要提示：</p>
+</blockquote>
+<ul>
+<li><strong>路由中提取路径参数时，使用的关键字，必须跟视图中参数名一致</strong></li>
+</ul>
+<blockquote>
+<p>思考：</p>
+</blockquote>
+<ul>
+<li>实现需求1时提取age数字的<strong><code>&lt;int:age&gt;</code></strong>是什么？</li>
+</ul>
+<blockquote>
+<p>结论：</p>
+</blockquote>
+<ul>
+<li><strong>路由转换器</strong></li>
+<li>Django默认封装了一些正则表达式，用于在path()中要提取路径参数时使用</li>
+</ul>
+<blockquote>
+<p>默认的路由转换器：</p>
+<ul>
+<li>位置在<code>django.urls.converters.py</code></li>
+</ul>
+</blockquote>
+<pre><code class="python">DEFAULT_CONVERTERS = {
+    &#39;int&#39;: IntConverter(), # 匹配正整数，包含0
+    &#39;path&#39;: PathConverter(), # 匹配任何非空字符串，包含了路径分隔符
+    &#39;slug&#39;: SlugConverter(), # 匹配字母、数字以及横杠、下划线组成的字符串
+    &#39;str&#39;: StringConverter(), # 匹配除了路径分隔符（/）之外的非空字符串，这是默认的形式
+    &#39;uuid&#39;: UUIDConverter(), # 匹配格式化的uuid，如 075194d3-6885-417e-a8a8-6c931e272f00
+}</code></pre>
+<blockquote>
+<p><strong>实现需求2</strong></p>
+</blockquote>
+<ul>
+<li><pre><code>http://127.0.0.1:8000/url_param2/18500001111/</code></pre><ul>
+<li>提取路径中的手机号<code>18500001111</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>问题：</p>
+</blockquote>
+<ul>
+<li>默认的路由转换器中，没有专门用来匹配手机号的路由转换器</li>
+<li>所以在使用path()实现需求2时，就无法直接使用默认的路由转换器</li>
+</ul>
+<blockquote>
+<p>解决方案：</p>
+</blockquote>
+<ul>
+<li>如果默认的路由转换器无法满足需求时，我们就需要<strong>自定义路由转换器</strong></li>
+</ul>
+<blockquote>
+<p>实现需求2：自定义路由转换器</p>
+</blockquote>
+<ul>
+<li><p>在任意可以被导入的python文件中，都可以自定义路由转换器</p>
+</li>
+<li><p>比如：在工程根目录下，新建<strong><code>converters.py</code></strong>文件，用于自定义路由转换器</p>
+<pre><code class="python">class MobileConverter:
+  &quot;&quot;&quot;自定义路由转换器：匹配手机号&quot;&quot;&quot;
+  # 匹配手机号码的正则
+  regex = &#39;1[3-9]\d{9}&#39;
+
+  def to_python(self, value):
+      # 将匹配结果传递到视图内部时使用
+      return int(value)
+
+  def to_url(self, value):
+      # 将匹配结果用于反向解析传值时使用
+      return str(value)</code></pre>
+</li>
+<li><p>注册自定义路由转换器</p>
+<ul>
+<li><p>在总路由中，注册自定义路由转换器</p>
+<pre><code class="python">from django.urls import register_converter
+from converters import MobileConverter
+# 注册自定义路由转换器
+# register_converter(自定义路由转换器, &#39;别名&#39;)
+register_converter(MobileConverter, &#39;mobile&#39;)
+
+urlpatterns = []</code></pre>
+</li>
+</ul>
+</li>
+<li><p>使用自定义路由转换器</p>
+<pre><code class="python"># 测试path()中自定义路由转换器提取路径参数：手机号 http://127.0.0.1:8000/url_param2/18500001111/
+path(&#39;url_param2/&lt;mobile:phone_num&gt;/&#39;, views.URLParam2View.as_view()),</code></pre>
+<pre><code class="python">class URLParam2View(View):
+  &quot;&quot;&quot;测试path()中自定义路由转换器提取路径参数：手机号
+  http://127.0.0.1:8000/url_param2/18500001111/
+  &quot;&quot;&quot;
+
+  def get(self, request, phone_num):
+      &quot;&quot;&quot;
+      :param phone_num: 路由提取的关键字参数
+      &quot;&quot;&quot;
+      return http.HttpResponse(&#39;测试path()提取路径参数手机号：%s&#39; % phone_num)</code></pre>
+</li>
+</ul>
+<h5 id="4-3-2-re-path-提取路径参数"><a href="#4-3-2-re-path-提取路径参数" class="headerlink" title="4.3.2 re_path()提取路径参数"></a>4.3.2 re_path()提取路径参数</h5><pre><code class="python"># 测试re_path()提取路径参数：http://127.0.0.1:8000/url_param3/18500001111/
+re_path(r&#39;^url_param3/(?P&lt;phone_num&gt;1[3-9]\d{9})/$&#39;, views.URLParam3View.as_view()),
+class URLParam3View(View):
+    &quot;&quot;&quot;测试re_path()提取路径参数
+    http://127.0.0.1:8000/url_param3/18500001111/
+    &quot;&quot;&quot;
+
+    def get(self, request, phone_num):
+        &quot;&quot;&quot;
+        :param phone_num: 路由提取的关键字参数
+        &quot;&quot;&quot;
+        return http.HttpResponse(&#39;测试re_path()提取路径参数：%s&#39; % phone_num)</code></pre>
+<h5 id="4-3-3-path-和re-path-如何选择？"><a href="#4-3-3-path-和re-path-如何选择？" class="headerlink" title="4.3.3 path()和re_path()如何选择？"></a>4.3.3 path()和re_path()如何选择？</h5><ul>
+<li>path()语法相对简洁一些，如果没有路径参数要提取或者要提取的路径参数可以使用默认的路由转换器实现时，就选择path()。</li>
+<li>re_path()语法相对复杂一些，但是，如果希望在匹配路由时，由自己编写所有的正则表达式，就选择re_path()。</li>
+<li>需要注意的是，在使用re_path()时，网络地址正则表达式一定要写完整，要有严格的开头和结尾</li>
+</ul>
+<h4 id="4-4-请求头"><a href="#4-4-请求头" class="headerlink" title="4.4 请求头"></a>4.4 请求头</h4><p>可以通过<strong><code>request.META</code></strong>属性获取请求头headers中的数据，<strong><code>request.META</code>为字典类型</strong>。</p>
+<p>常见的请求头如：</p>
+<ul>
+<li><code>CONTENT_LENGTH</code> – The length of the request body (as a string).</li>
+<li><code>CONTENT_TYPE</code> – The MIME type of the request body.</li>
+<li><code>HTTP_ACCEPT</code> – Acceptable content types for the response.</li>
+<li><code>HTTP_ACCEPT_ENCODING</code> – Acceptable encodings for the response.</li>
+<li><code>HTTP_ACCEPT_LANGUAGE</code> – Acceptable languages for the response.</li>
+<li><code>HTTP_HOST</code> – The HTTP Host header sent by the client.</li>
+<li><code>HTTP_REFERER</code> – The referring page, if any.</li>
+<li><code>HTTP_USER_AGENT</code> – The client’s user-agent string.</li>
+<li><code>QUERY_STRING</code> – The query string, as a single (unparsed) string.</li>
+<li><code>REMOTE_ADDR</code> – The IP address of the client.</li>
+<li><code>REMOTE_HOST</code> – The hostname of the client.</li>
+<li><code>REMOTE_USER</code> – The user authenticated by the Web server, if any.</li>
+<li><code>REQUEST_METHOD</code> – A string such as <code>&quot;GET&quot;</code> or <code>&quot;POST&quot;</code>.</li>
+<li><code>SERVER_NAME</code> – The hostname of the server.</li>
+<li><code>SERVER_PORT</code> – The port of the server (as a string).</li>
+</ul>
+<p>具体使用如:</p>
+<pre><code class="python">class HeadersParamView(View):
+    &quot;&quot;&quot;测试提取请求头参数&quot;&quot;&quot;
+
+    def get(self, request):
+        # 获取请求头中文件的类型
+        ret = request.META.get(&#39;CONTENT_TYPE&#39;)
+        return http.HttpResponse(&#39;OK&#39;)</code></pre>
+<h4 id="4-5-其他常用HttpRequest对象属性"><a href="#4-5-其他常用HttpRequest对象属性" class="headerlink" title="4.5 其他常用HttpRequest对象属性"></a>4.5 其他常用HttpRequest对象属性</h4><ul>
+<li>method：一个字符串，表示请求使用的HTTP方法，常用值包括：’GET’、’POST’。</li>
+<li>FILES：一个类似于字典的对象，包含所有的上传文件。</li>
+<li>COOKIES：一个字符串，包含了浏览器自动发送的cookie缓存数据。</li>
+<li><strong>user：请求中认证出来的用户对象。</strong></li>
+</ul>
+<h3 id="5-响应HttpResponse"><a href="#5-响应HttpResponse" class="headerlink" title="5.响应HttpResponse"></a>5.响应HttpResponse</h3><blockquote>
+<p>提示：</p>
+</blockquote>
+<ul>
+<li>视图在接收请求并处理后，必须返回HttpResponse对象或子对象。</li>
+<li>HttpRequest对象由Django创建，<strong>HttpResponse对象或子对象由开发人员创建</strong>。</li>
+<li>常见的响应方式：<ul>
+<li><strong><code>HttpResponse()</code></strong>：响应多种数据类型</li>
+<li><strong><code>JsonResponse()</code></strong>：响应JSON</li>
+<li><strong><code>redirect()</code></strong>：重定向</li>
+<li><strong><code>render()</code></strong>：渲染并响应HTML模板</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-1-HttpResponse"><a href="#5-1-HttpResponse" class="headerlink" title="5.1 HttpResponse"></a>5.1 HttpResponse</h4><blockquote>
+<p>提示：</p>
+</blockquote>
+<ul>
+<li><p>可以使用</p>
+<p><code>django.http.HttpResponse</code></p>
+<p>来构造响应对象。</p>
+<pre><code class="python">response = HttpResponse(content=响应体, content_type=响应体数据类型，默认为text/html, status=状态码，默认为200)</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>示例：</p>
+</blockquote>
+<pre><code class="python"># 测试HttpResponse：http://127.0.0.1:8000/response1/
+path(&#39;response1/&#39;, views.Response1View.as_view()),
+class Response1View(View):
+    &quot;&quot;&quot;测试HttpResponse
+    http://127.0.0.1:8000/response1/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        # 使用HttpResponse构造响应数据
+        # return http.HttpResponse(content=&#39;itcast python&#39;, status=200)
+        # 可简写
+        # return http.HttpResponse(&#39;itcast python&#39;)
+
+        # 另外一种写法
+        response = http.HttpResponse(&#39;itcast python&#39;)
+        return response</code></pre>
+<blockquote>
+<p>补充：HttpResponse子类</p>
+</blockquote>
+<p>Django提供了一系列HttpResponse的子类，可以快速设置状态码</p>
+<ul>
+<li><strong><code>HttpResponseRedirect</code></strong> 默认响应状态码为 <strong>301</strong></li>
+<li><strong><code>HttpResponsePermanentRedirect</code></strong> 默认响应状态码为 <strong>302</strong></li>
+<li><strong><code>HttpResponseNotModified</code></strong> 默认响应状态码为 <strong>304</strong></li>
+<li><strong><code>HttpResponseBadRequest</code></strong> 默认响应状态码为 <strong>400</strong></li>
+<li><strong><code>HttpResponseNotFound</code></strong> 默认响应状态码为 <strong>404</strong></li>
+<li><strong><code>HttpResponseForbidden</code></strong> 默认响应状态码为 <strong>403</strong></li>
+<li><strong><code>HttpResponseNotAllowed</code></strong> 默认响应状态码为 <strong>405</strong></li>
+<li><strong><code>HttpResponseGone</code></strong> 默认响应状态码为 <strong>410</strong></li>
+<li><strong><code>HttpResponseServerError</code></strong> 默认响应状态码为 <strong>500</strong></li>
+</ul>
+<h4 id="5-2-JsonResponse：响应JSON"><a href="#5-2-JsonResponse：响应JSON" class="headerlink" title="5.2 JsonResponse：响应JSON"></a>5.2 JsonResponse：响应JSON</h4><blockquote>
+<p>提示：</p>
+</blockquote>
+<ul>
+<li><p>在开发功能时，如果前端需要JSON数据，那么后端就需要构造并响应JSON数据</p>
+</li>
+<li><p>而Django提供了<strong><code>JsonResponse</code></strong>来构造并响应JSON数据</p>
+</li>
+<li><p><code>JsonResponse</code></p>
+<p>作用：</p>
+<ul>
+<li>帮助我们将响应的数据转换为JSON字符串</li>
+<li>设置响应头<strong>Content-Type</strong>为 <strong>application/json</strong></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>示例：</p>
+</blockquote>
+<pre><code class="python"># 测试JSONResponse：http://127.0.0.1:8000/json_resp/
+path(&#39;json_resp/&#39;, views.JSONResponseView.as_view()),
+class JSONResponseView(View):
+    &quot;&quot;&quot;测试JSONResponse
+    http://127.0.0.1:8000/json_resp/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        # 准备要响应的数据
+        dict_data = {
+            &#39;city&#39;: &#39;beijing&#39;,
+            &#39;subject&#39;: &#39;python&#39;
+        }
+        # 使用JSONResponse构造并响应JSON数据
+        return http.JsonResponse(dict_data)</code></pre>
+<h4 id="5-3-redirect-：重定向"><a href="#5-3-redirect-：重定向" class="headerlink" title="5.3 redirect()：重定向"></a>5.3 redirect()：重定向</h4><blockquote>
+<p>提示：</p>
+</blockquote>
+<ul>
+<li>在开发中，我们经常会遇到一种需求，当某个逻辑操作完成后，将用户引导到另外一个逻辑、页面中<ul>
+<li>比如：用户注册、登录成功后，直接将用户引导到网站首页</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>解决方案：</p>
+</blockquote>
+<ul>
+<li><strong><code>redirect()</code></strong>：重定向</li>
+</ul>
+<blockquote>
+<p>需求：</p>
+</blockquote>
+<ul>
+<li>准备一个用于处理用户登录类视图<code>LoginRedirectView</code></li>
+<li>访问<code>LoginRedirectView</code>时，如果其中的登录逻辑处理完成，我们将用户重定向到首页</li>
+</ul>
+<blockquote>
+<p>示例：</p>
+</blockquote>
+<pre><code class="python"># 测试重定向
+path(&#39;login_redirect/&#39;, views.LoginRedirectView.as_view()),
+path(&#39;index/&#39;, views.IndexView.as_view()),
+from django.shortcuts import render, redirect
+
+class IndexView(View):
+    &quot;&quot;&quot;测试重定向
+    http://127.0.0.1:8000/index/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        return http.HttpResponse(&#39;假装这是个网站首页&#39;)
+
+
+class LoginRedirectView(View):
+    &quot;&quot;&quot;测试重定向
+    http://127.0.0.1:8000/login_redirect/
+    &quot;&quot;&quot;
+
+    def post(self, request):
+        # 假装正在处理登录逻辑
+        # 假装登录逻辑处理完成
+        # ......
+
+        # 将用户通过重定向引导到首页
+        return redirect(&#39;/index/&#39;)</code></pre>
+<h4 id="5-4-redirect-重定向-搭配-反向解析"><a href="#5-4-redirect-重定向-搭配-反向解析" class="headerlink" title="5.4 redirect()重定向 搭配 反向解析"></a>5.4 redirect()重定向 搭配 反向解析</h4><blockquote>
+<p>思考：</p>
+</blockquote>
+<ul>
+<li>我们定义的路由中的地址是否可能会做修改？</li>
+<li>如果我们定义的路由中的地址在某次开发新版本时被修改了，那么重定向的地方是否也需要跟着改变？</li>
+<li>如果该地址被很多地方都用到了，那么是否就意味着我们要修改代码的很多地方？</li>
+</ul>
+<blockquote>
+<p>结论：</p>
+</blockquote>
+<ul>
+<li>以上思考的问题，确实会存在的</li>
+<li>我们定义的路由中的地址可能会在某次版本迭代时，做修改，使用新设计的地址</li>
+<li>那么一旦地址变了，所有用到这个地址的地方，代码都需要修改，还可能会修改很多个地方的代码</li>
+<li>而同时修改多个地方的代码，在开发中是个很危险的动作，而且也有一定的工作量</li>
+</ul>
+<blockquote>
+<p>需求：</p>
+</blockquote>
+<ul>
+<li>能否可以实现一种效果，可以保证即使在版本迭代时，使用了新设计的地址替换了路由中原有的地址，我们之前编写的使用该地址的代码不用去修改，达到动态获取的目的。</li>
+</ul>
+<blockquote>
+<p>解决方案：</p>
+</blockquote>
+<ul>
+<li><strong>路由反向解析</strong></li>
+<li><strong>路由反向解析 是使用路由的别名，动态的解析出该路由中的真实地址</strong></li>
+</ul>
+<blockquote>
+<p>示例：</p>
+</blockquote>
+<p>总路由中，给子应用的总路由起别名</p>
+<pre><code class="python">urlpatterns = [
+    # 请求和响应
+    # path(&#39;&#39;, include((&#39;子路由&#39;, &#39;子应用名字&#39;), namespace=&#39;总路由别名，可以随便命名&#39;)),
+    path(&#39;&#39;, include((&#39;request_response.urls&#39;, &#39;request_response&#39;), namespace=&#39;request_response&#39;)),
+]</code></pre>
+<p>子路由中，给子应用的子路由起别名</p>
+<pre><code class="python"># 测试重定向
+path(&#39;login_redirect/&#39;, views.LoginRedirectView.as_view()),
+path(&#39;index/&#39;, views.IndexView.as_view(), name=&#39;index&#39;),</code></pre>
+<p>视图中，使用路由的别名，动态的解析出该路由中的真实地址</p>
+<pre><code class="python">from django.shortcuts import render, redirect, reverse
+
+
+class IndexView(View):
+    &quot;&quot;&quot;测试重定向
+    http://127.0.0.1:8000/index/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        return http.HttpResponse(&#39;假装这是个网站首页&#39;)
+
+
+class LoginRedirectView(View):
+    &quot;&quot;&quot;测试重定向
+    http://127.0.0.1:8000/login_redirect/
+    &quot;&quot;&quot;
+
+    def post(self, request):
+        # 假装正在处理登录逻辑
+        # 假装登录逻辑处理完成
+        # ......
+
+        # 将用户通过重定向引导到首页
+        # return redirect(&#39;/index/&#39;)
+
+        # ret_url = reverse(&#39;总路由别名:子路由别名&#39;)
+        ret_url = reverse(&#39;request_response:index&#39;)
+        return redirect(ret_url)</code></pre>
+<h3 id="6-中间件Middleware"><a href="#6-中间件Middleware" class="headerlink" title="6.中间件Middleware"></a>6.中间件Middleware</h3><h4 id="6-1-中间件介绍"><a href="#6-1-中间件介绍" class="headerlink" title="6.1 中间件介绍"></a>6.1 中间件介绍</h4><blockquote>
+<p>概念：</p>
+</blockquote>
+<ul>
+<li>Django中的中间件是一个轻量级、底层的插件系统，可以<strong>介入Django的请求和响应处理过程</strong>，修改Django的输入或输出</li>
+<li>中间件的设计为开发者提供了一种无侵入式的开发方式，增强了Django框架的健壮性，其它的MVC框架也有这个功能</li>
+</ul>
+<blockquote>
+<p>使用场景：</p>
+</blockquote>
+<ul>
+<li><strong>当某些操作在每次请求或响应时都会执行时，可以写在中间件中</strong></li>
+<li>比如，每次发送post请求都要进行CSRF验证，就把CSRF验证的代码写在中间件中</li>
+</ul>
+<blockquote>
+<p>设计思想：</p>
+</blockquote>
+<ul>
+<li>面向切面编程、无侵害式编程</li>
+<li>不用直接修改框架源码，就可以达到自己想要的执行结果</li>
+</ul>
+<blockquote>
+<p>默认的中间件</p>
+</blockquote>
+<pre><code class="python"># 中间件
+MIDDLEWARE = [
+    &#39;django.middleware.security.SecurityMiddleware&#39;,
+    &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+    &#39;django.middleware.common.CommonMiddleware&#39;,
+    # 为保证非GET请求(POST, PUT, DELETE)可以正常接收，该中间件需要注释掉
+    # &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,
+    &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+    &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+    &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,
+]</code></pre>
+<h4 id="6-2-中间件方法"><a href="#6-2-中间件方法" class="headerlink" title="6.2 中间件方法"></a>6.2 中间件方法</h4><blockquote>
+<p>提示：</p>
+<ul>
+<li>Django在中间件中预置了六个方法，这六个方法会在不同的阶段自动执行，对输入或输出进行干预。</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>2.1 初始化方法：</p>
+<ul>
+<li><p>启动Django程序，初始化中间件时，自动调用一次，用于确定是否启用当前中间件</p>
+<pre><code class="python">def __init__(self, get_response=None):
+  pass</code></pre>
+</li>
+</ul>
+</li>
+<li><p>2.2 处理请求前的方法：(重要)</p>
+<ul>
+<li><p>在处理每个请求前，自动调用，返回None或HttpResponse对象</p>
+<pre><code class="python">def process_request(self, request):
+  pass</code></pre>
+</li>
+</ul>
+</li>
+<li><p>2.3 处理视图前的方法：（重要）</p>
+<ul>
+<li><p>在处理每个视图前，自动调用，返回None或HttpResponse对象</p>
+<pre><code class="python">def process_view(self, request, view_func, view_args, view_kwargs):
+  pass</code></pre>
+</li>
+</ul>
+</li>
+<li><p>2.4 处理模板响应前的方法：</p>
+<ul>
+<li><p>在处理每个模板响应前，自动调用，返回实现了render方法的响应对象</p>
+<pre><code class="python">def process_template_response(self, request, response):
+  pass</code></pre>
+</li>
+</ul>
+</li>
+<li><p>2.5 处理响应后的方法：（重要）</p>
+<ul>
+<li><p>在每个响应返回给客户端之前，自动调用，返回HttpResponse对象</p>
+<pre><code class="python">def process_response(self, request, response):
+  pass</code></pre>
+</li>
+</ul>
+</li>
+<li><p>2.6 异常处理：</p>
+<ul>
+<li><p>当视图抛出异常时，自动调用，返回一个HttpResponse对象</p>
+<pre><code class="python">def process_exception(self, request,exception):
+  pass</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-3-自定义中间件"><a href="#6-3-自定义中间件" class="headerlink" title="6.3 自定义中间件"></a>6.3 自定义中间件</h4><ul>
+<li>中间件是一个独立的Python类，可以定义Django提供的六个方法中的一个或多个</li>
+<li>在工程根目录下，新建<code>middlewares.py</code>文件来自定义中间件</li>
+<li>我们在自定义的中间件中，会去实现最重要的三个方法</li>
+</ul>
+<pre><code class="python"># 导入中间件的父类
+from django.utils.deprecation import MiddlewareMixin
+
+
+class TestMiddleware1(MiddlewareMixin):
+    &quot;&quot;&quot;自定义中间件&quot;&quot;&quot;
+    def process_request(self, request):
+        &quot;&quot;&quot;处理请求前自动调用&quot;&quot;&quot;
+        print(&#39;process_request1 被调用&#39;)
+
+    def process_view(self, request, view_func, view_args, view_kwargs):
+        # 处理视图前自动调用
+        print(&#39;process_view1 被调用&#39;)
+
+    def process_response(self, request, response):
+        &quot;&quot;&quot;在每个响应返回给客户端之前自动调用&quot;&quot;&quot;
+        print(&#39;process_response1 被调用&#39;)
+        return response</code></pre>
+<blockquote>
+<p>注册自定义的中间件</p>
+</blockquote>
+<pre><code class="python"># 中间件
+MIDDLEWARE = [
+    &#39;django.middleware.security.SecurityMiddleware&#39;,
+    &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+    &#39;django.middleware.common.CommonMiddleware&#39;,
+    # 为保证非GET请求(POST, PUT, DELETE)可以正常接收，该中间件需要注释掉
+    # &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,
+    &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+    &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+    &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,
+    &#39;middlewares.TestMiddleware1&#39;, # 注册自定义的中间件1
+]</code></pre>
+<h4 id="6-4-中间件执行顺序"><a href="#6-4-中间件执行顺序" class="headerlink" title="6.4 中间件执行顺序"></a>6.4 中间件执行顺序</h4><blockquote>
+<p>准备两个自定义的中间件</p>
+</blockquote>
+<pre><code class="python">from django.utils.deprecation import MiddlewareMixin
+
+
+class TestMiddleware1(MiddlewareMixin):
+    &quot;&quot;&quot;自定义中间件&quot;&quot;&quot;
+    def process_request(self, request):
+        &quot;&quot;&quot;处理请求前自动调用&quot;&quot;&quot;
+        print(&#39;process_request1 被调用&#39;)
+
+    def process_view(self, request, view_func, view_args, view_kwargs):
+        # 处理视图前自动调用
+        print(&#39;process_view1 被调用&#39;)
+
+    def process_response(self, request, response):
+        &quot;&quot;&quot;在每个响应返回给客户端之前自动调用&quot;&quot;&quot;
+        print(&#39;process_response1 被调用&#39;)
+        return response
+
+
+class TestMiddleware2(MiddlewareMixin):
+    &quot;&quot;&quot;自定义中间件&quot;&quot;&quot;
+    def process_request(self, request):
+        &quot;&quot;&quot;处理请求前自动调用&quot;&quot;&quot;
+        print(&#39;process_request2 被调用&#39;)
+
+    def process_view(self, request, view_func, view_args, view_kwargs):
+        # 处理视图前自动调用
+        print(&#39;process_view2 被调用&#39;)
+
+    def process_response(self, request, response):
+        &quot;&quot;&quot;在每个响应返回给客户端之前自动调用&quot;&quot;&quot;
+        print(&#39;process_response2 被调用&#39;)
+        return response</code></pre>
+<blockquote>
+<p>注册多个自定义的中间件</p>
+</blockquote>
+<pre><code class="python"># 中间件
+MIDDLEWARE = [
+    &#39;django.middleware.security.SecurityMiddleware&#39;,
+    &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+    &#39;django.middleware.common.CommonMiddleware&#39;,
+    # 为保证非GET请求(POST, PUT, DELETE)可以正常接收，该中间件需要注释掉
+    # &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,
+    &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+    &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+    &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,
+    &#39;middlewares.TestMiddleware1&#39;, # 注册自定义的中间件1
+    &#39;middlewares.TestMiddleware2&#39;, # 注册自定义中的间件2
+]</code></pre>
+<blockquote>
+<p><strong>重要提示：中间件执行顺序</strong></p>
+</blockquote>
+<ul>
+<li>在视图被处理前(输入)，中间件<strong>由上至下</strong>依次执行</li>
+<li>在视图被处理后(输出)，中间件<strong>由下至上</strong>依次执行</li>
+</ul>
+<h2 id="三、模型（models）"><a href="#三、模型（models）" class="headerlink" title="三、模型（models）"></a>三、模型（models）</h2><p><strong>提示：</strong></p>
+<blockquote>
+<ul>
+<li>模型是Django程序处理数据库数据的模块</li>
+<li>Django的模型是定义在子应用的<strong><code>models.py</code></strong>中的</li>
+</ul>
+</blockquote>
+<p><strong>经验值分享</strong></p>
+<p><strong>1. 读取外键</strong></p>
+<ul>
+<li>以图书和英雄这两个模型类为例</li>
+</ul>
+<pre><code>class BookInfo(models.Model):
+    &quot;&quot;&quot;图书信息模型类&quot;&quot;&quot;
+    btitle = models.CharField(max_length=20, verbose_name=&#39;名称&#39;)
+class HeroInfo(models.Model):
+    hname = models.CharField(max_length=20, verbose_name=&#39;名称&#39;) 
+    # 外键
+    hbook = models.ForeignKey(BookInfo, on_delete=models.CASCADE, verbose_name=&#39;图书&#39;)</code></pre><ul>
+<li>读取外键的方式：<ul>
+<li>方式一：<strong><code>hero.hbook.id</code></strong></li>
+<li>方式二：<strong><code>hero.hbook_id</code></strong></li>
+</ul>
+</li>
+<li>问题：<ul>
+<li><strong><code>hero.hbook.id</code></strong>：不安全，如果hbook为空，会报错，因为空对象不能读取任何属性</li>
+<li><strong><code>hero.hbook_id</code></strong>：安全，如果hbook_id为空，不会报错，获取的是空值</li>
+</ul>
+</li>
+<li>结论：<ul>
+<li>如果外键允许为空，那么务必使用<strong><code>方式二</code></strong>读取外键</li>
+<li>如果外键一定不为空，那么使用哪种方式读取外键都可以</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. 查询集QuerySet缓存的特点</strong></p>
+<blockquote>
+<ul>
+<li>参考知识点：<strong>查询集QuerySet</strong></li>
+</ul>
+</blockquote>
+<ul>
+<li>提示：<ul>
+<li>查询集表示从数据库中获取的对象集合。具有自动缓存的特点。</li>
+</ul>
+</li>
+<li>查询集自动缓存：<ul>
+<li>使用同一个查询集，第一次使用时会发生数据库的查询，然后Django会把结果缓存下来，再次使用这个查询集时会使用缓存的数据，减少了数据库的查询次数。</li>
+</ul>
+</li>
+<li>问题：<ul>
+<li>如果某些数据需要频繁的更新，那么在查询和使用时就不能有缓存出现</li>
+<li>比如：实时更新库存和销量，库存和销量每次在使用时必须是最新的结果，不能是之前缓存中的结果</li>
+</ul>
+</li>
+<li>结论：<ul>
+<li>如果我们要频繁的更新数据时，那么要更新的数据不要使用查询集获取</li>
+<li>返回查询集的方法：all()、filter()、exclude()、order_by()</li>
+<li>不返回查询集的方法：get()</li>
+<li>所以<strong>如果要实时更新数据，建议采用get()查询要更新的数据</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="1-准备数据库"><a href="#1-准备数据库" class="headerlink" title="1.准备数据库"></a>1.准备数据库</h3><h4 id="1-1-创建MySQL数据库"><a href="#1-1-创建MySQL数据库" class="headerlink" title="1.1 创建MySQL数据库"></a>1.1 创建MySQL数据库</h4><blockquote>
+<p>在ubuntu系统的MySQL程序中创建一个数据库</p>
+</blockquote>
+<pre><code class="sql">mysql -uroot -p
+
+create database django_demo default charset=utf8;</code></pre>
+<h4 id="1-2-配置MySQL数据库"><a href="#1-2-配置MySQL数据库" class="headerlink" title="1.2 配置MySQL数据库"></a>1.2 配置MySQL数据库</h4><blockquote>
+<p>在<strong><code>settings.py</code></strong>中配置数据库的连接信息</p>
+<ul>
+<li>以下是默认的数据库配置信息</li>
+</ul>
+</blockquote>
+<pre><code class="python">DATABASES = {
+    &#39;default&#39;: {
+        &#39;ENGINE&#39;: &#39;django.db.backends.sqlite3&#39;,
+        &#39;NAME&#39;: os.path.join(BASE_DIR, &#39;db.sqlite3&#39;),
+    }
+}</code></pre>
+<blockquote>
+<p>修改<strong><code>DATABASES</code></strong>配置信息</p>
+</blockquote>
+<pre><code class="python">DATABASES = {
+    &#39;default&#39;: {
+        &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+        &#39;HOST&#39;: &#39;192.168.103.240&#39;,  # 数据库主机
+        &#39;PORT&#39;: 3306,  # 数据库端口
+        &#39;USER&#39;: &#39;root&#39;,  # 数据库用户名
+        &#39;PASSWORD&#39;: &#39;mysql&#39;,  # 数据库用户密码
+        &#39;NAME&#39;: &#39;django_demo&#39;  # 数据库名字
+    }
+}</code></pre>
+<h4 id="1-3-安装mysqlclient：MySQL数据库的客户端驱动"><a href="#1-3-安装mysqlclient：MySQL数据库的客户端驱动" class="headerlink" title="1.3 安装mysqlclient：MySQL数据库的客户端驱动"></a>1.3 安装mysqlclient：MySQL数据库的客户端驱动</h4><blockquote>
+<p>安装mysqlclient</p>
+</blockquote>
+<pre><code class="python"># 进入虚拟环境
+pip install mysqlclient -i https://pypi.tuna.tsinghua.edu.cn/simple/</code></pre>
+<h4 id="1-4-解决mysqlclient安装出错的问题"><a href="#1-4-解决mysqlclient安装出错的问题" class="headerlink" title="1.4 解决mysqlclient安装出错的问题"></a>1.4 解决mysqlclient安装出错的问题</h4><pre><code class="shell">1. 更换ubuntu中默认的源为国内的源：提升软件下载速度
+2. 更新apt-get的源和升级
+3. 安装libmysqlclient-dev：因为mysqlclient依赖这个软件
+4. 虚拟环境中安装mysqlclient==1.4.6
+5. 测试：重启Django程序</code></pre>
+<blockquote>
+<p><strong>1.4.1 更换ubuntu中默认的源为国内的源</strong></p>
+</blockquote>
+<pre><code class="shell"># 第一步：备份 /etc/apt/sources.list
+
+# 第二步：在/etc/apt/sources.list中添加以下阿里源
+deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+# 备份
+$ cp /etc/apt/sources.list /etc/apt/sources.list.bak
+# 添加阿里源
+$ sudo vim /etc/apt/sources.list</code></pre>
+<blockquote>
+<p><strong>1.4.2 更新apt-get的源和升级</strong></p>
+<ul>
+<li>其中<code>upgrade</code>会执行很久，大家需要耐心等待</li>
+</ul>
+</blockquote>
+<pre><code class="shell">$ sudo apt-get update
+$ sudo apt-get upgrade</code></pre>
+<blockquote>
+<p><strong>1.4.3 安装libmysqlclient-dev</strong></p>
+</blockquote>
+<pre><code class="shell">$ sudo apt-get install libmysqlclient-dev</code></pre>
+<h3 id="2-模型类迁移建表"><a href="#2-模型类迁移建表" class="headerlink" title="2.模型类迁移建表"></a>2.模型类迁移建表</h3><p>如何创建数据库表？</p>
+<ul>
+<li>可以使用原生的SQL语句创建数据库表</li>
+<li>也可以<strong>使用Django提供的模型类创建数据库表</strong></li>
+</ul>
+<blockquote>
+<p>如何使用Django提供的模型类创建数据库表？</p>
+</blockquote>
+<ul>
+<li>我们需要了解ORM框架</li>
+<li>我们需要学会定义模型类</li>
+<li>我们需要学会迁移模型类建表</li>
+</ul>
+<h4 id="2-1-ORM框架"><a href="#2-1-ORM框架" class="headerlink" title="2.1 ORM框架"></a>2.1 ORM框架</h4><blockquote>
+<p>ORM框架介绍</p>
+</blockquote>
+<ul>
+<li>O是object，也就是<strong>类或者对象</strong>的意思，这里的类就是模型类</li>
+<li>R是relation，也就是关系数据库中<strong>数据表</strong>的意思</li>
+<li>M是mapping，也就是<strong>映射</strong>的意思</li>
+<li>在ORM框架中，它帮我们把模型类和数据表进行了一个映射，可以让我们<strong>通过模型类及对象就能操作它所对应的数据表中的数据</strong></li>
+<li>ORM框架它还可以<strong>根据我们设计的模型类自动帮我们生成数据库中对应的数据表</strong>，省去了我们自己建表的过程</li>
+</ul>
+<blockquote>
+<p>提示：</p>
+</blockquote>
+<ul>
+<li><strong>Django框架中内嵌了ORM框架</strong>，所以在使用Django框架时，我们不需要直接面向数据库编程</li>
+<li>而是定义模型类，通过模型类及对象完成数据表的增删改查操作</li>
+</ul>
+<blockquote>
+<p><strong>ORM框架作用：</strong></p>
+</blockquote>
+<ul>
+<li>帮助Django的开发者以面向对象的思想去操作数据库。</li>
+<li>并且ORM框架也帮助程序员屏蔽了数据库之间的差异。</li>
+</ul>
+<h4 id="2-2-定义模型类"><a href="#2-2-定义模型类" class="headerlink" title="2.2 定义模型类"></a>2.2 定义模型类</h4><blockquote>
+<p>提示：模型类的定义思路</p>
+</blockquote>
+<pre><code>1. 先根据需求设计数据表
+2. 再根据数据表设计方案定义模型类</code></pre><blockquote>
+<p><strong>2.2.1 根据需求设计数据表</strong></p>
+</blockquote>
+<ul>
+<li>需求：<ul>
+<li>“图书-英雄”管理</li>
+</ul>
+</li>
+<li>分析关联关系：<ul>
+<li>一本书里面会有多个英雄人物，每个英雄人物都会属于某一本书</li>
+<li>数据表一：图书信息表 (一方)</li>
+<li>数据表二：英雄信息表 (多方)</li>
+</ul>
+</li>
+<li>绑定关联关系：<ul>
+<li>外键定义在多方对应的数据表中，即，外键需要定义在英雄信息表中</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>2.2.2 定义模型类</strong></p>
+</blockquote>
+<ul>
+<li>模型类被定义在<strong><code>子应用/models.py</code></strong>文件中</li>
+<li><strong>模型类必须继承自Model类</strong>，位于<code>django.db.models</code>中</li>
+<li>创建子应用<strong><code>booktest</code></strong>，并在其<code>models.py</code>文件中定义模型类</li>
+</ul>
+<pre><code class="python">class BookInfo(models.Model):
+    &quot;&quot;&quot;图书信息：演示一对多，一方&quot;&quot;&quot;
+    btitle = models.CharField(max_length=20, verbose_name=&#39;书名&#39;)
+    bpub_date = models.DateField(verbose_name=&#39;发布日期&#39;)
+    bread = models.IntegerField(default=0, verbose_name=&#39;阅读量&#39;)
+    bcomment = models.IntegerField(default=0, verbose_name=&#39;评论量&#39;)
+    is_delete = models.BooleanField(default=False, verbose_name=&#39;逻辑删除&#39;)
+
+    class Meta:
+        &quot;&quot;&quot;模型类的元类：用于修改、配置模型类对应的数据表&quot;&quot;&quot;
+        db_table = &#39;tb_books&#39;  # 自定义数据库表名
+
+    def __str__(self):
+        &quot;&quot;&quot;定义每个数据对象的显示信息&quot;&quot;&quot;
+        return self.btitle # 输出该模型数据对象时，只输出书名
+
+
+class HeroInfo(models.Model):
+    &quot;&quot;&quot;英雄信息：演示一对多，多方&quot;&quot;&quot;
+    # 确定性别字段的取值范围
+    GENDER_CHOICES = (
+        (0, &#39;female&#39;),
+        (1, &#39;male&#39;)
+    )
+    hbook = models.ForeignKey(BookInfo, on_delete=models.CASCADE, verbose_name=&#39;英雄属于的图书&#39;)
+    hname = models.CharField(max_length=20, verbose_name=&#39;人名&#39;)
+    hgender = models.SmallIntegerField(choices=GENDER_CHOICES, default=0, verbose_name=&#39;性别&#39;)
+    hcomment = models.CharField(max_length=200, null=True, verbose_name=&#39;描述信息&#39;)
+    is_delete = models.BooleanField(default=False, verbose_name=&#39;逻辑删除&#39;)
+
+    class Meta:
+        db_table = &#39;tb_heros&#39;
+
+    def __str__(self):
+        return self.hname</code></pre>
+<h4 id="2-3-模型类说明"><a href="#2-3-模型类说明" class="headerlink" title="2.3 模型类说明"></a>2.3 模型类说明</h4><blockquote>
+<p><strong>2.3.1 关于主键</strong></p>
+</blockquote>
+<ul>
+<li>Django会为表创建自动增长的主键列，每个模型只能有一个主键列</li>
+<li>默认创建的主键列属性为<code>id</code>，可以使用<code>pk</code>代替，pk全拼为primary key</li>
+<li>如果使用选项设置某属性为主键列后Django不会再创建自动增长的主键列</li>
+</ul>
+<blockquote>
+<p><strong>2.3.2 关于属性命名</strong></p>
+</blockquote>
+<ul>
+<li><p>不能是python的保留关键字</p>
+</li>
+<li><p>不允许使用连续的下划线，这是由Django的查询方式决定的</p>
+</li>
+<li><p>定义属性时需要指定字段类型，通过字段类型的参数指定选项，语法如下：</p>
+<pre><code class="python">属性 = models.字段类型(选项)</code></pre>
+</li>
+</ul>
+<blockquote>
+<p><strong>2.3.3 关于数据库表名</strong></p>
+</blockquote>
+<ul>
+<li>模型类如果未指明表名，Django默认以 <strong>小写app应用名_小写模型类名</strong> 为数据库表名</li>
+<li>但是，可通过模型的元类中的<strong><code>db_table</code></strong>自定义数据库表名</li>
+</ul>
+<blockquote>
+<p><strong>2.3.4 关于字段类型</strong></p>
+</blockquote>
+<pre><code class="sql">CREATE TABLE `tb_books` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `btitle` varchar(20) NOT NULL,
+  `bpub_date` date NOT NULL,
+  `bread` int(11) NOT NULL,
+  `bcomment` int(11) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">AutoField</td>
+<td align="left">自动增长的IntegerField，通常不用指定，不指定时Django会自动创建属性名为id的自动增长属性</td>
+</tr>
+<tr>
+<td align="left">BooleanField</td>
+<td align="left">布尔字段，值为True或False</td>
+</tr>
+<tr>
+<td align="left">NullBooleanField</td>
+<td align="left">支持Null、True、False三种值</td>
+</tr>
+<tr>
+<td align="left">CharField</td>
+<td align="left">字符串，参数max_length表示最大字符个数</td>
+</tr>
+<tr>
+<td align="left">TextField</td>
+<td align="left">大文本字段，一般超过4000个字符时使用</td>
+</tr>
+<tr>
+<td align="left">IntegerField</td>
+<td align="left">整数</td>
+</tr>
+<tr>
+<td align="left">DecimalField</td>
+<td align="left">十进制浮点数， 参数max_digits表示总位数， 参数decimal_places表示小数位数</td>
+</tr>
+<tr>
+<td align="left">FloatField</td>
+<td align="left">浮点数</td>
+</tr>
+<tr>
+<td align="left">DateField</td>
+<td align="left">日期， 参数auto_now表示每次保存对象时，自动设置该字段为当前时间，用于”最后一次修改”的时间戳，它总是使用当前日期，默认为False； 参数auto_now_add表示当对象第一次被创建时自动设置当前时间，用于创建的时间戳，它总是使用当前日期，默认为False; 参数auto_now_add和auto_now是相互排斥的，组合将会发生错误</td>
+</tr>
+<tr>
+<td align="left">TimeField</td>
+<td align="left">时间，参数同DateField</td>
+</tr>
+<tr>
+<td align="left">DateTimeField</td>
+<td align="left">日期时间，参数同DateField</td>
+</tr>
+<tr>
+<td align="left">FileField</td>
+<td align="left">上传文件字段</td>
+</tr>
+<tr>
+<td align="left">ImageField</td>
+<td align="left">继承于FileField，对上传的内容进行校验，确保是有效的图片</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>2.3.5 关于字段选项</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">null</td>
+<td>如果为True，表示允许为空，默认值是False</td>
+</tr>
+<tr>
+<td align="left">db_column</td>
+<td>字段的名称，如果未指定，则使用属性的名称</td>
+</tr>
+<tr>
+<td align="left">db_index</td>
+<td>若值为True, 则在表中会为此字段创建索引，默认值是False</td>
+</tr>
+<tr>
+<td align="left">default</td>
+<td>默认</td>
+</tr>
+<tr>
+<td align="left">primary_key</td>
+<td>若为True，则该字段会成为模型的主键字段，默认值是False，一般作为AutoField的选项使用</td>
+</tr>
+<tr>
+<td align="left">unique</td>
+<td>如果为True, 这个字段在表中必须有唯一值，默认值是False</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>2.3.6 关于外键</strong></p>
+</blockquote>
+<p>在设置外键时，需要通过<strong>on_delete</strong>选项指明主表删除数据时，对于外键引用表数据如何处理，在django.db.models中包含了可选常量：</p>
+<ul>
+<li><strong>CASCADE</strong> 级联，删除主表数据时连通一起删除外键表中数据</li>
+<li><strong>PROTECT</strong> 保护，通过抛出<strong>ProtectedError</strong>异常，来阻止删除主表中被外键应用的数据</li>
+<li><strong>SET_NULL</strong> 设置为NULL，仅在该字段null=True允许为null时可用</li>
+<li><strong>SET_DEFAULT</strong> 设置为默认值，仅在该字段设置了默认值时可用</li>
+<li><strong>SET()</strong> 设置为特定值或者调用特定方法</li>
+<li><strong>DO_NOTHING</strong> 不做任何操作，如果数据库前置指明级联性，此选项会抛出<strong>IntegrityError</strong>异常</li>
+</ul>
+<h4 id="2-4-迁移模型类建表"><a href="#2-4-迁移模型类建表" class="headerlink" title="2.4 迁移模型类建表"></a>2.4 迁移模型类建表</h4><blockquote>
+<p><strong>2.4.1 生成迁移文件</strong></p>
+</blockquote>
+<pre><code class="python">python manage.py makemigrations</code></pre>
+<blockquote>
+<p><strong>2.4.2 同步到数据库中</strong></p>
+</blockquote>
+<pre><code class="python">python manage.py migrate</code></pre>
+<h4 id="2-5-添加测试数据"><a href="#2-5-添加测试数据" class="headerlink" title="2.5 添加测试数据"></a>2.5 添加测试数据</h4><pre><code class="mysql">insert into tb_books(btitle,bpub_date,bread,bcomment,is_delete) values
+(&#39;射雕英雄传&#39;,&#39;1980-5-1&#39;,12,34,0),
+(&#39;天龙八部&#39;,&#39;1986-7-24&#39;,36,40,0),
+(&#39;笑傲江湖&#39;,&#39;1995-12-24&#39;,20,80,0),
+(&#39;雪山飞狐&#39;,&#39;1987-11-11&#39;,58,24,0);</code></pre>
+<pre><code class="mysql">insert into tb_heros(hname,hgender,hbook_id,hcomment,is_delete) values
+(&#39;郭靖&#39;,1,1,&#39;降龙十八掌&#39;,0),
+(&#39;黄蓉&#39;,0,1,&#39;打狗棍法&#39;,0),
+(&#39;黄药师&#39;,1,1,&#39;弹指神通&#39;,0),
+(&#39;欧阳锋&#39;,1,1,&#39;蛤蟆功&#39;,0),
+(&#39;梅超风&#39;,0,1,&#39;九阴白骨爪&#39;,0),
+(&#39;乔峰&#39;,1,2,&#39;降龙十八掌&#39;,0),
+(&#39;段誉&#39;,1,2,&#39;六脉神剑&#39;,0),
+(&#39;虚竹&#39;,1,2,&#39;天山六阳掌&#39;,0),
+(&#39;王语嫣&#39;,0,2,&#39;神仙姐姐&#39;,0),
+(&#39;令狐冲&#39;,1,3,&#39;独孤九剑&#39;,0),
+(&#39;任盈盈&#39;,0,3,&#39;弹琴&#39;,0),
+(&#39;岳不群&#39;,1,3,&#39;华山剑法&#39;,0),
+(&#39;东方不败&#39;,0,3,&#39;葵花宝典&#39;,0),
+(&#39;胡斐&#39;,1,4,&#39;胡家刀法&#39;,0),
+(&#39;苗若兰&#39;,0,4,&#39;黄衣&#39;,0),
+(&#39;程灵素&#39;,0,4,&#39;医术&#39;,0),
+(&#39;袁紫衣&#39;,0,4,&#39;六合拳&#39;,0);</code></pre>
+<h3 id="3-增删改查"><a href="#3-增删改查" class="headerlink" title="3.增删改查"></a>3.增删改查</h3><h4 id="3-1-shell工具-用于在终端交互环境测试代码的"><a href="#3-1-shell工具-用于在终端交互环境测试代码的" class="headerlink" title="3.1 shell工具 (用于在终端交互环境测试代码的)"></a>3.1 shell工具 (用于在终端交互环境测试代码的)</h4><p>Django的manage工具提供了<strong>shell</strong>命令，帮助我们配置好当前工程的运行环境（如连接好数据库等），以便可以直接在终端中执行测试python语句。</p>
+<p>如果有需要，通过如下命令进入shell</p>
+<pre><code class="python">python manage.py shell</code></pre>
+<p>导入两个模型类，以便后续使用</p>
+<pre><code class="python">from booktest.models import BookInfo, HeroInfo</code></pre>
+<h4 id="3-2-新增"><a href="#3-2-新增" class="headerlink" title="3.2 新增"></a>3.2 新增</h4><p>增加数据有两种方法。</p>
+<p><strong>1）save</strong></p>
+<p>通过创建模型类对象，<strong><code>模型对象.save()</code></strong>方法保存到数据库中。</p>
+<pre><code class="python"># 新增：方式一
+book = BookInfo()
+book.btitle = &#39;西游记&#39;
+book.bpub_date = &#39;2020-05-18&#39;
+book.bread = 20
+book.bcomment = 30
+book.save()</code></pre>
+<p><strong>2）create</strong></p>
+<p>通过<strong><code>模型类.objects.create()</code></strong>保存。</p>
+<pre><code class="python"># 新增：方式二
+BookInfo.objects.create(
+    btitle=&#39;三国演义&#39;,
+    bpub_date=&#39;2020-05-20&#39;,
+    bread=100,
+    bcomment=200
+)</code></pre>
+<h4 id="3-3-修改"><a href="#3-3-修改" class="headerlink" title="3.3 修改"></a>3.3 修改</h4><p>修改更新有两种方法</p>
+<p><strong>1）save</strong></p>
+<p><strong>修改模型类对象的属性，然后执行<code>save()</code>方法</strong></p>
+<pre><code class="python">hero = HeroInfo.objects.get(hname=&#39;猪八戒&#39;)
+hero.hname = &#39;猪悟能&#39;
+hero.save()</code></pre>
+<p><strong>2）update</strong></p>
+<p>使用<strong><code>模型类.objects.filter().update()</code></strong>，会返回受影响的行数</p>
+<pre><code class="python">HeroInfo.objects.filter(hname=&#39;沙悟净&#39;).update(hname=&#39;沙僧&#39;)</code></pre>
+<h4 id="3-4-删除"><a href="#3-4-删除" class="headerlink" title="3.4 删除"></a>3.4 删除</h4><p>删除有两种方法</p>
+<p><strong>1）模型类对象delete</strong></p>
+<pre><code class="python">hero = HeroInfo.objects.get(id=13)
+hero.delete()</code></pre>
+<p><strong>2）模型类.objects.filter().delete()</strong></p>
+<pre><code class="python">HeroInfo.objects.filter(id=14).delete()</code></pre>
+<h4 id="3-5-查询"><a href="#3-5-查询" class="headerlink" title="3.5 查询"></a>3.5 查询</h4><h5 id="3-5-1-基本查询"><a href="#3-5-1-基本查询" class="headerlink" title="3.5.1 基本查询"></a>3.5.1 基本查询</h5><p><strong>get</strong> 查询单一结果，如果不存在会抛出<strong>模型类.DoesNotExist</strong>异常。</p>
+<p><strong>all</strong> 查询多个结果。</p>
+<p><strong>count</strong> 查询结果数量。</p>
+<pre><code class="python">&gt;&gt;&gt; BookInfo.objects.all()
+&lt;QuerySet [&lt;BookInfo: 射雕英雄传&gt;, &lt;BookInfo: 天龙八部&gt;, &lt;BookInfo: 笑傲江湖&gt;, &lt;BookInfo: 雪山飞狐&gt;, &lt;BookInfo: 西游记&gt;]&gt;
+&gt;&gt;&gt; book = BookInfo.objects.get(btitle=&#39;西游记&#39;)
+&gt;&gt;&gt; book.id
+5
+
+&gt;&gt;&gt; BookInfo.objects.get(id=3)
+&lt;BookInfo: 笑傲江湖&gt;
+&gt;&gt;&gt; BookInfo.objects.get(pk=3)
+&lt;BookInfo: 笑傲江湖&gt;
+&gt;&gt;&gt; BookInfo.objects.get(id=100)
+Traceback (most recent call last):
+  File &quot;&lt;console&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;/Users/delron/.virtualenv/dj/lib/python3.6/site-packages/django/db/models/manager.py&quot;, line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File &quot;/Users/delron/.virtualenv/dj/lib/python3.6/site-packages/django/db/models/query.py&quot;, line 380, in get
+    self.model._meta.object_name
+db.models.DoesNotExist: BookInfo matching query does not exist.
+
+&gt;&gt;&gt; BookInfo.objects.count()
+6</code></pre>
+<h5 id="3-5-2-过滤查询"><a href="#3-5-2-过滤查询" class="headerlink" title="3.5.2 过滤查询"></a>3.5.2 过滤查询</h5><p>实现SQL中的where功能，包括</p>
+<ul>
+<li><strong>filter</strong> 过滤出满足条件的多个结果</li>
+<li><strong>exclude</strong> 排除掉符合条件剩下的结果</li>
+</ul>
+<p>过滤条件的表达语法如下：</p>
+<pre><code class="python">属性名称__比较运算符=值
+# 属性名称和比较运算符间使用两个下划线，所以属性名不能包括多个下划线</code></pre>
+<p><strong>1）相等</strong></p>
+<p><strong>exact：表示判等。</strong></p>
+<p>例：查询编号为1的图书。</p>
+<pre><code>BookInfo.objects.filter(id__exact=1)
+可简写为：
+BookInfo.objects.filter(id=1)</code></pre><p><strong>2）模糊查询</strong></p>
+<p><strong>contains：是否包含。</strong></p>
+<blockquote>
+<p>说明：如果要包含%无需转义，直接写即可。</p>
+</blockquote>
+<p>例：查询书名包含’传’的图书。</p>
+<pre><code class="python">BookInfo.objects.filter(btitle__contains=&#39;传&#39;)</code></pre>
+<p><strong>startswith、endswith：以指定值开头或结尾。</strong></p>
+<p>例：查询书名以’部’结尾的图书</p>
+<pre><code class="python">BookInfo.objects.filter(btitle__endswith=&#39;部&#39;)</code></pre>
+<blockquote>
+<p>以上运算符都区分大小写，在这些运算符前加上i表示不区分大小写，如iexact、icontains、istartswith、iendswith.</p>
+</blockquote>
+<p><strong>3） 空查询</strong></p>
+<p><strong>isnull：是否为null。</strong></p>
+<p>例：查询书名不为空的图书。</p>
+<pre><code class="python">BookInfo.objects.filter(btitle__isnull=False)</code></pre>
+<p><strong>4） 范围查询</strong></p>
+<p><strong>in：是否包含在范围内。</strong></p>
+<p>例：查询编号为1或3或5的图书</p>
+<pre><code class="python">BookInfo.objects.filter(id__in=[1, 3, 5])</code></pre>
+<p><strong>5）比较查询</strong></p>
+<ul>
+<li><strong>gt</strong> 大于 (greater then)</li>
+<li><strong>gte</strong> 大于等于 (greater then equal)</li>
+<li><strong>lt</strong> 小于 (less then)</li>
+<li><strong>lte</strong> 小于等于 (less then equal)</li>
+</ul>
+<p>例：查询编号大于3的图书</p>
+<pre><code class="python">BookInfo.objects.filter(id__gt=3)</code></pre>
+<p><strong>不等于的运算符，使用exclude()过滤器。</strong></p>
+<p>例：查询编号不等于3的图书</p>
+<pre><code class="python">BookInfo.objects.exclude(id=3)</code></pre>
+<p><strong>6）日期查询</strong></p>
+<p><strong>year、month、day、week_day、hour、minute、second：对日期时间类型的属性进行运算。</strong></p>
+<p>例：查询1980年发表的图书。</p>
+<pre><code class="python">BookInfo.objects.filter(bpub_date__year=1980)</code></pre>
+<p>例：查询1980年1月1日后发表的图书。</p>
+<pre><code class="python">BookInfo.objects.filter(bpub_date__gt=date(1990, 1, 1))</code></pre>
+<h5 id="F对象"><a href="#F对象" class="headerlink" title="F对象"></a>F对象</h5><p>之前的查询都是对象的属性与常量值比较，两个属性怎么比较呢？ 答：使用F对象，被定义在django.db.models中。</p>
+<p>语法如下：</p>
+<pre><code>F(属性名)</code></pre><p>例：查询阅读量大于等于评论量的图书。</p>
+<pre><code class="python">from django.db.models import F
+
+BookInfo.objects.filter(bread__gte=F(&#39;bcomment&#39;))</code></pre>
+<p>可以在F对象上使用算数运算。</p>
+<p>例：查询阅读量大于2倍评论量的图书。</p>
+<pre><code class="python">BookInfo.objects.filter(bread__gt=F(&#39;bcomment&#39;) * 2)</code></pre>
+<h5 id="Q对象"><a href="#Q对象" class="headerlink" title="Q对象"></a>Q对象</h5><p><strong>多个过滤器逐个调用表示逻辑与关系，同sql语句中where部分的and关键字。</strong></p>
+<p>例：查询阅读量大于20，并且编号小于3的图书。</p>
+<pre><code class="python">BookInfo.objects.filter(bread__gt=20,id__lt=3)
+或
+BookInfo.objects.filter(bread__gt=20).filter(id__lt=3)</code></pre>
+<p><strong>如果需要实现逻辑或or的查询，需要使用Q()对象结合|运算符</strong>，Q对象被义在django.db.models中。</p>
+<p>语法如下：</p>
+<pre><code>Q(属性名__运算符=值)</code></pre><p>例：查询阅读量大于20的图书，改写为Q对象如下。</p>
+<pre><code class="python">from django.db.models import Q
+
+BookInfo.objects.filter(Q(bread__gt=20))</code></pre>
+<p>Q对象可以使用&amp;、|连接，&amp;表示逻辑与，|表示逻辑或。</p>
+<p>例：查询阅读量大于20，或编号小于3的图书，只能使用Q对象实现</p>
+<pre><code class="python">BookInfo.objects.filter(Q(bread__gt=20) | Q(pk__lt=3))</code></pre>
+<p>Q对象前可以使用~操作符，表示非not。</p>
+<p>例：查询编号不等于3的图书。</p>
+<pre><code class="python">BookInfo.objects.filter(~Q(pk=3))</code></pre>
+<h5 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h5><p>使用aggregate()过滤器调用聚合函数。聚合函数包括：<strong>Avg</strong> 平均，<strong>Count</strong> 数量，<strong>Max</strong> 最大，<strong>Min</strong> 最小，<strong>Sum</strong> 求和，被定义在django.db.models中。</p>
+<p>例：查询图书的总阅读量。</p>
+<pre><code class="python">from django.db.models import Sum
+
+BookInfo.objects.aggregate(Sum(&#39;bread&#39;))</code></pre>
+<p>注意aggregate的返回值是一个字典类型，格式如下：</p>
+<pre><code class="python">  {&#39;属性名__聚合类小写&#39;:值}
+  如:{&#39;bread__sum&#39;:3}</code></pre>
+<p>使用count时一般不使用aggregate()过滤器。</p>
+<p>例：查询图书总数。</p>
+<pre><code class="python">BookInfo.objects.count()</code></pre>
+<p>注意count函数的返回值是一个数字。</p>
+<h5 id="3-5-3-排序"><a href="#3-5-3-排序" class="headerlink" title="3.5.3 排序"></a>3.5.3 排序</h5><p>使用<strong>order_by</strong>对结果进行排序</p>
+<pre><code class="python">BookInfo.objects.all().order_by(&#39;bread&#39;)  # 升序
+BookInfo.objects.all().order_by(&#39;-bread&#39;)  # 降序</code></pre>
+<h5 id="3-5-4-关联查询"><a href="#3-5-4-关联查询" class="headerlink" title="3.5.4 关联查询"></a>3.5.4 关联查询</h5><p>由一到多的访问语法：</p>
+<p>一对应的模型类对象.多对应的模型类名小写_set<br>例：</p>
+<pre><code class="python">b = BookInfo.objects.get(id=1)
+b.heroinfo_set.all()</code></pre>
+<p>由多到一的访问语法:</p>
+<p>多对应的模型类对象.多对应的模型类中的关系类属性名<br>例：</p>
+<pre><code class="python">h = HeroInfo.objects.get(id=1)
+h.hbook</code></pre>
+<p>访问一对应的模型类关联对象的id语法:</p>
+<p>多对应的模型类对象.关联类属性_id</p>
+<p>例：</p>
+<pre><code class="python">h = HeroInfo.objects.get(id=1)
+h.hbook_id</code></pre>
+<h3 id="4-查询集QuerySet"><a href="#4-查询集QuerySet" class="headerlink" title="4.查询集QuerySet"></a>4.查询集QuerySet</h3><h4 id="4-1-概念"><a href="#4-1-概念" class="headerlink" title="4.1 概念"></a>4.1 概念</h4><p>Django的ORM中存在查询集的概念。</p>
+<p>查询集，也称查询结果集、QuerySet，表示从数据库中获取的对象集合。</p>
+<p>当调用如下过滤器方法时，Django会返回查询集（而不是简单的列表）：</p>
+<ul>
+<li>all()：返回所有数据。</li>
+<li>filter()：返回满足条件的数据。</li>
+<li>exclude()：返回满足条件之外的数据。</li>
+<li>order_by()：对结果进行排序。</li>
+</ul>
+<p>对查询集可以再次调用过滤器进行过滤，如</p>
+<pre><code class="python">BookInfo.objects.filter(bread__gt=30).order_by(&#39;bpub_date&#39;)</code></pre>
+<p>也就意味着查询集可以含有零个、一个或多个过滤器。过滤器基于所给的参数限制查询的结果。</p>
+<p><strong>从SQL的角度讲，查询集与select语句等价，过滤器像where、limit、order by子句。</strong></p>
+<p><strong>判断某一个查询集中是否有数据</strong>：</p>
+<ul>
+<li>exists()：判断查询集中是否有数据，如果有则返回True，没有则返回False。</li>
+</ul>
+<h4 id="4-2-两大特性"><a href="#4-2-两大特性" class="headerlink" title="4.2 两大特性"></a>4.2 两大特性</h4><h5 id="1）惰性执行"><a href="#1）惰性执行" class="headerlink" title="1）惰性执行"></a>1）惰性执行</h5><p>创建查询集不会访问数据库，直到调用数据时，才会访问数据库，调用数据的情况包括迭代、序列化、与if合用</p>
+<p>例如，当执行如下语句时，并未进行数据库查询，只是创建了一个查询集qs</p>
+<pre><code class="python">qs = BookInfo.objects.all()</code></pre>
+<p>继续执行遍历迭代操作后，才真正的进行了数据库的查询</p>
+<pre><code class="python">for book in qs:
+    print(book.btitle)</code></pre>
+<h5 id="2）缓存"><a href="#2）缓存" class="headerlink" title="2）缓存"></a>2）缓存</h5><p>使用同一个查询集，第一次使用时会发生数据库的查询，然后Django会把结果缓存下来，再次使用这个查询集时会使用缓存的数据，减少了数据库的查询次数。</p>
+<p><strong>情况一</strong>：如下是两个查询集，无法重用缓存，每次查询都会与数据库进行一次交互，增加了数据库的负载。</p>
+<pre><code class="python">from booktest.models import BookInfo
+[book.id for book in BookInfo.objects.all()]
+[book.id for book in BookInfo.objects.all()]</code></pre>
+<p><strong>情况二</strong>：经过存储后，可以重用查询集，第二次使用缓存中的数据。</p>
+<pre><code class="python">qs=BookInfo.objects.all()
+[book.id for book in qs]
+[book.id for book in qs]</code></pre>
+<h2 id="四、模板（templates）"><a href="#四、模板（templates）" class="headerlink" title="四、模板（templates）"></a>四、模板（templates）</h2><p><strong>提示：</strong></p>
+<blockquote>
+<ul>
+<li>模板是Django程序渲染页面的模块</li>
+<li>Django的模板是定义在<strong><code>templates</code></strong>文件目录中的</li>
+</ul>
+</blockquote>
+<h3 id="1-配置模板"><a href="#1-配置模板" class="headerlink" title="1. 配置模板"></a>1. 配置模板</h3><blockquote>
+<p><strong>1.1 准备模板文件目录</strong></p>
+</blockquote>
+<ul>
+<li>在工程根目录下创建模板文件目录<strong><code>templates</code></strong></li>
+</ul>
+<blockquote>
+<p><strong>1.2 配置模板</strong></p>
+</blockquote>
+<ul>
+<li><p>在</p>
+<pre><code>settings.py</code></pre><p>配置文件中修改</p>
+<p><code>TEMPLATES</code></p>
+<p>配置项的</p>
+<p><code>DIRS</code></p>
+<p>值：</p>
+<pre><code class="python"># 配置模板
+TEMPLATES = [
+  {
+      &#39;BACKEND&#39;: &#39;django.template.backends.django.DjangoTemplates&#39;,
+      #指定模板文件目录的路径
+      &#39;DIRS&#39;: [os.path.join(BASE_DIR, &#39;templates&#39;)],
+      &#39;APP_DIRS&#39;: True,
+      &#39;OPTIONS&#39;: {
+          &#39;context_processors&#39;: [
+              &#39;django.template.context_processors.debug&#39;,
+              &#39;django.template.context_processors.request&#39;,
+              &#39;django.contrib.auth.context_processors.auth&#39;,
+              &#39;django.contrib.messages.context_processors.messages&#39;,
+          ],
+      },
+  },
+]</code></pre>
+</li>
+</ul>
+<h3 id="2-定义和响应模板"><a href="#2-定义和响应模板" class="headerlink" title="2. 定义和响应模板"></a>2. 定义和响应模板</h3><blockquote>
+<p><strong>2.1 新建模板文件</strong></p>
+</blockquote>
+<ul>
+<li>在<code>templates</code>目录中新建一个模板文件，如：<code>temp.html</code></li>
+</ul>
+<blockquote>
+<p><strong>2.2 响应模板文件</strong></p>
+</blockquote>
+<pre><code class="python">class TempView(View):
+    &quot;&quot;&quot;图书信息
+    http://127.0.0.1:8000/temp/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        return render(request, &#39;temp.html&#39;)</code></pre>
+<h3 id="3-测试模板渲染"><a href="#3-测试模板渲染" class="headerlink" title="3. 测试模板渲染"></a>3. 测试模板渲染</h3><blockquote>
+<p><strong>3.1 模板语法</strong></p>
+</blockquote>
+<ul>
+<li><p>模板语法如下：</p>
+<ul>
+<li><p>变量名必须由字母、数字、下划线（不能以下划线开头）和点组成</p>
+
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>3.2 使用模板语法渲染HTML模板</strong></p>
+</blockquote>
+<pre><code class="python">class BooksView(View):
+    &quot;&quot;&quot;图书信息
+    http://127.0.0.1:8000/books/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        # 构造上下文
+        context = {
+            &#39;name&#39;: &#39;张三&#39;,
+            &#39;age&#39;: 18
+        }
+        # 使用上下文渲染&#39;book.html&#39;，并返回给客户端
+        return render(request, &#39;book.html&#39;, context)</code></pre>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;图书信息页&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;{{ name }}&lt;/h1&gt;
+    &lt;h1&gt;{{ age }}&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h3 id="4-数据库数据渲染模板"><a href="#4-数据库数据渲染模板" class="headerlink" title="4. 数据库数据渲染模板"></a>4. 数据库数据渲染模板</h3><blockquote>
+<p>需求：</p>
+</blockquote>
+<ul>
+<li>渲染数据库中所有的图书信息</li>
+</ul>
+<pre><code class="python">class BooksView(View):
+    &quot;&quot;&quot;测试模板
+    http://127.0.0.1:8000/books/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        # 查询所有图书信息
+        books = BookInfo.objects.all()
+
+        # 构造上下文
+        context = {
+            &#39;books&#39;: books
+        }
+        # 使用上下文渲染&#39;book.html&#39;，并返回给客户端
+        return render(request, &#39;books.html&#39;, context)</code></pre>
+<pre><code class="html">&lt;body&gt;
+    &lt;ul&gt;
+        {% for book in books %}
+            <li>《{{ book.btitle }}》</li>
+        {% endfor %}
+    &lt;/ul&gt;
+&lt;/body&gt;</code></pre>
+<h2 id="五、cookie和session"><a href="#五、cookie和session" class="headerlink" title="五、cookie和session"></a>五、cookie和session</h2><p>提示：</p>
+<blockquote>
+<ul>
+<li>Cookie和Session是Django程序中用来缓存数据的</li>
+</ul>
+</blockquote>
+<p><strong>经验值分享</strong></p>
+<p><strong>1. 状态保持和Cookie、Session的关系</strong></p>
+<p>提示：</p>
+<ul>
+<li>容易出现的误解：状态保持就是Cookie和Session，Cookie和Session就是状态保持。</li>
+<li>状态保持和Cookie、Session是两种不同的概念，需要区分开，不能混淆。</li>
+</ul>
+<p><strong>状态保持：</strong></p>
+<pre><code>* 用于记录当前用户的状态，比如，用户登录后记录登录的状态。</code></pre><p><strong>Cookie、Session：</strong></p>
+<pre><code>* Cookie、Session仅仅是Django提供的缓存机制而已，用于缓存数据的。
+* 比如：
+    * Cookie和Session缓存购物车数据
+    * Cookie和Session缓存用户登录状态 (状态保持)</code></pre><p><strong>状态保持和Cookie、Session的关系</strong></p>
+<pre><code>* Cookie和Session仅仅是状态保持的一种实现方式而已
+* 而能够实现状态保持的方式不仅仅只有Cookie和Session，比如JWT也可以实现状态保持</code></pre><h3 id="1-cookie"><a href="#1-cookie" class="headerlink" title="1.cookie"></a>1.cookie</h3><blockquote>
+<p><strong>提示：</strong></p>
+</blockquote>
+<ul>
+<li><strong>HTTP协议本身是无状态的</strong>，即服务器无法判断用户身份。</li>
+</ul>
+<blockquote>
+<p>问题：</p>
+</blockquote>
+<ul>
+<li>服务器默认是无法识别当前登录用户是谁的，即<strong>无法记住登录状态</strong>。</li>
+</ul>
+<blockquote>
+<p>解决：</p>
+</blockquote>
+<ul>
+<li><strong><code>Cookie</code></strong></li>
+<li>我们可以使用Cookie机制记住用户的登录状态</li>
+</ul>
+<h4 id="1-1-Cookie的介绍"><a href="#1-1-Cookie的介绍" class="headerlink" title="1.1 Cookie的介绍"></a>1.1 Cookie的介绍</h4><ul>
+<li>Cookie，最早是网景公司的前雇员 Lou Montulli 在 1993 年 3 月发明的。</li>
+<li>Cookie，指某些网站为了辨别用户身份、进行session跟踪而储存在用户本地终端上的数据（通常经过加密）。</li>
+<li><strong>Cookie，实际上是一小段存储在用户浏览器中的文本信息</strong>。</li>
+</ul>
+<blockquote>
+<p><strong>Cookie的机制：</strong></p>
+</blockquote>
+<ul>
+<li>客户端向服务器发起请求，如果服务器需要记录该用户状态，就通过响应向客户端浏览器颁发一个Cookie。<ul>
+<li>该Cookie中需要包含用户的唯一标识信息</li>
+</ul>
+</li>
+<li>客户端浏览器会把Cookie保存起来。</li>
+<li>当浏览器再次请求该网站时，浏览器把请求的网址连同该Cookie一同提交给服务器。</li>
+<li>服务器检查该Cookie，以此来辨认用户状态。</li>
+</ul>
+<blockquote>
+<p><strong>Cookie的特点：</strong></p>
+</blockquote>
+<ul>
+<li><p>Cookie，以键值对<strong><code>Key-Value</code></strong>形式进行信息的存储</p>
+</li>
+<li><p>Cookie，基于域名安全，不同域名的</p>
+<p><code>Cookie</code></p>
+<p>是不能互相访问的</p>
+<ul>
+<li>例如： 保存在<code>www.baidu.com</code>域名下面的<code>Cookie</code>是不能被其他域名访问的</li>
+</ul>
+</li>
+<li><p>Cookie，它会自动跟随当前的请求传递到对应域名所在的服务器中。</p>
+</li>
+</ul>
+<h4 id="2-2-操作Cookie"><a href="#2-2-操作Cookie" class="headerlink" title="2.2 操作Cookie"></a>2.2 操作Cookie</h4><blockquote>
+<p>提示：</p>
+</blockquote>
+<ul>
+<li>关于操作Cookie，分为<strong>设置Cookie</strong>和<strong>读取Cookie</strong></li>
+</ul>
+<h5 id="2-2-1-设置Cookie"><a href="#2-2-1-设置Cookie" class="headerlink" title="2.2.1 设置Cookie"></a>2.2.1 设置Cookie</h5><p>可以通过<strong>HttpResponse()</strong>对象中的<strong><code>set_cookie()</code></strong>方法来设置Cookie。</p>
+<pre><code class="python"># 创建响应对象
+response = HttpResponse()
+# 使用响应对象设置Cookie
+response.set_cookie(key, value, max_age=cookie有效期)</code></pre>
+<ul>
+<li><strong>响应对象</strong>：常见的构造响应对象的方式<ul>
+<li><strong><code>HttpResponse()</code></strong>：响应多种数据类型</li>
+<li><strong><code>JsonResponse()</code></strong>：响应JSON</li>
+<li><strong><code>redirect()</code></strong>：重定向</li>
+<li><strong><code>render()</code></strong>：渲染并响应HTML模板</li>
+</ul>
+</li>
+<li><strong>max_age</strong>：单位为秒，默认为<strong>None</strong>。<ul>
+<li>如果是临时Cookie，可将<code>max_age</code>设置为<code>None</code>。</li>
+<li>如果是有具体有效期的Cookie，可将<code>max_age</code>设置为<code>具体的秒数</code>。</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<pre><code class="python">class BooksView(View):
+    &quot;&quot;&quot;测试模板
+    http://127.0.0.1:8000/books/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        # 查询所有图书信息
+        books = BookInfo.objects.all()
+
+        # 构造上下文
+        context = {
+            &#39;books&#39;: books
+        }
+        # 使用上下文渲染&#39;book.html&#39;，并返回给客户端
+        response = render(request, &#39;books.html&#39;, context)
+
+        # 设置Cookie
+        response.set_cookie(&#39;name&#39;, &#39;itcast&#39;, max_age=None)
+
+        # 响应结果，并写Cookie到浏览器
+        return response</code></pre>
+<h5 id="2-2-2-读取Cookie"><a href="#2-2-2-读取Cookie" class="headerlink" title="2.2.2 读取Cookie"></a>2.2.2 读取Cookie</h5><p>可以通过<strong>HttpRequest</strong>对象的<strong><code>COOKIES</code></strong>属性来读取本次请求携带的cookie值。</p>
+<pre><code class="python">class TestCookieView(View):
+    &quot;&quot;&quot;测试Cookie
+    http://127.0.0.1:8000/cookies/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        # 读取Cookie
+        name = request.COOKIES.get(&#39;name&#39;)
+        print(name)
+
+        return http.HttpResponse(&#39;测试Cookie&#39;)</code></pre>
+<h3 id="2-session"><a href="#2-session" class="headerlink" title="2.session"></a>2.session</h3><h4 id="2-1-Session的介绍"><a href="#2-1-Session的介绍" class="headerlink" title="2.1.Session的介绍"></a>2.1.Session的介绍</h4><ul>
+<li><p>Session，是一种会话控制方式。由服务端创建，并且保存在服务端的数据存储形式。</p>
+</li>
+<li><p>Session，内部也是以<strong><code>key-value</code></strong> 键值对的形式存储数据。</p>
+</li>
+<li><p>Session，有些内容会被加密，所以可以存储敏感信息。</p>
+</li>
+<li><p>处理Session数据的子应用：</p>
+</li>
+<li><pre><code>INSTALLED_APPS = [
+    &#39;django.contrib.admin&#39;,
+    &#39;django.contrib.auth&#39;,
+    &#39;django.contrib.contenttypes&#39;,
+    &#39;django.contrib.sessions&#39;,       &lt;============
+    &#39;django.contrib.messages&#39;,
+    &#39;django.contrib.staticfiles&#39;,</code></pre></li>
+</ul>
+<p>处理Session的中间件：</p>
+<pre><code>MIDDLEWARE = [
+    &#39;django.middleware.security.SecurityMiddleware&#39;,
+    &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,     &lt;==============
+    &#39;django.middleware.common.CommonMiddleware&#39;,
+    # &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,
+    &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+    &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+    &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,
+]</code></pre><p>PS：如需禁用Session，将上图中的session中间件注释掉即可。</p>
+<blockquote>
+<p><strong>Session的机制：</strong></p>
+</blockquote>
+<ul>
+<li>客户端向服务器发起请求，如果服务器需要记录该用户状态，就可以通过Session在服务端将该用户的唯一标识信息存储起来。<ul>
+<li><strong><code>session_key</code></strong>：一个随机的唯一的不重复的字符串</li>
+<li><strong><code>session_data</code></strong>：用户的唯一标识信息（密文）</li>
+</ul>
+</li>
+<li>然后，服务端会向客户端浏览器颁发一个Cookie。<ul>
+<li>该Cookie中包含了Session存储数据时使用的那个<strong><code>session_key</code></strong></li>
+<li>该Cookie的具体形式为：<strong><code>&#39;session_id&#39;: &#39;session_key&#39;</code></strong></li>
+</ul>
+</li>
+<li>当浏览器再次请求该网站时，浏览器把请求的网址连同该Cookie一同提交给服务器。</li>
+<li>服务器提取该Cookie中的<strong><code>session_key</code></strong>，再使用它提取<strong><code>session_data</code></strong>。</li>
+<li>最后使用<strong><code>session_data</code></strong>来辨认用户状态</li>
+</ul>
+<blockquote>
+<p><strong>Session的特点：</strong></p>
+</blockquote>
+<ul>
+<li>存储敏感、重要的信息<ul>
+<li>因为session数据是存储在服务端的，不会直接暴露给用户</li>
+</ul>
+</li>
+<li>相比较Cookie可以存储更多的内容<ul>
+<li>不同的浏览器，对Cookie都有不同的数量和大小的限制</li>
+</ul>
+</li>
+<li>依赖于Cookie<ul>
+<li>因为<strong><code>session_key</code></strong>需要存储在Cookie中</li>
+</ul>
+</li>
+<li>Session共享<ul>
+<li>利用独立部署的session服务器（集群）统一管理Session，服务器每次读写Session时，都访问Session服务器。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-2-操作Session"><a href="#2-2-操作Session" class="headerlink" title="2.2 操作Session"></a>2.2 操作Session</h4><blockquote>
+<p>提示：</p>
+</blockquote>
+<ul>
+<li>对于Session的操作，分为<strong><code>设置Session</code></strong>和<strong><code>读取session</code></strong></li>
+</ul>
+<h5 id="2-2-1-设置Session"><a href="#2-2-1-设置Session" class="headerlink" title="2.2.1 设置Session"></a>2.2.1 设置Session</h5><p>可以通过<strong>HttpRequest()</strong>对象中的<strong><code>session</code></strong>属性来设置Session。</p>
+<pre><code class="python">request.session[&#39;key&#39;] = value
+class BooksView(View):
+    &quot;&quot;&quot;测试模板
+    http://127.0.0.1:8000/books/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        # 查询所有图书信息
+        books = BookInfo.objects.all()
+
+        # 构造上下文
+        context = {
+            &#39;books&#39;: books
+        }
+        # 使用上下文渲染&#39;book.html&#39;，并返回给客户端
+        response = render(request, &#39;books.html&#39;, context)
+
+        # 设置Cookie
+        response.set_cookie(&#39;name&#39;, &#39;itcast&#39;, max_age=3600)
+
+        # 设置Session
+        request.session[&#39;name&#39;] = &#39;itcast&#39;
+
+        # 响应结果，并写Cookie到浏览器
+        return response</code></pre>
+<h5 id="2-2-2-读取Session"><a href="#2-2-2-读取Session" class="headerlink" title="2.2.2 读取Session"></a>2.2.2 读取Session</h5><p>根据键读取值</p>
+<pre><code class="python">request.session.get(&#39;key&#39;, 默认值)
+class TestSessionView(View):
+    &quot;&quot;&quot;测试Session
+    http://127.0.0.1:8000/session/
+    &quot;&quot;&quot;
+
+    def get(self, request):
+        # 读取Session
+        name = request.session.get(&#39;name&#39;)
+        print(name)
+
+        return http.HttpResponse(&#39;测试Session&#39;)</code></pre>
+<h5 id="2-2-3-操作Session的其他方式"><a href="#2-2-3-操作Session的其他方式" class="headerlink" title="2.2.3 操作Session的其他方式"></a>2.2.3 操作Session的其他方式</h5><blockquote>
+<p>清除所有Session，在存储中删除值部分。</p>
+</blockquote>
+<pre><code class="python">request.session.clear()</code></pre>
+<blockquote>
+<p>清除session数据，在存储中删除session的整条数据。</p>
+</blockquote>
+<pre><code class="python">request.session.flush()</code></pre>
+<blockquote>
+<p>删除session中的指定键及值，在存储中只删除某个键及对应的值。</p>
+</blockquote>
+<pre><code class="python">del request.session[&#39;key&#39;]</code></pre>
+<blockquote>
+<p>设置session的有效期</p>
+</blockquote>
+<pre><code class="python">request.session.set_expiry(value)</code></pre>
+<ul>
+<li>如果value是一个整数，session将在value秒没有活动后过期。</li>
+<li>如果value为0，那么用户session的Cookie将在用户的浏览器关闭时过期。</li>
+<li>如果value为None，那么session有效期将采用系统默认值，默认为两周。<ul>
+<li>可以通过在settings.py中设置SESSION_COOKIE_AGE来设置全局默认值。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-3-Session数据存储的位置"><a href="#2-3-Session数据存储的位置" class="headerlink" title="2.3 Session数据存储的位置"></a>2.3 Session数据存储的位置</h4><h5 id="2-3-1-默认的存储位置"><a href="#2-3-1-默认的存储位置" class="headerlink" title="2.3.1 默认的存储位置"></a>2.3.1 默认的存储位置</h5><blockquote>
+<p>Session数据默认存储的位置是在<code>settings.py</code>的<code>DATABASES</code>配置项指定的SQL数据库中</p>
+</blockquote>
+<ul>
+<li><p>因为Session引擎默认的配置为：</p>
+<pre><code class="python">SESSION_ENGINE = &#39;django.contrib.sessions.backends.db&#39;</code></pre>
+</li>
+</ul>
+<h5 id="2-3-2-本地缓存"><a href="#2-3-2-本地缓存" class="headerlink" title="2.3.2 本地缓存"></a>2.3.2 本地缓存</h5><p>存储在本机内存中，如果丢失则不能找回，比数据库的方式读写更快。</p>
+<pre><code class="python">SESSION_ENGINE=&#39;django.contrib.sessions.backends.cache&#39;</code></pre>
+<h5 id="2-3-3-混合存储"><a href="#2-3-3-混合存储" class="headerlink" title="2.3.3 混合存储"></a>2.3.3 混合存储</h5><p>优先从本机内存中存取，如果没有则从数据库中存取。</p>
+<pre><code class="python">SESSION_ENGINE=&#39;django.contrib.sessions.backends.cached_db&#39;</code></pre>
+<h5 id="2-3-4-Redis"><a href="#2-3-4-Redis" class="headerlink" title="2.3.4 Redis"></a>2.3.4 Redis</h5><p>在Redis中保存Session，需要引入第三方扩展，我们可以使用<strong>django-redis</strong>来解决。</p>
+<p>1）安装扩展</p>
+<pre><code class="python">pip install django-redis</code></pre>
+<p>2）配置</p>
+<p>在settings.py文件中做如下设置</p>
+<pre><code class="python">CACHES = {
+    &quot;default&quot;: {
+        &quot;BACKEND&quot;: &quot;django_redis.cache.RedisCache&quot;,
+        &quot;LOCATION&quot;: &quot;redis://127.0.0.1:6379/1&quot;,
+        &quot;OPTIONS&quot;: {
+            &quot;CLIENT_CLASS&quot;: &quot;django_redis.client.DefaultClient&quot;,
+        }
+    }
+}
+SESSION_ENGINE = &quot;django.contrib.sessions.backends.cache&quot;
+SESSION_CACHE_ALIAS = &quot;default&quot;</code></pre>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/09/21/2020-09-22-Django%20%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80/">https://caijinbo.work/2020/09/21/2020-09-22-Django 框架基础/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/python/">python</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Django-框架基础"><span class="toc-number">1.</span> <span class="toc-text">Django 框架基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Django工程搭建"><span class="toc-number">1.1.</span> <span class="toc-text">一、Django工程搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-web本质和意义"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.web本质和意义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-web应用程序处理流程"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">1.1 web应用程序处理流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-Web应用程序的本质"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">1.2  Web应用程序的本质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-Web程序框架的意义"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">1.3  Web程序框架的意义</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Django框架介绍"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.Django框架介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-简介"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">2.1 简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-特点"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">2.2 特点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#MVC设计模式说明"><span class="toc-number">1.1.2.2.1.</span> <span class="toc-text">MVC设计模式说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Django的MVT设计模式说明"><span class="toc-number">1.1.2.2.2.</span> <span class="toc-text">Django的MVT设计模式说明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-虚拟环境"><span class="toc-number">1.1.3.</span> <span class="toc-text">3.虚拟环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-为什么要创建虚拟环境"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">3.1 为什么要创建虚拟环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-如何创建虚拟环境"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">3.2 如何创建虚拟环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-如何使用虚拟环境"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">3.3 如何使用虚拟环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-如何在虚拟环境中安装工具包"><span class="toc-number">1.1.3.4.</span> <span class="toc-text">3.4 如何在虚拟环境中安装工具包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-特别提示"><span class="toc-number">1.1.3.5.</span> <span class="toc-text">3.5 特别提示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Django工程创建"><span class="toc-number">1.1.4.</span> <span class="toc-text">4.Django工程创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-创建工程"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">4.1 创建工程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-工程目录说明"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">4.2 工程目录说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-运行开发服务器"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">4.3 运行开发服务器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Django工程配置"><span class="toc-number">1.1.5.</span> <span class="toc-text">5. Django工程配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-BASE-DIR"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">5.1 BASE_DIR</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-DEBUG"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">5.2 DEBUG</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-本地语言与时区"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">5.3 本地语言与时区</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Django子应用"><span class="toc-number">1.1.6.</span> <span class="toc-text">6. Django子应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-创建子应用"><span class="toc-number">1.1.6.1.</span> <span class="toc-text">6.1 创建子应用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-子应用目录说明"><span class="toc-number">1.1.6.2.</span> <span class="toc-text">6.2 子应用目录说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-注册子应用"><span class="toc-number">1.1.6.3.</span> <span class="toc-text">6.3 注册子应用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、视图（views）"><span class="toc-number">1.2.</span> <span class="toc-text">二、视图（views）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-函数视图"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.函数视图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-定义函数视图"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">1.1 定义函数视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-访问函数视图"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">1.2 访问函数视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-访问函数视图：需求实现-–-gt-path"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">1.3 访问函数视图：需求实现 –&gt; path()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#"><span class="toc-number">1.2.1.4.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-类视图"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.类视图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-函数视图问题说明-不推荐使用函数视图"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">2.1 函数视图问题说明(不推荐使用函数视图)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-定义类视图"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">2.2 定义类视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-访问类视图"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">2.3 访问类视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-访问类视图：需求实现-–-gt-path"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">2.4 访问类视图：需求实现 –&gt; path()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-as-view-底层原理（仅做了解）"><span class="toc-number">1.2.2.5.</span> <span class="toc-text">2.5 as_view()底层原理（仅做了解）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-类视图添加扩展类"><span class="toc-number">1.2.2.6.</span> <span class="toc-text">2.6 类视图添加扩展类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-路由"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.路由</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-定义用户登录类视图"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">3.1 定义用户登录类视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-re-path-定义路由"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">3.2 re_path()定义路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-url-定义路由"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">3.3 url()定义路由</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-路由方法对比"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">3.4 路由方法对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-路由解析顺序"><span class="toc-number">1.2.3.5.</span> <span class="toc-text">3.5 路由解析顺序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-请求HttpRequest"><span class="toc-number">1.2.4.</span> <span class="toc-text">4.请求HttpRequest</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-提取查询字符串数据"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">4.1 提取查询字符串数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-提取请求体数据"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">4.2 提取请求体数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-1-表单类型请求体数据-Form-Data"><span class="toc-number">1.2.4.2.1.</span> <span class="toc-text">4.2.1 表单类型请求体数据(Form Data)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-2-非表单类型请求体数据-Non-Form-Data-：JSON"><span class="toc-number">1.2.4.2.2.</span> <span class="toc-text">4.2.2 非表单类型请求体数据(Non-Form Data)：JSON</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-URL路径参数：提取URL路径中的特定部分数据"><span class="toc-number">1.2.4.3.</span> <span class="toc-text">4.3 URL路径参数：提取URL路径中的特定部分数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-1-path-提取路径参数"><span class="toc-number">1.2.4.3.1.</span> <span class="toc-text">4.3.1 path()提取路径参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-2-re-path-提取路径参数"><span class="toc-number">1.2.4.3.2.</span> <span class="toc-text">4.3.2 re_path()提取路径参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-3-path-和re-path-如何选择？"><span class="toc-number">1.2.4.3.3.</span> <span class="toc-text">4.3.3 path()和re_path()如何选择？</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-请求头"><span class="toc-number">1.2.4.4.</span> <span class="toc-text">4.4 请求头</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-其他常用HttpRequest对象属性"><span class="toc-number">1.2.4.5.</span> <span class="toc-text">4.5 其他常用HttpRequest对象属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-响应HttpResponse"><span class="toc-number">1.2.5.</span> <span class="toc-text">5.响应HttpResponse</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-HttpResponse"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">5.1 HttpResponse</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-JsonResponse：响应JSON"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">5.2 JsonResponse：响应JSON</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-redirect-：重定向"><span class="toc-number">1.2.5.3.</span> <span class="toc-text">5.3 redirect()：重定向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-redirect-重定向-搭配-反向解析"><span class="toc-number">1.2.5.4.</span> <span class="toc-text">5.4 redirect()重定向 搭配 反向解析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-中间件Middleware"><span class="toc-number">1.2.6.</span> <span class="toc-text">6.中间件Middleware</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-中间件介绍"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">6.1 中间件介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-中间件方法"><span class="toc-number">1.2.6.2.</span> <span class="toc-text">6.2 中间件方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-自定义中间件"><span class="toc-number">1.2.6.3.</span> <span class="toc-text">6.3 自定义中间件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-4-中间件执行顺序"><span class="toc-number">1.2.6.4.</span> <span class="toc-text">6.4 中间件执行顺序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、模型（models）"><span class="toc-number">1.3.</span> <span class="toc-text">三、模型（models）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-准备数据库"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.准备数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-创建MySQL数据库"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">1.1 创建MySQL数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-配置MySQL数据库"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">1.2 配置MySQL数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-安装mysqlclient：MySQL数据库的客户端驱动"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">1.3 安装mysqlclient：MySQL数据库的客户端驱动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-解决mysqlclient安装出错的问题"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">1.4 解决mysqlclient安装出错的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-模型类迁移建表"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.模型类迁移建表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-ORM框架"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">2.1 ORM框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-定义模型类"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">2.2 定义模型类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-模型类说明"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">2.3 模型类说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-迁移模型类建表"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">2.4 迁移模型类建表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-添加测试数据"><span class="toc-number">1.3.2.5.</span> <span class="toc-text">2.5 添加测试数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-增删改查"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.增删改查</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-shell工具-用于在终端交互环境测试代码的"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">3.1 shell工具 (用于在终端交互环境测试代码的)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-新增"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">3.2 新增</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-修改"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">3.3 修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-删除"><span class="toc-number">1.3.3.4.</span> <span class="toc-text">3.4 删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-查询"><span class="toc-number">1.3.3.5.</span> <span class="toc-text">3.5 查询</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-1-基本查询"><span class="toc-number">1.3.3.5.1.</span> <span class="toc-text">3.5.1 基本查询</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-2-过滤查询"><span class="toc-number">1.3.3.5.2.</span> <span class="toc-text">3.5.2 过滤查询</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#F对象"><span class="toc-number">1.3.3.5.3.</span> <span class="toc-text">F对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Q对象"><span class="toc-number">1.3.3.5.4.</span> <span class="toc-text">Q对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#聚合函数"><span class="toc-number">1.3.3.5.5.</span> <span class="toc-text">聚合函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-3-排序"><span class="toc-number">1.3.3.5.6.</span> <span class="toc-text">3.5.3 排序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-4-关联查询"><span class="toc-number">1.3.3.5.7.</span> <span class="toc-text">3.5.4 关联查询</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-查询集QuerySet"><span class="toc-number">1.3.4.</span> <span class="toc-text">4.查询集QuerySet</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-概念"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">4.1 概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-两大特性"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">4.2 两大特性</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1）惰性执行"><span class="toc-number">1.3.4.2.1.</span> <span class="toc-text">1）惰性执行</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2）缓存"><span class="toc-number">1.3.4.2.2.</span> <span class="toc-text">2）缓存</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、模板（templates）"><span class="toc-number">1.4.</span> <span class="toc-text">四、模板（templates）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-配置模板"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 配置模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-定义和响应模板"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 定义和响应模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-测试模板渲染"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. 测试模板渲染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-数据库数据渲染模板"><span class="toc-number">1.4.4.</span> <span class="toc-text">4. 数据库数据渲染模板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、cookie和session"><span class="toc-number">1.5.</span> <span class="toc-text">五、cookie和session</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-cookie"><span class="toc-number">1.5.1.</span> <span class="toc-text">1.cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-Cookie的介绍"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">1.1 Cookie的介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-操作Cookie"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">2.2 操作Cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-1-设置Cookie"><span class="toc-number">1.5.1.2.1.</span> <span class="toc-text">2.2.1 设置Cookie</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-读取Cookie"><span class="toc-number">1.5.1.2.2.</span> <span class="toc-text">2.2.2 读取Cookie</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-session"><span class="toc-number">1.5.2.</span> <span class="toc-text">2.session</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Session的介绍"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">2.1.Session的介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-操作Session"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">2.2 操作Session</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-1-设置Session"><span class="toc-number">1.5.2.2.1.</span> <span class="toc-text">2.2.1 设置Session</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-读取Session"><span class="toc-number">1.5.2.2.2.</span> <span class="toc-text">2.2.2 读取Session</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-3-操作Session的其他方式"><span class="toc-number">1.5.2.2.3.</span> <span class="toc-text">2.2.3 操作Session的其他方式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-Session数据存储的位置"><span class="toc-number">1.5.2.3.</span> <span class="toc-text">2.3 Session数据存储的位置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-1-默认的存储位置"><span class="toc-number">1.5.2.3.1.</span> <span class="toc-text">2.3.1 默认的存储位置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2-本地缓存"><span class="toc-number">1.5.2.3.2.</span> <span class="toc-text">2.3.2 本地缓存</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-3-混合存储"><span class="toc-number">1.5.2.3.3.</span> <span class="toc-text">2.3.3 混合存储</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-4-Redis"><span class="toc-number">1.5.2.3.4.</span> <span class="toc-text">2.3.4 Redis</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/10/09/2020-10-10-docker%E4%BD%BF%E7%94%A8%E4%B8%8E%E9%85%8D%E7%BD%AE/">&lt; docker使用与配置</a><a class="next" href="/2020/09/21/2020-09-22-redis/">redis &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

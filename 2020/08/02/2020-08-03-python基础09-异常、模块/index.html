@@ -1,0 +1,438 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>python基础09-异常、模块 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">python基础09-异常、模块</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/08/02/2020-08-03-python%E5%9F%BA%E7%A1%8009-%E5%BC%82%E5%B8%B8%E3%80%81%E6%A8%A1%E5%9D%97/">2020-08-02</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/python/">python</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h1 id="异常、模块"><a href="#异常、模块" class="headerlink" title="异常、模块"></a>异常、模块</h1><h2 id="一、捕获异常"><a href="#一、捕获异常" class="headerlink" title="一、捕获异常"></a>一、捕获异常</h2><h3 id="1-处理异常目的"><a href="#1-处理异常目的" class="headerlink" title="1. 处理异常目的"></a>1. 处理异常目的</h3><a id="more"></a>
+
+<ul>
+<li>只要解释器检查到异常错误，默认执行的动作是终止程序</li>
+<li>处理异常目的：防止程序退出，保证程序正常执行</li>
+</ul>
+<h3 id="2-捕获异常"><a href="#2-捕获异常" class="headerlink" title="2. 捕获异常"></a>2. 捕获异常</h3><h4 id="2-1-try…except…"><a href="#2-1-try…except…" class="headerlink" title="2.1 try…except…"></a>2.1 try…except…</h4><p>语法格式：</p>
+<pre><code class="python">try:
+    可能发生异常的代码
+except:
+      # 处理异常的代码
+    1. 如果try里面发生异常
+    2. 自动跳转到except里面</code></pre>
+<ul>
+<li>把可能出现问题的代码，放在try中</li>
+<li>把处理异常的代码，放在except中</li>
+<li>except后面没有指定异常类型，可以捕获任意类型的异常</li>
+</ul>
+<p>示例代码：</p>
+<pre><code class="python">try:
+    print(&#39;=&#39; * 20)
+    open(&#39;xxx.txt&#39;, &#39;r&#39;)  # 发生了异常，自动跳转到except里面
+    print(&#39;=&#39; * 20)
+except:
+    print(&#39;try里面发生了异常&#39;)</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">====================
+try里面发生了异常</code></pre>
+<h4 id="2-2-捕获指定异常类型"><a href="#2-2-捕获指定异常类型" class="headerlink" title="2.2 捕获指定异常类型"></a>2.2 捕获指定异常类型</h4><p>语法格式：</p>
+<pre><code class="python">try:
+    可能发生异常的代码
+except 异常类型:
+      处理异常的代码</code></pre>
+<p>示例代码：</p>
+<pre><code class="python">try:
+    print(&#39;=&#39; * 20)
+    open(&#39;xxx.txt&#39;, &#39;r&#39;)  # 发生了异常，自动跳转到except里面
+    print(&#39;=&#39; * 20)
+except FileNotFoundError:
+    print(&#39;try里面发生了异常&#39;)</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">====================
+try里面发生了异常</code></pre>
+<h4 id="2-3-except捕获多个异常"><a href="#2-3-except捕获多个异常" class="headerlink" title="2.3 except捕获多个异常"></a>2.3 except捕获多个异常</h4><p>语法格式：</p>
+<pre><code class="python">try:
+    可能发生异常的代码
+except (异常类型1, 异常类型2):
+      处理异常的代码</code></pre>
+<p>示例代码：</p>
+<pre><code class="python">try:
+    print(&#39;=&#39; * 20)
+    # open(&#39;xxx.txt&#39;, &#39;r&#39;)
+    print(&#39;=&#39; * 20)
+
+    print(num)
+    print(&#39;=&#39; * 20)
+except (FileNotFoundError, NameError):
+    print(&#39;try里面发生了异常&#39;)</code></pre>
+<h4 id="2-4-获取异常的信息描述"><a href="#2-4-获取异常的信息描述" class="headerlink" title="2.4 获取异常的信息描述"></a>2.4 获取异常的信息描述</h4><p>语法格式：</p>
+<pre><code class="python">&quot;&quot;&quot;
+try:
+    可能发生异常的代码
+except 异常类型 as 异常对象名:
+    print(异常对象名) 即可获取异常的信息描述
+&quot;&quot;&quot;</code></pre>
+<p>示例代码：</p>
+<pre><code class="python">try:
+    print(&#39;=&#39; * 20)
+    open(&#39;xxx.txt&#39;, &#39;r&#39;)
+    print(&#39;=&#39; * 20)
+except FileNotFoundError as e:
+    print(&#39;异常信息为：&#39;, e)</code></pre>
+<p>运行结果：</p>
+<pre><code class="shell">====================
+异常信息为： [Errno 2] No such file or directory: &#39;xxx.txt&#39;</code></pre>
+<h4 id="2-5-捕获任意类型的异常"><a href="#2-5-捕获任意类型的异常" class="headerlink" title="2.5 捕获任意类型的异常"></a>2.5 捕获任意类型的异常</h4><p>语法格式：</p>
+<pre><code class="python">&quot;&quot;&quot;
+try:
+    可能发生异常的代码
+except Exception as 异常对象名:
+    Exception 为异常类的父类
+&quot;&quot;&quot;</code></pre>
+<p>示例代码：</p>
+<pre><code class="python">try:
+    print(&#39;=&#39; * 20)
+    open(&#39;xxx.txt&#39;, &#39;r&#39;)
+    print(&#39;=&#39; * 20)
+# except Exception: 捕获任意异常的类型
+except Exception as e:
+    print(&#39;异常信息为：&#39;, e)</code></pre>
+<h4 id="2-6-异常中else"><a href="#2-6-异常中else" class="headerlink" title="2.6 异常中else"></a>2.6 异常中else</h4><ul>
+<li>在 if 中，它的作用是当条件不满足时执行的实行</li>
+<li>同样在 try…except… 中也是如此，即如果没有捕获到异常，那么就执行else中的事情</li>
+</ul>
+<p>语法格式：</p>
+<pre><code class="python">&quot;&quot;&quot;
+try:
+    可能发生异常的代码
+except:
+    处理异常的代码
+else:
+    没有发生异常，except不满足执行else
+&quot;&quot;&quot;</code></pre>
+<p>示例代码：</p>
+<pre><code class="python">try:
+    num = 100
+   print(num)
+except NameError as errorMsg:
+    print(&#39;产生错误了:%s&#39;%errorMsg)
+else:
+    print(&#39;没有捕获到异常，真高兴&#39;)</code></pre>
+<p>运行结果：</p>
+<pre><code>====================
+666
+====================
+没有发生异常，很开心</code></pre><h4 id="2-7-try…finally…"><a href="#2-7-try…finally…" class="headerlink" title="2.7 try…finally…"></a>2.7 try…finally…</h4><h5 id="2-7-1-语法格式"><a href="#2-7-1-语法格式" class="headerlink" title="2.7.1 语法格式"></a>2.7.1 语法格式</h5><p>语法格式：</p>
+<pre><code class="python">&quot;&quot;&quot;
+try:
+    可能发生异常的代码
+except:
+    处理异常的代码
+else:
+    没有发生异常，except不满足执行else
+finally:
+    不管有没有异常，最终都要执行
+&quot;&quot;&quot;</code></pre>
+<p>示例代码：</p>
+<pre><code class="python">try:
+    print(&#39;=&#39; * 20)
+    # num = 666
+    print(num)
+    print(&#39;=&#39; * 20)
+except Exception as e:
+    print(&#39;异常信息为：&#39;, e)
+else:
+    print(&#39;没有发生异常，很开心&#39;)
+finally:
+    print(&#39;不管有没有异常，最终都要执行&#39;)</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">====================
+异常信息为： name &#39;num&#39; is not defined
+不管有没有异常，最终都要执行</code></pre>
+<h5 id="2-7-2-应用场景"><a href="#2-7-2-应用场景" class="headerlink" title="2.7.2 应用场景"></a>2.7.2 应用场景</h5><ul>
+<li>对于文件操作，在文件打开的前提下，后面文件的其它操作，不管有没有发生异常，最终都应该关闭文件</li>
+</ul>
+<pre><code class="python">f = open(&#39;yyy.txt&#39;, &#39;w&#39;)  # 前提是，成功打开文件
+
+try:
+    # ret = f.read()
+    # print(ret)
+    f.write(&#39;hello mike&#39;)
+    print(&#39;=&#39;*20)
+except Exception as e:
+    print(&#39;产出异常，异常信息为：&#39;, e)
+else:
+    print(&#39;没有产生异常&#39;)
+finally:
+    print(&#39;不管有没有异常，都要关闭文件&#39;)
+    f.close()</code></pre>
+<h2 id="二、异常传递"><a href="#二、异常传递" class="headerlink" title="二、异常传递"></a>二、异常传递</h2><h3 id="1-异常传递特点"><a href="#1-异常传递特点" class="headerlink" title="1. 异常传递特点"></a>1. 异常传递特点</h3><ul>
+<li>如果异常在内部产生，如果内部不捕获处理，这个异常会向外部传递</li>
+</ul>
+<h3 id="2-异常嵌套"><a href="#2-异常嵌套" class="headerlink" title="2. 异常嵌套"></a>2. 异常嵌套</h3><ul>
+<li>try嵌套时，如果内层try没有捕获处理该异常，就会向外层try进行传递</li>
+</ul>
+<pre><code class="python">try:
+    f = open(&#39;yyy.txt&#39;, &#39;w&#39;)
+
+    # 内部语句执行完，才向外部传递异常
+    try:
+        # 前面只写方式打开文件，不能读文件，产生异常
+        # 内部没有捕获处理异常
+        ret = f.read()
+        print(ret)
+    finally:
+        print(&#39;关闭文件&#39;)
+        f.close()
+
+except Exception as e:
+    print(&#39;外层捕获异常：&#39;, e)</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">关闭文件
+外层捕获异常： not readable</code></pre>
+<h3 id="3-函数嵌套"><a href="#3-函数嵌套" class="headerlink" title="3. 函数嵌套"></a>3. 函数嵌套</h3><ul>
+<li>函数嵌套时，如果内层函数没有捕获处理该异常，就会向外层函数进行传递</li>
+</ul>
+<pre><code class="python"># 定义1个函数，函数内部发生了异常 test01()，没有捕获处理
+def test01():
+    print(&#39;开始执行test0111111&#39;)
+    print(num)
+    print(&#39;结束执行test0111111&#39;)
+
+
+# 定义另外一个函数 test02, 在函数内部调用test01
+def test02():
+    print(&#39;开始执行test02222222&#39;)
+    test01()
+    print(&#39;结束执行test02222222&#39;)
+
+
+# 定义一个test03函数，函数内部调用test01，但是对test01做异常处理
+def test03():
+    print(&#39;开始执行test0333333&#39;)
+
+    try:
+        test01()
+    except Exception as e:
+        print(&#39;外层函数捕获异常：&#39;, e)
+
+    print(&#39;结束执行test0333333&#39;)
+
+
+# 调用test02()
+# test02()
+test03()</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">开始执行test0333333
+开始执行test0111111
+外层函数捕获异常： name &#39;num&#39; is not defined
+结束执行test0333333</code></pre>
+<h2 id="三、抛出自定义的异常"><a href="#三、抛出自定义的异常" class="headerlink" title="三、抛出自定义的异常"></a>三、抛出自定义的异常</h2><h3 id="1-抛出自定义的异常"><a href="#1-抛出自定义的异常" class="headerlink" title="1. 抛出自定义的异常"></a>1. 抛出自定义的异常</h3><ul>
+<li>用户可用 raise语句 来人为抛出一个异常。</li>
+<li>异常/错误对象必须有一个名字，且它们应是Exception类的子类</li>
+</ul>
+<p>语法格式：</p>
+<pre><code class="python"># 1. 自定义异常类
+class 自定义异常类名字(Exception):
+    1.1 重新写__init__(self, 形参1， 形参2，……)
+        # 建议调用父类的init，先做父类的初始化工作
+        super().__init__()
+        咱们自己写的代码
+
+    1.2 重新写__str__()，返回提示信息
+
+# 2. 抛出异常类
+raise 自定义异常类名字(实参1， 实参2，……)</code></pre>
+<p>示例代码：</p>
+<pre><code class="python">&quot;&quot;&quot;
+需求：
+1. 自定义异常类，电话号码长度异常类
+    1.1 __init__，添加2个属性，用户电话的长度，要求的长度
+    1.2 __str__ 返回提示描述意思，如：用户电话长度为：xx位, 这边要求长度为：11位
+
+2. 只要用户输入的手机号码不为11位，抛出自定义异常类
+&quot;&quot;&quot;
+
+
+# 1. 自定义异常类，电话号码长度异常类
+class NumberError(Exception):
+    &quot;&quot;&quot;自定义异常类，电话号码长度异常类&quot;&quot;&quot;
+
+    # 添加2个属性，用户电话的长度，要求的长度
+    def __init__(self, _user_len, _match_len=11):
+        super().__init__()  # 调用父类的init
+        self.user_len = _user_len  # 用户电话的长度
+        self.match_len = _match_len  # 要求号码的长度
+
+    def __str__(self):
+        return f&#39;用户电话长度为：{self.user_len} 位, 这边要求的长度为：{self.match_len} 位&#39;
+
+
+# 2. 只要用户输入的手机号码不为11位，抛出自定义异常类
+try:
+    num_str = input(&#39;请输入你的号码：&#39;)
+    if num_str != 11:
+        raise NumberError(len(num_str))  # 抛出自定义异常类
+except NumberError as e:  # e 为 NumberError(len(num_str))实例对象 的别名
+    print(&#39;异常信息为：&#39;, e)</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">请输入你的号码：11232
+异常信息为： 用户电话长度为：5 位, 这边要求的长度为：11 位</code></pre>
+<h2 id="四、模块"><a href="#四、模块" class="headerlink" title="四、模块"></a>四、模块</h2><h3 id="1-模块介绍"><a href="#1-模块介绍" class="headerlink" title="1. 模块介绍"></a>1. 模块介绍</h3><ul>
+<li>模块是一个由Python代码组成的文件，就是一个以<code>.py</code>结尾的文件。</li>
+<li>模块包含函数、类和变量，还可以包括可运行的代码。</li>
+<li>模块的主要作用：<ul>
+<li>提高了代码的可维护性</li>
+<li>一个模块编写完毕之后，其他模块直接调用，不用再从零开始写代码了，节约了工作时间</li>
+<li>避免名字冲突</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-模块的导入"><a href="#2-模块的导入" class="headerlink" title="2. 模块的导入"></a>2. 模块的导入</h3><h4 id="2-1-import"><a href="#2-1-import" class="headerlink" title="2.1 import"></a>2.1 import</h4><ul>
+<li>import导入模块，把整个模块都加载进来</li>
+</ul>
+<p>语法格式：</p>
+<pre><code class="python">&quot;&quot;&quot;
+导入格式：     import 模块名
+使用格式：     模块名.函数  模块名.类名  模块名.变量名
+&quot;&quot;&quot;</code></pre>
+<p>示例代码：</p>
+<pre><code class="python"># 导入模块
+import random
+
+# 模块名.函数
+num = random.randint(1, 3)
+print(num)
+
+# 模块名.类名
+# 创建对象
+ran = random.Random()
+print(type(ran))
+
+# 模块名.变量名
+print(random.TWOPI)</code></pre>
+<h4 id="2-2-from…import导入模块中需要的内容"><a href="#2-2-from…import导入模块中需要的内容" class="headerlink" title="2.2 from…import导入模块中需要的内容"></a>2.2 from…import导入模块中需要的内容</h4><ul>
+<li>from…import可以只导入模块中需要使用的内容</li>
+</ul>
+<p>语法格式：</p>
+<pre><code class="python">&quot;&quot;&quot;
+导入格式：     from 模块名 import 需使用的函数、类、变量
+使用格式：     函数、类、变量   无需通过模块名引用
+&quot;&quot;&quot;</code></pre>
+<p>示例代码：</p>
+<pre><code class="python">from random import randint, Random, TWOPI
+
+# 函数
+num = randint(1, 3)
+print(num)
+
+# 类
+ran = Random()
+print(type(ran))
+
+# 变量
+print(TWOPI)</code></pre>
+<h4 id="2-3-from…import导入模块中所有的内容"><a href="#2-3-from…import导入模块中所有的内容" class="headerlink" title="2.3 from…import导入模块中所有的内容"></a>2.3 from…import导入模块中所有的内容</h4><p>语法格式：</p>
+<pre><code class="python">&quot;&quot;&quot;
+导入格式：     from 模块名 import *
+使用格式：     函数、类、变量   无需通过模块名引用
+&quot;&quot;&quot;</code></pre>
+<p>示例代码：</p>
+<pre><code class="python">from random import *
+
+# 函数
+num = randint(1, 3)
+print(num)
+
+# 类
+ran = Random()
+print(type(ran))</code></pre>
+<h4 id="2-4-import…as…给导入的模块取别名"><a href="#2-4-import…as…给导入的模块取别名" class="headerlink" title="2.4 import…as…给导入的模块取别名"></a>2.4 import…as…给导入的模块取别名</h4><ul>
+<li>把复杂名字改简单些</li>
+<li>把已经同名的名字改一个不同名的名字</li>
+</ul>
+<p>语法格式：</p>
+<pre><code class="python">&quot;&quot;&quot;
+模块起别名
+导入格式：import 模块 as 模块别名
+使用格式：模块别名.工具(工具指函数、类、变量)
+
+模块工具起别名
+导入格式：from 模块 import 工具 as 工具别名
+使用格式：工具别名        无需通过模块名引用
+&quot;&quot;&quot;</code></pre>
+<p>示例代码：</p>
+<pre><code class="python"># 将模块random取别名为r
+import random as r
+
+# 模块别名.方法
+num = r.randint(1, 3)
+print(num)
+
+# 模块工具randint取别名为ri
+from random import randint as ri
+
+num = ri(1, 3)
+print(num)</code></pre>
+<h4 id="2-5-模块搜索路径"><a href="#2-5-模块搜索路径" class="headerlink" title="2.5 模块搜索路径"></a>2.5 模块搜索路径</h4><p>当你导入一个模块，Python解析器对模块位置的搜索顺序是：</p>
+<ol>
+<li>当前目录</li>
+<li>如果不在当前目录，Python则搜索系统路劲</li>
+<li>模块搜索路径存储在system模块的sys.path变量中。</li>
+</ol>
+<p>示例代码：</p>
+<pre><code class="python">import sys
+
+# 模块搜索路径存储在system模块的sys.path变量中
+print(sys.path)</code></pre>
+<h2 id="五、模块制作"><a href="#五、模块制作" class="headerlink" title="五、模块制作"></a>五、模块制作</h2><h3 id="1-定义自己的模块"><a href="#1-定义自己的模块" class="headerlink" title="1. 定义自己的模块"></a>1. 定义自己的模块</h3><p>在Python中，每个Python文件都可以作为一个模块，模块的名字就是文件的名字。比如有这样一个文件<code>module.py</code>，在<code>module.py</code>中定义了所需的函数：</p>
+<pre><code class="python">def my_add(a, b):
+    &quot;&quot;&quot;返回2个数相加结果&quot;&quot;&quot;
+    return a+b
+
+
+def my_sub(a, b):
+    &quot;&quot;&quot;返回2个数相减结果&quot;&quot;&quot;
+    return a-b</code></pre>
+<h3 id="2-调用自己定义的模块"><a href="#2-调用自己定义的模块" class="headerlink" title="2. 调用自己定义的模块"></a>2. 调用自己定义的模块</h3><pre><code class="python">import module   # 导入模块
+
+# 调用模块中的函数
+ret = module.my_add(1, 1)
+print(ret)
+
+ret = module.my_sub(10, 20)
+print(ret)</code></pre>
+<h3 id="3-测试模块"><a href="#3-测试模块" class="headerlink" title="3. 测试模块"></a>3. 测试模块</h3><h4 id="3-1-测试模块"><a href="#3-1-测试模块" class="headerlink" title="3.1 测试模块"></a>3.1 测试模块</h4><p>在实际开中，当一个开发人员编写完一个模块后，为了让模块能够在项目中达到想要的效果，这个开发人员会自行在模块文件中添加一些测试信息，例如：</p>
+<p>module.py:</p>
+<pre><code>def my_add(a, b):
+    &quot;&quot;&quot;返回2个数相加结果&quot;&quot;&quot;
+    return a+b
+
+
+def my_sub(a, b):
+    &quot;&quot;&quot;返回2个数相减结果&quot;&quot;&quot;
+    return a-b
+
+
+ret = my_add(2, 2)
+print(&#39;模块中测试代码：my_add(2, 2) = &#39;, ret)
+
+ret = my_sub(10, 2)
+print(&#39;模块中测试代码：my_sub(10, 2) = &#39;, ret)</code></pre><p>导入模块文件，默认执行模块文件的内容：</p>
+<pre><code class="python">import module </code></pre>
+<h4 id="3-2-模块中的-name"><a href="#3-2-模块中的-name" class="headerlink" title="3.2 模块中的__name__"></a>3.2 模块中的<code>__name__</code></h4><ul>
+<li><p>直接运行此文件，<code>__name__</code>的结果为<code>__main__</code></p>
+</li>
+<li><p>此文件被当做模块文件导入时，<code>__name__</code>的结果不为<code>__main__</code></p>
+</li>
+<li><p>如果不想导包把模块的测试代码也运行，把模块的测试代码放在<code>if __name__ == &#39;__main__&#39;:</code>条件语句里面</p>
+</li>
+</ul>
+<h4 id="4-模块中的-all"><a href="#4-模块中的-all" class="headerlink" title="4. 模块中的__all__"></a>4. 模块中的<code>__all__</code></h4><ul>
+<li><p>模块中<code>__all__</code>变量，<strong>只对</strong><code>from xxx import *</code>这种导入方式有效</p>
+</li>
+<li><p>模块中<code>__all__</code>变量包含的元素，才能会被<code>from xxx import *</code>导入</p>
+</li>
+<li><p><code>__all__</code>格式：</p>
+<pre><code class="python"> __all__ = [&#39;变量名&#39;, &#39;类名&#39;, &#39;函数名&#39;, ……]</code></pre>
+</li>
+</ul>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/08/02/2020-08-03-python%E5%9F%BA%E7%A1%8009-%E5%BC%82%E5%B8%B8%E3%80%81%E6%A8%A1%E5%9D%97/">https://caijinbo.work/2020/08/02/2020-08-03-python基础09-异常、模块/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/python/">python</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#异常、模块"><span class="toc-number">1.</span> <span class="toc-text">异常、模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、捕获异常"><span class="toc-number">1.1.</span> <span class="toc-text">一、捕获异常</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-处理异常目的"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 处理异常目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-捕获异常"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 捕获异常</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-try…except…"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">2.1 try…except…</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-捕获指定异常类型"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">2.2 捕获指定异常类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-except捕获多个异常"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">2.3 except捕获多个异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-获取异常的信息描述"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">2.4 获取异常的信息描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-捕获任意类型的异常"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">2.5 捕获任意类型的异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-异常中else"><span class="toc-number">1.1.2.6.</span> <span class="toc-text">2.6 异常中else</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-try…finally…"><span class="toc-number">1.1.2.7.</span> <span class="toc-text">2.7 try…finally…</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-7-1-语法格式"><span class="toc-number">1.1.2.7.1.</span> <span class="toc-text">2.7.1 语法格式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-7-2-应用场景"><span class="toc-number">1.1.2.7.2.</span> <span class="toc-text">2.7.2 应用场景</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、异常传递"><span class="toc-number">1.2.</span> <span class="toc-text">二、异常传递</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-异常传递特点"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 异常传递特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-异常嵌套"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 异常嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-函数嵌套"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 函数嵌套</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、抛出自定义的异常"><span class="toc-number">1.3.</span> <span class="toc-text">三、抛出自定义的异常</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-抛出自定义的异常"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 抛出自定义的异常</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、模块"><span class="toc-number">1.4.</span> <span class="toc-text">四、模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-模块介绍"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 模块介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-模块的导入"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 模块的导入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-import"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">2.1 import</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-from…import导入模块中需要的内容"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">2.2 from…import导入模块中需要的内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-from…import导入模块中所有的内容"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">2.3 from…import导入模块中所有的内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-import…as…给导入的模块取别名"><span class="toc-number">1.4.2.4.</span> <span class="toc-text">2.4 import…as…给导入的模块取别名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-模块搜索路径"><span class="toc-number">1.4.2.5.</span> <span class="toc-text">2.5 模块搜索路径</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、模块制作"><span class="toc-number">1.5.</span> <span class="toc-text">五、模块制作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-定义自己的模块"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 定义自己的模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-调用自己定义的模块"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. 调用自己定义的模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-测试模块"><span class="toc-number">1.5.3.</span> <span class="toc-text">3. 测试模块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-测试模块"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">3.1 测试模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-模块中的-name"><span class="toc-number">1.5.3.2.</span> <span class="toc-text">3.2 模块中的__name__</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-模块中的-all"><span class="toc-number">1.5.3.3.</span> <span class="toc-text">4. 模块中的__all__</span></a></li></ol></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/08/02/2020-08-03-python%E5%9F%BA%E7%A1%8010-%E5%8C%85%E3%80%81%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E3%80%81%E6%A1%88%E4%BE%8B/">&lt; python基础10-包、代码规范、案例</a><a class="next" href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8005-%E5%87%BD%E6%95%B0%E5%BC%BA%E5%8C%96%E5%92%8C%E8%BF%9B%E9%98%B6/">python基础05-函数强化和进阶 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

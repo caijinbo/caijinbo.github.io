@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>docker使用与配置 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">docker使用与配置</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/10/09/2020-10-10-docker%E4%BD%BF%E7%94%A8%E4%B8%8E%E9%85%8D%E7%BD%AE/">2020-10-09</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/linux/">linux</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h1 id="docker基础知识"><a href="#docker基础知识" class="headerlink" title="docker基础知识"></a>docker基础知识</h1><h1 id="第一章docker基础知识"><a href="#第一章docker基础知识" class="headerlink" title="第一章docker基础知识"></a>第一章docker基础知识</h1><h2 id="一、docker简介"><a href="#一、docker简介" class="headerlink" title="一、docker简介"></a>一、docker简介</h2><p>Docker是一个开源的<strong>容器引擎</strong>，它基于LXC容器技术，使用Go语言开发。</p>
+<a id="more"></a>
+
+<p>源代码托管在Github上，并遵从Apache2.0协议。</p>
+<p>Docker采用<strong>C/S架构</strong>，其可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。</p>
+<p>简单来说：<strong>Docker就是一种快速解决业务稳定环境的一种技术手段(快速搭建环境)。</strong></p>
+<p>一个完整的Docker有以下几个部分组成：</p>
+<ol>
+<li>DockerClient客户端</li>
+<li>Docker Daemon守护进程</li>
+<li>Docker Image镜像备注：有的系统会无效，自行上网搜索解决方法</li>
+<li>DockerContainer容器</li>
+</ol>
+<h2 id="二、原理解析"><a href="#二、原理解析" class="headerlink" title="二、原理解析"></a>二、原理解析</h2><p>Docker Engine是一个<strong>C/S架构</strong>的应用程序，主要包含下面几个组件：</p>
+<blockquote>
+<p>dockerd进程：常驻后台进程Dockerd</p>
+<p>REST API Server：用来和 Dockerd 交互的 </p>
+<p>命令行CLI接口：和 REST API 进行交互（常用docker 命令）</p>
+</blockquote>
+<p><strong>分工合作</strong></p>
+<p>Docker 使用 C/S 体系的架构</p>
+<p>Docker 客户端与 Docker 守护进程通信</p>
+<p>Docker 守护进程负责构建，运行和分发 Docker 容器。</p>
+<p>Docker 客户端和守护进程可以在同一个系统上运行，也可以将 Docker 客户端连接到远程 Docker 守护进程。</p>
+<p>Docker 客户端和守护进程使用 REST API 通过UNIX套接字或网络接口进行通信。</p>
+<h2 id="三、docker安装"><a href="#三、docker安装" class="headerlink" title="三、docker安装"></a>三、docker安装</h2><p><strong>注意：如果安装方法无法就上网查</strong></p>
+<p>ubuntu：<code>sudo apt install docker-ce -y</code></p>
+<p>如果安装不成功：</p>
+<p><code>curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</code></p>
+<p><code>sudo add-apt-repository &quot;deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu \ $(lsb_release -cs) stable&quot;</code></p>
+<p><code>sudo apt install docker-ce -y</code></p>
+<p>centos:  <code>yum install docker-ce docker-ce-cli containerd.io</code></p>
+<p>启动：<code>systemctl start docker</code></p>
+<p>重启：<code>systemctl restart docker</code></p>
+<p>停止：<code>systemctl stop docker</code></p>
+<p>开机自动启动：<code>systemctl enable docker</code></p>
+<p>关闭自动启动：<code>systemctl disable docker</code></p>
+<p>修改docker镜像源：</p>
+<p><code>echo &#39;{&quot;registry-mirrors&quot;: [&quot;http://hub-mirror.c.163.com&quot;]}&#39; &gt; /etc/docker/daemon.json</code></p>
+<p>配置docker免sudo：</p>
+<p><code>sudo usermod -aG docker $USER</code></p>
+<p><code>sudo systemctl restart docker</code></p>
+<p><strong>备注：有的系统会无效，自行上网搜索解决方法</strong></p>
+<h1 id="第二章-docker基础管理"><a href="#第二章-docker基础管理" class="headerlink" title="第二章 docker基础管理"></a>第二章 docker基础管理</h1><h2 id="一、镜像管理"><a href="#一、镜像管理" class="headerlink" title="一、镜像管理"></a>一、镜像管理</h2><p>查找镜像：</p>
+<blockquote>
+<p>docker search 镜像名</p>
+</blockquote>
+<p>下载镜像：</p>
+<blockquote>
+<p>docker pull 镜像名</p>
+</blockquote>
+<p>从本地安装镜像:</p>
+<blockquote>
+<p>docker image  load -i 镜像包</p>
+<p>简写：docker load -i 镜像包 或者 docker load &lt; 镜像包</p>
+</blockquote>
+<p>删除本地镜像:</p>
+<blockquote>
+<p>docker image rm 镜像ID  或者 镜像名称<br>简写：docker rmi image_id</p>
+</blockquote>
+<p>删除全部镜像:</p>
+<blockquote>
+<p>docker rmi $(docker images -q)</p>
+</blockquote>
+<p>镜像历史:</p>
+<blockquote>
+<p>docker history image_id</p>
+</blockquote>
+<p>标签:</p>
+<blockquote>
+<p>docker tag old_image:old_version new_image:new_version</p>
+</blockquote>
+<p>制作镜像：</p>
+<blockquote>
+<p>docker commit -a ‘作者’ -m ‘描述’   容器ID   新镜像名:版本</p>
+</blockquote>
+<p>打包导出:</p>
+<blockquote>
+<p>docker image save -o 镜像包.tar.gz 镜像:版本     # 保存到当前目录下<br>简写：docker save -o 镜像包.tar.gz 镜像</p>
+</blockquote>
+<h2 id="二、容器管理"><a href="#二、容器管理" class="headerlink" title="二、容器管理"></a>二、容器管理</h2><p>查看正在运行的容器：</p>
+<blockquote>
+<p>docker container ls</p>
+<p>简写：docker ps</p>
+</blockquote>
+<p>查看所有容器</p>
+<blockquote>
+<p>docker container ls -a</p>
+<p>简写：docker ps -a</p>
+</blockquote>
+<p>关闭/启动/重启：</p>
+<blockquote>
+<p>docker container stop | start | restart 容器ID</p>
+</blockquote>
+<p>停止所有容器：</p>
+<blockquote>
+<p>docker stop $(docker ps -a -q)</p>
+</blockquote>
+<p>删掉容器：</p>
+<blockquote>
+<p>docker container rm 容器ID<br>简写：docker rm 容器ID</p>
+</blockquote>
+<p>删除全部容器：</p>
+<blockquote>
+<p>docker rm $(docker ps -a -q)</p>
+</blockquote>
+<p>强制删除容器：</p>
+<blockquote>
+<p>docker  container rm -f 容器ID<br>简写：docker rm -f 容器ID</p>
+</blockquote>
+<p>查看容器运行日志：</p>
+<blockquote>
+<p>docker  logs 容器ID</p>
+</blockquote>
+<p>创建新容器并运行容器：</p>
+<blockquote>
+<p>docker run -itd 镜像名:版本</p>
+</blockquote>
+<p>交互式容器（登录容器）:</p>
+<blockquote>
+<p>docker  exec -it  ID /bin/bash</p>
+</blockquote>
+<h2 id="三、数据管理"><a href="#三、数据管理" class="headerlink" title="三、数据管理"></a>三、数据管理</h2><p>数据卷（映射目录）：（重要）</p>
+<blockquote>
+<p>docker run -itd -v [宿主机文件]:[容器文件] [镜像id/镜像名]</p>
+</blockquote>
+<p><strong>注意：-v 宿主机文件:容器文件 可以存在多个，表示同时挂载多个</strong></p>
+<p><strong>宿主机文件尽量用绝对路径，容器文件即使不存在，Docker自动创建</strong></p>
+<h2 id="四、网络管理"><a href="#四、网络管理" class="headerlink" title="四、网络管理"></a>四、网络管理</h2><p>端口映射(随机)       网络模式默认为bridge模式</p>
+<blockquote>
+<p>docker run -itd –name 别名 -P image_id     # -P  大写P</p>
+</blockquote>
+<p>端口映射（指定）  网络模式默认为bridge模式</p>
+<blockquote>
+<p>docker run -itd –name 别名 -p 8080:80 image_id     # -p 小写p</p>
+</blockquote>
+<p>host模式</p>
+<blockquote>
+<p>docker run -itd –name 别名 –netword=host image_id</p>
+</blockquote>
+<h1 id="第三章-Dockerfile"><a href="#第三章-Dockerfile" class="headerlink" title="第三章 Dockerfile"></a>第三章 Dockerfile</h1><p>Dockerfile简而言之就是 编写Dockerfile脚本实现自动化构建自己想要的镜像</p>
+<p><strong>使用准则</strong></p>
+<p>1、大： 首字母必须大写D</p>
+<p>2、空： 尽量将Dockerfile放在空目录中。</p>
+<p>3、单： 每个容器尽量只有一个功能。</p>
+<p>4、少： 执行的命令越少越好。</p>
+<p><strong>基础指令</strong></p>
+<ul>
+<li><code>FROM</code>: 指定基础镜像（镜像要已存在）</li>
+<li><code>MAINTAINER</code>: 维护者信息（姓名/邮箱）</li>
+<li><code>RUN</code>: 镜像操作指令</li>
+<li><code>ADD：</code>上传文件，一般用于上传压缩包，会自动解压压缩包</li>
+<li><code>COPY：</code>上传一般文件</li>
+<li><code>EXPOSE：</code>开放端口</li>
+<li><code>WORKDIR：</code>切换目录</li>
+<li><code>ENTRYPOINT</code>: 容器启动时执行指令</li>
+</ul>
+<p>构建镜像：</p>
+<blockquote>
+<p>cd 到Dockerfile所在的目录</p>
+<p>docker build -t 新镜像名:版本 ./</p>
+</blockquote>
+<p>执行完后会生成一个新的镜像</p>
+<pre><code class="dockerfile"># 选择基础镜像
+FROM centos:latest
+# 作者
+MAINTAINER caijinbo
+
+# shell指令安装软件
+RUN yum install -y nginx python3-devel net-tools openssh-server openssh-clients passwd gcc mariadb-devel
+
+# 把工程上传到容器
+ADD front_end_pc.tar.gz /data/
+ADD project_admin.tar.gz /data/
+ADD project.tar.gz /data/
+COPY requirements.txt /data/
+# 切换到工程目录，并安装依赖
+WORKDIR /data/project/
+RUN pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple --no-cache-dir --default-timeout=1000 -r /data/requirements.txt
+
+COPY 8000.conf /etc/nginx/conf.d/
+COPY 8080.conf /etc/nginx/conf.d/
+COPY 8081.conf /etc/nginx/conf.d/
+
+# 设置环境变量，作用：指定系统语言为UTF-8，否则，uwsgi运行无法处理中文语言
+# ENV LC_ALL=zh_CN.UTF-8
+
+# 容器开放端口8080和8081
+EXPOSE 8080 8081
+
+# 发送容器启动脚本
+COPY command.sh /data/
+
+# 切换容器目录
+WORKDIR /data
+
+# 指定容器运行的启动脚本
+ENTRYPOINT [&quot;/bin/bash&quot;,&quot;/data/command.sh&quot;]</code></pre>
+<p>在Dockerfile同级目录下新建一个脚本</p>
+<p>vim command.sh</p>
+<pre><code class="shell">cd /data/project/ 
+uwsgi --ini uwsgi.ini 
+nginx -g &#39;daemon off;&#39; </code></pre>
+<p><strong>注意:所有要操作的文件或压缩包均放在Dockerfile同级目录下</strong></p>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/10/09/2020-10-10-docker%E4%BD%BF%E7%94%A8%E4%B8%8E%E9%85%8D%E7%BD%AE/">https://caijinbo.work/2020/10/09/2020-10-10-docker使用与配置/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/linux/">linux</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker基础知识"><span class="toc-number">1.</span> <span class="toc-text">docker基础知识</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一章docker基础知识"><span class="toc-number">2.</span> <span class="toc-text">第一章docker基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、docker简介"><span class="toc-number">2.1.</span> <span class="toc-text">一、docker简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、原理解析"><span class="toc-number">2.2.</span> <span class="toc-text">二、原理解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、docker安装"><span class="toc-number">2.3.</span> <span class="toc-text">三、docker安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二章-docker基础管理"><span class="toc-number">3.</span> <span class="toc-text">第二章 docker基础管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、镜像管理"><span class="toc-number">3.1.</span> <span class="toc-text">一、镜像管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、容器管理"><span class="toc-number">3.2.</span> <span class="toc-text">二、容器管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、数据管理"><span class="toc-number">3.3.</span> <span class="toc-text">三、数据管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、网络管理"><span class="toc-number">3.4.</span> <span class="toc-text">四、网络管理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三章-Dockerfile"><span class="toc-number">4.</span> <span class="toc-text">第三章 Dockerfile</span></a></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/11/21/2020-11-22-NFS%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/">&lt; NFS的搭建与使用</a><a class="next" href="/2020/09/21/2020-09-22-Django%20%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80/">Django框架基础 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

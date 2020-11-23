@@ -1,0 +1,525 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>python高级06-JavaScript | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">python高级06-JavaScript</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/08/21/2020-08-22-python%E9%AB%98%E7%BA%A706-JavaScript/">2020-08-21</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/python/">python</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="一、JavaScript的介绍"><a href="#一、JavaScript的介绍" class="headerlink" title="一、JavaScript的介绍"></a>一、JavaScript的介绍</h2><h3 id="1-JavaScript的定义"><a href="#1-JavaScript的定义" class="headerlink" title="1. JavaScript的定义"></a>1. JavaScript的定义</h3><a id="more"></a>
+
+<p>JavaScript是运行在浏览器端的脚本语言, 是由浏览器解释执行的, 简称js.</p>
+<p>它能够让网页和用户有交互功能, 增加良好的用户体验效果。</p>
+<h4 id="前端开发三大块"><a href="#前端开发三大块" class="headerlink" title="前端开发三大块"></a>前端开发三大块</h4><p>1、HTML：负责网页结构</p>
+<p>2、CSS：负责网页样式</p>
+<p>3、JavaScript：负责网页行为， 比如:网页与用户的交互效果</p>
+<h2 id="二、JavaScript的使用方式"><a href="#二、JavaScript的使用方式" class="headerlink" title="二、JavaScript的使用方式"></a>二、JavaScript的使用方式</h2><h3 id="1-行内式（主要用于事件）"><a href="#1-行内式（主要用于事件）" class="headerlink" title="1. 行内式（主要用于事件）"></a>1. 行内式（主要用于事件）</h3><pre><code class="html">&lt;input type=&quot;button&quot; name=&quot;&quot; onclick=&quot;alert(&#39;ok！&#39;);&quot;&gt;</code></pre>
+<h3 id="2-内嵌式"><a href="#2-内嵌式" class="headerlink" title="2. 内嵌式"></a>2. 内嵌式</h3><pre><code class="html">&lt;script type=&quot;text/javascript&quot;&gt;        
+    alert(&#39;ok！&#39;);
+&lt;/script&gt;</code></pre>
+<h3 id="3-外链式"><a href="#3-外链式" class="headerlink" title="3. 外链式"></a>3. 外链式</h3><pre><code class="html">&lt;script type=&quot;text/javascript&quot; src=&quot;js/index.js&quot;&gt;&lt;/script&gt;</code></pre>
+<h2 id="三、变量和数据类型"><a href="#三、变量和数据类型" class="headerlink" title="三、变量和数据类型"></a>三、变量和数据类型</h2><h3 id="1-定义变量"><a href="#1-定义变量" class="headerlink" title="1. 定义变量"></a>1. 定义变量</h3><p>JavaScript 是一种弱类型语言，也就是说不需要指定变量的类型，JavaScript的变量类型由它的值来决定， 定义变量需要用关键字 ‘var’, 一条JavaScript语句应该以“;”结尾</p>
+<p><strong>定义变量的语法格式:</strong></p>
+<p>var 变量名 = 值;</p>
+<pre><code class="javascript"> var iNum = 123;
+ var sTr = &#39;asd&#39;;
+
+ //同时定义多个变量可以用&quot;,&quot;隔开，公用一个‘var’关键字
+
+ var iNum = 45,sTr=&#39;qwe&#39;,sCount=&#39;68&#39;;</code></pre>
+<h3 id="2-JavaScript注释"><a href="#2-JavaScript注释" class="headerlink" title="2. JavaScript注释"></a>2. JavaScript注释</h3><p>JavaScript的注释分为单行注释(//注释内容)和多行注释(/<em>多行注释</em>/)</p>
+<pre><code class="javascript">&lt;script type=&quot;text/javascript&quot;&gt;    
+
+// 单行注释
+var iNum = 123;
+/*  
+    多行注释
+    1、...
+    2、...
+*/
+var sTr = &#39;abc123&#39;;
+&lt;/script&gt;</code></pre>
+<h3 id="3-数据类型"><a href="#3-数据类型" class="headerlink" title="3. 数据类型"></a>3. 数据类型</h3><p>js中有六种数据类型，包括五种基本数据类型和一种复杂数据类型(object)。</p>
+<p>5种基本数据类型：<br>1、number 数字类型<br>2、string 字符串类型<br>3、boolean 布尔类型 true 或 false<br>4、undefined undefined类型，变量声明未初始化，它的值就是undefined<br>5、null null类型，表示空对象，如果定义的变量将来准备保存对象，可以将变量初始化为null,在页面上获取不到对象，返回的值就是null</p>
+<p>1种复合类型：<br>1、object 后面学习的<strong>JavaScript对象</strong>属于复合类型</p>
+<p>js中有六种数据类型，分别是:</p>
+<ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>undefined</li>
+<li>null</li>
+<li>object</li>
+</ul>
+<pre><code class="js">//1.1 数字 number
+var iOne = 10.1;
+
+//1.2 字符串 string
+var sStr = &#39;1234&#39;;
+
+//1.3 布尔 boolean; 
+var bIsTrue = false;
+
+//1.4 未定义 undefined
+var unData;
+
+//1.5 null 表示空对象
+var nullData = null;
+
+//1.6 object 表示对象类型
+var oObj = {
+   name:&quot;隔壁老王&quot;,
+   age:88
+}
+// 获取变量的类型
+var type = typeof(oObj);
+alert(type);
+// 获取对象的name属性
+alert(oObj.name);</code></pre>
+<h3 id="4-变量命名规范"><a href="#4-变量命名规范" class="headerlink" title="4. 变量命名规范"></a>4. 变量命名规范</h3><p>1、区分大小写<br>2、第一个字符必须是字母、下划线（_）或者美元符号（$）<br>3、其他字符可以是字母、下划线、美元符或数字</p>
+<h3 id="5-匈牙利命名风格"><a href="#5-匈牙利命名风格" class="headerlink" title="5. 匈牙利命名风格"></a>5. 匈牙利命名风格</h3><p>对象o Object 比如：oDiv<br>数组a Array 比如：aItems<br>字符串s String 比如：sUserName<br>整数i Integer 比如：iItemCount<br>布尔值b Boolean 比如：bIsComplete<br>浮点数f Float 比如：fPrice<br>函数fn Function 比如：fnHandler</p>
+<h2 id="四、函数定义和调用"><a href="#四、函数定义和调用" class="headerlink" title="四、函数定义和调用"></a>四、函数定义和调用</h2><h3 id="1-函数定义"><a href="#1-函数定义" class="headerlink" title="1. 函数定义"></a>1. 函数定义</h3><p>函数就是可以<strong>重复使用的代码块</strong>, 使用关键字 <strong>function</strong> 定义函数。</p>
+<pre><code class="javascript">&lt;script type=&quot;text/javascript&quot;&gt;
+    // 函数定义
+    function fnAlert(){
+        alert(&#39;hello!&#39;);
+    }
+&lt;/script&gt;</code></pre>
+<h3 id="2-函数调用"><a href="#2-函数调用" class="headerlink" title="2. 函数调用"></a>2. 函数调用</h3><p>函数调用就是<strong>函数名加小括号</strong>，比如:函数名(参数[参数可选])</p>
+<pre><code class="javascript">&lt;script type=&quot;text/javascript&quot;&gt;
+    // 函数定义
+    function fnAlert(){
+        alert(&#39;hello!&#39;);
+    }
+    // 函数调用
+    fnAlert();
+&lt;/script&gt;</code></pre>
+<h3 id="3-定义有参数有返回值的函数"><a href="#3-定义有参数有返回值的函数" class="headerlink" title="3. 定义有参数有返回值的函数"></a>3. 定义有参数有返回值的函数</h3><p>定义函数时，函数如果有参数，<strong>参数放到小括号里面</strong>，函数如果有返回值，返回值通过 <strong>return</strong> 关键字来返回</p>
+<pre><code class="javascript">&lt;script type=&quot;text/javascript&quot;&gt;
+function fnAdd(iNum01,iNum02){
+    var iRs = iNum01 + iNum02;
+    return iRs;
+    alert(&#39;here!&#39;);
+}
+
+var iCount = fnAdd(3,4);
+alert(iCount);  //弹出7
+&lt;/script&gt;</code></pre>
+<p><strong>函数中’return’关键字的作用:</strong><br>1、返回函数中的值<br>2、执行完return函数执行结束</p>
+<h2 id="五、变量作用域"><a href="#五、变量作用域" class="headerlink" title="五、变量作用域"></a>五、变量作用域</h2><h3 id="1-变量作用域的介绍"><a href="#1-变量作用域的介绍" class="headerlink" title="1. 变量作用域的介绍"></a>1. 变量作用域的介绍</h3><p>变量作用域就是变量的使用范围，变量分为:</p>
+<ul>
+<li>局部变量</li>
+<li>全局变量</li>
+</ul>
+<h3 id="2-局部变量"><a href="#2-局部变量" class="headerlink" title="2. 局部变量"></a>2. 局部变量</h3><p>局部变量就是在函数内使用的变量，只能在函数内部使用。</p>
+<pre><code class="javascript">&lt;script type=&quot;text/javascript&quot;&gt;
+    function myalert()
+    {
+        // 定义局部变量
+        var b = 23;
+        alert(b);
+    }
+    myalert(); // 弹出23
+    alert(b);  // 函数外使用出错
+&lt;/script&gt;</code></pre>
+<h3 id="3-全局变量"><a href="#3-全局变量" class="headerlink" title="3. 全局变量"></a>3. 全局变量</h3><p>全局变量就是在函数外定义的变量，可以在不同函数内使用。</p>
+<pre><code class="javascript">&lt;script type=&quot;text/javascript&quot;&gt;
+    // 定义全局变量
+    var a = 12;
+    function myalert()
+    {
+        // 修改全局变量
+        a++;
+    }
+    myalert();
+    alert(a);  // 弹出13    
+&lt;/script&gt;</code></pre>
+<h2 id="六、条件语句"><a href="#六、条件语句" class="headerlink" title="六、条件语句"></a>六、条件语句</h2><h3 id="1-条件语句的介绍"><a href="#1-条件语句的介绍" class="headerlink" title="1. 条件语句的介绍"></a>1. 条件语句的介绍</h3><p>条件语句就是通过条件来控制程序的走向</p>
+<h3 id="2-条件语句语法"><a href="#2-条件语句语法" class="headerlink" title="2. 条件语句语法"></a>2. 条件语句语法</h3><ol>
+<li>if 语句 - 只有当指定条件为 true 时，使用该语句来执行代码</li>
+<li>if…else 语句 - 当条件为 true 时执行代码，当条件为 false 时执行其他代码</li>
+<li>if…else if….else 语句 - 使用该语句来判断多条件，执行条件成立的语句</li>
+</ol>
+<h3 id="3-比较运算符"><a href="#3-比较运算符" class="headerlink" title="3. 比较运算符"></a>3. 比较运算符</h3><p>假如 x = 5, 查看比较后的结果:</p>
+<table>
+<thead>
+<tr>
+<th align="left">比较运算符</th>
+<th align="left">描述</th>
+<th align="left">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">==</td>
+<td align="left">等于</td>
+<td align="left">x == 8 为 false</td>
+</tr>
+<tr>
+<td align="left">===</td>
+<td align="left">全等(值和类型)</td>
+<td align="left">x === 5 为 true; x === “5” 为 false</td>
+</tr>
+<tr>
+<td align="left">!=</td>
+<td align="left">不等于</td>
+<td align="left">x != 8 为 true</td>
+</tr>
+<tr>
+<td align="left">&gt;</td>
+<td align="left">大于</td>
+<td align="left">x &gt; 8 为 false</td>
+</tr>
+<tr>
+<td align="left">&lt;</td>
+<td align="left">小于</td>
+<td align="left">x &lt; 8 为 true</td>
+</tr>
+<tr>
+<td align="left">&gt;=</td>
+<td align="left">大于或等于</td>
+<td align="left">x &gt;= 8 为 false</td>
+</tr>
+<tr>
+<td align="left">&lt;=</td>
+<td align="left">小于或等于</td>
+<td align="left">x &lt;= 8 为 true</td>
+</tr>
+</tbody></table>
+<p><strong>比较运算符示例代码:</strong></p>
+<pre><code class="js">var iNum01 = 12;
+var sNum01 = &#39;12&#39;;
+
+if(iNum01==12){
+    alert(&#39;相等！&#39;);
+}
+else{
+    alert(&#39;不相等！&#39;)
+}
+
+// &quot;==&quot; 符号默认会将符号两边的变量转换成数字再进行对比，这个叫做隐式转换
+if(sNum01==12){
+    alert(&#39;相等！&#39;);
+}
+else{
+    alert(&#39;不相等！&#39;)
+}
+
+// &quot;===&quot; 符号不会转换符号两边的数据类型
+if(sNum01===12){
+    alert(&#39;相等！&#39;);
+}
+else{
+    alert(&#39;不相等！&#39;)
+}
+
+// 多条件判断
+var sFruit = &quot;苹果&quot;;
+if (sFruit == &quot;苹果&quot;) {
+    alert(&quot;您选择的水果是苹果&quot;);
+} else if (sFruit == &quot;鸭梨&quot;) {
+    alert(&quot;您选择的水果是鸭梨&quot;);
+} else {
+    alert(&quot;对不起，您选择的水果不存在!&quot;)
+}</code></pre>
+<h3 id="4-逻辑运算符"><a href="#4-逻辑运算符" class="headerlink" title="4. 逻辑运算符"></a>4. 逻辑运算符</h3><p>假如 x=6, y=3, 查看比较后的结果:</p>
+<table>
+<thead>
+<tr>
+<th align="left">比较运算符</th>
+<th align="left">描述</th>
+<th align="left">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&amp;&amp;</td>
+<td align="left">and</td>
+<td align="left">(x &lt; 10 &amp;&amp; y &gt; 1) 为 true</td>
+</tr>
+<tr>
+<td align="left">||</td>
+<td align="left">or</td>
+<td align="left">(x==5 || y==5) 为 false</td>
+</tr>
+<tr>
+<td align="left">!</td>
+<td align="left">not</td>
+<td align="left">!(x==y) 为 true</td>
+</tr>
+</tbody></table>
+<p><strong>逻辑运算符示例代码:</strong></p>
+<pre><code class="js">var x = 6;
+var y = 3;
+
+if(x &lt; 10 &amp;&amp; y &gt; 1){
+    alert(&#39;都大于&#39;);
+}
+else{
+    alert(&#39;至少有一个不大于&#39;);
+}
+
+if(x &gt; 5 || y &gt; 7 ){
+    alert(&#39;至少有一个大于&#39;);
+}
+else{
+    alert(&#39;都不大于&#39;);
+}
+
+if(!(x == y)){
+    alert(&#39;等于&#39;)
+}
+else{
+    alert(&#39;不等于&#39;)
+}</code></pre>
+<h2 id="七、获取标签元素"><a href="#七、获取标签元素" class="headerlink" title="七、获取标签元素"></a>七、获取标签元素</h2><h3 id="1-获取标签元素"><a href="#1-获取标签元素" class="headerlink" title="1. 获取标签元素"></a>1. 获取标签元素</h3><p>可以使用<strong>内置对象 document</strong> 上的 <strong>getElementById 方法</strong>来获取页面上设置了id属性的标签元素，获取到的是一个html对象，然后将它赋值给一个变量，比如：</p>
+<pre><code class="js">&lt;script type=&quot;text/javascript&quot;&gt;
+    var oDiv = document.getElementById(&#39;div1&#39;);
+    alert(oDiv);
+&lt;/script&gt;
+&lt;div id=&quot;div1&quot;&gt;这是一个div元素&lt;/div&gt;</code></pre>
+<p><strong>说明:</strong><br>上面的代码，如果把javascript写在元素的上面，就会出错，因为页面上从上往下加载执行的，javascript去页面上获取元素div1的时候，元素div1还没有加载。</p>
+<p><strong>解决方法有两种:</strong></p>
+<p>第一种方法：将javascript放到页面最下边</p>
+<pre><code class="js">&lt;div id=&quot;div1&quot;&gt;这是一个div元素&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var oDiv = document.getElementById(&#39;div1&#39;);
+    alert(oDiv);
+&lt;/script&gt;</code></pre>
+<p>第二种方法：设置页面加载完成执行的函数，在执行函数里面获取标签元素。</p>
+<pre><code class="js">&lt;script type=&quot;text/javascript&quot;&gt;
+    window.onload = function(){
+        var oDiv = document.getElementById(&#39;div1&#39;);
+    }
+&lt;/script&gt;</code></pre>
+<p><strong>说明:</strong><br>onload是页面所有元素加载完成的事件，给onload设置函数时，当事件触发就会执行设置的函数。</p>
+<h2 id="八、操作标签元素属性"><a href="#八、操作标签元素属性" class="headerlink" title="八、操作标签元素属性"></a>八、操作标签元素属性</h2><h3 id="1-属性的操作"><a href="#1-属性的操作" class="headerlink" title="1. 属性的操作"></a>1. 属性的操作</h3><p>首先获取的页面标签元素，然后就可以对页面标签元素的属性进行操作，属性的操作包括:</p>
+<ul>
+<li>属性的读取</li>
+<li>属性的设置</li>
+</ul>
+<p><strong>属性名在js中的写法</strong></p>
+<ol>
+<li>html的属性和js里面属性大多数写法一样，但是“class” 属性写成 “className”</li>
+<li>“style” 属性里面的属性，有横杠的改成驼峰式，比如：“font-size”，改成”style.fontSize”</li>
+</ol>
+<pre><code class="html">&lt;style&gt;
+    .sty01{
+        font-size:20px;
+        color:red;
+    }
+    .sty02{
+        font-size:30px;
+        color:pink;
+        text-decoration:none;
+    }
+
+&lt;/style&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+    window.onload = function(){
+        var oInput = document.getElementById(&#39;input1&#39;);
+        var oA = document.getElementById(&#39;link1&#39;);
+        // 读取属性值
+        var sValue = oInput.value;
+        var sType = oInput.type;
+        var sName = oInput.name;
+        var sLinks = oA.href;
+
+        // 操作class属性,需要写成“className”
+        oA.className = &#39;sty02&#39;;
+
+        // 写(设置)属性
+        oA.style.color = &#39;red&#39;;
+        oA.style.fontSize = sValue;
+    }
+
+&lt;/script&gt;
+
+&lt;input type=&quot;text&quot; name=&quot;setsize&quot; id=&quot;input1&quot; value=&quot;20px&quot;&gt;
+&lt;a href=&quot;#&quot; id=&quot;link01&quot; class=&quot;sty01&quot;&gt;这是一个链接&lt;/a&gt;</code></pre>
+<h3 id="2-innerHTML"><a href="#2-innerHTML" class="headerlink" title="2. innerHTML"></a>2. innerHTML</h3><p>innerHTML可以读取或者设置标签包裹的内容</p>
+<pre><code class="html">&lt;script type=&quot;text/javascript&quot;&gt;
+    window.onload = function(){
+        var oDiv = document.getElementById(&#39;div1&#39;);
+        //读取
+        var sTxt = oDiv.innerHTML;
+        alert(sTxt);
+        //写入
+        oDiv.innerHTML = &#39;&lt;a href=&quot;http://www.itcast.cn&quot;&gt;传智播客&lt;a/&gt;&#39;;
+    }
+&lt;/script&gt;
+
+
+&lt;div id=&quot;div1&quot;&gt;这是一个div元素&lt;/div&gt;</code></pre>
+<h2 id="九、数组及操作方法"><a href="#九、数组及操作方法" class="headerlink" title="九、数组及操作方法"></a>九、数组及操作方法</h2><h3 id="1-数组的介绍"><a href="#1-数组的介绍" class="headerlink" title="1. 数组的介绍"></a>1. 数组的介绍</h3><p>数组就是一组数据的集合，javascript 中，数组里面的数据可以是不同类型的数据，好比 python 里面的列表。</p>
+<ul>
+<li>数组的定义使用一对中括号</li>
+<li>获取数组的长度使用length属性</li>
+<li>从数组最后添加元素使用push方法</li>
+<li>从数组最后删除元素使用pop方法</li>
+<li>根据下标添加和删除元素使用splice方法</li>
+</ul>
+<h3 id="2-数组的定义"><a href="#2-数组的定义" class="headerlink" title="2. 数组的定义"></a>2. 数组的定义</h3><pre><code class="js">// 实例化对象方式创建
+var aList = new Array(1,2,3);
+
+// 字面量方式创建，推荐使用
+var aList2 = [1,2,3,&#39;asd&#39;];</code></pre>
+<h3 id="3-多维数组"><a href="#3-多维数组" class="headerlink" title="3. 多维数组"></a>3. 多维数组</h3><p>多维数组指的是数组的成员也是数组，把这样的数组叫做多维数组。</p>
+<pre><code class="js">var aList = [[1,2,3],[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]];</code></pre>
+<h3 id="4-数组的操作"><a href="#4-数组的操作" class="headerlink" title="4. 数组的操作"></a>4. 数组的操作</h3><p>1、 获取数组的长度</p>
+<pre><code class="js">var aList = [1,2,3,4];
+alert(aList.length); // 弹出4</code></pre>
+<p>2、 根据下标取值</p>
+<pre><code class="js">var aList = [1,2,3,4];
+alert(aList[0]); // 弹出1</code></pre>
+<p>3、 从数组最后添加和删除数据</p>
+<pre><code class="js">var aList = [1,2,3,4];
+aList.push(5);
+alert(aList); //弹出1,2,3,4,5
+aList.pop();
+alert(aList); // 弹出1,2,3,4</code></pre>
+<p>4、根据下标添加和删除元素</p>
+<p>arr.splice(start,num,element1,…..,elementN)</p>
+<p>参数解析：</p>
+<ol>
+<li>start：必需，开始删除的索引。</li>
+<li>num：可选，删除数组元素的个数。</li>
+<li>elementN：可选，在start索引位置要插入的新元素。</li>
+</ol>
+<p>此方法会删除从start索引开始的num个元素，并将elementN参数插入到start索引位置。</p>
+<pre><code class="js">var colors = [&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;];
+colors.splice(0,1);  //删除第一项
+alert(colors);  //green,blue
+
+colors.splice(1, 0, &quot;yellow&quot;, &quot;orange&quot;);  //从第一个索引位置插入两项数据
+alert(colors);  //green,yellow,organge,blue
+
+colors.splice(1, 1, &quot;red&quot;, &quot;purple&quot;);  //删除一项，插入两项数据
+alert(colors);  //green,red,purple,orange,blue</code></pre>
+<h2 id="十、循环语句"><a href="#十、循环语句" class="headerlink" title="十、循环语句"></a>十、循环语句</h2><h3 id="1-循环语句的介绍"><a href="#1-循环语句的介绍" class="headerlink" title="1. 循环语句的介绍"></a>1. 循环语句的介绍</h3><p>循环语句就是让一部分代码重复执行，javascript中常用的循环语句有:</p>
+<ul>
+<li>for</li>
+<li>while</li>
+<li>do-while</li>
+</ul>
+<h3 id="2-for循环"><a href="#2-for循环" class="headerlink" title="2. for循环"></a>2. for循环</h3><pre><code class="js">var array = [1, 4, 5];
+
+for(var index = 0; index &lt; array.length; index++){
+    var result = array[index];
+    alert(result);
+}</code></pre>
+<h3 id="3-while循环"><a href="#3-while循环" class="headerlink" title="3. while循环"></a>3. while循环</h3><pre><code class="js">var array = [1, 4, 5];        
+var index = 0;
+
+while (index &lt; array.length) {
+    var result = array[index];
+    alert(result);
+    index++;
+}</code></pre>
+<p><strong>说明:</strong></p>
+<p>当条件成立的时候, while语句会循环执行</p>
+<h3 id="4-do-while循环"><a href="#4-do-while循环" class="headerlink" title="4. do-while循环"></a>4. do-while循环</h3><pre><code class="js">var array = [1, 4, 5];
+var index = 0;
+
+do {
+    var result = array[index];
+    alert(result);
+    index++;
+} while (index &lt; array.length);</code></pre>
+<p><strong>说明:</strong></p>
+<p>当条件不成立的时候do语句也会执行一次</p>
+<h2 id="十一、字符串拼接"><a href="#十一、字符串拼接" class="headerlink" title="十一、字符串拼接"></a>十一、字符串拼接</h2><h3 id="1、字符串拼接"><a href="#1、字符串拼接" class="headerlink" title="1、字符串拼接"></a>1、字符串拼接</h3><p>字符串拼接使用: <strong>“+”</strong> 运算符</p>
+<pre><code class="js">var iNum1 = 10;
+var fNum2 = 11.1;
+var sStr = &#39;abc&#39;;
+
+result = iNum1 + fNum2;
+alert(result); // 弹出21.1
+
+result = fNum2 + sStr;
+alert(result); // 弹出11.1abc</code></pre>
+<p><strong>说明</strong></p>
+<p>数字和字符串拼接会自动进行类型转换(隐式类型转换)，把数字类型转成字符串类型进行拼接</p>
+<h2 id="十二、定时器"><a href="#十二、定时器" class="headerlink" title="十二、定时器"></a>十二、定时器</h2><h3 id="1-定时器的介绍"><a href="#1-定时器的介绍" class="headerlink" title="1. 定时器的介绍"></a>1. 定时器的介绍</h3><p>定时器就是在一段特定的时间后执行某段程序代码。</p>
+<ul>
+<li>定时器的创建<ul>
+<li>只执行一次函数的定时器, 对应的代码是setTimeout函数</li>
+<li>反复执行函数的定时器, 对应的代码是setInterval函数</li>
+</ul>
+</li>
+<li>清除定时器<ul>
+<li>清除只执行一次函数的定时器, 对应的代码是clearTimeout函数</li>
+<li>清除清除反复执行的定时器, 对应的代码是clearInterval函数</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-定时器的使用："><a href="#2-定时器的使用：" class="headerlink" title="2. 定时器的使用："></a>2. 定时器的使用：</h3><p>js 定时器有两种创建方式：</p>
+<ol>
+<li>setTimeout(func[, delay, param1, param2, …]) ：以指定的时间间隔（以毫秒计）调用一次函数的定时器</li>
+<li>setInterval(func[, delay, param1, param2, …]) ：以指定的时间间隔（以毫秒计）重复调用一个函数的定时器</li>
+</ol>
+<p><strong>setTimeout函数的参数说明:</strong></p>
+<ul>
+<li>第一个参数 func , 表示定时器要执行的函数名</li>
+<li>第二个参数 delay, 表示时间间隔，默认是0，单位是毫秒</li>
+<li>第三个参数 param1, 表示定时器执行函数的第一个参数，一次类推传入多个执行函数对应的参数。</li>
+</ul>
+<pre><code class="js">&lt;script&gt; 
+    function hello(){ 
+        alert(&#39;hello&#39;); 
+    } 
+
+    // 执行一次函数的定时器
+    setTimeout(hello, 500);
+&lt;/script&gt;</code></pre>
+<p><strong>setInterval函数的参数说明:</strong></p>
+<ul>
+<li>第一个参数 func , 表示定时器要执行的函数名</li>
+<li>第二个参数 delay, 表示时间间隔，默认是0，单位是毫秒</li>
+<li>第三个参数 param1, 表示定时器执行函数的第一个参数，一次类推传入多个执行函数对应的参数。</li>
+</ul>
+<pre><code class="js">&lt;script&gt; 
+    function hello(){ 
+        alert(&#39;hello&#39;); 
+    } 
+    // 重复执行函数的定时器
+    setInterval(hello, 1000);
+&lt;/script&gt;</code></pre>
+<h3 id="2-清除定时器"><a href="#2-清除定时器" class="headerlink" title="2. 清除定时器"></a>2. 清除定时器</h3><p>js 清除定时器分别是:</p>
+<ul>
+<li>clearTimeout(timeoutID) 清除只执行一次的定时器(setTimeout函数)</li>
+<li>clearInterval(timeoutID) 清除反复执行的定时器(setInterval函数)</li>
+</ul>
+<p><strong>clearTimeout函数的参数说明:</strong></p>
+<ul>
+<li>timeoutID 为调用 setTimeout 函数时所获得的返回值，使用该返回标识符作为参数，可以取消该 setTimeout 所设定的定时执行操作。</li>
+</ul>
+<pre><code class="js">&lt;script&gt;
+    function hello(){
+        alert(&#39;hello&#39;);
+        // 清除只执行一次的定时器
+        clearTimeout(t1)
+    }
+    // 执行一次函数的定时器
+    t1 = setTimeout(hello, 500);
+&lt;/script&gt;</code></pre>
+<p><strong>clearInterval函数的参数说明:</strong></p>
+<ul>
+<li>timeoutID 为调用 setInterval 函数时所获得的返回值，使用该返回标识符作为参数，可以取消该 setInterval 所设定的定时执行操作。</li>
+</ul>
+<pre><code class="js">&lt;script&gt; 
+    function hello(){ 
+        alert(&#39;hello&#39;); 
+    } 
+    // 重复执行函数的定时器
+    var t1 = setInterval(hello, 1000);
+
+    function stop(){
+        // 清除反复执行的定时器
+        clearInterval(t1); 
+    }  
+
+&lt;/script&gt; 
+
+&lt;input type=&quot;button&quot; value=&quot;停止&quot; onclick=&quot;stop();&quot;&gt;</code></pre>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/08/21/2020-08-22-python%E9%AB%98%E7%BA%A706-JavaScript/">https://caijinbo.work/2020/08/21/2020-08-22-python高级06-JavaScript/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/python/">python</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript"><span class="toc-number">1.</span> <span class="toc-text">JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、JavaScript的介绍"><span class="toc-number">1.1.</span> <span class="toc-text">一、JavaScript的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-JavaScript的定义"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. JavaScript的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#前端开发三大块"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">前端开发三大块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、JavaScript的使用方式"><span class="toc-number">1.2.</span> <span class="toc-text">二、JavaScript的使用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-行内式（主要用于事件）"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 行内式（主要用于事件）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-内嵌式"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 内嵌式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-外链式"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 外链式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、变量和数据类型"><span class="toc-number">1.3.</span> <span class="toc-text">三、变量和数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-定义变量"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 定义变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-JavaScript注释"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. JavaScript注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-数据类型"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-变量命名规范"><span class="toc-number">1.3.4.</span> <span class="toc-text">4. 变量命名规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-匈牙利命名风格"><span class="toc-number">1.3.5.</span> <span class="toc-text">5. 匈牙利命名风格</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、函数定义和调用"><span class="toc-number">1.4.</span> <span class="toc-text">四、函数定义和调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-函数定义"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 函数定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-函数调用"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 函数调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-定义有参数有返回值的函数"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. 定义有参数有返回值的函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、变量作用域"><span class="toc-number">1.5.</span> <span class="toc-text">五、变量作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-变量作用域的介绍"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 变量作用域的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-局部变量"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. 局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-全局变量"><span class="toc-number">1.5.3.</span> <span class="toc-text">3. 全局变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、条件语句"><span class="toc-number">1.6.</span> <span class="toc-text">六、条件语句</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-条件语句的介绍"><span class="toc-number">1.6.1.</span> <span class="toc-text">1. 条件语句的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-条件语句语法"><span class="toc-number">1.6.2.</span> <span class="toc-text">2. 条件语句语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-比较运算符"><span class="toc-number">1.6.3.</span> <span class="toc-text">3. 比较运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-逻辑运算符"><span class="toc-number">1.6.4.</span> <span class="toc-text">4. 逻辑运算符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、获取标签元素"><span class="toc-number">1.7.</span> <span class="toc-text">七、获取标签元素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-获取标签元素"><span class="toc-number">1.7.1.</span> <span class="toc-text">1. 获取标签元素</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、操作标签元素属性"><span class="toc-number">1.8.</span> <span class="toc-text">八、操作标签元素属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-属性的操作"><span class="toc-number">1.8.1.</span> <span class="toc-text">1. 属性的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-innerHTML"><span class="toc-number">1.8.2.</span> <span class="toc-text">2. innerHTML</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、数组及操作方法"><span class="toc-number">1.9.</span> <span class="toc-text">九、数组及操作方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-数组的介绍"><span class="toc-number">1.9.1.</span> <span class="toc-text">1. 数组的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-数组的定义"><span class="toc-number">1.9.2.</span> <span class="toc-text">2. 数组的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-多维数组"><span class="toc-number">1.9.3.</span> <span class="toc-text">3. 多维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-数组的操作"><span class="toc-number">1.9.4.</span> <span class="toc-text">4. 数组的操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、循环语句"><span class="toc-number">1.10.</span> <span class="toc-text">十、循环语句</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-循环语句的介绍"><span class="toc-number">1.10.1.</span> <span class="toc-text">1. 循环语句的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-for循环"><span class="toc-number">1.10.2.</span> <span class="toc-text">2. for循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-while循环"><span class="toc-number">1.10.3.</span> <span class="toc-text">3. while循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-do-while循环"><span class="toc-number">1.10.4.</span> <span class="toc-text">4. do-while循环</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十一、字符串拼接"><span class="toc-number">1.11.</span> <span class="toc-text">十一、字符串拼接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、字符串拼接"><span class="toc-number">1.11.1.</span> <span class="toc-text">1、字符串拼接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十二、定时器"><span class="toc-number">1.12.</span> <span class="toc-text">十二、定时器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-定时器的介绍"><span class="toc-number">1.12.1.</span> <span class="toc-text">1. 定时器的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-定时器的使用："><span class="toc-number">1.12.2.</span> <span class="toc-text">2. 定时器的使用：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-清除定时器"><span class="toc-number">1.12.3.</span> <span class="toc-text">2. 清除定时器</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/08/21/2020-08-22-python%E9%AB%98%E7%BA%A708-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93(%E6%8F%92%E5%9B%BE%E7%89%88)/">&lt; python高级08-MySQL数据库</a><a class="next" href="/2020/08/21/2020-08-22-python%E9%AB%98%E7%BA%A705-HTML+CSS%E5%9F%BA%E7%A1%80/">python高级05-HTML+CSS基础 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

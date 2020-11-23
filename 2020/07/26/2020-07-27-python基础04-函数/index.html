@@ -1,0 +1,621 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>python基础04-函数 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">python基础04-函数</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8004-%E5%87%BD%E6%95%B0/">2020-07-26</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/python/">python</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="一、函数的基本使用"><a href="#一、函数的基本使用" class="headerlink" title="一、函数的基本使用"></a>一、函数的基本使用</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><a id="more"></a>
+
+<ul>
+<li><p>所谓<strong>函数</strong>，就是把 <strong>具有独立功能的代码块</strong> 组织为一个整体，在需要的时候 <strong>调用</strong></p>
+</li>
+<li><p>函数的使用包含两个步骤：</p>
+<ol>
+<li>定义函数 —— 在函数中编写代码，实现功能</li>
+<li>调用函数 —— 执行编写的代码</li>
+</ol>
+</li>
+<li><p>函数的作用：</p>
+<ul>
+<li>提高代码编写效率, 代码<strong>重用</strong></li>
+<li>写一次函数代码块，后面使用的时候，只需要调用函数即可，无需重新编写函数代码块</li>
+</ul>
+</li>
+<li><h3 id="2-函数的定义和调用"><a href="#2-函数的定义和调用" class="headerlink" title="2. 函数的定义和调用"></a>2. 函数的定义和调用</h3><h4 id="2-1-函数的定义"><a href="#2-1-函数的定义" class="headerlink" title="2.1 函数的定义"></a>2.1 函数的定义</h4><p>定义函数的格式如下：</p>
+<pre><code class="python">def 函数名():
+    函数内部的代码块
+    ……</code></pre>
+<ol>
+<li><code>def</code> 是英文 <code>define</code> 的缩写</li>
+<li>函数名称的命名应该符合标识符的命名规则<ul>
+<li>可以由 <strong>字母</strong>、<strong>下划线</strong> 和 <strong>数字</strong> 组成</li>
+<li><strong>不能以数字开头</strong></li>
+<li><strong>不能与关键字重名</strong></li>
+<li>建议不要和类型同名</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-2-函数的调用"><a href="#2-2-函数的调用" class="headerlink" title="2.2 函数的调用"></a>2.2 函数的调用</h4><ul>
+<li><p>函数只是定义，不调用不会自动执行，用户看不到没有效果</p>
+</li>
+<li><p>函数调用的格式：</p>
+<pre><code>函数名字()</code></pre></li>
+</ul>
+<h4 id="2-3-第一个函数演练"><a href="#2-3-第一个函数演练" class="headerlink" title="2.3 第一个函数演练"></a>2.3 第一个函数演练</h4><p><strong>需求</strong></p>
+<ol>
+<li>编写一个打招呼 <code>say_hello</code> 的函数，封装三行打招呼的代码</li>
+<li>在函数下方调用打招呼的代码</li>
+</ol>
+<p>示例代码：</p>
+<pre><code class="python">&quot;&quot;&quot;
+步骤流程：
+函数定义：
+1. def 函数名字():
+    2. 函数体，打印信息
+
+函数调用：函数名字()
+&quot;&quot;&quot;
+
+</code></pre>
+</li>
+</ul>
+<h1 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h1><p>  def say_hello():<br>      print(“hello 1”)<br>      print(“hello 2”)<br>      print(“hello 3”)</p>
+<p>  print(‘函数调用前’)</p>
+<p>  say_hello()  # 函数调用</p>
+<p>  print(‘函数调用后’)</p>
+<pre><code>
+  运行结果：
+
+  ```shell
+  函数调用前
+  hello 1
+  hello 2
+  hello 3
+  函数调用后</code></pre><h2 id="二-函数执行过程、文档注释"><a href="#二-函数执行过程、文档注释" class="headerlink" title="二.函数执行过程、文档注释"></a>二.函数执行过程、文档注释</h2><h3 id="1-函数执行流程"><a href="#1-函数执行流程" class="headerlink" title="1. 函数执行流程"></a>1. 函数执行流程</h3><h4 id="1-1-函数执行流程"><a href="#1-1-函数执行流程" class="headerlink" title="1.1 函数执行流程"></a>1.1 函数执行流程</h4><ul>
+<li>如果不主动调用函数，函数是不会主动执行的</li>
+<li>函数调用时，默认往前面找函数的定义，如果没有找到函数定义，则报错：<ul>
+<li><code>NameError: name &#39;say_hello&#39; is not defined</code> (<strong>名称错误：say_hello 这个名字没有被定义</strong>)</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-Debug-的单步调试"><a href="#1-2-Debug-的单步调试" class="headerlink" title="1.2 Debug 的单步调试"></a>1.2 Debug 的单步调试</h4><ul>
+<li><p><strong>F7 Step Into</strong> 可以单步执行代码，如果是函数，会进入函数内部</p>
+</li>
+<li><p><strong>F8 Step Over</strong> 可以单步执行代码，如果函数，直接执行函数，不会进入函数内部</p>
+</li>
+</ul>
+<h3 id="2-函数的文档注释"><a href="#2-函数的文档注释" class="headerlink" title="2. 函数的文档注释"></a>2. 函数的文档注释</h3><ul>
+<li><p>在开发中，如果希望给函数添加文档注释，应该在 <strong>定义函数</strong> 的下方，使用 <strong>连续的一对三引号</strong></p>
+</li>
+<li><p>在 <strong>连续的一对三引号</strong> 之间编写对函数的说明文字</p>
+<pre><code class="python">def func_sum():
+    &quot;&quot;&quot;求和 1+2&quot;&quot;&quot;
+    add_result = 1 + 2
+    print(add_result)
+
+func_sum()</code></pre>
+</li>
+<li><p>在 <strong>函数调用</strong> 位置，使用快捷键 <code>Ctrl + Q</code> 可以查看函数的说明信息</p>
+</li>
+</ul>
+<h2 id="三、函数的参数1：普通参数"><a href="#三、函数的参数1：普通参数" class="headerlink" title="三、函数的参数1：普通参数"></a>三、函数的参数1：普通参数</h2><h3 id="1-函数参数的作用"><a href="#1-函数参数的作用" class="headerlink" title="1. 函数参数的作用"></a>1. 函数参数的作用</h3><p>假如开发一个 <code>func_sum</code> 的函数，函数能够实现 <strong>两个数字的求和</strong> 功能：</p>
+<pre><code class="python"># 函数定义
+def func_sum():
+    &quot;&quot;&quot;两个数字的求和&quot;&quot;&quot;
+    num1 = 10
+    num2 = 20
+    result = num1 + num2
+    print(&quot;%d + %d = %d&quot; % (num1, num2, result))
+
+
+# 函数调用
+func_sum()</code></pre>
+<ul>
+<li>以上函数只能处理 <strong>固定数值</strong> 的相加</li>
+<li>函数参数，可以解决上面的问题，<strong>可以传递数据给函数内部</strong>，增加函数的 <strong>通用性</strong></li>
+</ul>
+<h3 id="2-带参数函数的使用"><a href="#2-带参数函数的使用" class="headerlink" title="2. 带参数函数的使用"></a>2. 带参数函数的使用</h3><h4 id="2-1-带参数函数的定义和调用"><a href="#2-1-带参数函数的定义和调用" class="headerlink" title="2.1 带参数函数的定义和调用"></a>2.1 带参数函数的定义和调用</h4><ul>
+<li><p>函数定义时的参数叫 <strong>形参</strong>，函数调用时的参数叫 <strong>实参</strong></p>
+</li>
+<li><p>带参数函数的定义格式：</p>
+<pre><code class="python">def 函数名字(形参1，形参2，……):
+    函数体代码块</code></pre>
+</li>
+<li><p>带参数函数的调用格式：</p>
+<pre><code class="python">函数名字(实参1，实参2，……)</code></pre>
+</li>
+</ul>
+<p>示例代码：</p>
+<pre><code class="python"># 带参数函数的函数定义
+def func_sum(num1, num2):
+    &quot;&quot;&quot;两个数字的求和&quot;&quot;&quot;
+    result = num1 + num2
+    print(&quot;%d + %d = %d&quot; % (num1, num2, result))
+
+
+# 带参数函数的调用
+func_sum(20, 30)</code></pre>
+<h4 id="2-2-函数执行流程"><a href="#2-2-函数执行流程" class="headerlink" title="2.2 函数执行流程"></a>2.2 函数执行流程</h4><ul>
+<li>函数调用时，按照函数定义的<strong>形参顺序</strong>，实参 <strong>一一对应</strong> 传递给形参</li>
+</ul>
+<h3 id="2-3-形参的作用域"><a href="#2-3-形参的作用域" class="headerlink" title="2.3 形参的作用域"></a>2.3 形参的作用域</h3><ul>
+<li>作用域：变量起作用的范围</li>
+<li>形参的作用域：<strong>只在定义函数的代码块</strong> 中</li>
+</ul>
+<pre><code class="python"># 形参作用域仅在函数内部, 所以不同函数的同名参数，互不影响
+def func_sum(num1, num2):
+    result = num1 + num2
+    print(result)
+
+
+def func_sub(num1, num2):
+    result = num1 - num2
+    print(result)
+
+
+func_sum(1, 3)
+func_sub(4, 4)</code></pre>
+<h2 id="四、函数的返回值"><a href="#四、函数的返回值" class="headerlink" title="四、函数的返回值"></a>四、函数的返回值</h2><h3 id="1-函数返回值的作用"><a href="#1-函数返回值的作用" class="headerlink" title="1. 函数返回值的作用"></a>1. 函数返回值的作用</h3><ul>
+<li>开发中，有时会希望 <strong>一个函数执行结束后，告诉调用者一个结果</strong>，以便调用者针对具体的结果做后续的处理</li>
+<li><strong>返回值</strong> 是 <strong>函数给调用方提供的结果</strong></li>
+</ul>
+<p>前面接触到返回值的例子：</p>
+<pre><code class="python">&quot;&quot;&quot;
+返回值变量 = input()
+返回值变量 = len(容器变量)
+&quot;&quot;&quot;
+
+# 从键盘输入一个内容，内容返回给name赋值
+name = input(&#39;请输入你的名字：&#39;)
+print(name)
+
+my_str = &#39;hello&#39;
+# 获取my_str内容的元素个数，返回给n赋值
+n = len(my_str)
+print(n)</code></pre>
+<h3 id="2-return关键字的使用"><a href="#2-return关键字的使用" class="headerlink" title="2. return关键字的使用"></a>2. return关键字的使用</h3><h4 id="2-1-通过return给函数设置返回值"><a href="#2-1-通过return给函数设置返回值" class="headerlink" title="2.1 通过return给函数设置返回值"></a>2.1 通过return给函数设置返回值</h4><ul>
+<li><code>return</code> 关键字只能使用在函数中</li>
+<li>在函数中使用 <code>return</code> 关键字可以中断函数，同时也返回一个结果</li>
+<li>调用函数一方，可以 <strong>使用变量</strong> 来 <strong>接收</strong> 函数的返回结果</li>
+</ul>
+<pre><code class="python">&quot;&quot;&quot;
+函数定义格式：
+def 函数名():
+    return 结果
+
+函数调用格式：
+返回值变量 = 函数名()
+&quot;&quot;&quot;
+
+
+def func_sum(num1, num2):
+    &quot;&quot;&quot;两个数字的求和&quot;&quot;&quot;
+    result = num1 + num2
+    return result  # 中断函数，同时也返回一个结果
+
+
+# 函数调用：返回值变量 = 函数名()
+ret = func_sum(20, 30)
+print(ret)</code></pre>
+<h4 id="2-2-函数默认返回值"><a href="#2-2-函数默认返回值" class="headerlink" title="2.2 函数默认返回值"></a>2.2 函数默认返回值</h4><ul>
+<li>函数内部没有任何return语句，默认返回None，表示没有任何数据</li>
+<li>return不设置返回值，默认也返回None</li>
+</ul>
+<pre><code class="python"># 函数定义，函数内部没有任何return语句
+def normal_func():
+    print(&#39;^_^&#39;)
+
+
+# 函数定义，return不设置返回值
+def return_test():
+    return
+
+
+# 函数调用
+ret1 = normal_func()
+print(ret1)  # None
+
+ret2 = return_test()
+print(ret2)  # None</code></pre>
+<h4 id="2-3-return中断函数"><a href="#2-3-return中断函数" class="headerlink" title="2.3 return中断函数"></a>2.3 return中断函数</h4><ul>
+<li>函数一旦执行return，函数内return下一句往后的代码不会执行</li>
+</ul>
+<pre><code class="python"># 函数定义
+def func():
+    print(&#39;不努力，你来深圳干嘛？&#39;)
+    return
+    print(&#39;我想玩游戏&#39;)
+
+
+# 函数调用
+func()</code></pre>
+<p>运行结果：</p>
+<pre><code class="shell">不努力，你来深圳干嘛？</code></pre>
+<h2 id="五、4种函数的类型"><a href="#五、4种函数的类型" class="headerlink" title="五、4种函数的类型"></a>五、4种函数的类型</h2><h3 id="1-4-种函数类型的分类"><a href="#1-4-种函数类型的分类" class="headerlink" title="1. 4 种函数类型的分类"></a>1. 4 种函数类型的分类</h3><ul>
+<li><p>函数根据有没有参数，有没有返回值，可以相互组合，一共有4种</p>
+<ul>
+<li>无参数，无返回值</li>
+<li>无参数，有返回值</li>
+<li>有参数，无返回值</li>
+<li>有参数，有返回值</li>
+</ul>
+</li>
+<li><p>定义函数时，是 <strong>根据实际的功能需求来设计</strong> 的，所以不同开发人员编写的函数类型各不相同</p>
+</li>
+</ul>
+<h3 id="2-无参数，无返回值的函数"><a href="#2-无参数，无返回值的函数" class="headerlink" title="2. 无参数，无返回值的函数"></a>2. 无参数，无返回值的函数</h3><pre><code class="python">&quot;&quot;&quot;无参数，无返回值的格式
+
+函数定义：
+def 函数名():
+    函数体
+
+函数调用：
+函数名()
+&quot;&quot;&quot;
+
+
+# 函数定义
+def menu():
+    &quot;&quot;&quot;功能菜单&quot;&quot;&quot;
+    print(&#39;=&#39;*20)
+    print(&#39;= 1. 添加学生&#39;)
+    print(&#39;= 2. 删除学生&#39;)
+    print(&#39;= 3. 查询学生&#39;)
+    print(&#39;=&#39; * 20)
+
+
+# 函数调用
+menu()</code></pre>
+<h3 id="3-无参数，有返回值的函数"><a href="#3-无参数，有返回值的函数" class="headerlink" title="3. 无参数，有返回值的函数"></a>3. 无参数，有返回值的函数</h3><pre><code class="python">&quot;&quot;&quot;无参数，有返回值的函数
+
+函数定义：
+def 函数名字():
+    return 返回结果
+
+函数调用：
+返回值变量 = 函数名字()
+&quot;&quot;&quot;
+
+
+# 函数定义
+def get_pi():
+    &quot;&quot;&quot;
+    获取圆周率
+    :return:　返回圆周率
+    &quot;&quot;&quot;
+    return 3.14
+
+
+# 函数调用
+pi = get_pi()
+print(&#39;圆周率为:%f&#39; % pi)</code></pre>
+<h3 id="4-有参数，无返回值的函数"><a href="#4-有参数，无返回值的函数" class="headerlink" title="4. 有参数，无返回值的函数"></a>4. 有参数，无返回值的函数</h3><pre><code class="python">&quot;&quot;&quot;有参数，无返回值的函数
+函数定义：
+def 函数名字(形参1，形参2，……)：
+    函数体
+
+函数调用：
+函数名(实参1，实参2，……)
+&quot;&quot;&quot;
+
+
+# 函数定义
+def print_char(num, char):
+    &quot;&quot;&quot;
+    功能：打印指定数量的字符
+    :param num: 打印字符的个数，整型
+    :param char: 打印的字符，字符串格式
+    :return: None
+    &quot;&quot;&quot;
+    print(num * char)
+
+
+# 函数调用
+print_char(5, &#39;^_^ &#39;)</code></pre>
+<h3 id="5-有参数，有返回值的函数"><a href="#5-有参数，有返回值的函数" class="headerlink" title="5. 有参数，有返回值的函数"></a>5. 有参数，有返回值的函数</h3><pre><code class="python">&quot;&quot;&quot;有参数，有返回值的函数
+函数定义：
+def 函数名字(形参1，形参2，……):
+    函数体
+    return 返回结果
+
+函数调用：
+返回变量 = 函数名字(实参1，实参2，……)
+&quot;&quot;&quot;
+
+
+# 函数定义
+def func_sum(n):
+    &quot;&quot;&quot;
+    功能：实现1~n累加和
+    :param n: n 控制累加的范围
+    :return: 累加后的最终结果
+    &quot;&quot;&quot;
+    # 1. 设置条件变量
+    i = 1
+    _sum = 0
+    # 2. while 条件(i &lt;= n):
+    while i &lt;= n:
+        # 3. 累加
+        _sum += i
+        # 4. 条件变量改变
+        i += 1
+
+    # 5. 循环外面，返回累加的最终结果
+    return _sum
+
+
+# 函数调用
+ret = func_sum(100)
+print(ret)</code></pre>
+<h2 id="六、函数的嵌套调用"><a href="#六、函数的嵌套调用" class="headerlink" title="六、函数的嵌套调用"></a>六、函数的嵌套调用</h2><h3 id="1-函数的嵌套调用"><a href="#1-函数的嵌套调用" class="headerlink" title="1. 函数的嵌套调用"></a>1. 函数的嵌套调用</h3><ul>
+<li>一个函数里面 <strong>又调用</strong> 了 <strong>另外一个函数</strong>，这就是 <strong>函数嵌套调用</strong></li>
+</ul>
+<pre><code class="python"># 定义fun01函数
+def fun01():
+    print(&#39;开始调用fun01&#39;)
+    print(&#39;结束调用fun01&#39;)
+
+
+# 定义fun02函数，在代码块中间调用fun01
+def fun02():
+    print(&#39;开始调用fun02&#39;)
+    # 调用fun01
+    fun01()
+    print(&#39;结束调用fun02&#39;)
+
+
+# 函数调用
+fun02()</code></pre>
+<ul>
+<li>如果函数 <code>func02</code> 中，调用了另外一个函数 <code>func01</code><ul>
+<li>那么执行到调用 <code>func01</code> 函数时，会先把函数 <code>func01</code> 中的任务都执行完</li>
+<li>才会回到 <code>func02</code> 中调用函数 <code>func01</code> 的位置，继续执行后续的代码</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-函数嵌套的应用"><a href="#2-函数嵌套的应用" class="headerlink" title="2. 函数嵌套的应用"></a>2. 函数嵌套的应用</h3><h4 id="2-1-打印多行分隔线"><a href="#2-1-打印多行分隔线" class="headerlink" title="2.1 打印多行分隔线"></a>2.1 打印多行分隔线</h4><p>需求：</p>
+<ol>
+<li><p>设计一个函数，打印一行分隔线：可指定数量，可指定分隔线字符的样式 如： 一行分隔线字符的数量为5，字符样式为<code>&#39;^_^ &#39;</code></p>
+<pre><code class="shell"> ^_^ ^_^ ^_^ ^_^ ^_^</code></pre>
+</li>
+<li><p>设计一个函数，打印n行分隔线，可指定一行分隔线字符的数量，可指定分隔线字符的样式 如：3行分隔线，一行分隔线字符的数量为5，字符样式为<code>&#39;^_^ &#39;</code></p>
+<pre><code class="shell"> ^_^ ^_^ ^_^ ^_^ ^_^
+ ^_^ ^_^ ^_^ ^_^ ^_^
+ ^_^ ^_^ ^_^ ^_^ ^_^</code></pre>
+</li>
+</ol>
+<p>示例代码：</p>
+<pre><code class="python">def print_char(num, char):
+    &quot;&quot;&quot;
+    功能：打印指定数量字符的分隔线
+    :param num: 字符的数量
+    :param char: 字符样式
+    :return: None
+    &quot;&quot;&quot;
+    print(num * char)
+
+
+def print_lines(n, num, char):
+    &quot;&quot;&quot;
+    功能：打印n行分隔线
+    :param n: 打印的行数
+    :param num: 一行分隔线字符的数量
+    :param char: 分隔线的字符样式
+    :return: None
+    &quot;&quot;&quot;
+    # 1. 设置条件变量 i = 0
+    i = 0
+    # 2. while 条件：
+    while i &lt; n:
+        # 3. 打印一行的分隔线
+        print_char(num, char)
+
+        # 4. 条件变量的改变
+        i += 1
+
+# 函数调用
+print_lines(3, &#39;^_^ &#39;, 5)</code></pre>
+<h4 id="2-2-求三个数的平均值"><a href="#2-2-求三个数的平均值" class="headerlink" title="2.2 求三个数的平均值"></a>2.2 求三个数的平均值</h4><p>需求：</p>
+<ol>
+<li>设计一个函数求三个数的和</li>
+<li>设计一个函数求三个数的平均值</li>
+</ol>
+<p>示例代码：</p>
+<pre><code class="python">&quot;&quot;&quot;
+1. 设计一个函数求三个数的和
+2. 设计一个函数求三个数的平均值
+&quot;&quot;&quot;
+
+def sum_3_number(a, b, c):
+    &quot;&quot;&quot;求3个数的和&quot;&quot;&quot;
+    return a + b + c
+
+def avg_3_number(a, b, c):
+    &quot;&quot;&quot;求3个数的平均值&quot;&quot;&quot;
+
+    # 先对3数求和，返回值为求和后的结果
+    sum_result = sum_3_number(a, b, c)
+    # 接着，再求平均值
+    avg_result = sum_result / 3
+
+    # 最终平均值结果作为函数返回值
+    return avg_result
+
+# 调用函数，完成对3个数求平均值
+result = avg_3_number(11, 2, 55)
+print(&quot;average is %.2f&quot; % result)</code></pre>
+<h2 id="七、局部变量和全局变量"><a href="#七、局部变量和全局变量" class="headerlink" title="七、局部变量和全局变量"></a>七、局部变量和全局变量</h2><h3 id="1-局部变量"><a href="#1-局部变量" class="headerlink" title="1. 局部变量"></a>1. 局部变量</h3><ul>
+<li><strong>局部变量</strong>：函数定义的形参，函数内部定义的变量</li>
+<li>不同的函数，可以定义相同的名字的局部变量，但是各用个的不会产生影响</li>
+<li>局部变量的作用域只在函数内部</li>
+<li>局部变量的目的是 <strong>存储需要临时保存的数据</strong></li>
+</ul>
+<pre><code class="python"># 函数定义
+def func(temp):
+    a = 10
+    print(a)
+
+
+# 函数调用
+func(22)
+
+# NameError: name &#39;a&#39; is not defined
+# print(&#39;函数的外部：&#39;, a)    # err
+# print(&#39;函数的外部: &#39;, temp)    # err</code></pre>
+<h3 id="2-全局变量"><a href="#2-全局变量" class="headerlink" title="2. 全局变量"></a>2. 全局变量</h3><h4 id="2-1-全局变量"><a href="#2-1-全局变量" class="headerlink" title="2.1 全局变量"></a>2.1 全局变量</h4><ul>
+<li>在函数外部定义的变量叫做 <strong>全局变量</strong></li>
+<li>全局变量能够在所有的函数中进行访问(不修改)</li>
+</ul>
+<pre><code class="python"># 定义全局变量
+num = 10
+
+
+def func():
+    print(&#39;func num = &#39;, num)
+
+
+func()  # 函数调用
+print(&#39;函数的外面 num = &#39;, num)</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">func num =  10
+函数的外面 num =  10</code></pre>
+<h4 id="2-2-函数内修改全局变量"><a href="#2-2-函数内修改全局变量" class="headerlink" title="2.2 函数内修改全局变量"></a>2.2 函数内修改全局变量</h4><h5 id="2-2-1-默认不能直接修改全局变量"><a href="#2-2-1-默认不能直接修改全局变量" class="headerlink" title="2.2.1 默认不能直接修改全局变量"></a>2.2.1 默认不能直接修改全局变量</h5><pre><code class="python"># 定义全局变量
+num = 10
+
+
+def func():
+    # 函数内给一个变量赋值时，重新生成一个局部变量num
+    # 函数内的num和外面的num没有关系
+    num = 250
+    print(&#39;func num = &#39;, num)  # 获取是函数内的num
+
+
+func()  # 函数调用
+
+# 函数外获取的是全局变量的值
+print(&#39;函数的外面 num = &#39;, num)</code></pre>
+<ul>
+<li><strong>函数内赋值变量</strong> 时，<strong>默认为定义并赋值局部变量</strong></li>
+<li><strong>函数内</strong>获取的是<strong>函数内局部变量</strong>的值，<strong>函数外</strong>获取的是全局变量的值</li>
+</ul>
+<p>运行结果：</p>
+<pre><code class="shell">func num =  250
+函数的外面 num =  10</code></pre>
+<h5 id="2-2-2-通过global声明修改全局变量"><a href="#2-2-2-通过global声明修改全局变量" class="headerlink" title="2.2.2 通过global声明修改全局变量"></a>2.2.2 通过global声明修改全局变量</h5><ul>
+<li>如果在函数中修改全局变量，那么就需要先使用<code>global</code>进行声明，再进行修改</li>
+</ul>
+<pre><code class="python"># 定义全局变量
+num = 10
+
+
+def func():
+    # global num 告诉解释器，函数内部使用的num就是外面的全局变量num
+    global num
+    num = 250   # 修改全局变量
+    print(&#39;func num = &#39;, num)
+
+
+func()  # 函数调用
+print(&#39;函数的外面 num = &#39;, num)</code></pre>
+<p>运行结果：</p>
+<pre><code class="shell">func num =  250
+函数的外面 num =  250</code></pre>
+<h2 id="八、函数的参数2：参数详解"><a href="#八、函数的参数2：参数详解" class="headerlink" title="八、函数的参数2：参数详解"></a>八、函数的参数2：参数详解</h2><h3 id="1-位置参数"><a href="#1-位置参数" class="headerlink" title="1. 位置参数"></a>1. 位置参数</h3><ul>
+<li>函数调用时，按形参的位置，从左往右，一一匹配传递参数</li>
+<li>位置参数必须一一对应，缺一不可</li>
+</ul>
+<pre><code class="python"># 函数定义
+def func(num1, num2):
+    print(&#39;num1 = &#39;, num1)
+    print(&#39;num2 = &#39;, num2)
+
+
+# 函数调用
+func(1, 2)</code></pre>
+<h3 id="2-关键字参数"><a href="#2-关键字参数" class="headerlink" title="2. 关键字参数"></a>2. 关键字参数</h3><ul>
+<li>函数调用时，通过 <strong><code>形参=值</code></strong> 方式为函数形参传值，不用按照位置为函数形参传值，这种方式叫关键字参数</li>
+<li>注意：<ul>
+<li>关键字参数必须在位置参数的右边</li>
+<li>对同一个形参不能重复传值</li>
+</ul>
+</li>
+</ul>
+<pre><code class="python"># 函数定义
+def func(num1, num2):
+    print(&#39;num1 = &#39;, num1)
+    print(&#39;num2 = &#39;, num2)
+
+
+# 函数调用
+func(num2=1, num1=2)</code></pre>
+<h3 id="3-缺省参数"><a href="#3-缺省参数" class="headerlink" title="3. 缺省参数"></a>3. 缺省参数</h3><ul>
+<li><strong>形参设定默认值</strong>，称为缺省参数，也叫默认参数</li>
+<li>注意：<ul>
+<li>调用函数时，如果没有传入默认参数对应的实参，则使用默认值</li>
+<li>默认参数必须在普通参数的后边</li>
+</ul>
+</li>
+</ul>
+<pre><code class="python"># 默认参数必须在普通参数的后边
+def func(a, b=20, c=10):
+    print(a, b, c)
+
+
+# 函数调用
+func(1)  # a=1,b=20,c=10
+func(1, 2)  # a=1,b=2,c=10
+func(1, 3, 2)  # a=1,b=3,c=2</code></pre>
+<h3 id="4-不定长参数"><a href="#4-不定长参数" class="headerlink" title="4. 不定长参数"></a>4. 不定长参数</h3><h4 id="4-1-元组型不定长参数"><a href="#4-1-元组型不定长参数" class="headerlink" title="4.1 元组型不定长参数"></a>4.1 元组型不定长参数</h4><ul>
+<li><p>函数可以定义 <strong>不定长参数</strong>，<strong>用于接收任意数量的位置实参</strong></p>
+</li>
+<li><p>形参变量名前面加上一个<code>*</code></p>
+<p>，这个参数则为元</p>
+<p>组型不定长参数</p>
+<ul>
+<li>形参变量名一般叫： <code>args</code></li>
+</ul>
+</li>
+<li><p>函数体使用不定长参数，直接使用变量名即可，无需加<strong><code>\*</code></strong></p>
+</li>
+<li><p>不定长参数的本质是 <strong>将传递的参数包装成了元组</strong></p>
+</li>
+</ul>
+<pre><code class="python"># *args 为不定长参数，可以接收0~多个实参
+# 把实参的1,2,3, 包装成元组(1, 2, 3)再传递, 等价于args = (1, 2, 3)
+def func(*args):
+    # 函数内部使用，无需加*
+    print(args, type(args))
+
+
+# 函数调用
+func(1, 2, 3)   # (1, 2, 3) &lt;class &#39;tuple&#39;&gt;</code></pre>
+<h4 id="4-2-字典型不定长参数"><a href="#4-2-字典型不定长参数" class="headerlink" title="4.2 字典型不定长参数"></a>4.2 字典型不定长参数</h4><ul>
+<li><p>不定长参数还有一种形式 <strong>可以接收任意数量的关键字实参</strong></p>
+</li>
+<li><p>定义参数时需要在形参名前添加</p>
+<pre><code>**</code></pre><p>，则为字典型不定长参数，在函数体使用不定长参数，直接使用变量名即可，无需加</p>
+<p><code>*</code></p>
+<ul>
+<li>形参变量名一般叫： <code>kwargs</code></li>
+</ul>
+</li>
+<li><p>这种不定长参数会将 <strong>关键字参数包装成字典</strong></p>
+</li>
+</ul>
+<pre><code class="python"># 把实参包装成 {&#39;city&#39;: &#39;sz&#39;, &#39;age&#39;: 18}给kwargs传递
+# kwargs = {&#39;city&#39;: &#39;sz&#39;, &#39;age&#39;: 18}
+def func(name, **kwargs):
+    # 存在形参name, name不会被包装到字典中
+    print(name)
+    print(kwargs)  # 函数内部使用，无需加*
+
+
+# 实参的写法： 变量=数据，变量=数据
+func(name=&#39;mike&#39;, city=&#39;sz&#39;, age=18)</code></pre>
+<p><strong>注意:</strong></p>
+<ul>
+<li><strong>已经存在的形参</strong>, 其对应的关键字实参 <strong>不会被包装到字典中</strong></li>
+<li><strong>字典型可变形参必须在形参列表的最后边</strong></li>
+</ul>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8004-%E5%87%BD%E6%95%B0/">https://caijinbo.work/2020/07/26/2020-07-27-python基础04-函数/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/python/">python</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#函数"><span class="toc-number">1.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、函数的基本使用"><span class="toc-number">1.1.</span> <span class="toc-text">一、函数的基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基本概念"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-函数的定义和调用"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 函数的定义和调用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-函数的定义"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">2.1 函数的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-函数的调用"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">2.2 函数的调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-第一个函数演练"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">2.3 第一个函数演练</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数定义"><span class="toc-number">2.</span> <span class="toc-text">函数定义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#二-函数执行过程、文档注释"><span class="toc-number">2.1.</span> <span class="toc-text">二.函数执行过程、文档注释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-函数执行流程"><span class="toc-number">2.1.1.</span> <span class="toc-text">1. 函数执行流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-函数执行流程"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">1.1 函数执行流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-Debug-的单步调试"><span class="toc-number">2.1.1.2.</span> <span class="toc-text">1.2 Debug 的单步调试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-函数的文档注释"><span class="toc-number">2.1.2.</span> <span class="toc-text">2. 函数的文档注释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、函数的参数1：普通参数"><span class="toc-number">2.2.</span> <span class="toc-text">三、函数的参数1：普通参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-函数参数的作用"><span class="toc-number">2.2.1.</span> <span class="toc-text">1. 函数参数的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-带参数函数的使用"><span class="toc-number">2.2.2.</span> <span class="toc-text">2. 带参数函数的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-带参数函数的定义和调用"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">2.1 带参数函数的定义和调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-函数执行流程"><span class="toc-number">2.2.2.2.</span> <span class="toc-text">2.2 函数执行流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-形参的作用域"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.3 形参的作用域</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、函数的返回值"><span class="toc-number">2.3.</span> <span class="toc-text">四、函数的返回值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-函数返回值的作用"><span class="toc-number">2.3.1.</span> <span class="toc-text">1. 函数返回值的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-return关键字的使用"><span class="toc-number">2.3.2.</span> <span class="toc-text">2. return关键字的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-通过return给函数设置返回值"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">2.1 通过return给函数设置返回值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-函数默认返回值"><span class="toc-number">2.3.2.2.</span> <span class="toc-text">2.2 函数默认返回值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-return中断函数"><span class="toc-number">2.3.2.3.</span> <span class="toc-text">2.3 return中断函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、4种函数的类型"><span class="toc-number">2.4.</span> <span class="toc-text">五、4种函数的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-种函数类型的分类"><span class="toc-number">2.4.1.</span> <span class="toc-text">1. 4 种函数类型的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-无参数，无返回值的函数"><span class="toc-number">2.4.2.</span> <span class="toc-text">2. 无参数，无返回值的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-无参数，有返回值的函数"><span class="toc-number">2.4.3.</span> <span class="toc-text">3. 无参数，有返回值的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-有参数，无返回值的函数"><span class="toc-number">2.4.4.</span> <span class="toc-text">4. 有参数，无返回值的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-有参数，有返回值的函数"><span class="toc-number">2.4.5.</span> <span class="toc-text">5. 有参数，有返回值的函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、函数的嵌套调用"><span class="toc-number">2.5.</span> <span class="toc-text">六、函数的嵌套调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-函数的嵌套调用"><span class="toc-number">2.5.1.</span> <span class="toc-text">1. 函数的嵌套调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-函数嵌套的应用"><span class="toc-number">2.5.2.</span> <span class="toc-text">2. 函数嵌套的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-打印多行分隔线"><span class="toc-number">2.5.2.1.</span> <span class="toc-text">2.1 打印多行分隔线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-求三个数的平均值"><span class="toc-number">2.5.2.2.</span> <span class="toc-text">2.2 求三个数的平均值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、局部变量和全局变量"><span class="toc-number">2.6.</span> <span class="toc-text">七、局部变量和全局变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-局部变量"><span class="toc-number">2.6.1.</span> <span class="toc-text">1. 局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-全局变量"><span class="toc-number">2.6.2.</span> <span class="toc-text">2. 全局变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-全局变量"><span class="toc-number">2.6.2.1.</span> <span class="toc-text">2.1 全局变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-函数内修改全局变量"><span class="toc-number">2.6.2.2.</span> <span class="toc-text">2.2 函数内修改全局变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-1-默认不能直接修改全局变量"><span class="toc-number">2.6.2.2.1.</span> <span class="toc-text">2.2.1 默认不能直接修改全局变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-通过global声明修改全局变量"><span class="toc-number">2.6.2.2.2.</span> <span class="toc-text">2.2.2 通过global声明修改全局变量</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、函数的参数2：参数详解"><span class="toc-number">2.7.</span> <span class="toc-text">八、函数的参数2：参数详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-位置参数"><span class="toc-number">2.7.1.</span> <span class="toc-text">1. 位置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-关键字参数"><span class="toc-number">2.7.2.</span> <span class="toc-text">2. 关键字参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-缺省参数"><span class="toc-number">2.7.3.</span> <span class="toc-text">3. 缺省参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-不定长参数"><span class="toc-number">2.7.4.</span> <span class="toc-text">4. 不定长参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-元组型不定长参数"><span class="toc-number">2.7.4.1.</span> <span class="toc-text">4.1 元组型不定长参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-字典型不定长参数"><span class="toc-number">2.7.4.2.</span> <span class="toc-text">4.2 字典型不定长参数</span></a></li></ol></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8005-%E5%87%BD%E6%95%B0%E5%BC%BA%E5%8C%96%E5%92%8C%E8%BF%9B%E9%98%B6/">&lt; python基础05-函数强化和进阶</a><a class="next" href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8007-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A11%EF%BC%9A%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E3%80%81%E9%AD%94%E6%96%B9%E6%96%B9%E6%B3%95/">python基础07-面向对象1：类和对象、魔方方法 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>

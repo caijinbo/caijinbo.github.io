@@ -1,0 +1,996 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是始于兴趣搭建的个人博客。"><meta name="baidu-site-verification"><title>python基础03-容器类型 | CAIJINBO</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="CAIJINBO" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/prettify/doxy.css"><script type="text/javascript" src="/js/ready.js" async></script><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">CAIJINBO</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">CAIJINBO</a></h1></div><p class="m-desc">懒人在思考......,<br>解决不了问题，就解决提出问题的人！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">python基础03-容器类型</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8003-%E5%AE%B9%E5%99%A8%E7%B1%BB%E5%9E%8B/">2020-07-26</a></span><span class="p-category"><i class="fa fa-folder"></i><a href="/categories/python/">python</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h1 id="容器类型"><a href="#容器类型" class="headerlink" title="容器类型"></a>容器类型</h1><h2 id="一、列表"><a href="#一、列表" class="headerlink" title="一、列表"></a>一、列表</h2><h3 id="1-列表的定义"><a href="#1-列表的定义" class="headerlink" title="1. 列表的定义"></a>1. 列表的定义</h3><a id="more"></a>
+
+<ul>
+<li><code>list</code>（列表） 是 <code>Python</code> 中使用 <strong>最频繁</strong> 的数据类型</li>
+<li>专门用于存储 <strong>一串 数据</strong>，存储的数据 称为 <strong>元素</strong></li>
+<li>列表用 <code>[]</code> 定义，<strong>元素</strong> 之间使用 <code>,</code> 分隔</li>
+<li>列表的索引从0开始<ul>
+<li><strong>索引</strong> 就是元素在 <strong>列表</strong> 中的位置编号</li>
+</ul>
+</li>
+</ul>
+<pre><code class="python">&quot;&quot;&quot;
+列表定义的格式：
+列表变量的名字 = [元素1, 元素2, ……]
+
+使用格式：
+    列表变量[位置]
+    位置：也叫下标、索引
+&quot;&quot;&quot;
+
+# 列表定义
+name_list = [&#39;mike&#39;, &#39;yoyo&#39;, &#39;rock&#39;, &#39;lily&#39;]
+#              0       1        2       3
+#             -4       -3      -2       -1
+
+# 最后一个元素取出来
+print(name_list[3])
+print(name_list[-1])
+
+# 访问列表元素，不要超出范围，不要越界
+# IndexError: list index out of range
+# print(name_list[4])</code></pre>
+<ul>
+<li>注意：从列表中取值时，如果 <strong>超出索引范围</strong>，程序会报错</li>
+</ul>
+<h3 id="2-列表嵌套"><a href="#2-列表嵌套" class="headerlink" title="2. 列表嵌套"></a>2. 列表嵌套</h3><ul>
+<li>一个列表中的元素又是列表，那么这就是列表的嵌套</li>
+</ul>
+<pre><code class="python">school_list = [[&#39;北京大学&#39;, &#39;清华大学&#39;], [&#39;中山大学&#39;, &#39;华南理工大学&#39;], [&#39;哈工大&#39;, &#39;哈工程&#39;]]
+#                  0                      1                         2
+
+# 取出第 2 个元素，也就是索引为1的元素
+print(school_list[1])  # [&#39;中山大学&#39;, &#39;华南理工大学&#39;]
+
+# 先取出索引为1的元素，再继续索引为1的元素
+# [&#39;中山大学&#39;, &#39;华南理工大学&#39;]
+#   0            1
+print(school_list[1][1])  # &#39;华南理工大学&#39;</code></pre>
+<h3 id="3-列表常用操作"><a href="#3-列表常用操作" class="headerlink" title="3. 列表常用操作"></a>3. 列表常用操作</h3><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>关键字 / 函数 / 方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>增加</td>
+<td><a href="method/append.html">列表.append(值)</a></td>
+<td>在末尾追加数据</td>
+</tr>
+<tr>
+<td>删除</td>
+<td><a href="method/remove.html">列表.remove(值)</a></td>
+<td>删除第一个出现的指定数据</td>
+</tr>
+<tr>
+<td>修改</td>
+<td><a href="method/索引赋值.html">列表[索引] = 值</a></td>
+<td>修改指定索引的数据，数据不存在会报错</td>
+</tr>
+<tr>
+<td>查询</td>
+<td><a href="method/索引取值.html">列表[索引]</a></td>
+<td>根据索引取值，索引不存在会报错</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/len.html">len(列表)</a></td>
+<td>列表长度(元素个数)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/if_in.html">if 值 in 列表:</a></td>
+<td>判断列表中是否包含某个值</td>
+</tr>
+<tr>
+<td>排序</td>
+<td><a href="method/sort.html">列表.sort()</a></td>
+<td>升序排序</td>
+</tr>
+</tbody></table>
+<ul>
+<li><a href="07_语法汇总.html">全部方法列表</a></li>
+</ul>
+<h3 id="4-循环遍历"><a href="#4-循环遍历" class="headerlink" title="4. 循环遍历"></a>4. 循环遍历</h3><h4 id="4-1-通过for循环遍历"><a href="#4-1-通过for循环遍历" class="headerlink" title="4.1 通过for循环遍历"></a>4.1 通过for循环遍历</h4><ul>
+<li><strong>遍历</strong> 就是 <strong>从头到尾</strong> <strong>依次</strong> 从 <strong>列表</strong> 中取出 <strong>每一个元素</strong></li>
+<li>Python中专门提供 <strong>for循环</strong> 实现遍历</li>
+</ul>
+<pre><code class="python"># 遍历，从头开始找，直到结束
+name_list = [&#39;mike&#39;, &#39;yoyo&#39;, &#39;rock&#39;, &#39;lily&#39;]
+
+# 通过while实现遍历
+# 1. 定义条件变量i = 0
+i = 0
+
+# 2. while i &lt; 列表元素个数:
+while i &lt; len(name_list):
+    # 3. 取出某个元素，打印
+    name = name_list[i]
+    print(name)
+
+    # 4. 条件变量的修改
+    i += 1
+
+print(&#39;==========华丽分割线=============&#39;)
+
+# for遍历循环，和上面的while效果等价
+# 从头到尾 依次从 列表 中取出 每一个元素
+for name in name_list:
+    print(name)</code></pre>
+<h4 id="4-2-if…in-和-for…in-的区别"><a href="#4-2-if…in-和-for…in-的区别" class="headerlink" title="4.2 if…in 和 for…in 的区别"></a>4.2 if…in 和 for…in 的区别</h4><ul>
+<li>if…in：判断某个元素是否在列表中，如果在，if的条件为True</li>
+<li>for…in：从头到尾 依次从 列表 中取出 每一个元素</li>
+</ul>
+<pre><code class="python">name_list = [&#39;mike&#39;, &#39;yoyo&#39;, &#39;rock&#39;, &#39;lily&#39;]
+
+# if…in：判断某个元素是否在列表中，如果在，if的条件为True
+name = &#39;yoyo&#39;
+
+# name的内容&#39;yoyo&#39;是否在name_list列表中，如果在，name in name_list结果为True
+if name in name_list:
+    print(&#39;%s 在列表中&#39; % name)
+
+print(&#39;==========华丽分割线=============&#39;)
+
+# for…in：从头到尾 依次从 列表 中取出 每一个元素，这个元素给name赋值
+for name in name_list:
+    print(name)</code></pre>
+<p>运行结果：</p>
+<pre><code class="shell">yoyo 在列表中
+==========华丽分割线=============
+mike
+yoyo
+rock
+lily</code></pre>
+<h4 id="4-3-for…else的使用"><a href="#4-3-for…else的使用" class="headerlink" title="4.3 for…else的使用"></a>4.3 for…else的使用</h4><ul>
+<li>for循环里面没有遇到break语句，for执行完后，则会执行else的分支</li>
+</ul>
+<pre><code class="python">name_list = [&#39;mike&#39;, &#39;yoyo&#39;, &#39;rock&#39;, &#39;lily&#39;]
+
+for name in name_list:
+    print(name)
+
+    # 测试有break，和没有break的else执行情况
+    # if name == &#39;yoyo&#39;:
+    #     break
+else:
+    print(&#39;for循环里面没有遇到break语句，for执行完后，则会执行else的分支&#39;)</code></pre>
+<p>运行结果：</p>
+<pre><code class="python">mike
+yoyo
+rock
+lily
+for循环里面没有遇到break语句，for执行完后，则会执行else的分支</code></pre>
+<h2 id="二、元组"><a href="#二、元组" class="headerlink" title="二、元组"></a>二、元组</h2><h3 id="1-元组的定义"><a href="#1-元组的定义" class="headerlink" title="1. 元组的定义"></a>1. 元组的定义</h3><ul>
+<li>元组用 <code>()</code> 定义</li>
+<li>用于存储 <strong>一串 数据</strong>，<strong>元素</strong> 之间使用 <code>,</code> 分隔</li>
+<li>元组的 <strong>索引</strong> 从 <code>0</code> 开始</li>
+</ul>
+<pre><code class="python"># 列表：列表变量 = [元素1, 元素2, ……]
+# 元组：元组变量 = (元素1, 元素2, ……)
+my_tuple = (&#39;mike&#39;, &#39;yoyo&#39;, &#39;lily&#39;)
+#             0       1        2
+
+# 取出第0个元素
+print(my_tuple[0])  # 输出：&#39;mike&#39;</code></pre>
+<ul>
+<li>元组中 <strong>只包含一个元素</strong> 时，需要 <strong>在元素后面添加逗号</strong></li>
+</ul>
+<pre><code class="python"># 元组只有一个元素的时候，格式: (元素,)
+my_tuple1 = (250,)
+# 打印my_tuple1的类型
+print(type(my_tuple1))</code></pre>
+<h3 id="2-元组常用操作"><a href="#2-元组常用操作" class="headerlink" title="2. 元组常用操作"></a>2. 元组常用操作</h3><ul>
+<li><code>tuple</code>（元组）与列表类似，不同之处在于元组的 <strong>元素不能修改</strong></li>
+</ul>
+<pre><code class="python">my_tuple = (&#39;mike&#39;, &#39;yoyo&#39;, &#39;lily&#39;)
+# 元组只读不能改
+# TypeError: &#39;tuple&#39; object does not support item assignment
+# my_tuple[0] = &#39;rock&#39; # err</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">分类</th>
+<th align="left">关键字 / 函数 / 方法</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">查询</td>
+<td align="left"><a href="method/索引取值_元组.html">元组[索引]</a></td>
+<td align="left">根据索引取值，索引不存在会报错</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/len_元组.html">len(元组)</a></td>
+<td align="left">元组长度(元素个数)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/if_in_元组.html">if 值 in 元组:</a></td>
+<td align="left">判断元组中是否包含某个值</td>
+</tr>
+</tbody></table>
+<h2 id="三、字典"><a href="#三、字典" class="headerlink" title="三、字典"></a>三、字典</h2><h3 id="1-字典的定义"><a href="#1-字典的定义" class="headerlink" title="1. 字典的定义"></a>1. 字典的定义</h3><ul>
+<li>字典同样可以用来</li>
+</ul>
+<p>  存储多个数据</p>
+<ul>
+<li>通常用于存储 <strong>描述一个 <code>物体</code> 的相关信息</strong></li>
+</ul>
+<ul>
+<li><p>字典用 <code>{}</code> 定义</p>
+</li>
+<li><p>字典使用 键值对 存储数据，键值对之间使用’,’分隔</p>
+<ul>
+<li><strong>键</strong> <code>key</code> 是索引，<strong>值</strong> <code>value</code> 是数据</li>
+<li><strong>键</strong> 和 <strong>值</strong> 之间使用 <code>:</code> 分隔</li>
+<li><strong>值</strong> 可以取任何数据类型，但 <strong>键</strong> 只能使用 <strong>字符串</strong>、<strong>数字</strong>或 <strong>元组</strong></li>
+<li><strong>键必须是唯一的</strong></li>
+</ul>
+</li>
+</ul>
+<pre><code class="python">&quot;&quot;&quot;
+字典定义格式：
+    字典变量 = {k1:v1, k2:v2,……}
+
+取出元素的值：
+    字典变量[键值]
+&quot;&quot;&quot;
+# 字典的定义
+info = {&#39;name&#39;: &#39;mike&#39;, &#39;age&#39;: 34, &#39;city&#39;: &#39;sz&#39;}
+print(info)  # {&#39;name&#39;: &#39;mike&#39;, &#39;age&#39;: 34, &#39;city&#39;: &#39;sz&#39;}
+
+# 取出元素的值：字典变量[键值]
+print(info[&#39;city&#39;])</code></pre>
+<h3 id="2-字典常用操作"><a href="#2-字典常用操作" class="headerlink" title="2. 字典常用操作"></a>2. 字典常用操作</h3><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>关键字 / 函数 / 方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>增加</td>
+<td><a href="method/增加键值_字典.html">字典[键] = 值</a></td>
+<td>键不存在，会添加键值对</td>
+</tr>
+<tr>
+<td>删除</td>
+<td><a href="method/删除键值_字典.html">字典.pop(键)</a></td>
+<td>删除指定键值对,返回被删除的值,如果键不存在,会报错</td>
+</tr>
+<tr>
+<td>修改</td>
+<td><a href="method/修改键值_字典.html">字典[键] = 值</a></td>
+<td>键存在，会修改键值对的值</td>
+</tr>
+<tr>
+<td>查询</td>
+<td><a href="method/查询值_字典.html">字典[键]</a></td>
+<td>根据键取值，键值对不存在会报错</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/get_字典.html">字典.get(键)</a></td>
+<td>根据键取值，键值对不存在返回None, 不会报错</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字典_items.html">for key, value in 字典.items()</a></td>
+<td>遍历字典, 获取所有的键值对 (键, 值)</td>
+</tr>
+</tbody></table>
+<h3 id="3-案例：登录注册系统"><a href="#3-案例：登录注册系统" class="headerlink" title="3. 案例：登录注册系统"></a>3. 案例：登录注册系统</h3><ul>
+<li><p>在开发中，字典的应用场景是：</p>
+<ul>
+<li><p>使用 <strong>多个键值对</strong>，存储 <strong>描述一个 <code>物体</code> 的相关信息</strong> —— 描述更复杂的数据信息</p>
+</li>
+<li><p>将 <strong>多个字典</strong> 放在 <strong>一个列表</strong> 中，再进行遍历，在循环体内部针对每一个字典进行 <strong>相同的处理</strong></p>
+<pre><code class="python">用户1: {&#39;name&#39;: &#39;mike&#39;, &#39;pwd&#39;:123456}
+用户2: {&#39;name&#39;: &#39;yoyo&#39;, &#39;pwd&#39;:123456}
+
+用户管理列表：
+user_list = [{&#39;name&#39;: &#39;mike&#39;, &#39;pwd&#39;:123456}, {&#39;name&#39;: &#39;yoyo&#39;, &#39;pwd&#39;:123456}]</code></pre>
+</li>
+</ul>
+</li>
+<li><p>登录注册系统需求：完成用户注册、用户登录功能</p>
+</li>
+</ul>
+<pre><code class="python">&quot;&quot;&quot;
+登录注册系统需求：1.用户注册/ 2.用户登录/ 3.退出程序
+
+0. 定义一个列表，用于存储用户字典
+
+1. 死循环 while True:
+    2. 输入数字指令
+    3. 判断指令，选择分支
+    4. 用户注册功能
+        4.1 输入注册的用户名
+        4.2 通过for遍历列表，取出的每个元素是字典
+            4.3 字典[&#39;name&#39;]和输入注册的用户名比较是否相等
+                4.4 如果相等，打印提示：名字在列表中，不允许注册
+                4.5 跳出循环
+        4.6 for循环的else，循环里面没有执行到break，则会执行else
+            4.7 输入注册的密码
+            4.8 创建一个字典
+            4.9 字典追加到列表中
+            4.10 打印：注册成功
+    5. 用户登陆功能
+        5.1 输入登陆的用户名和密码
+        5.2 通过for遍历列表，取出的每个元素是字典
+            5.3 字典[&#39;name&#39;]和登陆用户名比较 and 字典[&#39;pwd&#39;]和登陆密码比较
+                5.4 如果都相等，打印提示：登陆成功
+                5.5 跳出循环
+        5.6 for循环的else，循环里面没有执行到break，则会执行else
+            5.7 打印：用户名或密码错误，请重新登陆
+&quot;&quot;&quot;
+# 0. 定义一个列表，用于存储用户字典
+user_list = [{&#39;name&#39;: &#39;mike&#39;, &#39;pwd&#39;: 123456}, {&#39;name&#39;: &#39;yoyo&#39;, &#39;pwd&#39;: 123456}]
+
+# 1. 死循环 while True:
+while True:
+    #  2. 输入数字指令
+    cmd_num = input(&quot;请输入操作: 1.用户注册/ 2.用户登录/ 3.退出程序&quot;)
+
+    # 3. 判断指令，选择分支
+    # 4. 用户注册功能
+    if cmd_num == &quot;1&quot;:
+        # print(&#39;用户注册&#39;)
+        # 4.1 输入注册的用户名
+        reg_name = input(&#39;请输入注册的名字：&#39;)
+        # 4.2 通过for遍历列表，取出的每个元素是字典
+        for user_dict in user_list:
+            # 4.3 字典[&#39;name&#39;]和输入注册的用户名比较是否相等
+            if user_dict[&#39;name&#39;] == reg_name:
+                # 4.4 如果相等，打印提示：名字在列表中，不允许注册
+                print(reg_name, &#39;名字在列表中，不允许注册&#39;)
+                # 4.5 跳出循环
+                break
+        # 4.6 for循环的else，循环里面没有执行到break，则会执行else
+        else:
+            # 4.7 输入注册的密码
+            reg_pwd = input(&#39;请输入注册的密码：&#39;)
+            # 4.8 创建一个字典
+            user_dict = {&#39;name&#39;: reg_name, &#39;pwd&#39;: reg_pwd}
+            # 4.9 字典追加到列表中
+            user_list.append(user_dict)
+            # 4.10 打印：注册成功
+            print(&#39;注册成功&#39;)
+    # 5. 用户登陆功能
+    elif cmd_num == &quot;2&quot;:
+        # print(&#39;用户登录&#39;)
+        # 5.1 输入登陆的用户名和密码
+        login_name = input(&#39;请输入登录用户名:&#39;)
+        login_pwd = int(input(&#39;请输入登录密码:&#39;)) # 密码要转换为整型
+        # 5.2 通过for遍历列表，取出的每个元素是字典
+        for user_dict in user_list:
+            # 5.3 字典[&#39;name&#39;]和登陆用户名比较 and 字典[&#39;pwd&#39;]和登陆密码比较
+            if user_dict[&#39;name&#39;] == login_name and user_dict[&#39;pwd&#39;] == login_pwd:
+                # 5.4 如果都相等，打印提示：登陆成功
+                print(&#39;登陆成功&#39;)
+                # 5.5 跳出循环
+                break
+        # 5.6 for循环的else，循环里面没有执行到break，则会执行else
+        else:
+            # 5.7 打印：用户名或密码错误，请重新登陆
+            print(&#39;用户名或密码错误，请重新登陆&#39;)
+    elif cmd_num == &quot;3&quot;:
+        print(&#39;退出程序&#39;)
+        break
+    else:
+        print(&quot;输入错误，重新输入&quot;</code></pre>
+<h2 id="四、字符串"><a href="#四、字符串" class="headerlink" title="四、字符串"></a>四、字符串</h2><h3 id="1-字符串的定义"><a href="#1-字符串的定义" class="headerlink" title="1. 字符串的定义"></a>1. 字符串的定义</h3><ul>
+<li><strong>字符串</strong> 就是 <strong>一串字符</strong>，是编程语言中表示文本的数据类型</li>
+<li>在 Python 中可以使用 <strong>一对双引号</strong> <code>&quot;</code> 或者 <strong>一对单引号</strong> <code>&#39;</code> 定义一个字符串 或者 <strong>一对三引号</strong> <code>&#39;&#39;&#39;</code> 定义一个字符串</li>
+<li>可以使用 <strong>索引</strong> 获取一个字符串中 <strong>指定位置的字符</strong>，索引计数从 <strong>0</strong> 开始</li>
+<li>也可以使用 <code>for</code> <strong>循环遍历</strong> 字符串中每一个字符</li>
+</ul>
+<pre><code class="python">&quot;&quot;&quot;
+字符串变量 = &#39;字符串内容&#39;
+说明：可以是单引号、双引号、三引号
+
+&quot;&quot;&quot;
+my_str = &#39;python&#39;
+#         012345
+
+# 取某个元素，和列表一样
+print(my_str[0])
+
+# 遍历取所有元素
+for c in my_str:
+    print(c)</code></pre>
+<h3 id="2-f-strings-字符串格式化"><a href="#2-f-strings-字符串格式化" class="headerlink" title="2. f-strings 字符串格式化"></a>2. f-strings 字符串格式化</h3><ul>
+<li><code>f-strings</code>是Python 3.6之后的一种新的字符串格式化方法，要使用f-strings，只需在字符串前加上f、或F：</li>
+</ul>
+<pre><code class="python">name = &#39;mike&#39;
+age = 34
+sex = &#39;male&#39;
+
+# 传统方式格式化
+print(&#39;我叫%s, 年龄为%d, 性别为：%s&#39; % (name, age, sex))
+
+# 和上面打印效果一样
+print(f&#39;我叫{name}, 年龄为{age}, 性别为：{sex}&#39;)
+print(F&#39;我叫{name}, 年龄为{age}, 性别为：{sex}&#39;)</code></pre>
+<h3 id="3-字符串的常用操作"><a href="#3-字符串的常用操作" class="headerlink" title="3. 字符串的常用操作"></a>3. 字符串的常用操作</h3><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>关键字 / 函数 / 方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查找</td>
+<td><a href="method/字符串_find.html">字符串.find(目标字符串, 开始索引, 结束索引)</a></td>
+<td>在指定范围内, 查询目标字符串的索引, 不存在返回-1</td>
+</tr>
+<tr>
+<td>替换</td>
+<td><a href="method/字符串_replace.html">字符串.replace(原内容, 新内容, 替换次数)</a></td>
+<td>返回一个替换了原内容的新字符串，可以指定替换次数</td>
+</tr>
+<tr>
+<td>分割</td>
+<td><a href="method/字符串_split.html">字符串.split(分割符)</a></td>
+<td>以分割符拆分字符串, 返回列表</td>
+</tr>
+<tr>
+<td>拼接</td>
+<td><a href="method/字符串_+.html">字符串 + 字符串</a></td>
+<td>拼接两个字符串</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_join.html">字符串.join(字符串列表)</a></td>
+<td>以字符串来连接字符串列表中每个元素，合并为一个新的字符串</td>
+</tr>
+</tbody></table>
+<h3 id="4-字符串的切片"><a href="#4-字符串的切片" class="headerlink" title="4. 字符串的切片"></a>4. 字符串的切片</h3><h4 id="4-1-切片介绍"><a href="#4-1-切片介绍" class="headerlink" title="4.1 切片介绍"></a>4.1 切片介绍</h4><ul>
+<li><p><strong>切片</strong> 译自英文单词 <code>slice</code>，翻译成另一个解释更好理解: <strong>一部分</strong></p>
+</li>
+<li><p><strong>切片</strong> 使用 <strong>索引值</strong> 来限定范围，根据 <strong>步长</strong> 从原序列中 <strong>取出一部分</strong> 元素组成新序列</p>
+</li>
+<li><p><strong>切片</strong> 方法适用于 <strong>字符串</strong>、<strong>列表</strong>、<strong>元组</strong></p>
+<pre><code>字符串[开始索引:结束索引:步长]</code></pre></li>
+</ul>
+<p><strong>注意</strong>：</p>
+<ol>
+<li>指定的区间属于左闭右开型[开始索引, 结束索引)对应开始索引 &lt;= 范围 &lt; 结束索引<ul>
+<li>从 <code>起始</code> 位开始，到 <strong><code>结束</code>位的前一位</strong> 结束（<strong>不包含结束位本身</strong>)</li>
+</ul>
+</li>
+<li>从头开始，<strong>开始索引</strong> <strong>数字可以省略，冒号不能省略</strong></li>
+<li>到末尾结束，<strong>结束索引</strong> <strong>数字和冒号都可以省略</strong></li>
+<li>步长：理解为走的步数，正数说明是从左往右，负数是从右往左，默认步长为+1<ul>
+<li>步长默认为 <code>1</code>，如果元素连续，<strong>数字和冒号都可以省略</strong></li>
+</ul>
+</li>
+</ol>
+<h4 id="4-2-案例"><a href="#4-2-案例" class="headerlink" title="4.2 案例"></a>4.2 案例</h4><p><strong>演练需求</strong></p>
+<ol>
+<li>截取从 2 ~ 5 位置 的字符串</li>
+<li>截取从 2 ~ <code>末尾</code> 的字符串</li>
+<li>截取从 <code>开始</code> ~ 5 位置 的字符串</li>
+<li>从开始位置，每隔一个字符截取字符串</li>
+<li>截取字符串末尾两个字符</li>
+<li>字符串的逆序（面试题）</li>
+</ol>
+<p>示例代码：</p>
+<pre><code class="python">&quot;&quot;&quot;
+字符串[开始索引:结束索引:步长]
+0. 步长默认为1，步长理解为走几步，正数从左往右，负数从右往左
+1. 字符串[开始索引:结束索引]   开始索引 ~（结束索引-1）
+2. 字符串[开始索引: ]       开始索引 ~ 结束索引，末尾索引不写，默认能取到末尾那个索引
+3. 字符串[ :结束索引]       0 ~（结束索引-1），开始索引不写，默认从第0个元素开始
+&quot;&quot;&quot;
+temp_str = &#39;12345678&#39;
+#           01234567
+#                -2-1
+
+# 站在用户角度，第1个元素才开始算第1个位置
+# 截取从 2 ~ 5 位置 的字符串
+print(temp_str[1:5])
+
+# 截取从 2 ~ 末尾 的字符串
+print(temp_str[1:]) # 没有指定结尾索引，默认取到末尾
+
+# 截取从 开始 ~ 5 位置 的字符串
+print(temp_str[:5]) # 没有指定开头索引，默认从0开始
+
+# 从开始位置，每隔一个字符截取字符串，也就是说走2步
+print(temp_str[::2]) # 没有指定开头、结尾索引，默认从头到尾
+
+# 截取字符串末尾两个字符
+print(temp_str[-2:])  # 没有指定结尾索引，默认取到末尾
+
+# 字符串的逆序（面试题）
+print(temp_str[::-1])</code></pre>
+<h2 id="五、集合"><a href="#五、集合" class="headerlink" title="五、集合"></a>五、集合</h2><h3 id="1-通过集合完成对列表去重功能"><a href="#1-通过集合完成对列表去重功能" class="headerlink" title="1. 通过集合完成对列表去重功能"></a>1. 通过集合完成对列表去重功能</h3><ul>
+<li>集合用 <code>{}</code> 定义，<strong>元素</strong> 之间使用 <code>,</code> 分隔</li>
+<li>可通过集合对列表中的元素完成去重功能</li>
+</ul>
+<pre><code class="python"># 集合：元素不会重复，{元素1，元素2……}
+# 定义集合
+my_set = {1, 2, 1, 2, 1, 2}
+print(my_set)  # {1, 2}
+print(type(my_set))  # &lt;class &#39;set&#39;&gt;
+
+# 通过集合完成对列表去重功能
+name_list = [&#39;mike&#39;, &#39;yoyo&#39;, &#39;mike&#39;]
+# set(name_list)：给列表转换为set类型，即可完成去重功能
+temp_set = set(name_list)
+print(temp_set)  # {&#39;mike&#39;, &#39;yoyo&#39;}</code></pre>
+<h3 id="2-list、tuple、set之间类型转换"><a href="#2-list、tuple、set之间类型转换" class="headerlink" title="2. list、tuple、set之间类型转换"></a>2. list、tuple、set之间类型转换</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>list(x)</td>
+<td>将 x 转换为列表类型</td>
+</tr>
+<tr>
+<td>tuple(x)</td>
+<td>将 x 转换为元组类型</td>
+</tr>
+<tr>
+<td>set(x)</td>
+<td>将 x 转换为集合类型</td>
+</tr>
+</tbody></table>
+<p>示例代码：</p>
+<pre><code class="python"># 列表转元组、集合 类型
+my_list = [1, 2, 3, 5, 3, 5]
+
+# 列表转换为元组类型
+my_tuple = tuple(my_list)
+print(my_tuple)  # (1, 2, 3, 5, 3, 5)
+
+# 列表转换为集合类型
+my_set = set(my_list)
+print(my_set)   # {1, 2, 3, 5}
+
+print(&#39;============华丽分割线============&#39;)
+
+# 元组转列表、集合 类型
+my_tuple = (1, 2, 3, 5, 3, 5)
+
+# 元组转换为列表 类型
+my_list = list(my_tuple)
+print(my_list)  # [1, 2, 3, 5, 3, 5]
+
+# 元组转换为集合 类型
+my_set = set(my_tuple)
+print(my_set)   # {1, 2, 3, 5}
+
+print(&#39;============华丽分割线============&#39;)
+
+# 集合转元组、列表 类型
+my_set = {1, 2, 3}
+
+# 集合转换为列表 类型
+my_list = list(my_set)
+print(my_list)  # [1, 2, 3]
+
+# 集合转换为元组 类型
+my_tuple = tuple(my_set)
+print(my_tuple)  # (1, 2, 3)</code></pre>
+<h2 id="六、公共语法"><a href="#六、公共语法" class="headerlink" title="六、公共语法"></a>六、公共语法</h2><h3 id="1-Python-内置函数"><a href="#1-Python-内置函数" class="headerlink" title="1. Python 内置函数"></a>1. Python 内置函数</h3><p>Python 包含了以下内置函数：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>len(item)</td>
+<td>计算容器中元素个数</td>
+<td></td>
+</tr>
+<tr>
+<td>max(item)</td>
+<td>返回容器中元素最大值</td>
+<td>如果是字典，只针对 key 比较</td>
+</tr>
+<tr>
+<td>min(item)</td>
+<td>返回容器中元素最小值</td>
+<td>如果是字典，只针对 key 比较</td>
+</tr>
+</tbody></table>
+<h3 id="2-切片"><a href="#2-切片" class="headerlink" title="2. 切片"></a>2. 切片</h3><table>
+<thead>
+<tr>
+<th align="center">描述</th>
+<th align="left">Python 表达式</th>
+<th align="left">结果</th>
+<th align="left">支持的数据类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">切片</td>
+<td align="left">[1, 2, 3, 4][::2]</td>
+<td align="left">[1, 3]</td>
+<td align="left">字符串、列表、元组</td>
+</tr>
+</tbody></table>
+<h3 id="3-运算符"><a href="#3-运算符" class="headerlink" title="3. 运算符"></a>3. 运算符</h3><table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th>Python 表达式</th>
+<th>结果</th>
+<th>描述</th>
+<th>支持的数据类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">+</td>
+<td>[1, 2] + [3, 4]</td>
+<td>[1, 2, 3, 4]</td>
+<td>合并</td>
+<td>字符串、列表、元组</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td>[1, 2] * 2</td>
+<td>[1, 2, 1, 2]</td>
+<td>重复</td>
+<td>字符串、列表、元组</td>
+</tr>
+<tr>
+<td align="center">in</td>
+<td>3 in (1, 2, 3)</td>
+<td>True</td>
+<td>元素是否存在</td>
+<td>字符串、列表、元组、字典</td>
+</tr>
+<tr>
+<td align="center">not in</td>
+<td>4 not in (1, 2, 3)</td>
+<td>True</td>
+<td>元素是否不存在</td>
+<td>字符串、列表、元组、字典</td>
+</tr>
+<tr>
+<td align="center">&gt; &gt;= == &lt; &lt;=</td>
+<td>(1, 2, 6) &lt; (1, 3, 4)</td>
+<td>True</td>
+<td>元素比较</td>
+<td>字符串、列表、元组</td>
+</tr>
+</tbody></table>
+<p><strong>注意</strong></p>
+<ul>
+<li><code>in</code> 在对 <strong>字典</strong> 操作时，判断的是 <strong>字典的键</strong></li>
+<li><code>in</code> 和 <code>not in</code> 被称为 <strong>成员运算符</strong></li>
+</ul>
+<h2 id="七、容器常用方法汇总"><a href="#七、容器常用方法汇总" class="headerlink" title="七、容器常用方法汇总"></a>七、容器常用方法汇总</h2><h3 id="1-列表操作"><a href="#1-列表操作" class="headerlink" title="1. 列表操作"></a>1. 列表操作</h3><table>
+<thead>
+<tr>
+<th align="left">分类</th>
+<th align="left">关键字 / 函数 / 方法</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">增加</td>
+<td align="left"><a href="method/append.html">列表.append(值)</a></td>
+<td align="left">在末尾追加值</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/insert.html">列表.insert(索引, 值)</a></td>
+<td align="left">在指定位置插入值, 超过索引会追加值</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/extend.html">列表.extend(可迭代对象)</a></td>
+<td align="left">将可迭代对象 中 的元素 追加到列表</td>
+</tr>
+<tr>
+<td align="left">删除</td>
+<td align="left"><a href="method/remove.html">列表.remove(值)</a></td>
+<td align="left">删除指定值的 第一个匹配项</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/del.html">del 列表[索引]</a></td>
+<td align="left">删除指定位置的值</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/pop.html">列表.pop(索引)</a></td>
+<td align="left">删除指定索引的值, 并返回被删除的值</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/clear.html">列表.clear()</a></td>
+<td align="left">清空列表</td>
+</tr>
+<tr>
+<td align="left">修改</td>
+<td align="left"><a href="method/索引赋值.html">列表[索引] = 值</a></td>
+<td align="left">修改指定索引的值，索引不存在会报错</td>
+</tr>
+<tr>
+<td align="left">查询</td>
+<td align="left"><a href="method/索引取值.html">列表[索引]</a></td>
+<td align="left">根据索引取值，索引不存在会报错</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/len.html">len(列表)</a></td>
+<td align="left">列表长度(元素个数)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/if_in.html">if 值 in 列表:</a></td>
+<td align="left">判断列表中是否包含某个值</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/index1.html">列表.index(值)</a></td>
+<td align="left">根据值查询索引，返回 第一个匹配项 的索引，没有查到会报错</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/count.html">列表.count(值)</a></td>
+<td align="left">值在列表中出现的次数</td>
+</tr>
+<tr>
+<td align="left">排序</td>
+<td align="left"><a href="method/sort.html">列表.sort()</a></td>
+<td align="left">排序</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/reverse.html">列表.reverse()</a></td>
+<td align="left">逆序、反转</td>
+</tr>
+</tbody></table>
+<h3 id="2-元组操作"><a href="#2-元组操作" class="headerlink" title="2. 元组操作"></a>2. 元组操作</h3><table>
+<thead>
+<tr>
+<th align="left">分类</th>
+<th align="left">关键字 / 函数 / 方法</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">查询</td>
+<td align="left"><a href="method/索引取值_元组.html">元组[索引]</a></td>
+<td align="left">根据索引取值，索引不存在会报错</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/len_元组.html">len(元组)</a></td>
+<td align="left">元组长度(元素个数)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/if_in_元组.html">if 值 in 元组:</a></td>
+<td align="left">判断元组中是否包含某个值</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/index1_元组.html">元组.index(值)</a></td>
+<td align="left">根据值查询索引，返回 第一个匹配项 的索引，没有查到会报错</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><a href="method/count_元组.html">元组.count(值)</a></td>
+<td align="left">值在元组中出现的次数</td>
+</tr>
+</tbody></table>
+<h3 id="3-字典操作"><a href="#3-字典操作" class="headerlink" title="3. 字典操作"></a>3. 字典操作</h3><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>关键字 / 函数 / 方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>增加</td>
+<td><a href="method/增加键值_字典.html">字典[键] = 值</a></td>
+<td>键不存在，会添加键值对</td>
+</tr>
+<tr>
+<td>删除</td>
+<td><a href="method/删除键值_字典.html">字典.pop(键)</a></td>
+<td>根据键删除键值对,返回被删除的值</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字典_del.html">del 字典[键]</a></td>
+<td>根据键删除键值对</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字典_clear.html">字典.clear()</a></td>
+<td>清空字典</td>
+</tr>
+<tr>
+<td>修改</td>
+<td><a href="method/修改键值_字典.html">字典[键] = 值</a></td>
+<td>键存在，会修改键值对的值</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字典_update.html">字典.update(字典2)</a></td>
+<td>取出字典2的键值对对字典1操作，键值对不存在，添加键值对；存在则修改值</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字典_setdefault.html">字典.setdefault(键，数据)</a></td>
+<td>键值对不存在，添加键值对；存在则不做处理</td>
+</tr>
+<tr>
+<td>查询</td>
+<td><a href="method/查询值_字典.html">字典[键]</a></td>
+<td>根据键取值，键值对不存在会报错</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/get_字典.html">字典.get(键)</a></td>
+<td>根据键取值，键值对不存在返回None, 不会报错</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/遍历_字典.html">for key in 字典</a></td>
+<td>遍历字典, 获取所有的键</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字典_keys.html">for key in 字典.keys()</a></td>
+<td>遍历字典, 获取所有的键</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字典_values.html">for value in 字典.values()</a></td>
+<td>遍历字典, 获取所有的值</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字典_items.html">for item in 字典.items()</a></td>
+<td>遍历字典, 获取所有的键值对 (键, 值)</td>
+</tr>
+</tbody></table>
+<h3 id="4-字符串操作"><a href="#4-字符串操作" class="headerlink" title="4. 字符串操作"></a>4. 字符串操作</h3><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>关键字 / 函数 / 方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分割</td>
+<td><a href="method/字符串_split.html">字符串.split(分割符)</a></td>
+<td>以分割符拆分字符串, 返回列表</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_partition.html">字符串.partition(分割符)</a></td>
+<td>返回元组，把字符串分成一个 3 元素的元组 (分割符前面, 分割符, 分割符后面)</td>
+</tr>
+<tr>
+<td>拼接</td>
+<td><a href="method/字符串_+.html">字符串 + 字符串</a></td>
+<td>拼接两个字符串</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_join.html">字符串.join(字符串列表)</a></td>
+<td>以字符串来连接字符串列表中每个元素，合并为一个新的字符串</td>
+</tr>
+<tr>
+<td>替换</td>
+<td><a href="method/字符串_replace.html">字符串.replace(原内容, 新内容, 替换次数)</a></td>
+<td>返回一个替换了原内容的新字符串，可以指定替换次数</td>
+</tr>
+<tr>
+<td>查询</td>
+<td><a href="method/字符串_find.html">字符串.find(目标字符串, 开始索引, 结束索引)</a></td>
+<td>在指定范围内, 查询目标字符串的索引, 不存在返回-1</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_rfind.html">字符串.rfind(目标字符串, 开始索引, 结束索引)</a></td>
+<td>在指定范围内, 查询目标字符串的索引, 不存在返回-1, 从结尾处开始查找</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_index.html">字符串.index(目标字符串, 开始索引, 结束索引)</a></td>
+<td>在指定范围内, 查询目标字符串的索引, 不存在会报错</td>
+</tr>
+<tr>
+<td>判断</td>
+<td><a href="method/字符串_isalpha.html">字符串.isalpha()</a></td>
+<td>如果 string 至少有一个字符并且所有字符都是字母则返回 True</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_isdecimal.html">字符串.isdecimal()</a></td>
+<td>如果 string 只包含数字则返回 True</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_islower.html">字符串.islower()</a></td>
+<td>如果 string 中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是小写，则返回 True</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_isupper.html">字符串.isupper()</a></td>
+<td>如果 string 中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是大写，则返回 True</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_startswith.html">字符串.startswith(目标字符串)</a></td>
+<td>检查字符串是否是以 目标字符串 开头，是则返回 True</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_endswith.html">字符串.endswith(目标字符串)</a></td>
+<td>检查字符串是否是以 目标字符串 结尾，是则返回 True</td>
+</tr>
+<tr>
+<td>大小写转换</td>
+<td><a href="method/字符串_lower.html">字符串.lower()</a></td>
+<td>返回新字符串，转换 字符串 中所有大写字符为小写</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_upper.html">字符串.upper()</a></td>
+<td>返回新字符串，转换 字符串 中所有大写字符为大写</td>
+</tr>
+<tr>
+<td>文本对齐</td>
+<td><a href="method/字符串_center.html">字符串.center()</a></td>
+<td>按照指定宽度返回新字符串，并基于原字符串居中，可设置两端空白位置的填充字符</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_ljust.html">字符串.ljust()</a></td>
+<td>按照指定宽度返回新字符串，并基于原字符串左对齐，可设置两端空白位置的填充字符</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_rjust.html">字符串.rjust()</a></td>
+<td>按照指定宽度返回新字符串，并基于原字符串右对齐，可设置两端空白位置的填充字符</td>
+</tr>
+<tr>
+<td>去除两端字符</td>
+<td><a href="method/字符串_strip.html">字符串.strip(目标字符串)</a></td>
+<td>返回新字符串，去除 字符串 左右两边的目标字符串, 不设置目标字符串则去除空格</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_lstrip.html">字符串.lstrip(目标字符串)</a></td>
+<td>返回新字符串，去除 字符串 左边的目标字符串, 不设置目标字符串则去除空格</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="method/字符串_rstrip.html">字符串.rstrip(目标字符串)</a></td>
+<td>返回新字符串，去除 字符串 右边的目标字符串, 不设置目标字符串则去除空格</td>
+</tr>
+</tbody></table>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">caijinbo</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8003-%E5%AE%B9%E5%99%A8%E7%B1%BB%E5%9E%8B/">https://caijinbo.work/2020/07/26/2020-07-27-python基础03-容器类型/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="https://caijinbo.work">caijinbo的博客</a>！</span></div></blockquote></div></article><div class="p-info box"><span class="p-tags"><i class="fa fa-tag"></i><a href="/tags/python/">python</a></span></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#容器类型"><span class="toc-number">1.</span> <span class="toc-text">容器类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、列表"><span class="toc-number">1.1.</span> <span class="toc-text">一、列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-列表的定义"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 列表的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-列表嵌套"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 列表嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-列表常用操作"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. 列表常用操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-循环遍历"><span class="toc-number">1.1.4.</span> <span class="toc-text">4. 循环遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-通过for循环遍历"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">4.1 通过for循环遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-if…in-和-for…in-的区别"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">4.2 if…in 和 for…in 的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-for…else的使用"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">4.3 for…else的使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、元组"><span class="toc-number">1.2.</span> <span class="toc-text">二、元组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-元组的定义"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 元组的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-元组常用操作"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 元组常用操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、字典"><span class="toc-number">1.3.</span> <span class="toc-text">三、字典</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-字典的定义"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 字典的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-字典常用操作"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 字典常用操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-案例：登录注册系统"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 案例：登录注册系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、字符串"><span class="toc-number">1.4.</span> <span class="toc-text">四、字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-字符串的定义"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 字符串的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-f-strings-字符串格式化"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. f-strings 字符串格式化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-字符串的常用操作"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. 字符串的常用操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-字符串的切片"><span class="toc-number">1.4.4.</span> <span class="toc-text">4. 字符串的切片</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-切片介绍"><span class="toc-number">1.4.4.1.</span> <span class="toc-text">4.1 切片介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-案例"><span class="toc-number">1.4.4.2.</span> <span class="toc-text">4.2 案例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、集合"><span class="toc-number">1.5.</span> <span class="toc-text">五、集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-通过集合完成对列表去重功能"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 通过集合完成对列表去重功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-list、tuple、set之间类型转换"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. list、tuple、set之间类型转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、公共语法"><span class="toc-number">1.6.</span> <span class="toc-text">六、公共语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Python-内置函数"><span class="toc-number">1.6.1.</span> <span class="toc-text">1. Python 内置函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-切片"><span class="toc-number">1.6.2.</span> <span class="toc-text">2. 切片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-运算符"><span class="toc-number">1.6.3.</span> <span class="toc-text">3. 运算符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、容器常用方法汇总"><span class="toc-number">1.7.</span> <span class="toc-text">七、容器常用方法汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-列表操作"><span class="toc-number">1.7.1.</span> <span class="toc-text">1. 列表操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-元组操作"><span class="toc-number">1.7.2.</span> <span class="toc-text">2. 元组操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-字典操作"><span class="toc-number">1.7.3.</span> <span class="toc-text">3. 字典操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-字符串操作"><span class="toc-number">1.7.4.</span> <span class="toc-text">4. 字符串操作</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8006-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">&lt; python基础06-文件操作</a><a class="next" href="/2020/07/26/2020-07-27-python%E5%9F%BA%E7%A1%8008-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A12%EF%BC%9A%E7%BB%A7%E6%89%BF%E3%80%81%E5%B1%9E%E6%80%A7%E3%80%81%E6%96%B9%E6%B3%95/">python基础08-面向对象2：继承、属性、方法 &gt;</a></div></section><footer><p>Copyright © 2016 - 2020 <a href="/." rel="nofollow">CAIJINBO</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/plugins/prettify/prettify.js"></script><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"></body></html>
